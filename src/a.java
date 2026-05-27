@@ -40,10 +40,6 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static int[][] aA = new int[][]{{1344, 288}, {816, 48}, {816, 192}, {744, 192}, {144, 264}, {1440, 96}, {1368, 288}, {1128, 288}, {840, 312}};
    private static int[] aB = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 1, 0, 4, 0, 3, 0, 6, 0, 2, 0, 5, 0, 4, 0, 1, 0, 3, 0, 0, 0, 5, 0, 4, 0, 3, 0, 2, 0, 2, 0, 1, 0, 0, 0, 0, 0, 3, 0, 3, 0, 0, 2, 1, 3, 2, 2};
    private static int[] aC = new int[]{0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 2, 0, 2, 3, 0, 0, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 4, 0, 4, 0, 1, 2, 1, 2, 0, 1, 2, 1, 2, 1, 2};
-   private static String[] aD = new String[]{"Chơi mới", "Chơi tiếp", "Chỉ dẫn", "Game khác", "Thoát"};
-   private static String[][] aE = new String[][]{{"Rừng trúc đây rồi!", "Hôm nay ta phải hạ được con quái vật đó!", "Nó chắc quanh quẩn đây thôi!"}, {"Bọn quái vật nhãi nhép này làm gì được ta chứ!"}, {"Con quái vật hung hăng kia rồi!", "Ngươi phải đền tội vì những gì gây ra!"}, {"Ninja School 1 crack miễn phí key kích hoạt và sms trong game...", "Upload miễn phí tại wapsite http://giaitri321.pro...", "http://giaitri321.pro là wapsite giải trí miễn phí trên di động.", "Nhớ nhé các bạn. Chúc các bạn vui vẻ...", "Thân! Admin GiaiTri321.Pro...", "Các con biết phải làm gì rồi chứ?", "Đây là lúc các con chứng minh khả năng của mình.. ", "Đi đi. Và hãy cẩn thận đấy !!"}, {"Chết đi, con quái vật hung hăng kia !!!", "Hahahaha!"}, {"Chào mừng ngươi đến với trường đào tạo ninja Hirosaki.", "Ta là Okamesama, hiệu trưởng trường này.", "Tại đây chúng ta sẽ đào tạo các ngươi, trở thành những ninja chuyên nghiệp.", "Giáo viên chủ nhiêm của ngươi là thầy Takanashi", "Hãy đến gặp thầy để nhận bài tập.", "Có vấn đề gì, ngươi có thể hỏi những đồng môn của mình.", "Chúc ngươi sớm đạt được thành công nhé."}, {"Vâng, thưa thầy!"}, {"Con đường hoa đào đây rồi.", "Con bé ấy đâu rồi nhỉ?"}, {"Chào bạn! Bạn có phải là em gái cô Ayumi không?", "Thầy Takanashi bận nên nhờ mình đón bạn giúp.", "Đi theo mình nhé, chúng ta sẽ về trường!"}, {"Tốt lắm, con đã đưa cô bé về an toàn!", "Đây ta có món quà gì giá trị để tặng con..", "Đây là tấm bằng lái xe có chữ ký của ta. Kể từ nay con có thể sử dụng những chiếc xe máy rồi!", "Nhớ phải lái cẩn thận và đội mũ bảo hiểm, nếu không là CSGT phạt đó!"}, {"Thuỷ quái hạ nguồn sông Waramato, con quái trong truyền thuyết !", "Một khi nó chưa bị tiêu diệt, ta sẽ không đi tiếp!"}, {"Chết đi, con quái vật kia!", "Từ nay con sông này sẽ trở lại thanh bình rồi!", "Ta tiếp tục cuộc hành trình thôi!"}, {"Ngươi cũng lặn lội đến tận đây được à, khá đấy!", "Hãy bỏ ngôi trường ấy đi, theo ta lập căn cứ, ngươi sẽ có tất cả.", "Nếu không theo ta, ngươi sẽ hối hận đấy... HaHaHa!"}, {"Không đời nào, tên phản bội kia!"}, {"Ngươi khá lắm! Hãy đợi đấy, ta sẽ nhớ mối thù này!", "Hẹn gặp lại ngươi!!!"}, {"Chúng ta lại gặp nhau rồi!", "Ta cho ngươi một cơ hội lần cuối. hãy theo ta, hoặc là chết!"}, {"Haha. Tên phản bội kia, ta sẽ cho mi biết sức mạnh một ninja thực thụ!"}, {"Cuối cùng thì mi cũng đã phải dền tội!"}, {"Các con hãy cho biết làm cách nào để di chuyển!"}, {"Sử dụng phím mũi tên hoặc phím 2,4,6,8!"}, {"Làm thế nào để tấn công?, Kunio"}, {"Sử dụng phím 5 hoặc phím chọn giữa!"}, {"Làm thế nào để trò chuyện với bạn bè hoặc thầy cô?,Lee"}, {"Đứng gần người đó rồi bấm Giao Tiếp!"}, {"Làm thế nào để biết mình đang ở đâu! Katashi"}, {"Chọn menu/Xem bản đồ!"}, {"Làm thế nào khi hết HP hoặc MP! Toniku"}, {"Chọn menu/Sử dụng Item, chọn một bình HP/MP để sử dụng!"}, {"Uhm..Nếu không còn bình HP/MP nào thì sao? Minori"}, {"Gặp ông bán hàng mua tại trường, ở gần ký túc xá!"}, {"Tốt. Làm thế nào để di chuyển nhanh từ khu vực này đến khu vực khác?"}, {"Mở bản đồ, chọn 1 địa điểm để di chuyển đến!"}, {"Đúng rồi, Làm sao để sử dụng phi tiêu?,Ryuu"}, {"Bấm phím 1 sẽ chuyển sang chế độ phi tiêu.", "Bấm phím 1 lần nữa để quay lại đánh kiếm!"}, {"Tốt. Làm sao để sử dụng khinh công?"}, {"Học khinh công từ cô Ayumi. Bấm phím mũi tên lên hoặc phím 2 nhiều lần!"}, {"Uhm..Làm sao để độn thổ!"}, {"Học độn thổ từ thầy Honda. Bấm và giữ luôn phím xuống hoặc phím 8!"}, {"Khi nào mới có thể lái xe môtô?"}, {"Học lái xe từ thầy Takanashi, được cấp bằng lái", "Sau đó có thể nhảy lên chạy bất kỳ chiếc mô tô nào !"}, {"Làm sao để chạy trên mặt nước? huh ? Sadao"}, {"Học thuật chạy nước/ lặn nước từ thầy Honda! Sau đó có thể chạy trên mặt nước!"}, {"Làm sao để biến hình!"}, {"Bấm phím 7. Sau khi đã học phép biến hình từ thầy Hiroyaki"}, {"Làm sao để tàng hình!"}, {"Bấm phím 3. Sau khi đã học phép tàng hình từ thầy Honda"}, {"Tốt! Cho ta biết ai phát triển game này!"}, {"Nhóm TeaMobile!"}, {"Cụ thể là ai?"}, {"...Con không biết..."}, {"Hmm, có thể tìm thêm nhiều game hay khác ở đâu?"}, {"giaitri321.pro hay www.giaitri321.pro"}, {"Tốt, các con có thể giải tán !"}, {"Chúng con chào thầy !"}, {"Cảm ơn, mi thật tốt bụng. Hẹn gặp lại!", "Quên mất, lúc nãy cô Ayumi dặn ta gặp cô ấy ngay.", "Hihi, gặp lại mi sau!"}, {"Sakura, bạn có sao không!"}, {"Mình không sao, bạn không bị thương chứ!"}, {"Mình cũng không sao! Tên Toniku chắc cũng không chạy xa được đâu , hắn cũng sớm bị bắt thôi!", "Chúng ta về thôi!"}, {"Toniku, ngươi đã biết tội chưa!"}, {"..vâng..con biết...."}, {"Theo nội quy của nhà trường. Ngươi phải rời khỏi ngôi trường này.", "Vĩnh viễn không được trở lại nữa.."}, {"......"}, {"Thưa thầy...", "Toniku vốn là học sinh giỏi của trường..", " Chỉ vì nghe lời xúi giục của bọn xấu nên mới hành động như thế...", "Đây là lần vi phạm đầu tiên, xin nhà trường tha thứ cho bạn ấy..."}, {"......"}, {"Xin các thầy hãy tha thứ cho bạn ấy ạ!"}, {"..thôi được rồi..", "Tội Toniku rất nặng, đáng lẽ ra phải bị đuổi học.", "Con đường để thành một nhẫn giả thật gian lao và chông gai..", "..ngươi phải luyện tập bằng khả năng và sức lực của mình", " sẽ không có con đường nào khác", " ... các con đều biết chữ Nhẫn gồm chữ Đao và chữ Tâm.", "..nếu Tâm không tịnh thì Đao sẽ bổ xuống!", "Các con hãy lấy Toniku mà làm gương ...", "Toniku, ngươi đã quá tham lam...", "..nhưng ta cũng thây nơi con người ngươi có tố chất tiềm tàng!", "Nên ta quyết định tha cho con lần này...", "Sẽ không có lần sau, Toniku, ngươi nhớ đấy!!"}, {"Vâng, con xin cảm ơn thầy!"}, {"Sẵn đây ta muốn nhắc nhở thêm các con..", "Hai tháng nữa là đến kỳ thi kết khoá cho Genin. Các con phải cố gắng tập luyện hơn nữa..", "..Mọi thứ chỉ mới bắt đầu thôi!"}, {"Vâng, chúng con xin nghe!"}};
-   private static String[] aF = new String[]{"Trường đạo tạo Ninja Hirosaki, Mùa thu 1937", "2 ngày sau, tại rừng trúc...", "Chỉ dẫn: Dùng phím 5 để tấn công.", "6 tháng trước, tại trường Hirosaki...", "2 ngày sau, tại trường Hirosaki..."};
-   private static String[][] aG = new String[][]{{"Chúng ta đi thôi!"}, {"Muốn rủ ta đi chơi à!", "Ta chỉ chơi với những người cùng trình độ thôi.", "Ngươi hãy tập luyện đi, bao giờ khá hơn thì quay lại. Đừng ở đó tán gái nữa!"}, {"Muốn rủ ta cùng đi à?", "OK, nhưng chỉ một lúc thôi nhé, nếu không chị Ayumi mắng ta đó!"}, {"Ta muốn đến miếu Koujin chơi, mi có thể dẫn đường chứ!", "Nếu sợ, mi có thể ở nhà, ta sẽ tự đi. Haha!"}};
    private static int[][][] aH;
    private static int[] aI;
    private static int[] aJ;
@@ -688,12 +684,6 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static int[] lw;
    private static int[] lx;
    private static int[] ly;
-   private static String[][] lz;
-   private static String[][] lA;
-   private static String[][] lB;
-   private static String[][] lC;
-   private static String[][] lD;
-   private static String[] lE;
    private static int[] lF;
    /** Số lượng / mục tiêu cần đạt để hoàn thành nhiệm vụ (theo {@link #currentQuestIndex}), song hành với {@link #lF}. */
    private static int[] questRequiredAmounts;
@@ -834,12 +824,6 @@ public final class a extends Canvas implements Runnable, CommandListener {
       kR = new int[]{62, 52, 17, 4, 8, 12, 14, 5, 1, 2, 3, 2, 2, 2, 2, 1, 2, 3, 1};
       kS = new int[]{17, 9, 12, 9, 10, 5, 9, 7, 12, 11, 4, 11, 8, 9, 7, 6, 11, 16, 8};
       lk = "Chuyển đến";
-      lz = new String[][]{{"..."}, {"Đây là khu vực luyện tập, cứ yên tâm, nếu bị thương ta sẽ giúp đỡ.", "Đôi khi tập luyện với cái bù nhìn rơm đằng kia cũng mang lại nhiều bất ngờ đấy!"}, {"Thác nước này rất nguy hiểm, ta khuyên ngươi không nên xuống.", "Hãy quay lại đi, nếu có chuyện gì ta không cứu được ngươi đâu."}, {"Khu rừng trước mặt ngươi là nơi sống của bọn dơi quỷ, nhện độc và những sát thủ bị truy nã.", "Dù ngươi tài giỏi đến đâu cũng phải mất mạng khi đi ngang qua đó.", "Một số người có thể qua được bằng cách chạy thật nhanh qua.", "Nếu ngươi tự tin hãy dùng chiếc moto kia và liều một phen xem.", "Chúc ngươi may mắn."}};
-      lA = new String[][]{{"Con lại tìm ta có chuyện gì?", "Thầy chủ nhiệm Con là Takanashi, mau đến gặp thầy để nhận bài tập."}, {"Chào cậu bé, ta là Kagome Ayumi, giảng viên cao cấp bộ môn Khí.", "Khí là môn đầu tiên bất kỳ học sinh nào cũng phải học khi bước vào đây.", "Bài học đâu tiên là kỹ năng khinh công. Sau khi học xong con sẽ phi thân cao hơn  gấp đôi bình thường.", "Bây giờ ta phải kiểm tra sơ bộ con. Hãy chạy thẳng về tay trái đến khu luyện tập.", "đến đó giết đủ 10 con ốc sên đá, sau đó quay lại đây!"}, {"Chào con, con đã sẵn sàng luyện tập rồi chứ?", "Hãy đến gặp cô Ayumi để học môn đầu tiên.", "Cô ấy đứng đằng kia, chúc con học tốt nhé!", "à, nếu cô ấy có hỏi gì về ta, hãy nói tốt về ta nhé, ta sẽ thưởng."}, {"Ta già cả rồi, tựa như chiếc lá khô..", "Lại đây, ta sẽ truyền hết võ công cho con...", "Toyotomi,...tình yêu của ta,....em ở nơi nào"}, {"Trình độ nhà ngươi còn quá thấp. Hãy quay lại đây khi đã học xong khinh công."}, {"Ngươi còn chưa dùng shuriken thì làm sao học phép thuật được."}, {"Ta sẽ dạy ngươi dùng shuriken nếu ngươi có đủ khả năng.", "Gần cổng trường có vài cái bù nhìn rơm, hãy đánh gãy 2 cái.", "Nhanh lên, hãy chứng tỏ sức mạnh của mình đi."}, {"Ngươi còn không mau đi đi!"}, {"Ngươi muốn học thuật ư?", "Không như những môn khác, thuật đòi hỏi ngươi phải luyện tập hàng ngày..", "Hơn thế nữa, ngươi phải học theo những quyển bí kíp.", "Ta sẽ dạy cho ngươi môn độn thổ, nếu ngươi có thể tìm được 1 quyển bí kíp từ bọn quỷ một chân", "Bọn chúng thường xuất hiện ở thác nước, bên kia khu luyện tập.", "Đi đi, hãy kiên nhẫn với từng tên , ngươi sẽ tìm thấy thôi!"}, {"Nhanh lên con, cô bé ấy đang đứng chờ ở đường hoa đào đấy!", "Nếu chậm, cô Ayumi sẽ buồn lắm đó!"}, {"Con có thể giúp ta một chuyện được không?", "Cô Ayumi có nhờ ta đón giúp cô em gái. Nhưng đúng vào lúc ta phải họp cùng thầy hiệu trưởng.", "Ta rất tin tưởng ở con, con hãy đến đầu đường hoa đào, đón cô ấy nhé!", "Nhanh lên, ta sẽ thưởng cho con nếu con làm tốt."}, {"Để trở thành 1 ninja giỏi ngươi phải có thể lực tốt.", "Ngươi có biết chữ Nin là Nhẫn không!", "Trong Nhẫn thì có Lực và Tâm..", "..để trở thành ninja thực thụ thì ngươi phải có Tâm và Lực", "....mà ta nói, ngươi có hiểu gì không.", "Hãy giết 20 con ong, rồi quay về gặp ta. Lúc đó ta sẽ giúp ngươi."}, {"Ngươi đã bao giờ vượt sông Watamoro chưa? Đó là một con sông rộng và hung dữ với thuỷ quái và sóng to.", "Ta sẽ giúp ngươi 1 cách vượt sông rất dễ dàng, nhưng ngươi phải làm một việc...", "Trong khu rừng trúc, có 1 con heo rừng thành tinh rất hung hăng..", "Hãy giết nó, mang về đây 1 quyển bí kíp nói về thuật lặn nước, ta sẽ hướng dẫn ngươi luyện.", "Đi đi, và hãy cẩn thận tính mạng nhà ngươi."}, {"Ngươi đã học được kỹ năng chạy nước rồi!", "Nếu ngươi có thể qua bên kia con sông,đến khu nghĩa địa, nhặt quyển bí kíp Ninja biến hình..", "..ta sẽ truyền thụ kỹ năng biến hình cho ngươi.", "Hãy nhớ ngươi phải đối đầu với một con quái vật to lớn bên kia sông đấy!", "Đi đi, chúc ngươi may mắn."}, {"Con biết, ta đang nghiên cứu làm ra 1 thứ thuốc, để chữa trị vết thương...", "Tuy nhiên ta thiếu 1 loại nguyên liệu rất khó kiếm.", "Nếu con có thể tìm giúp ta 15 cánh dơi vàng, ta sẽ có đền đáp xứng đáng.", "Bọn dơi vàng có mặt ở những ngôi đền phía nam. Bọn chúng rất nhanh.", "Tuy thế, ta vẫn tin con có thể mang về cho ta.", "Chúc con may mắn!"}, {"Cô Ayumi nói cho con nghe rồi à...", "Nói ra thật đáng buồn, cũng như bao trường khác, trường ta luôn có những học sinh cá biệt...", "Toniku là một trong số đó, nó đã bỏ trường thành lập băng nhóm...", "Hiện đang tụ tập quậy phá ở 3 ngôi miếu phía nam trường...", "Con là một học sinh tốt, hãy đi tìm bọn chúng bắt về cho ta.", "Làm đi, rồi báo cáo kết quả với ta nhé!"}, {"Cô bé em gái cô Ayumi cũng xinh, y như cô ấy vậy, con có thấy thế không!", "Nếu con có thể vào khu rừng gỗ, đánh gục 20 tên Quỷ khố, ta sẽ mai mối cho, haha!", "Nhưng hãy cẩn thận, bọn quái vật trong khu rừng ấy rất đông và mạnh đấy!"}, {"Hiện tại khả năng con đã rất khá rồi, ta quyết định dạy những kỹ năng cấp cao cho con.", "Đầu tiên là khinh công cấp 2.", "Tuy nhiên, con phải chứng tỏ đã thành thạo khinh công cấp 1 trước...", "Hãy nhảy lên không tung, đánh được 20 đòn trước khi chạm đất!", "Không dễ phải không..."}, {"Shuriken , một trong những vũ khí cơ bản của Ninja, ta sẽ truyền cho ngươi bộ ám khí mới này", "Vẫn như các lần trước, ngươi phải cho ta thấy đã đủ sức học...", "Đến khu rừng chông tre. Nhổ gốc 70 con quỷ hoa đỏ rồi về đây, ta sẽ dạy cho.", "Cẩn thận tính mạng ngươi đấy."}, {"Mấy hôm nay ta nhận thấy con chạy còn rất chậm..", "Một ninja chậm chạp như con không thể làm việc lớn được.", "Hãy đến vách đá Ito, mang về cho ta 50 đuôi bò cạp..", "Ta sẽ dùng độc của chúng, điều chế cho con 1 loại thuốc tăng lực...", "Cẩn thận nọc độc bọn chúng nhé! Hãy dẫn cô bé Sakura đi, nó sẽ giúp con nhiều đấy."}, {"Ta không muốn nói nhiều. Một phần thưởng đặt biệt cho ngươi..", "..nếu ngươi có thể giết được 30 con cá đỏ!"}, {"Đây là kỹ năng cuối cùng của một ninja... kỹ thuật ẩn thân", "Kỹ năng này muốn học cũng không khó, tại một thung lũng phía nam..", "có một quyển bí kíp được giấu từ ngàn năm nay.", "Hãy tìm về, ta sẽ giúp con có được kỹ năng lợi hại này."}, {"Con còn nhớ tên phản đồ Toniku lần trước không!", "Sau khi bị con đánh, hắn đã bỏ chạy đến ngôi miếu phía đông bắc.", "Nó vừa bắt mất cô bé Sakura đi rồi.", "Ta đã sai tất cả đệ tử đi tìm nó, cứu cô bé về!", "Con cũng phải thế nhé! Cô bé ấy đang chờ con đấy!"}};
-      lB = new String[][]{{"Thể lực con rất tốt, ta sẽ dạy khinh công cho con...", "Hãy tập trung khí huyết, hít thở nhẹ, người con nhẹ dần, nhẹ dần tựa chiếc lá khô...", "Chúc mừng con! Hãy thử nhảy lên xem kết quả thế nào.", "à, suýt nữa ta quên, lúc nãy thầy Hiroyaki trên tầng 1 gọi con đấy."}, {"Tốt. Đây là cách phóng shuriken, hãy nhớ kỹ:", "Bấm phím 0 để chuyển sang phóng shuriken, bấm lần nữa để đánh kiếm.", "Nếu chăm chỉ tập luyện, phi tiêu sẽ là vũ khí lợi hại nhất của ngươi.", "Thầy Honda có việc cần gặp ngươi. Nhanh lại đó đi!"}, {"Giỏi lắm, đúng là quyển bí kíp này.", "Cứ luyện tập theo quyển bí kíp này: hãy đến khu vực có đất..", "Ngồi thấp xuống và tập trung, ngươi sẽ độn thổ được.", "Hãy luyện tập đi, chú ý MP ngươi sẽ bị giảm khi độn thổ đó.", "Còn chuyện này nữa, vừa nãy ta thấy thầy chủ nhiệm ngươi có vẻ mệt. Ngươi hãy nhanh ghé thăm!"}, {"Ngươi giỏi lắm, ta sẽ đã thông kinh mạch cho...", "úm ba la !! soda cacao cola!", "Ngươi có cảm nhận được luồn chân khí trong người không", "Đi đi, hãy dùng sức mạnh này để bảo vệ dân làng!"}, {"Quyển bí kíp đây rồi, khá lắm cậu bé.", "Ngươi đã có thể lặn nước được rồi. Hãy nhớ, tuy lặn được nhưng thanh trúc dùng để thở rất ngắn...", "Vì thế, đừng lặn sâu quá đó.", "Thầy Hiroyaki tìm ngươi. Hãy mau đến gặp đi."}, {"Ngươi có thể vượt qua con sông ấy ư?", "Ta sẽ giúp ngươi gọi được sức mạnh của dòng tộc mình: Xích Mao", "Bất kỳ khi nào, hãy ấn phím số 7, ngươi sẽ có được sức mạnh từ gốc cội của dòng tộc mình", "hãy thử xem, nhưng ngươi cần cẩn thận, vì thi triển thuật này,ngươi sẽ chóng mệt lắm đấy."}, {"Cảm ơn con nhiều lắm. Đây là phần thưởng cho con, 5000$", "Tuy không bao nhiêu nhưng con có thể dùng nó để mua HP, MP.", "À, trường ta đang có việc lớn đấy!", "Con hãy gặp thầy chủ nhiệm để hỏi xem có giúp được gì hay không!"}, {"Hắn bỏ trốn thoát rồi ư?", "Ta thật đau lòng khi có một đứa học trò như nó!", "Kể từ nay, ta cho phép con tấn công nó, không nương tay, bất kỳ khi nào gặp!"}, {"Ta biết chắc chắn thế nào con cũng giết được bọn quỷ khố hung hăng đó!", "Lúc nãy, ta đã nói chuyện với cô Ayumi rồi.", "Hãy lại bắt chuyện với cô bé ấy đi!"}, {"Tốt lắm. Con đã chứng tỏ được mình.", "Đây là kỹ năng khinh công cấp 2. Con đã có thể nhảy cao hơn trước rồi.", "Tiếp theo, hãy gặp thầy Hiroyaki, ông ta sẽ dạy con những kỹ năng mới!"}, {"Tốt. Đây là kỹ năng shuriken cấp 2.", "Sức tấn công từ shuriken của con đã tăng lên rất nhiều!", "Con phải siêng năng tập luyện mới có thể giữ được sức mạnh này. Nhớ đấy!"}, {"Khá lắm. Đây là phương thuốc chạy nhanh cho con!", "Hãy chạy 1 đoạn ngắn, sau đó tốc độ của con sẽ tăng nhanh..", "Hãy thử xem nào!"}, {"Giỏi. Kể từ nay con sẽ không bao giờ bị chìm dưới nước nữa!", "..đây là kỹ thuật đứng nước bí truyền của ninja. Ta chỉ dạy cho mình con đấy!"}, {"Ngươi có thể tìm được nó ư?", "Tốt lắm, từ nay con có thể sử dụng nó rồi đấy.", "Hãy nhấn phím số 9 để có thể ẩn thân. Kỹ năng này rất lợi hại..", "tuy nhiên nó sẽ tiêu thụ rất nhiều MP của con đấy!"}, {"Các con đều bình an vô sự, rất tốt!", "Những gì đã là quá khứ thì ta cho qua, nhưng hãy nhớ và không tái phạm", "Nào, ta cho các con nghỉ, điện thoại cũng có lúc phải nghì ngơi chứ, hehe. Nay , ta chúc mừng các con đã hoàn thành khóa học ninja sơ cấp: các con không còn là Chunin nữa !", "Nay ta tuyên bố thăng cấp cho các con là Genin !"}};
-      lC = new String[][]{{"Nhanh lên, hãy sang khu luyện tập và giết 10 con ốc sên."}, {"Hãy đánh sập 2 bù nhìn rơm gần cổng trường. Nhanh lên!"}, {"Bọn quỷ một chân có mặt ở thác nước, bên kia khu luyện tập, mau giết chúng để tìm quyển bí kíp!"}, {"Hãy trở lại khi ngươi đã giết đủ 20 con ong."}, {"Con heo rừng rất nguy hiểm. Nhưng ta tin ngươi có thể giết được nó và cầm về cho ta quyển bí kíp. Đi đi!"}, {"Hãy đến khu nghĩa địa bên kia sông! Mang về quyển bí kíp. Nhanh lên!"}, {"Nhanh lên, hãy giết 15 con dơi vàng ở những ngôi miếu phía nam!"}, {"Hãy tìm tên Toniku, hắn trốn ở những ngôi miếu phía nam.", "Tìm gặp hắn quay lại báo cáo với ta nhé!"}, {"Hãy giết 20 con quỷ khố ở khu rừng gỗ!", "Xong việc ta sẽ giúp con cưa con bé em gái cô giáo Ayumi!"}, {"Để ta dạy kinh công cấp 2 cho con, con phải chứng tỏ được khả năng hiện tại.", "Hãy nhảy lên cao và chém được ít nhất 20 phát khi chưa chạm đất!", "Khá khó, nhưng ta tin con sẽ khẳng định được mình!"}, {"Hãy đến rừng chông tre. Giết 70 quỷ hoa đỏ rồi về đây, ta cho ngươi shuriken cấp 2!"}, {"Con hãy đến vách đá Ito, giết 50 con bò cạp, mang đuôi về cho ta!"}, {"Ta không muốn nói nhiều. Một phần thưởng đặt biệt cho ngươi..", "..nếu ngươi có thể giết được 30 con cá đỏ!"}, {"Để học kỹ năng ẩn thân, hãy đi tìm 1 quyển bí kíp...", "Cất giấu tại 1 thung lũng phía đông."}, {"Nhanh lên, cô bé ấy đã bị bắt từ mấy hôm rồi!"}};
-      lD = new String[][]{{"Ta đang bận, Con hãy đi tập luyện đi."}, {"Các ngươi phải cố gắng tập luyện để trở thành những Ninja tốt"}, {"Hằng ngày ngươi phải siêng năng tập thể lực, đó là nền tảng cho mọi hoạt động."}, {"Cô Ayumi xinh thật. Con có thấy thế không?"}, {"Ngươi biết không....à..à...mà ta định nói gì với ngươi nhỉ."}, {"Ta không còn gì để dạy con nữa...", "Nhưng con phải cố gắng tập luyện hàng ngày. Biết không!"}, {"Con cần phải để mắt tới cô bé Sakura nhé..", "Con bé ấy quậy lắm đấy!"}, {"Dù sau này có đi đâu, ngươi cũng phải trở thành 1 ninja tốt nhé!"}, {"Ta không còn gì để dạy con nữa!", "Hãy rèn luyện sức khỏe hàng ngày, biết không!"}, {"..à.. ừ.. ngươi muốn học phép à..", ".. để ta nghĩ ra thêm vài phép mới..", "..trước mắt hãy học những kỹ năng cũ đã nhé..."}};
-      lE = new String[]{"Ngươi không có đủ vàng.", "Hãy hoàn thành nhiệm vụ được giao rồi quay lại gặp ta!"};
       lF = new int[]{1, 7, 100, 100, 6, 100, 100, 13, 100, 15, 100, 100, 18, 17, 10, 100, 100, 100};
       questRequiredAmounts = new int[]{2, 2, 0, 0, 20, 0, 0, 15, 0, 20, 0, 0, 70, 50, 30, 0, 0, 0};
       lH = new int[]{7, 6, 6, 5, 2, 4};
@@ -5964,7 +5948,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         }
 
                         var1 -= 40;
-                        a(aE[ay[fU][fV]], -1, var3, var1);
+                        a(StoryDialogue.aE[ay[fU][fV]], -1, var3, var1);
                         ++fV;
                         gb = true;
                      }
@@ -6066,7 +6050,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      break;
                   case 15:
                      fW = true;
-                     fX = Midlet.a(aF[ay[fU][fV]], q - 40);
+                     fX = Midlet.a(StoryDialogue.aF[ay[fU][fV]], q - 40);
                      if ((fZ = (bu >> 1) - (fX.length << 3)) < 3) {
                         fZ = 2;
                      }
@@ -6693,36 +6677,36 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         switch (ly[var6]) {
                            case 0:
                               if (fc) {
-                                 a(lD[7], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lD[7], -1, lw[var6], lx[var6] - 40);
                               } else if (!khinhCong) {
                                  V(2);
-                                 a(lA[0], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lA[0], -1, lw[var6], lx[var6] - 40);
                               } else {
                                  if (fa && !fb) {
                                     if (currentQuestIndex == 16) {
                                        if (eI) {
-                                          a(lB[14], 35, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lB[14], 35, lw[var6], lx[var6] - 40);
                                        } else {
-                                          a(lC[14], -1, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lC[14], -1, lw[var6], lx[var6] - 40);
                                        }
                                     } else if (currentQuestIndex == -1) {
-                                       a(lA[22], 36, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lA[22], 36, lw[var6], lx[var6] - 40);
                                     } else {
-                                       a(lE, 1, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                     }
                                     break;
                                  }
 
-                                 a(lD[1], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lD[1], -1, lw[var6], lx[var6] - 40);
                               }
                               break;
                            case 1:
                               if (fc) {
-                                 a(lD[5], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lD[5], -1, lw[var6], lx[var6] - 40);
                               } else if (!khinhCong) {
                                  if (currentQuestIndex == 0) {
                                     if (fD < questRequiredAmounts[0]) {
-                                       a(lC[0], -1, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lC[0], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        boolean var2 = true;
                                        var2 = true;
@@ -6732,42 +6716,42 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                        lL = 4;
                                        lJ = 1044;
                                        lK = 240;
-                                       a(lB[0], 4, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lB[0], 4, lw[var6], lx[var6] - 40);
                                     }
                                  } else if (currentQuestIndex == -1) {
-                                    a(lA[1], 3, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lA[1], 3, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(lE, 1, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else if (!eS && eR) {
                                  if (characterLevel < 10) {
                                     a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 10"}, -1, lw[var6], lx[var6] - 40);
                                  } else if (currentQuestIndex == 7) {
                                     if (fD < questRequiredAmounts[7]) {
-                                       a(lC[6], -1, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lC[6], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(2);
-                                       a(lB[6], 19, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lB[6], 19, lw[var6], lx[var6] - 40);
                                     }
                                  } else if (currentQuestIndex == -1) {
-                                    a(lA[14], 18, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lA[14], 18, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(lE, 1, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else if (eV && !khinhCongCap2) {
                                  if (characterLevel < 12) {
                                     a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 12"}, -1, lw[var6], lx[var6] - 40);
                                  } else if (currentQuestIndex == 11) {
                                     if (fD < 20) {
-                                       a(lC[9], -1, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lC[9], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(4);
-                                       a(lB[9], 27, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lB[9], 27, lw[var6], lx[var6] - 40);
                                     }
                                  } else if (currentQuestIndex == -1) {
-                                    a(lA[17], 28, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lA[17], 28, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(lE, 1, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else {
                                  if (!eY && eX) {
@@ -6775,86 +6759,86 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                        a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 15"}, -1, lw[var6], lx[var6] - 40);
                                     } else if (currentQuestIndex == 13) {
                                        if (fD < questRequiredAmounts[13]) {
-                                          a(lC[11], -1, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lC[11], -1, lw[var6], lx[var6] - 40);
                                        } else {
                                           V(3);
-                                          a(lB[11], 31, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lB[11], 31, lw[var6], lx[var6] - 40);
                                        }
                                     } else if (currentQuestIndex == -1) {
-                                       a(lA[19], 32, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lA[19], 32, lw[var6], lx[var6] - 40);
                                     } else {
-                                       a(lE, 1, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                     }
                                     break;
                                  }
 
-                                 a(lD[0], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lD[0], -1, lw[var6], lx[var6] - 40);
                               }
                               break;
                            case 2:
                               if (fc) {
-                                 a(lD[9], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lD[9], -1, lw[var6], lx[var6] - 40);
                               } else if (!khinhCong) {
                                  V(1);
-                                 a(lA[2], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lA[2], -1, lw[var6], lx[var6] - 40);
                               } else if (eM && !eN) {
                                  if (currentQuestIndex == 3) {
-                                    a(lA[9], -1, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lA[9], -1, lw[var6], lx[var6] - 40);
                                  } else if (currentQuestIndex == -1) {
-                                    a(lA[10], 11, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lA[10], 11, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(lE, 1, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else if (eS && !eT) {
                                  if (currentQuestIndex == 8) {
                                     if (eH) {
                                        V(2);
-                                       a(lB[7], 23, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lB[7], 23, lw[var6], lx[var6] - 40);
                                     } else {
-                                       a(lC[7], -1, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lC[7], -1, lw[var6], lx[var6] - 40);
                                     }
                                  } else if (currentQuestIndex == -1) {
-                                    a(lA[15], 22, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lA[15], 22, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(lE, 1, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else {
                                  if (eT && !eU) {
                                     if (currentQuestIndex == 9) {
                                        if (fD < questRequiredAmounts[9]) {
-                                          a(lC[8], -1, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lC[8], -1, lw[var6], lx[var6] - 40);
                                        } else {
                                           V(3);
-                                          a(lB[8], 25, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lB[8], 25, lw[var6], lx[var6] - 40);
                                        }
                                     } else if (currentQuestIndex == -1) {
-                                       a(lA[16], 24, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lA[16], 24, lw[var6], lx[var6] - 40);
                                     } else {
-                                       a(lE, 1, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                     }
                                     break;
                                  }
 
-                                 a(lD[3], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lD[3], -1, lw[var6], lx[var6] - 40);
                               }
                               break;
                            case 3:
                               if (fc) {
-                                 a(lD[9], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lD[9], -1, lw[var6], lx[var6] - 40);
                               } else {
                                  if (khinhCong && eL) {
                                     if (!eM) {
                                        if (currentQuestIndex == 2) {
                                           if (!fB) {
-                                             a(lC[2], -1, lw[var6], lx[var6] - 40);
+                                             a(StoryDialogue.lC[2], -1, lw[var6], lx[var6] - 40);
                                           } else {
                                              V(2);
-                                             a(lB[2], 10, lw[var6], lx[var6] - 40);
+                                             a(StoryDialogue.lB[2], 10, lw[var6], lx[var6] - 40);
                                           }
                                        } else if (currentQuestIndex == -1) {
-                                          a(lA[8], 9, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lA[8], 9, lw[var6], lx[var6] - 40);
                                        } else {
-                                          a(lE, 1, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                        }
                                        break;
                                     }
@@ -6862,15 +6846,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                     if (!eP && eO) {
                                        if (currentQuestIndex == 5) {
                                           if (!fB) {
-                                             a(lC[4], -1, lw[var6], lx[var6] - 40);
+                                             a(StoryDialogue.lC[4], -1, lw[var6], lx[var6] - 40);
                                           } else {
                                              V(4);
-                                             a(lB[4], 15, lw[var6], lx[var6] - 40);
+                                             a(StoryDialogue.lB[4], 15, lw[var6], lx[var6] - 40);
                                           }
                                        } else if (currentQuestIndex == -1) {
-                                          a(lA[12], 14, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lA[12], 14, lw[var6], lx[var6] - 40);
                                        } else {
-                                          a(lE, 1, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                        }
                                        break;
                                     }
@@ -6880,15 +6864,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                           a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 16"}, -1, lw[var6], lx[var6] - 40);
                                        } else if (currentQuestIndex == 14) {
                                           if (fD < questRequiredAmounts[14]) {
-                                             a(lC[12], -1, lw[var6], lx[var6] - 40);
+                                             a(StoryDialogue.lC[12], -1, lw[var6], lx[var6] - 40);
                                           } else {
                                              V(3);
-                                             a(lB[12], 33, lw[var6], lx[var6] - 40);
+                                             a(StoryDialogue.lB[12], 33, lw[var6], lx[var6] - 40);
                                           }
                                        } else if (currentQuestIndex == -1) {
-                                          a(lA[20], 34, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lA[20], 34, lw[var6], lx[var6] - 40);
                                        } else {
-                                          a(lE, 1, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                        }
                                        break;
                                     }
@@ -6896,98 +6880,98 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                     if (!fa && eZ) {
                                        if (currentQuestIndex == 15) {
                                           if (!fB) {
-                                             a(lC[13], -1, lw[var6], lx[var6] - 40);
+                                             a(StoryDialogue.lC[13], -1, lw[var6], lx[var6] - 40);
                                           } else {
                                              V(0);
-                                             a(lB[13], 21, lw[var6], lx[var6] - 40);
+                                             a(StoryDialogue.lB[13], 21, lw[var6], lx[var6] - 40);
                                           }
                                        } else if (currentQuestIndex == -1) {
-                                          a(lA[21], 20, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lA[21], 20, lw[var6], lx[var6] - 40);
                                        } else {
-                                          a(lE, 1, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                        }
                                        break;
                                     }
 
-                                    a(lD[4], -1, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lD[4], -1, lw[var6], lx[var6] - 40);
                                     break;
                                  }
 
-                                 a(lA[5], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lA[5], -1, lw[var6], lx[var6] - 40);
                               }
                               break;
                            case 4:
                               if (fc) {
-                                 a(lD[8], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lD[8], -1, lw[var6], lx[var6] - 40);
                               } else if (v == 99) {
-                                 a(lA[7], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lA[7], -1, lw[var6], lx[var6] - 40);
                               } else if (!khinhCong) {
-                                 a(lA[4], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lA[4], -1, lw[var6], lx[var6] - 40);
                               } else if (!eL) {
                                  if (currentQuestIndex == 1) {
                                     if (fD < questRequiredAmounts[1]) {
-                                       a(lC[3], -1, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lC[3], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(3);
-                                       a(lB[1], 6, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lB[1], 6, lw[var6], lx[var6] - 40);
                                     }
                                  } else if (currentQuestIndex == -1) {
-                                    a(lA[6], 5, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lA[6], 5, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(lE, 1, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else if (eN && !eO) {
                                  if (currentQuestIndex == 4) {
                                     if (fD < questRequiredAmounts[4]) {
-                                       a(lC[3], -1, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lC[3], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(3);
-                                       a(lB[3], 12, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lB[3], 12, lw[var6], lx[var6] - 40);
                                     }
                                  } else if (currentQuestIndex == -1) {
-                                    a(lA[11], 13, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lA[11], 13, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(lE, 1, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else if (eP && !eR) {
                                  if (characterLevel < 8) {
                                     a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 8"}, -1, lw[var6], lx[var6] - 40);
                                  } else if (currentQuestIndex == 6) {
                                     if (!fB) {
-                                       a(lC[5], -1, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lC[5], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(1);
-                                       a(lB[5], 17, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lB[5], 17, lw[var6], lx[var6] - 40);
                                     }
                                  } else if (currentQuestIndex == -1) {
-                                    a(lA[13], 16, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lA[13], 16, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(lE, 1, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else {
                                  if (!eX && khinhCongCap2) {
                                     if (currentQuestIndex == 12) {
                                        if (fD < questRequiredAmounts[12]) {
-                                          a(lC[10], -1, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lC[10], -1, lw[var6], lx[var6] - 40);
                                        } else {
                                           V(1);
-                                          a(lB[10], 29, lw[var6], lx[var6] - 40);
+                                          a(StoryDialogue.lB[10], 29, lw[var6], lx[var6] - 40);
                                        }
                                     } else if (currentQuestIndex == -1) {
-                                       a(lA[18], 30, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lA[18], 30, lw[var6], lx[var6] - 40);
                                     } else {
-                                       a(lE, 1, lw[var6], lx[var6] - 40);
+                                       a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
                                     }
                                     break;
                                  }
 
-                                 a(lD[2], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lD[2], -1, lw[var6], lx[var6] - 40);
                               }
                               break;
                            case 5:
                               if (v == 0) {
                                  if (var6 == 5) {
-                                    a(lz[0], -1, lw[var6], lx[var6] - 40);
+                                    a(StoryDialogue.lz[0], -1, lw[var6], lx[var6] - 40);
                                  }
 
                                  if (var6 == 6) {
@@ -7004,15 +6988,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
                               }
 
                               if (v == 1 && var6 == 0) {
-                                 a(lz[1], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lz[1], -1, lw[var6], lx[var6] - 40);
                               }
 
                               if (v == 5 && var6 == 0) {
-                                 a(lz[2], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lz[2], -1, lw[var6], lx[var6] - 40);
                               }
 
                               if (v == 6 && var6 == 0) {
-                                 a(lz[3], -1, lw[var6], lx[var6] - 40);
+                                 a(StoryDialogue.lz[3], -1, lw[var6], lx[var6] - 40);
                               }
                         }
 
@@ -7025,15 +7009,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         a(dw[fF], 0, dA[fF], dB[fF] - 44);
                      } else if (o.equals("Nói chuyện") && fC) {
                         if (gl) {
-                           a(aG[0], 0, go, gp - 44);
+                           a(StoryDialogue.aG[0], 0, go, gp - 44);
                         } else if (eV) {
-                           a(aG[2], 0, go, gp - 44);
+                           a(StoryDialogue.aG[2], 0, go, gp - 44);
                            gl = true;
                         } else if (eU) {
-                           a(aG[3], 26, go, gp - 44);
+                           a(StoryDialogue.aG[3], 26, go, gp - 44);
                            eU = false;
                         } else {
-                           a(aG[1], 0, go, gp - 44);
+                           a(StoryDialogue.aG[1], 0, go, gp - 44);
                         }
                      }
                   } else {
@@ -10318,7 +10302,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                var1.drawImage(eB, aW, aZ + bc >> 1, 3);
                Midlet.a(var1, "*", aW - 50 - w % 3, be, 0);
                Midlet.a(var1, "/", aW + 50 + w % 3, be, 1);
-               Midlet.a(var1, aD[aY], aW, be, 3);
+               Midlet.a(var1, StoryDialogue.aD[aY], aW, be, 3);
                return;
             case 4:
                var1.setColor(0);
@@ -10527,14 +10511,14 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
                if (aT[4]) {
                   if (--aY < 0) {
-                     aY = aD.length - 1;
+                     aY = StoryDialogue.aD.length - 1;
                   }
 
                   aT[4] = false;
                }
 
                if (aT[6]) {
-                  if (++aY == aD.length) {
+                  if (++aY == StoryDialogue.aD.length) {
                      aY = 0;
                   }
 
