@@ -26,11 +26,6 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static int[] ah = new int[]{3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10};
    private static int[] ai = new int[]{50, 150, 240, 400, 600, 800, 1000, 1500, 2000, 3000, 5000, 7000, 9000, 12000, 15000, 19000, 26000, 32000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000};
    private static int[] aj = new int[]{20, 20, 20, 20, 30, 30, 30, 40, 40, 50, 60, 70, 80, 80, 90, 90, 100, 120, 130, 150, 160, 170, 180, 190, 200, 210, 220, 250, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300};
-   private static String[] ak = new String[]{"Ma một mắt", "ốc sên", "Dơi quỷ", "Quỷ một chân", "Cóc xanh", "Nhện", "Ong bò vẽ", "Bù nhìn rơm", "Cá cọp", "Ninja gió", "Cá cọp đỏ", "Ma một mắt", "Rết sa mạc", "Dơi vàng", "Chuột", "Thổ dân", "Ong đỏ", "Bò cạp", "Quỷ hoa", "Quỷ tử hoa"};
-   private static int[] al = new int[]{140, 70, 150, 120, 150, 150, 60, 1000, 250, 500, 4000, 500, 600, 1000, 1500, 2000, 1000, 3500, 1500, 5500};
-   private static int[] am = new int[]{15, 10, 30, 25, 25, 25, 5, 10, 20, 40, 30, 40, 130, 30, 40, 100, 60, 160, 120, 200};
-   private static int[] an = new int[]{35, 20, 55, 40, 45, 50, 30, 130, 60, 65, 70, 75, 120, 85, 100, 120, 140, 160, 180, 200};
-   private static int[] ao = new int[]{20, 10, 50, 25, 30, 40, 15, 50, 60, 70, 80, 100, 120, 130, 160, 180, 170, 210, 190, 220};
    private static int[][][] ap = new int[][][]{{{0, -13, 31}, {0, -7, 8}, {0, -11, 14}}, {{0, -13, 32}, {0, -7, 8}, {0, -11, 15}}, {{1, -11, 31}, {1, -9, 16}, {6, -1000, 0}}, {{2, -11, 32}, {2, -10, 16}, {6, -1000, 0}}, {{1, -11, 31}, {3, -8, 16}, {6, -1000, 0}}, {{2, -10, 32}, {7, -9, 17}, {6, -1000, 0}}, {{1, -10, 31}, {8, -8, 16}, {6, -1000, 0}}, {{0, -8, 35}, {4, -5, 15}, {2, -10, 21}}, {{0, -8, 34}, {5, -6, 13}, {3, -11, 22}}, {{0, -8, 31}, {6, -13, 9}, {4, -10, 18}}, {{1, -8, 30}, {6, -13, 9}, {5, -8, 17}}, {{2, -10, 30}, {6, -13, 9}, {6, -8, 16}}, {{2, -10, 29}, {6, -13, 9}, {7, -11, 17}}, {{3, -11, 33}, {8, -4, 13}, {8, -15, 25}}};
    private static int[][][] aq = new int[][][]{{{0, -10, 32}, {1, -7, 7}, {1, -11, 15}}, {{0, -10, 33}, {1, -7, 7}, {1, -11, 16}}, {{1, -10, 33}, {2, -10, 11}, {2, -9, 16}}, {{1, -10, 32}, {3, -11, 9}, {3, -11, 16}}, {{1, -10, 34}, {4, -9, 9}, {4, -8, 16}}, {{1, -10, 34}, {5, -11, 11}, {5, -10, 17}}, {{1, -10, 33}, {6, -9, 9}, {6, -8, 16}}, {{0, -9, 36}, {7, -5, 15}, {7, -10, 21}}, {{4, -13, 26}, new int[3], new int[3]}, {{5, -13, 25}, new int[3], new int[3]}, {{6, -12, 26}, new int[3], new int[3]}, {{7, -13, 25}, new int[3], new int[3]}, {{0, -9, 35}, {8, -4, 13}, {8, -14, 27}}, {{0, -9, 32}, {9, -11, 9}, {10, -10, 18}}, {{2, -7, 34}, {9, -11, 9}, {11, -8, 16}}, {{2, -8, 33}, {9, -11, 9}, {12, -8, 15}}, {{2, -7, 33}, {9, -11, 9}, {13, -12, 16}}, {{0, -11, 32}, {9, -11, 9}, {14, -15, 19}}, {{2, -9, 33}, {9, -11, 9}, {15, -13, 20}}, {{2, -9, 32}, {9, -11, 9}, {16, -7, 23}}, {{2, -9, 33}, {9, -11, 9}, {17, -11, 19}}, {{3, -12, 34}, {8, -4, 13}, {8, -15, 25}}, {{0, -10, 28}, new int[3], {19, -8, 12}}, {{0, -9, 35}, {8, -4, 13}, {9, -9, 22}}, {{0, -10, 33}, new int[3], new int[3]}, {{9, -4, 24}, new int[3], new int[3]}, {{10, -4, 22}, new int[3], new int[3]}, {{0, -9, 32}, {8, -4, 9}, {10, -10, 18}}, {{2, -7, 34}, {8, -4, 9}, {11, -8, 16}}, {{2, -8, 33}, {8, -4, 9}, {12, -8, 15}}, {{2, -7, 33}, {8, -4, 9}, {13, -12, 16}}, {{0, -11, 32}, {7, -5, 9}, {14, -15, 19}}, {{2, -9, 33}, {7, -5, 9}, {15, -13, 20}}, {{2, -9, 32}, {7, -5, 9}, {16, -7, 23}}, {{2, -9, 33}, {7, -5, 9}, {17, -11, 19}}, {{0, -9, 32}, {2, -10, 11}, {10, -10, 18}}, {{2, -7, 34}, {3, -11, 9}, {11, -8, 16}}, {{2, -8, 33}, {4, -9, 9}, {12, -8, 15}}, {{2, -7, 33}, {5, -11, 11}, {13, -12, 16}}, {{0, -11, 32}, {2, -10, 11}, {14, -15, 19}}, {{2, -9, 33}, {3, -11, 9}, {15, -13, 20}}, {{2, -9, 32}, {4, -9, 9}, {16, -7, 23}}, {{2, -9, 33}, {5, -11, 11}, {17, -11, 19}}, {{1, -8, 38}, new int[3], {18, -8, 21}}, {{1, -8, 39}, new int[3], {18, -8, 22}}, {{1, -10, 43}, new int[3], {18, -11, 26}}};
    private static int[] ar = new int[]{-2, -6, 22, 21, 19, 22, 10, -2, -2, 5, 19};
@@ -1812,7 +1807,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
       if (!DebugRefactor.DEBUG_REFACTOR) {
          return;
       }
-      if (var0 < 0 || var0 >= ak.length) {
+      if (var0 < 0 || var0 >= MonsterData.NAMES.length) {
          var0 = 0;
       }
       int var2;
@@ -1833,11 +1828,11 @@ public final class a extends Canvas implements Runnable, CommandListener {
       jZ[var2] = fn != 0 ? fn : -1;
       jQ[var2] = 2;
       jV[var2] = var2 * 7;
-      ka[var2] = kb[var2] = al[jK[var2]];
-      kc[var2] = am[jK[var2]];
-      kh[var2] = an[jK[var2]];
+      ka[var2] = kb[var2] = MonsterData.HP[jK[var2]];
+      kc[var2] = MonsterData.DAMAGE[jK[var2]];
+      kh[var2] = MonsterData.HIT_STAT[jK[var2]];
       kd[var2] = 0;
-      skillBridgeShowMessage("DBG spawn " + ak[var0]);
+      skillBridgeShowMessage("DBG spawn " + MonsterData.getName(var0));
    }
 
    static String debugBridgeDumpPlayerState() {
@@ -11744,7 +11739,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void L(int var0) {
-      u(ao[jK[var0]]);
+      u(MonsterData.getExpDrop(jK[var0]));
       int var1;
       if ((var1 = w % 20) > 15) {
          a(jL[var0], jM[var0], -(jZ[var0] << 3), -5, kc[var0] << 2, (w + 1) % 2);
@@ -11758,7 +11753,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
       if (currentQuestIndex != -1 && lF[currentQuestIndex] == jK[var0]) {
          ++fD;
-         c(ak[lF[currentQuestIndex]] + ": " + fD + "#" + questRequiredAmounts[currentQuestIndex]);
+         c(MonsterData.getName(lF[currentQuestIndex]) + ": " + fD + "#" + questRequiredAmounts[currentQuestIndex]);
       }
 
       if (jK[var0] == fz - 100 && w % 10 < fA) {
@@ -11873,9 +11868,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   jZ[var11] = 1;
                   jQ[var11] = 5;
                   jV[var11] = var11 << 3;
-                  ka[var11] = kb[var11] = al[jK[var11]];
-                  kc[var11] = am[jK[var11]];
-                  kh[var11] = an[jK[var11]];
+                  ka[var11] = kb[var11] = MonsterData.HP[jK[var11]];
+                  kc[var11] = MonsterData.DAMAGE[jK[var11]];
+                  kh[var11] = MonsterData.HIT_STAT[jK[var11]];
                   kd[var11] = 0;
                }
             }
@@ -11913,9 +11908,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   jZ[var9] = 0;
                   jQ[var9] = 5;
                   jV[var9] = var9 << 3;
-                  ka[var9] = kb[var9] = al[jK[var9]];
-                  kc[var9] = am[jK[var9]];
-                  kh[var9] = an[jK[var9]];
+                  ka[var9] = kb[var9] = MonsterData.HP[jK[var9]];
+                  kc[var9] = MonsterData.DAMAGE[jK[var9]];
+                  kh[var9] = MonsterData.HIT_STAT[jK[var9]];
                   kd[var9] = 100;
                }
             }
@@ -11966,9 +11961,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   jZ[var7] = 1;
                   jQ[var7] = 5;
                   jV[var7] = jJ - var7;
-                  ka[var7] = kb[var7] = al[jK[var7]];
-                  kc[var7] = am[jK[var7]];
-                  kh[var7] = an[jK[var7]];
+                  ka[var7] = kb[var7] = MonsterData.HP[jK[var7]];
+                  kc[var7] = MonsterData.DAMAGE[jK[var7]];
+                  kh[var7] = MonsterData.HIT_STAT[jK[var7]];
                   kd[var7] = 0;
                }
             }
@@ -12022,9 +12017,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   jZ[var5] = 1;
                   jQ[var5] = 5;
                   jV[var5] = var5 << 3;
-                  ka[var5] = kb[var5] = al[jK[var5]];
-                  kc[var5] = am[jK[var5]];
-                  kh[var5] = an[jK[var5]];
+                  ka[var5] = kb[var5] = MonsterData.HP[jK[var5]];
+                  kc[var5] = MonsterData.DAMAGE[jK[var5]];
+                  kh[var5] = MonsterData.HIT_STAT[jK[var5]];
                   kd[var5] = 500;
                }
             }
@@ -13256,9 +13251,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var3] = 0;
             jQ[var3] = 5;
             jV[var3] = var3 * 7 + var3;
-            ka[var3] = kb[var3] = al[jK[var3]];
-            kc[var3] = am[jK[var3]];
-            kh[var3] = an[jK[var3]];
+            ka[var3] = kb[var3] = MonsterData.HP[jK[var3]];
+            kc[var3] = MonsterData.DAMAGE[jK[var3]];
+            kh[var3] = MonsterData.HIT_STAT[jK[var3]];
             kd[var3] = 100;
             jT[var3] = 2;
             jU[var3] = 3;
@@ -13283,9 +13278,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var3] = -1;
             jQ[var3] = 5;
             jV[var3] = var3 << 1;
-            ka[var3] = kb[var3] = al[jK[var3]];
-            kc[var3] = am[jK[var3]];
-            kh[var3] = an[jK[var3]];
+            ka[var3] = kb[var3] = MonsterData.HP[jK[var3]];
+            kc[var3] = MonsterData.DAMAGE[jK[var3]];
+            kh[var3] = MonsterData.HIT_STAT[jK[var3]];
             kd[var3] = 100;
             jT[var3] = -3;
             jU[var3] = 3;
@@ -13310,9 +13305,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var3] = 1;
             jQ[var3] = 5;
             jV[var3] = var3 * 6;
-            ka[var3] = kb[var3] = al[jK[var3]];
-            kc[var3] = am[jK[var3]];
-            kh[var3] = an[jK[var3]];
+            ka[var3] = kb[var3] = MonsterData.HP[jK[var3]];
+            kc[var3] = MonsterData.DAMAGE[jK[var3]];
+            kh[var3] = MonsterData.HIT_STAT[jK[var3]];
             kd[var3] = 100;
          }
 
@@ -13336,9 +13331,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var2] = 1;
             jQ[var2] = 5;
             jV[var2] = var2 * 5;
-            ka[var2] = kb[var2] = al[jK[var2]];
-            kc[var2] = am[jK[var2]];
-            kh[var2] = an[jK[var2]];
+            ka[var2] = kb[var2] = MonsterData.HP[jK[var2]];
+            kc[var2] = MonsterData.DAMAGE[jK[var2]];
+            kh[var2] = MonsterData.HIT_STAT[jK[var2]];
             kd[var2] = 60;
          }
 
@@ -13360,9 +13355,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var2] = 1;
             jQ[var2] = 5;
             jV[var2] = var2 * 5;
-            ka[var2] = kb[var2] = al[jK[var2]];
-            kc[var2] = am[jK[var2]];
-            kh[var2] = an[jK[var2]];
+            ka[var2] = kb[var2] = MonsterData.HP[jK[var2]];
+            kc[var2] = MonsterData.DAMAGE[jK[var2]];
+            kh[var2] = MonsterData.HIT_STAT[jK[var2]];
             kd[var2] = 40;
          }
 
@@ -13385,9 +13380,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var3] = -1;
             jQ[var3] = 5;
             jV[var3] = var3 << 3;
-            ka[var3] = kb[var3] = al[jK[var3]];
-            kc[var3] = am[jK[var3]];
-            kh[var3] = an[jK[var3]];
+            ka[var3] = kb[var3] = MonsterData.HP[jK[var3]];
+            kc[var3] = MonsterData.DAMAGE[jK[var3]];
+            kh[var3] = MonsterData.HIT_STAT[jK[var3]];
             kd[var3] = 100;
             jT[var3] = 2;
             jU[var3] = 3;
@@ -13412,9 +13407,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var3] = -1;
             jQ[var3] = 5;
             jV[var3] = var3 + 60;
-            ka[var3] = kb[var3] = al[jK[var3]];
-            kc[var3] = am[jK[var3]];
-            kh[var3] = an[jK[var3]];
+            ka[var3] = kb[var3] = MonsterData.HP[jK[var3]];
+            kc[var3] = MonsterData.DAMAGE[jK[var3]];
+            kh[var3] = MonsterData.HIT_STAT[jK[var3]];
             kd[var3] = 100;
             jT[var3] = 2;
             jU[var3] = 3;
@@ -13439,9 +13434,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var3] = 1;
             jQ[var3] = 5;
             jV[var3] = var3 << 2;
-            ka[var3] = kb[var3] = al[jK[var3]];
-            kc[var3] = am[jK[var3]];
-            kh[var3] = an[jK[var3]];
+            ka[var3] = kb[var3] = MonsterData.HP[jK[var3]];
+            kc[var3] = MonsterData.DAMAGE[jK[var3]];
+            kh[var3] = MonsterData.HIT_STAT[jK[var3]];
             kd[var3] = 0;
          }
 
@@ -13463,9 +13458,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var2] = 1;
             jQ[var2] = 5;
             jV[var2] = var2 << 3;
-            ka[var2] = kb[var2] = al[jK[var2]];
-            kc[var2] = am[jK[var2]];
-            kh[var2] = an[jK[var2]];
+            ka[var2] = kb[var2] = MonsterData.HP[jK[var2]];
+            kc[var2] = MonsterData.DAMAGE[jK[var2]];
+            kh[var2] = MonsterData.HIT_STAT[jK[var2]];
             kd[var2] = 0;
          }
 
@@ -13531,9 +13526,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var3] = 1;
             jQ[var3] = 5;
             jV[var3] = var3 * 7;
-            ka[var3] = kb[var3] = al[jK[var3]];
-            kc[var3] = am[jK[var3]];
-            kh[var3] = an[jK[var3]];
+            ka[var3] = kb[var3] = MonsterData.HP[jK[var3]];
+            kc[var3] = MonsterData.DAMAGE[jK[var3]];
+            kh[var3] = MonsterData.HIT_STAT[jK[var3]];
             kd[var3] = 0;
          }
 
@@ -13556,9 +13551,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var3] = 1;
             jQ[var3] = 5;
             jV[var3] = var3 << 1;
-            ka[var3] = kb[var3] = al[jK[var3]];
-            kc[var3] = am[jK[var3]];
-            kh[var3] = an[jK[var3]];
+            ka[var3] = kb[var3] = MonsterData.HP[jK[var3]];
+            kc[var3] = MonsterData.DAMAGE[jK[var3]];
+            kh[var3] = MonsterData.HIT_STAT[jK[var3]];
             kd[var3] = 0;
          }
 
@@ -13581,9 +13576,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var3] = 1;
             jQ[var3] = 5;
             jV[var3] = var3 << 3;
-            ka[var3] = kb[var3] = al[jK[var3]];
-            kc[var3] = am[jK[var3]];
-            kh[var3] = an[jK[var3]];
+            ka[var3] = kb[var3] = MonsterData.HP[jK[var3]];
+            kc[var3] = MonsterData.DAMAGE[jK[var3]];
+            kh[var3] = MonsterData.HIT_STAT[jK[var3]];
             kd[var3] = 100;
          }
 
@@ -13606,9 +13601,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var3] = 1;
             jQ[var3] = 5;
             jV[var3] = 60;
-            ka[var3] = kb[var3] = al[jK[var3]];
-            kc[var3] = am[jK[var3]];
-            kh[var3] = an[jK[var3]];
+            ka[var3] = kb[var3] = MonsterData.HP[jK[var3]];
+            kc[var3] = MonsterData.DAMAGE[jK[var3]];
+            kh[var3] = MonsterData.HIT_STAT[jK[var3]];
             kd[var3] = 100;
          }
 
@@ -13630,9 +13625,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var2] = 1;
             jQ[var2] = 5;
             jV[var2] = 62;
-            ka[var2] = kb[var2] = al[jK[var2]];
-            kc[var2] = am[jK[var2]];
-            kh[var2] = an[jK[var2]];
+            ka[var2] = kb[var2] = MonsterData.HP[jK[var2]];
+            kc[var2] = MonsterData.DAMAGE[jK[var2]];
+            kh[var2] = MonsterData.HIT_STAT[jK[var2]];
             kd[var2] = 70;
          }
 
@@ -13655,9 +13650,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var3] = 1;
             jQ[var3] = 5;
             jV[var3] = 50 + (var3 << 1);
-            ka[var3] = kb[var3] = al[jK[var3]];
-            kc[var3] = am[jK[var3]];
-            kh[var3] = an[jK[var3]];
+            ka[var3] = kb[var3] = MonsterData.HP[jK[var3]];
+            kc[var3] = MonsterData.DAMAGE[jK[var3]];
+            kh[var3] = MonsterData.HIT_STAT[jK[var3]];
             kd[var3] = 500;
          }
 
@@ -13679,9 +13674,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             jZ[var2] = 1;
             jQ[var2] = 5;
             jV[var2] = 70;
-            ka[var2] = kb[var2] = al[jK[var2]];
-            kc[var2] = am[jK[var2]];
-            kh[var2] = an[jK[var2]];
+            ka[var2] = kb[var2] = MonsterData.HP[jK[var2]];
+            kc[var2] = MonsterData.DAMAGE[jK[var2]];
+            kh[var2] = MonsterData.HIT_STAT[jK[var2]];
             kd[var2] = 500;
          }
 
