@@ -1,5 +1,4 @@
 import javax.microedition.lcdui.Graphics;
-import javax.microedition.lcdui.Image;
 
 /**
  * Kỹ năng dash: double-tap trái/phải, lướt theo hướng.
@@ -16,10 +15,6 @@ public final class DashSkill extends SkillTemplate implements TickingSkill {
    /** Quãng đường dash (px) — không đổi. */
    public static final int DISTANCE = 112;
 
-   /** Neo vẽ sprite dash (cùng offset thân khi chạy {@code aq[2]}). */
-   private static final int SPRITE_ANCHOR_X = -10;
-   private static final int SPRITE_ANCHOR_Y = 32;
-
    private static final DashSkill INSTANCE = new DashSkill();
 
    private long lastTapMillisLeft = -999999L;
@@ -32,9 +27,6 @@ public final class DashSkill extends SkillTemplate implements TickingSkill {
    /** {@code 0} = công thức {@code 8 + level×6}. */
    private int manaCostOverride;
    private int durationMs = 200;
-
-   private static Image dashSprite;
-   private static boolean dashSpriteTried;
 
    private DashSkill() {
       setBaseManaCost(0);
@@ -117,6 +109,7 @@ public final class DashSkill extends SkillTemplate implements TickingSkill {
    }
 
    protected boolean onActivate(SkillContext ctx) {
+      AmbushSkill.getInstance().clearAmbushPose();
       int dir = pendingDirection;
       ctx.setPlayerFacing(dir);
       a.skillBridgeSetPlayerState(STATE_DASH);
@@ -251,36 +244,7 @@ public final class DashSkill extends SkillTemplate implements TickingSkill {
       if (!isActive() || g == null) {
          return false;
       }
-      Image img = ensureDashSprite();
-      if (img == null) {
-         return false;
-      }
-      int px = ctx.getPlayerX();
-      int py = ctx.getPlayerY();
-      int facing = ctx.getPlayerFacing();
-      if (facing == 1) {
-         g.drawImage(img, px + SPRITE_ANCHOR_X, py - SPRITE_ANCHOR_Y, 0);
-      } else {
-         g.drawRegion(img, 0, 0, img.getWidth(), img.getHeight(), 2,
-            px - SPRITE_ANCHOR_X, py - SPRITE_ANCHOR_Y, 24);
-      }
-      return true;
-   }
-
-   private static Image ensureDashSprite() {
-      if (dashSprite != null) {
-         return dashSprite;
-      }
-      if (dashSpriteTried) {
-         return null;
-      }
-      dashSpriteTried = true;
-      try {
-         dashSprite = Image.createImage("/cp/dash.png");
-      } catch (Exception ignored) {
-         dashSprite = null;
-      }
-      return dashSprite;
+      return SkillDashSprite.drawAtFeet(g, ctx.getPlayerX(), ctx.getPlayerY(), ctx.getPlayerFacing());
    }
 
    /** Đồng bộ từ {@link a#skillDashLevel} sau load RMS. */

@@ -1,5 +1,11 @@
+import javax.microedition.lcdui.Graphics;
+
 /**
  * Kỹ năng ám sát (phím 9): teleport sau lưng mục tiêu gần nhất.
+ * <p>
+ * Sau khi đến đích: nhân vật giữ sprite ám sát cho tới khi di chuyển hoặc tấn công;
+ * 1 giây đầu không chịu trọng lực (rơi), sau đó rơi bình thường nhưng vẫn giữ pose đến khi hành động.
+ * </p>
  */
 public final class AmbushSkill extends SkillTemplate {
 
@@ -8,11 +14,19 @@ public final class AmbushSkill extends SkillTemplate {
    private static final int GROUND_Y_BAND = 48;
    private static final int MAP_MOB_Y_BAND = 48;
 
+   /** Ms đầu sau ám sát: không áp trọng lực khi đang rơi (case 4) / chờ state 1 nếu không đứng đất. */
+   public static final int GRAVITY_DEFER_MS = 1000;
+
    private static final AmbushSkill INSTANCE = new AmbushSkill();
 
    private int pendingTargetX;
    private int pendingTargetY;
    private int pendingFacing;
+
+   /** Đang giữ khung đứng ám sát (cho tới clear khi đi hoặc đánh). */
+   private boolean ambushPoseActive;
+   /** Hết hoãn trọng lực ({@link System#currentTimeMillis()}). */
+   private long ambushGravityResumeAtMillis;
 
    private AmbushSkill() {
       setBaseManaCost(40);
@@ -20,6 +34,42 @@ public final class AmbushSkill extends SkillTemplate {
 
    public static AmbushSkill getInstance() {
       return INSTANCE;
+   }
+
+   public boolean isAmbushPoseActive() {
+      return ambushPoseActive;
+   }
+
+   /** Trọng lực tạm tắt trong GRAVITY_DEFER_MS sau khi vào pose. */
+   public boolean shouldDeferGravity() {
+      return ambushPoseActive && System.currentTimeMillis() < ambushGravityResumeAtMillis;
+   }
+
+   /** Bắt đầu pose + hoãn rơi ~1 s (gọi từ kích hoạt ám sát). */
+   public void beginAmbushPose() {
+      ambushPoseActive = true;
+      ambushGravityResumeAtMillis = System.currentTimeMillis() + (long) GRAVITY_DEFER_MS;
+   }
+
+   /** Hết pose ám sát (di chuyển / tấn công / dash / cheat reset). */
+   public void clearAmbushPose() {
+      ambushPoseActive = false;
+      ambushGravityResumeAtMillis = 0L;
+   }
+
+   /**
+    * Vẽ nhân vật dạng ám sát khi đang pose.
+    * @return {@code true} đã vẽ (không chồng sprite thường)
+    */
+   public boolean renderPoseIfActive(SkillContext ctx, Graphics g) {
+      if (!ambushPoseActive || g == null) {
+         return false;
+      }
+      if (SkillDashSprite.getAmbushImage() == null) {
+         return false;
+      }
+      SkillDashSprite.drawAmbushPose(g, ctx.getPlayerX(), ctx.getPlayerY(), ctx.getPlayerFacing());
+      return true;
    }
 
    protected boolean showNotLearnedMessage() {
@@ -125,6 +175,7 @@ public final class AmbushSkill extends SkillTemplate {
       a.skillBridgeSetPlayerState(1);
       a.skillBridgeResetMoveVelocity();
       a.skillBridgeClearInteractHint();
+      beginAmbushPose();
       a.skillBridgePlayAmbushFx(var1, var2, var0);
       ctx.requestRepaint();
       return true;

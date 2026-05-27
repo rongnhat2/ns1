@@ -1497,6 +1497,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
    static void skillSetAmSatLearned(boolean var0) {
       skillAmbushLearned = var0;
       AmbushSkill.getInstance().setLearned(var0);
+      if (!var0) {
+         AmbushSkill.getInstance().clearAmbushPose();
+      }
    }
 
    static int getAmSatManaCostPublic() {
@@ -1564,11 +1567,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
       return ((i(var0, var1) | i(var0, var1 + halfHeight) | i(var0, var1 + 8)) & 2) != 0;
    }
 
+   /** Hiệu ứng ám sát (không còn flash {@code dY}) — pose vẽ trên nhân vật qua {@link AmbushSkill}. */
    static void skillBridgePlayAmbushFx(int var0, int var1, int var2) {
-      f(var0, var1 - 40);
       e(var2, var0 - (var2 << 3), var1);
       S();
       x();
+   }
+
+   static boolean skillBridgeDeferAmbushGravity() {
+      return AmbushSkill.getInstance().shouldDeferGravity();
    }
 
    static void skillBridgeDashRunFx(int var0, int var1) {
@@ -4209,6 +4216,10 @@ public final class a extends Canvas implements Runnable, CommandListener {
          return;
       }
 
+      if (AmbushSkill.getInstance().renderPoseIfActive(GameSkillContext.INSTANCE, var0)) {
+         return;
+      }
+
       if (playerFacing == 1) {
          var0.drawImage(ep[aq[B][0][0]], playerX + aq[B][0][1], playerY - aq[B][0][2], 0);
          var0.drawImage(er[aq[B][1][0]], playerX + aq[B][1][1], playerY - aq[B][1][2], 0);
@@ -4790,6 +4801,14 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
             S();
 
+            if (AmbushSkill.getInstance().isAmbushPoseActive() && (i(playerX, playerY) & 2) != 2 && !skillBridgeDeferAmbushGravity()) {
+               playerState = 4;
+               z = 2;
+               y = 3 * playerFacing;
+               burrowSubstate = 0;
+               break;
+            }
+
             for(int var5 = 0; var5 < dv; ++var5) {
                if (dE[var5] == 1 && playerY == dB[var5] && a(playerX - dA[var5]) < 30 && interactSubId == -1) {
                   o = "Trò chuyện";
@@ -4922,9 +4941,11 @@ public final class a extends Canvas implements Runnable, CommandListener {
          case 4:
             mountFacing = -1;
             playerX += y;
-            playerY += z;
-            if (z < 18) {
-               ++z;
+            if (!skillBridgeDeferAmbushGravity()) {
+               playerY += z;
+               if (z < 18) {
+                  ++z;
+               }
             }
 
             if (y > 0) {
@@ -6647,6 +6668,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
                   if (aT[7]) {
                      if (playerState == 1 && skillTransformLearned) {
+                        AmbushSkill.getInstance().clearAmbushPose();
                         playerState = 23;
                         airComboTier = 0;
                      }
@@ -7048,6 +7070,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                            if (skillMotorcycleLearned) {
                               for(int var7 = 0; var7 < mapObjectBundleCount; ++var7) {
                                  if (playerY == mapObjTileY[var7] && a(playerX - mapObjTileX[var7]) < 20) {
+                                    AmbushSkill.getInstance().clearAmbushPose();
                                     playerX = mapObjTileX[var7];
                                     playerState = 18;
                                     c();
@@ -7059,6 +7082,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                               }
                            }
 
+                           AmbushSkill.getInstance().clearAmbushPose();
                            z = skillBridgeZForInitialJump();
                            playerState = 3;
                            mapNpcFocusIndex = -1;
@@ -7071,6 +7095,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                            if (playerFacing == 1) {
                               playerFacing = -1;
                            } else {
+                              AmbushSkill.getInstance().clearAmbushPose();
                               playerState = 2;
                               y = -P;
                            }
@@ -7083,6 +7108,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                            if (playerFacing == -1) {
                               playerFacing = 1;
                            } else {
+                              AmbushSkill.getInstance().clearAmbushPose();
                               playerState = 2;
                               y = P;
                            }
@@ -7092,10 +7118,12 @@ public final class a extends Canvas implements Runnable, CommandListener {
                            o = " ";
                            c = true;
                         } else if (aS[8]) {
+                           AmbushSkill.getInstance().clearAmbushPose();
                            airComboTier = 0;
                            burrowSubstate = 0;
                            playerState = 8;
                         } else if (aS[1]) {
+                           AmbushSkill.getInstance().clearAmbushPose();
                            z = skillBridgeZForInitialJump();
                            playerFacing = -1;
                            y = -4;
@@ -7107,6 +7135,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                            o = " ";
                            c = true;
                         } else if (aS[3]) {
+                           AmbushSkill.getInstance().clearAmbushPose();
                            z = skillBridgeZForInitialJump();
 
                            playerFacing = 1;
@@ -7121,6 +7150,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         }
 
                         if (aT[5]) {
+                           AmbushSkill.getInstance().clearAmbushPose();
                            playerState = 5;
                            timerFu = 0;
                            airComboTier = 0;
@@ -7136,6 +7166,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                } else if (playerState == 2) {
                   if (aS[2]) {
                      mapNpcFocusIndex = -1;
+                     AmbushSkill.getInstance().clearAmbushPose();
                      z = skillBridgeZForInitialJump();
                      playerState = 3;
                      airComboTier = 0;
@@ -7143,17 +7174,20 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      if (playerFacing == 1) {
                         playerFacing = -1;
                      } else {
+                        AmbushSkill.getInstance().clearAmbushPose();
                         y = -P + cameraScrollX;
                      }
                   } else if (aS[6]) {
                      if (playerFacing == -1) {
                         playerFacing = 1;
                      } else {
+                        AmbushSkill.getInstance().clearAmbushPose();
                         y = P + cameraScrollX;
                      }
                   }
 
                   if (aT[5]) {
+                     AmbushSkill.getInstance().clearAmbushPose();
                      playerState = 5;
                      timerFu = 0;
                      airComboTier = 0;
@@ -7162,6 +7196,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   }
                } else if (playerState == 11) {
                   if (aS[2]) {
+                     AmbushSkill.getInstance().clearAmbushPose();
                      z = skillBridgeZForInitialJump();
                      playerState = 3;
                      airComboTier = 0;
@@ -7169,12 +7204,14 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      if (playerFacing == 1) {
                         playerFacing = -1;
                      } else {
+                        AmbushSkill.getInstance().clearAmbushPose();
                         y = -K + cameraScrollX;
                      }
                   } else if (aS[6]) {
                      if (playerFacing == -1) {
                         playerFacing = 1;
                      } else {
+                        AmbushSkill.getInstance().clearAmbushPose();
                         y = K + cameraScrollX;
                      }
                   }
@@ -7194,6 +7231,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   }
 
                   if (aT[5]) {
+                     AmbushSkill.getInstance().clearAmbushPose();
                      playerState = 5;
                      timerFu = 0;
                      airComboTier = 0;
@@ -7208,17 +7246,20 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      if (playerFacing == 1) {
                         playerFacing = -1;
                      } else {
+                        AmbushSkill.getInstance().clearAmbushPose();
                         y = -P;
                      }
                   } else if (aS[6]) {
                      if (playerFacing == -1) {
                         playerFacing = 1;
                      } else {
+                        AmbushSkill.getInstance().clearAmbushPose();
                         y = P;
                      }
                   }
 
                   if (aT[5] && z > 4) {
+                     AmbushSkill.getInstance().clearAmbushPose();
                      playerState = 5;
                      airComboTier = 0;
                      timerFu = 0;
@@ -10175,9 +10216,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   }
                }
 
-               int var35;
-               if (dY != 0 && (var35 = dY % 3) < 2) {
-                  var1.drawImage(es[var35], dW, dX, 17);
+               if (dY != 0) {
+                  SkillDashSprite.drawAmbushFx(var1, dW, dX, playerFacing);
                }
 
                if (escortMapId == mapId) {
