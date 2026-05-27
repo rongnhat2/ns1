@@ -1,9 +1,16 @@
+import javax.microedition.lcdui.Graphics;
+
 /**
  * Khung chung cho kỹ năng: học / MP / điều kiện map / luồng {@link #tryActivate}.
  * <p>
+ * <b>Lifecycle</b> (an toàn, mặc định rỗng — skill cũ không cần đổi):
+ * {@link #onLearn} → {@link #onActivate} → tuỳ chọn {@link #onUpdate}, {@link #onRender},
+ * {@link #onExpire}; persistence mở rộng: {@link #onSave} / {@link #onLoad}.
+ * Bit “đã học” RMS vẫn dùng {@link #getSaveFlag()} / {@link #loadSaveFlag(int)} như legacy.
+ * </p>
+ * <p>
  * Mỗi skill cụ thể <b>extends</b> lớp này và chỉ override {@link #canUse}, {@link #onActivate}
- * (và tuỳ chọn {@link #getManaCost}, {@link #onLearned}, thông báo chưa học…).
- * Không gộp logic dash, ám sát, v.v. vào đây.
+ * (và tuỳ chọn {@link #getManaCost}, {@link #onLearned}, …).
  * </p>
  * <p>
  * Skill cần cập nhật mỗi frame (dash) có thể implements thêm {@link TickingSkill}.
@@ -12,6 +19,9 @@
  * @see GameSkillContext
  */
 public abstract class SkillTemplate {
+
+   /** Return value for {@link #onSave} when there is no extra payload. */
+   protected static final int[] NO_SKILL_PAYLOAD = null;
 
    private boolean learned;
    private int baseManaCost;
@@ -25,8 +35,15 @@ public abstract class SkillTemplate {
    }
 
    /** Gọi từ NPC / nhiệm vụ / cheat sau khi mở khóa skill. */
-   public void learn(SkillContext ctx) {
+   public final void learn(SkillContext ctx) {
       learned = true;
+      onLearn(ctx);
+   }
+
+   /**
+    * Sau khi set cờ learned; mặc định gọi {@link #onLearned} để dash/ambush cũ không phải sửa.
+    */
+   protected void onLearn(SkillContext ctx) {
       onLearned(ctx);
    }
 
@@ -37,6 +54,18 @@ public abstract class SkillTemplate {
 
    public void loadSaveFlag(int flag) {
       learned = flag == 1;
+   }
+
+   /**
+    * Payload bổ sung (charge, cooldown tick, …) — <b>không</b> thay thế {@link #getSaveFlag}.
+    * Ghi vào tail save theo {@link SkillIds} khi đã thêm slot; mặc định {@code null}.
+    */
+   protected int[] onSave() {
+      return NO_SKILL_PAYLOAD;
+   }
+
+   /** Đọc payload từ {@link #onSave}; {@code null} hoặc rỗng = bỏ qua. */
+   protected void onLoad(int[] payload) {
    }
 
    /** MP cố định; skill con override {@link #getManaCost} nếu cần công thức (vd. theo level). */
@@ -111,7 +140,37 @@ public abstract class SkillTemplate {
    /** Hiệu ứng skill sau khi đã trừ MP — skill con implement. */
    protected abstract boolean onActivate(SkillContext ctx);
 
-   /** Tuỳ chọn: toast, sync level, v.v. */
+   /**
+    * Gọi từ game loop khi skill cần frame update (aura, channel, …); mặc định no-op.
+    * Skill dash hiện dùng {@link TickingSkill#tick} — có thể gọi {@code onUpdate} bên trong khi migrate.
+    *
+    * @param deltaMs thời gian ước lượng ms; có thể {@code 0} nếu engine chưa đo
+    */
+   protected void onUpdate(SkillContext ctx, int deltaMs) {
+   }
+
+   /**
+    * Vẽ overlay khi skill đang hiển thị; gọi từ {@code paint} gameplay.
+    * Chỉ override nếu skill có FX riêng (tránh NPE: kiểm tra {@code g != null} nếu cần).
+    */
+   protected void onRender(SkillContext ctx, Graphics g) {
+   }
+
+   /** Kết thúc hiệu ứng (hết thời gian, cancel, chết mob, …). */
+   protected void onExpire(SkillContext ctx) {
+   }
+
+   /** Tuỳ chọn: toast, sync level, v.v. — legacy hook; ưu tiên override {@link #onLearn} cho skill mới. */
    protected void onLearned(SkillContext ctx) {
+   }
+
+   /** Đọc payload sau {@link #loadSaveFlag(int)} khi registry load save. */
+   public final void applyLoadPayload(int[] payload) {
+      onLoad(payload);
+   }
+
+   /** Ghi payload trước commit save (sau khi đã sync learned qua {@link #getSaveFlag}). */
+   public final int[] collectSavePayload() {
+      return onSave();
    }
 }

@@ -1,6 +1,12 @@
 /**
  * Cầu nối trạng thái game cho skill — skill không đọc trực tiếp hàng trăm biến trong {@link a}.
  * Triển khai mặc định: {@link GameSkillContext}.
+ * <p>
+ * <b>Lifecycle wiring</b> (caller = gameplay / refactor layer, không phải skill):
+ * {@code learn} / {@code tryActivate} qua {@link SkillTemplate}; {@code onUpdate} từ game tick;
+ * {@code onRender} từ {@code paint}; {@link SkillTemplate#applyLoadPayload} / {@link SkillTemplate#collectSavePayload}
+ * khi RMS tail đã có slot.
+ * </p>
  */
 public interface SkillContext {
 
