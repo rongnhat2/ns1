@@ -184,7 +184,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static int[] db;
    private static int[] dc;
    private static boolean[] dd;
-   private static int de;
+   private static int gold;
    private static int df;
    private static int[] dg;
    private static int[] dh;
@@ -203,7 +203,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static boolean[] du;
    private static int dv;
    private static String[][] dw;
-   private static boolean dx;
+   private static boolean activationTrialFlag;
    private static boolean dy;
    private static int dz;
    private static int[] dA;
@@ -266,83 +266,83 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static Image[] eC;
    private static Image[] eD;
    private static Image[] eE;
-   public static int v;
-   public static int w;
-   private static boolean eF;
-   private static boolean eG;
-   private static boolean eH;
-   private static boolean eI;
+   public static int mapId;
+   public static int mapSubIdLegacy;
+   private static boolean hasSaveGame;
+   private static boolean unlockedMap97;
+   private static boolean unlockedMap96;
+   private static boolean unlockedMap95;
    /** Cờ: nhân vật đã học phép khinh công (ảnh hưởng bộ hành / dialog nhiệm vụ). */
-   private static boolean khinhCong;
-   private static boolean eK;
-   private static boolean eL;
-   private static boolean eM;
-   private static boolean eN;
-   private static boolean eO;
-   private static boolean eP;
-   private static boolean eQ;
-   private static boolean eR;
-   private static boolean eS;
-   private static boolean eT;
-   private static boolean eU;
-   private static boolean eV;
-   /** Khinh công cấp 2: đẩy lên lần 2 trên không (C == 1). */
-   private static boolean khinhCongCap2;
-   /** Khinh công cấp 3: nhảy ban đầu cao hơn + đẩy lên lần 3 trên không (C == 2). */
-   private static boolean khinhCongCap3;
-   private static boolean eX;
-   private static boolean eY;
-   private static boolean eZ;
-   private static boolean fa;
-   private static boolean fb;
-   private static boolean fc;
-   private static int fd;
-   private static int fe;
-   public static int x;
-   private static int ff;
-   private static int fg;
+   private static boolean skillWallJumpLearned;
+   private static boolean skillLegacyFlagEK;
+   private static boolean skillShurikenLearned;
+   private static boolean skillBurrowLearned;
+   private static boolean skillMotorcycleLearned;
+   private static boolean skillAttackDoubledQuest;
+   private static boolean skillSwimLearned;
+   private static boolean skillWaterRunLearned;
+   private static boolean skillTransformLearned;
+   private static boolean questBatReward5000Done;
+   private static boolean questTonikuBranchDone;
+   private static boolean questMeetGirlUnlocked;
+   private static boolean skillGateBeforeKC2;
+   /** Khinh công cấp 2: đẩy lên lần 2 trên không (airComboTier == 1). */
+   private static boolean skillWallJumpL2Learned;
+   /** Khinh công cấp 3: nhảy ban đầu cao hơn + đẩy lên lần 3 trên không (airComboTier == 2). */
+   private static boolean skillWallJumpL3Learned;
+   private static boolean shurikenLevel2Learned;
+   private static boolean skillSpeedBoostLearned;
+   private static boolean skillStandOnWaterLearned;
+   private static boolean skillStealthLegacyFlag;
+   private static boolean questGeninFlagFB;
+   private static boolean questGeninGraduated;
+   private static int mountFacing;
+   private static int mountSubstate;
+   public static int equippedWeaponIndex;
+   private static int playerX;
+   private static int playerY;
    public static int y;
    public static int z;
-   public static int A;
+   public static int playerState;
    public static int B;
-   private static int fh;
-   private static int fi;
-   private static int fj;
-   private static int fk;
-   private static int fl;
-   private static int fm;
-   private static int fn;
-   public static int C;
-   public static int D;
-   private static int fo;
-   public static int E;
-   public static int F;
-   public static int G;
-   public static int H;
-   public static int I;
-   public static int J;
+   private static int playerTimer0;
+   private static int spriteHeight;
+   private static int halfWidth;
+   private static int halfHeight;
+   private static int playerTimer1;
+   private static int playerTimer2;
+   private static int playerFacing;
+   public static int airComboTier;
+   public static int burrowSubstate;
+   private static int moveCounter;
+   public static int atk;
+   public static int shurikenDmg;
+   public static int hp;
+   public static int hpMax;
+   public static int mp;
+   public static int mpMax;
    public static int K;
    public static int L;
-   private static int fp;
-   private static int fq;
-   private static int fr;
+   private static int cameraScrollX;
+   private static int cameraScrollY;
+   private static int cameraBound;
    /** @deprecated logic dash → {@link DashSkill}; giữ field trống để tránh lệch save/layout cũ nếu có tham chiếu. */
    private static long dashLastTapMillisLeft = -999999L;
    private static long dashLastTapMillisRight = -999999L;
    private static int dashPixelsRemaining;
    private static long dashStartMillis;
-   /** Thời gian (ms) dash từ A → B. Giảm (vd. 80–150) = cảm giác dịch chuyển tức thời; 1000 = ~1 giây. */
+   /** Thời gian (ms) dash từ playerState → B. Giảm (vd. 80–150) = cảm giác dịch chuyển tức thời; 1000 = ~1 giây. */
    public static int dashDurationMs = 200;
    /** Đã học kỹ năng dash (đúp trái/phải). */
-   public static boolean dashLearned;
+   public static boolean skillDashLearned;
    /** Cấp dash (1+); gọi {@link #syncDashDurationToLevel()} sau khi tăng cấp. */
-   public static int dashLevel = 1;
-   /** MP mỗi lần dash; 0 = tự tính theo {@link #dashLevel} (8 + level×6). */
+   public static int skillDashLevel = 1;
+   /** MP mỗi lần dash; 0 = tự tính theo {@link #skillDashLevel} (8 + level×6). */
    public static int dashManaCost = 0;
    /** @deprecated → {@link DashSkill#STATE_DASH} và hằng trong {@link DashSkill}. */
    private static final int PLAYER_STATE_DASH = 25;
    /** Đã học kỹ năng ám sát (phím 9). */
-   public static boolean amSatLearned;
+   public static boolean skillAmbushLearned;
    /** MP tiêu hao mỗi lần ám sát. */
    public static int amSatManaCost = 40;
    /** @deprecated → hằng trong {@link AmbushSkill}. */
@@ -350,37 +350,37 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static final int AMSAT_BEHIND_OFFSET = 22;
    private static final int AMSAT_GROUND_Y_TOLERANCE = 48;
    private static boolean fs;
-   private static int ft;
-   private static int fu;
+   private static int timerFt;
+   private static int timerFu;
    /** Cấp độ nhân vật (level). */
-   public static int characterLevel;
-   public static int N;
-   private static boolean fv;
-   private static boolean fw;
-   private static boolean fx;
-   private static boolean fy;
+   public static int level;
+   public static int expInLevel;
+   private static boolean gameModeFv;
+   private static boolean gameModeFw;
+   private static boolean gameModeFx;
+   private static boolean genderSpriteFlag;
    /** Chỉ số nhiệm vụ đang làm (-1 = không có nhiệm vụ active). */
-   public static int currentQuestIndex;
-   private static int fz;
-   private static int fA;
-   private static boolean fB;
+   public static int activeQuestId;
+   private static int questParam;
+   private static int questTarget;
+   private static boolean questBool;
    private static boolean fC;
-   private static int fD;
-   private static int fE;
-   private static int fF;
-   private static int fG;
-   private static int fH;
-   private static int fI;
-   private static int fJ;
-   private static int fK;
-   private static int fL;
-   private static int fM;
-   private static int fN;
-   private static int fO;
-   private static int fP;
-   private static int fQ;
-   private static int fR;
-   private static int fS;
+   private static int questProgress;
+   private static int interactTargetId;
+   private static int interactSubId;
+   private static int cutsceneG;
+   private static int cutsceneH;
+   private static int cutsceneI;
+   private static int cutsceneJ;
+   private static int cutsceneK;
+   private static int cutsceneL;
+   private static int cutsceneM;
+   private static int cutsceneN;
+   private static int cutsceneO;
+   private static int cutsceneP;
+   private static int cutsceneQ;
+   private static int cutsceneR;
+   private static int cutsceneS;
    private static boolean fT;
    private static int fU;
    private static int fV;
@@ -392,44 +392,44 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static int fZ;
    private static int ga;
    private static boolean gb;
-   private static int gc;
-   private static int gd;
-   private static int ge;
-   private static int gf;
-   private static int gg;
-   private static int gh;
-   private static int gi;
-   private static int gj;
-   private static int gk;
-   private static boolean gl;
-   private static int gm;
-   private static int gn;
-   private static int go;
-   private static int gp;
-   private static int gq;
-   private static int gr;
-   private static int gs;
-   private static int gt;
-   private static int gu;
-   private static int gv;
-   private static int gw;
-   private static int gx;
-   private static int gy;
-   private static int gz;
-   private static int gA;
-   private static int gB;
-   private static int gC;
-   private static int gD;
-   private static int gE;
-   private static int gF;
-   private static int gG;
-   private static int gH;
-   private static int gI;
-   private static int gJ;
-   private static int gK;
+   private static int scriptMapId;
+   private static int scriptExtraD;
+   private static int scriptExtraE;
+   private static int scriptExtraF;
+   private static int scriptExtraG;
+   private static int scriptExtraH;
+   private static int scriptExtraI;
+   private static int scriptExtraJ;
+   private static int scriptExtraK;
+   private static boolean escortActive;
+   private static int escortReservedLegacy;
+   private static int escortMapId;
+   private static int companionX;
+   private static int companionY;
+   private static int companionVel;
+   private static int companionAccel;
+   private static int companionMode;
+   private static int companionT0;
+   private static int companionT1;
+   private static int companionT2;
+   private static int companionT3;
+   private static int companionT4;
+   private static int companionT5;
+   private static int companionT6;
+   private static int companionFaceDir;
+   private static int companionB;
+   private static int companionC;
+   private static int companionD;
+   private static int companionE;
+   private static int companionF;
+   private static int companionG;
+   private static int companionH;
+   private static int companionI;
+   private static int companionJ;
+   private static int companionK;
    private static int gL;
-   private static int gM;
-   private static long gN;
+   private static int playTimeSeconds;
+   private static long playTimeSessionStartMs;
    private static boolean gO;
    private static int gP;
    private static int gQ;
@@ -442,25 +442,25 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static int gX;
    private static int gY;
    private static int gZ;
-   private static int ha;
-   private static int hb;
+   private static int hpCurrentAlt;
+   private static int hpMaxBaseline;
    private static int hc;
    private static boolean hd;
    private static boolean he;
    private static boolean hf;
    private static int hg;
-   private static int hh;
+   private static int regenTimer;
    private static int hi;
    private static boolean hj;
    private static int hk;
    private static int hl;
    private static int hm;
-   private static int hn;
+   private static int idleTimerLong;
    private static int ho;
-   private static int hp;
+   private static int scriptHitGauge;
    private static int hq;
    private static int hr;
-   private static int hs;
+   private static int scriptHsStep;
    private static int ht;
    private static int hu;
    private static int hv;
@@ -481,7 +481,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static boolean hK;
    private static int hL;
    private static int hM;
-   private static int hN;
+   private static int bossThreshold;
    private static int hO;
    private static int hP;
    private static int hQ;
@@ -498,28 +498,28 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static int ib;
    private static int ic;
    private static int id;
-   private static int ie;
-   private static boolean ifFlag;
-   private static int ig;
-   private static int ih;
-   private static int ii;
-   private static int ij;
-   private static int ik;
-   private static int[] il;
-   private static int[] im;
-   private static int[] in;
-   private static int[] io;
-   private static int[] ip;
-   private static int[] iq;
-   private static int ir;
-   private static int is;
-   private static int[] it;
-   private static int[] iu;
-   private static int[] iv;
-   private static int[] iw;
-   private static int[] ix;
-   private static int[] iy;
-   private static int[] iz;
+   private static int scriptTableId;
+   private static boolean scriptRunnerActive;
+   private static int scriptStep;
+   private static int npcInteractIndex;
+   private static int npcInteractSub;
+   private static int mapObjectBundleCount;
+   private static int mapObjectMountIndex;
+   private static int[] mapObjTileX;
+   private static int[] mapObjTileY;
+   private static int[] mapObjFacing;
+   private static int[] mapObjAnim;
+   private static int[] mapObjType;
+   private static int[] mapObjExtra;
+   private static int mapNpcBundleCount;
+   private static int mapNpcFocusIndex;
+   private static int[] mapNpcTileX;
+   private static int[] mapNpcTileY;
+   private static int[] mapNpcDir;
+   private static int[] mapNpcIw;
+   private static int[] mapNpcIx;
+   private static int[] mapNpcIy;
+   private static int[] mapNpcIz;
    private static boolean iA;
    private static int iB;
    private static int iC;
@@ -635,7 +635,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static int kE;
    private static int[] kF;
    private static String[] kG;
-   static int[] V;
+   static int[] inventoryCounts;
    private static int[] kH;
    /** 6 ô hàng dưới túi đồ (chưa lưu save). */
    private static int[] kBagExt;
@@ -646,7 +646,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static String[] kM;
    private static String[] kN;
    private static int[] kO;
-   public static boolean[] W;
+   public static boolean[] mapUnlockFlags;
    private static int[] kP;
    private static int[] kQ;
    private static int[] kR;
@@ -685,7 +685,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static int[] lx;
    private static int[] ly;
    private static int[] lF;
-   /** Số lượng / mục tiêu cần đạt để hoàn thành nhiệm vụ (theo {@link #currentQuestIndex}), song hành với {@link #lF}. */
+   /** Số lượng / mục tiêu cần đạt để hoàn thành nhiệm vụ (theo {@link #activeQuestId}), song hành với {@link #lF}. */
    private static int[] questRequiredAmounts;
    private static int[] lH;
    private static int lI;
@@ -747,49 +747,49 @@ public final class a extends Canvas implements Runnable, CommandListener {
       bK = -19;
       bL = -12;
       bM = -26;
-      khinhCong = false;
-      eK = false;
-      eL = false;
-      eM = false;
-      eN = false;
-      eO = false;
-      eP = false;
-      eQ = false;
-      eR = false;
-      eS = false;
-      eT = false;
-      eU = false;
-      eV = false;
-      khinhCongCap2 = false;
-      khinhCongCap3 = false;
-      eX = false;
-      eY = false;
-      eZ = false;
-      fa = false;
+      skillWallJumpLearned = false;
+      skillLegacyFlagEK = false;
+      skillShurikenLearned = false;
+      skillBurrowLearned = false;
+      skillMotorcycleLearned = false;
+      skillAttackDoubledQuest = false;
+      skillSwimLearned = false;
+      skillWaterRunLearned = false;
+      skillTransformLearned = false;
+      questBatReward5000Done = false;
+      questTonikuBranchDone = false;
+      questMeetGirlUnlocked = false;
+      skillGateBeforeKC2 = false;
+      skillWallJumpL2Learned = false;
+      skillWallJumpL3Learned = false;
+      shurikenLevel2Learned = false;
+      skillSpeedBoostLearned = false;
+      skillStandOnWaterLearned = false;
+      skillStealthLegacyFlag = false;
       skillSetAmSatLearned(false);
       skillSetDashLearned(false);
-      dashLevel = 1;
+      skillDashLevel = 1;
       syncSkillsFromLegacyFlags();
-      fb = false;
-      fc = false;
-      fv = true;
+      questGeninFlagFB = false;
+      questGeninGraduated = false;
+      gameModeFv = true;
       fT = false;
       fV = 0;
       fX = new String[]{""};
       ga = 0;
-      gc = -1;
-      gi = 1;
-      gl = false;
-      gn = -1;
+      scriptMapId = -1;
+      scriptExtraI = 1;
+      escortActive = false;
+      escortMapId = -1;
       hk = 500;
       hl = 60;
       hm = 60;
       hL = 20;
       hM = 60;
       hP = 50;
-      ie = 10;
-      ik = -1;
-      is = -1;
+      scriptTableId = 10;
+      mapObjectMountIndex = -1;
+      mapNpcFocusIndex = -1;
       iA = false;
 
       try {
@@ -812,13 +812,13 @@ public final class a extends Canvas implements Runnable, CommandListener {
       kA = ShopCatalog.kA;
       kF = new int[]{12281360, 13859359, 15439166, 16693877, 16765346, 16777215, 16765346, 16693877, 15439166, 13859359, 12281360};
       kG = Item.getAllItemNames();
-      V = new int[]{5, 2, 1, 5, 2, 1};
+      inventoryCounts = new int[]{5, 2, 1, 5, 2, 1};
       kH = new int[]{100, 400, 1000, 100, 200, 300};
       kBagExt = new int[]{2, 0, 0, 1, 0, 0};
       kM = new String[]{"Sử dụng item", "Xem bản đồ", "Lưu và thoát", "Nhạc: Bật"};
       kN = map.getAllMapNames();
       kO = new int[]{50, 60, 70, 80, 90, 70, 100, 120, 150, 180, 220, 250, 300, 320, 350, 370, 390, 420, 450};
-      W = new boolean[19];
+      mapUnlockFlags = new boolean[19];
       kP = new int[]{49, 31, 98, 112, 106, 42, 75, 84, 37, 39, 80, 117, 157, 201, 208, 170, 186, 219, 161};
       kQ = new int[]{35, 65, 38, 75, 98, 97, 95, 128, 142, 185, 212, 189, 189, 204, 156, 142, 96, 59, 39};
       kR = new int[]{62, 52, 17, 4, 8, 12, 14, 5, 1, 2, 3, 2, 2, 2, 2, 1, 2, 3, 1};
@@ -847,245 +847,245 @@ public final class a extends Canvas implements Runnable, CommandListener {
    public static void a() {
       int[] var1 = new int[500];
       int var2 = 0;
-      if (gN > 0L) {
-         gM += (int)((System.currentTimeMillis() - gN) / 1000L);
+      if (playTimeSessionStartMs > 0L) {
+         playTimeSeconds += (int)((System.currentTimeMillis() - playTimeSessionStartMs) / 1000L);
       }
 
-      gN = System.currentTimeMillis();
+      playTimeSessionStartMs = System.currentTimeMillis();
       ++var2;
-      var1[0] = gM;
+      var1[0] = playTimeSeconds;
       ++var2;
-      var1[1] = v;
+      var1[1] = mapId;
       ++var2;
-      var1[2] = w;
+      var1[2] = mapSubIdLegacy;
       ++var2;
-      var1[3] = eF ? 1 : 0;
+      var1[3] = hasSaveGame ? 1 : 0;
       ++var2;
-      var1[4] = de;
+      var1[4] = gold;
       ++var2;
-      var1[5] = dx ? 1 : 0;
+      var1[5] = activationTrialFlag ? 1 : 0;
       ++var2;
-      var1[6] = eG ? 1 : 0;
+      var1[6] = unlockedMap97 ? 1 : 0;
       ++var2;
-      var1[7] = eH ? 1 : 0;
+      var1[7] = unlockedMap96 ? 1 : 0;
       ++var2;
-      var1[8] = eI ? 1 : 0;
+      var1[8] = unlockedMap95 ? 1 : 0;
       ++var2;
-      var1[9] = gl ? 1 : 0;
+      var1[9] = escortActive ? 1 : 0;
       ++var2;
-      var1[10] = gm;
+      var1[10] = escortReservedLegacy;
       ++var2;
-      var1[11] = gn;
+      var1[11] = escortMapId;
       ++var2;
-      var1[12] = ik;
+      var1[12] = mapObjectMountIndex;
       ++var2;
-      var1[13] = x;
+      var1[13] = equippedWeaponIndex;
       ++var2;
-      var1[14] = eX ? 1 : 0;
+      var1[14] = shurikenLevel2Learned ? 1 : 0;
 
-      for(int var0 = 0; var0 < W.length; ++var0) {
-         var1[var2++] = W[var0] ? 1 : 0;
+      for(int var0 = 0; var0 < mapUnlockFlags.length; ++var0) {
+         var1[var2++] = mapUnlockFlags[var0] ? 1 : 0;
       }
 
-      for(int var4 = 0; var4 < V.length; ++var4) {
-         var1[var2++] = V[var4];
+      for(int var4 = 0; var4 < inventoryCounts.length; ++var4) {
+         var1[var2++] = inventoryCounts[var4];
       }
 
-      var1[var2++] = khinhCong ? 1 : 0;
-      var1[var2++] = eK ? 1 : 0;
-      var1[var2++] = eL ? 1 : 0;
-      var1[var2++] = eM ? 1 : 0;
-      var1[var2++] = eN ? 1 : 0;
-      var1[var2++] = eO ? 1 : 0;
-      var1[var2++] = eP ? 1 : 0;
-      var1[var2++] = eQ ? 1 : 0;
-      var1[var2++] = eR ? 1 : 0;
-      var1[var2++] = eS ? 1 : 0;
-      var1[var2++] = eT ? 1 : 0;
-      var1[var2++] = eU ? 1 : 0;
-      var1[var2++] = eV ? 1 : 0;
-      var1[var2++] = khinhCongCap2 ? 1 : 0;
-      var1[var2++] = eY ? 1 : 0;
-      var1[var2++] = eZ ? 1 : 0;
-      var1[var2++] = fa ? 1 : 0;
-      var1[var2++] = fb ? 1 : 0;
-      var1[var2++] = fc ? 1 : 0;
-      var1[var2++] = fd;
-      var1[var2++] = fe;
-      var1[var2++] = ff;
-      var1[var2++] = fg;
+      var1[var2++] = skillWallJumpLearned ? 1 : 0;
+      var1[var2++] = skillLegacyFlagEK ? 1 : 0;
+      var1[var2++] = skillShurikenLearned ? 1 : 0;
+      var1[var2++] = skillBurrowLearned ? 1 : 0;
+      var1[var2++] = skillMotorcycleLearned ? 1 : 0;
+      var1[var2++] = skillAttackDoubledQuest ? 1 : 0;
+      var1[var2++] = skillSwimLearned ? 1 : 0;
+      var1[var2++] = skillWaterRunLearned ? 1 : 0;
+      var1[var2++] = skillTransformLearned ? 1 : 0;
+      var1[var2++] = questBatReward5000Done ? 1 : 0;
+      var1[var2++] = questTonikuBranchDone ? 1 : 0;
+      var1[var2++] = questMeetGirlUnlocked ? 1 : 0;
+      var1[var2++] = skillGateBeforeKC2 ? 1 : 0;
+      var1[var2++] = skillWallJumpL2Learned ? 1 : 0;
+      var1[var2++] = skillSpeedBoostLearned ? 1 : 0;
+      var1[var2++] = skillStandOnWaterLearned ? 1 : 0;
+      var1[var2++] = skillStealthLegacyFlag ? 1 : 0;
+      var1[var2++] = questGeninFlagFB ? 1 : 0;
+      var1[var2++] = questGeninGraduated ? 1 : 0;
+      var1[var2++] = mountFacing;
+      var1[var2++] = mountSubstate;
+      var1[var2++] = playerX;
+      var1[var2++] = playerY;
       var1[var2++] = y;
       var1[var2++] = z;
-      var1[var2++] = A;
+      var1[var2++] = playerState;
       var1[var2++] = B;
-      var1[var2++] = fh;
-      var1[var2++] = fi;
-      var1[var2++] = fj;
-      var1[var2++] = fk;
-      var1[var2++] = fl;
-      var1[var2++] = fm;
-      var1[var2++] = fn;
-      var1[var2++] = C;
-      var1[var2++] = D;
-      var1[var2++] = fo;
-      var1[var2++] = E;
-      var1[var2++] = F;
-      var1[var2++] = G;
-      var1[var2++] = H;
-      var1[var2++] = I;
-      var1[var2++] = J;
+      var1[var2++] = playerTimer0;
+      var1[var2++] = spriteHeight;
+      var1[var2++] = halfWidth;
+      var1[var2++] = halfHeight;
+      var1[var2++] = playerTimer1;
+      var1[var2++] = playerTimer2;
+      var1[var2++] = playerFacing;
+      var1[var2++] = airComboTier;
+      var1[var2++] = burrowSubstate;
+      var1[var2++] = moveCounter;
+      var1[var2++] = atk;
+      var1[var2++] = shurikenDmg;
+      var1[var2++] = hp;
+      var1[var2++] = hpMax;
+      var1[var2++] = mp;
+      var1[var2++] = mpMax;
       var1[var2++] = K;
       var1[var2++] = L;
-      var1[var2++] = fp;
-      var1[var2++] = fq;
-      var1[var2++] = fr;
-      var1[var2++] = ft;
-      var1[var2++] = fu;
-      var1[var2++] = characterLevel;
-      var1[var2++] = N;
-      var1[var2++] = fv ? 1 : 0;
-      var1[var2++] = fw ? 1 : 0;
-      var1[var2++] = fx ? 1 : 0;
-      var1[var2++] = fy ? 1 : 0;
-      var1[var2++] = currentQuestIndex;
-      var1[var2++] = fz;
-      var1[var2++] = fA;
-      var1[var2++] = fB ? 1 : 0;
-      var1[var2++] = fD;
-      var1[var2++] = fE;
-      var1[var2++] = fF;
-      var1[var2++] = ih;
-      var1[var2++] = ii;
-      var1[var2++] = fG;
-      var1[var2++] = fH;
-      var1[var2++] = fI;
-      var1[var2++] = fJ;
-      var1[var2++] = fK;
-      var1[var2++] = fL;
-      var1[var2++] = fM;
-      var1[var2++] = fN;
-      var1[var2++] = fO;
-      var1[var2++] = fP;
-      var1[var2++] = fQ;
-      var1[var2++] = fR;
-      var1[var2++] = fS;
-      var1[var2++] = ifFlag ? 1 : 0;
-      var1[var2++] = ie;
-      var1[var2++] = ig;
-      var1[var2++] = gc;
-      var1[var2++] = gd;
-      var1[var2++] = ge;
-      var1[var2++] = gf;
-      var1[var2++] = gg;
-      var1[var2++] = gh;
-      var1[var2++] = gi;
-      var1[var2++] = gj;
-      var1[var2++] = gk;
-      var1[var2++] = go;
-      var1[var2++] = gp;
-      var1[var2++] = gq;
-      var1[var2++] = gr;
-      var1[var2++] = gs;
-      var1[var2++] = gt;
-      var1[var2++] = gu;
-      var1[var2++] = gv;
-      var1[var2++] = gw;
-      var1[var2++] = gx;
-      var1[var2++] = gy;
-      var1[var2++] = gz;
-      var1[var2++] = gA;
-      var1[var2++] = gB;
-      var1[var2++] = gC;
-      var1[var2++] = gD;
-      var1[var2++] = gE;
-      var1[var2++] = gF;
-      var1[var2++] = gG;
-      var1[var2++] = gH;
-      var1[var2++] = gI;
-      var1[var2++] = gJ;
-      var1[var2++] = gK;
-      var1[var2++] = ha;
-      var1[var2++] = hh;
-      var1[var2++] = hn;
-      var1[var2++] = hN;
-      var1[var2++] = hs;
-      var1[var2++] = ij;
-      if (ij > 0) {
-         for(int var5 = 0; var5 < ip.length; ++var5) {
-            var1[var2++] = ip[var5];
+      var1[var2++] = cameraScrollX;
+      var1[var2++] = cameraScrollY;
+      var1[var2++] = cameraBound;
+      var1[var2++] = timerFt;
+      var1[var2++] = timerFu;
+      var1[var2++] = level;
+      var1[var2++] = expInLevel;
+      var1[var2++] = gameModeFv ? 1 : 0;
+      var1[var2++] = gameModeFw ? 1 : 0;
+      var1[var2++] = gameModeFx ? 1 : 0;
+      var1[var2++] = genderSpriteFlag ? 1 : 0;
+      var1[var2++] = activeQuestId;
+      var1[var2++] = questParam;
+      var1[var2++] = questTarget;
+      var1[var2++] = questBool ? 1 : 0;
+      var1[var2++] = questProgress;
+      var1[var2++] = interactTargetId;
+      var1[var2++] = interactSubId;
+      var1[var2++] = npcInteractIndex;
+      var1[var2++] = npcInteractSub;
+      var1[var2++] = cutsceneG;
+      var1[var2++] = cutsceneH;
+      var1[var2++] = cutsceneI;
+      var1[var2++] = cutsceneJ;
+      var1[var2++] = cutsceneK;
+      var1[var2++] = cutsceneL;
+      var1[var2++] = cutsceneM;
+      var1[var2++] = cutsceneN;
+      var1[var2++] = cutsceneO;
+      var1[var2++] = cutsceneP;
+      var1[var2++] = cutsceneQ;
+      var1[var2++] = cutsceneR;
+      var1[var2++] = cutsceneS;
+      var1[var2++] = scriptRunnerActive ? 1 : 0;
+      var1[var2++] = scriptTableId;
+      var1[var2++] = scriptStep;
+      var1[var2++] = scriptMapId;
+      var1[var2++] = scriptExtraD;
+      var1[var2++] = scriptExtraE;
+      var1[var2++] = scriptExtraF;
+      var1[var2++] = scriptExtraG;
+      var1[var2++] = scriptExtraH;
+      var1[var2++] = scriptExtraI;
+      var1[var2++] = scriptExtraJ;
+      var1[var2++] = scriptExtraK;
+      var1[var2++] = companionX;
+      var1[var2++] = companionY;
+      var1[var2++] = companionVel;
+      var1[var2++] = companionAccel;
+      var1[var2++] = companionMode;
+      var1[var2++] = companionT0;
+      var1[var2++] = companionT1;
+      var1[var2++] = companionT2;
+      var1[var2++] = companionT3;
+      var1[var2++] = companionT4;
+      var1[var2++] = companionT5;
+      var1[var2++] = companionT6;
+      var1[var2++] = companionFaceDir;
+      var1[var2++] = companionB;
+      var1[var2++] = companionC;
+      var1[var2++] = companionD;
+      var1[var2++] = companionE;
+      var1[var2++] = companionF;
+      var1[var2++] = companionG;
+      var1[var2++] = companionH;
+      var1[var2++] = companionI;
+      var1[var2++] = companionJ;
+      var1[var2++] = companionK;
+      var1[var2++] = hpCurrentAlt;
+      var1[var2++] = regenTimer;
+      var1[var2++] = idleTimerLong;
+      var1[var2++] = bossThreshold;
+      var1[var2++] = scriptHsStep;
+      var1[var2++] = mapObjectBundleCount;
+      if (mapObjectBundleCount > 0) {
+         for(int var5 = 0; var5 < mapObjType.length; ++var5) {
+            var1[var2++] = mapObjType[var5];
          }
 
-         for(int var6 = 0; var6 < in.length; ++var6) {
-            var1[var2++] = in[var6];
+         for(int var6 = 0; var6 < mapObjFacing.length; ++var6) {
+            var1[var2++] = mapObjFacing[var6];
          }
 
-         for(int var7 = 0; var7 < io.length; ++var7) {
-            var1[var2++] = io[var7];
+         for(int var7 = 0; var7 < mapObjAnim.length; ++var7) {
+            var1[var2++] = mapObjAnim[var7];
          }
 
-         for(int var8 = 0; var8 < iq.length; ++var8) {
-            var1[var2++] = iq[var8];
+         for(int var8 = 0; var8 < mapObjExtra.length; ++var8) {
+            var1[var2++] = mapObjExtra[var8];
          }
 
-         for(int var9 = 0; var9 < il.length; ++var9) {
-            var1[var2++] = il[var9];
+         for(int var9 = 0; var9 < mapObjTileX.length; ++var9) {
+            var1[var2++] = mapObjTileX[var9];
          }
 
-         for(int var10 = 0; var10 < im.length; ++var10) {
-            var1[var2++] = im[var10];
-         }
-      }
-
-      var1[var2++] = ir;
-      if (ir > 0) {
-         var1[var2++] = is;
-         if (iv != null) {
-            for(int var11 = 0; var11 < iv.length; ++var11) {
-               var1[var2++] = iv[var11];
-            }
-         }
-
-         if (iz != null) {
-            for(int var12 = 0; var12 < iz.length; ++var12) {
-               var1[var2++] = iz[var12];
-            }
-         }
-
-         if (iy != null) {
-            for(int var13 = 0; var13 < iy.length; ++var13) {
-               var1[var2++] = iy[var13];
-            }
-         }
-
-         if (iw != null) {
-            for(int var14 = 0; var14 < iw.length; ++var14) {
-               var1[var2++] = iw[var14];
-            }
-         }
-
-         if (ix != null) {
-            for(int var15 = 0; var15 < ix.length; ++var15) {
-               var1[var2++] = ix[var15];
-            }
-         }
-
-         if (it != null) {
-            for(int var16 = 0; var16 < it.length; ++var16) {
-               var1[var2++] = it[var16];
-            }
-         }
-
-         if (iu != null) {
-            for(int var17 = 0; var17 < iu.length; ++var17) {
-               var1[var2++] = iu[var17];
-            }
+         for(int var10 = 0; var10 < mapObjTileY.length; ++var10) {
+            var1[var2++] = mapObjTileY[var10];
          }
       }
 
-      var1[var2++] = khinhCongCap3 ? 1 : 0;
-      var1[var2++] = dashLearned ? 1 : 0;
-      var1[var2++] = amSatLearned ? 1 : 0;
-      var1[var2++] = dashLevel;
+      var1[var2++] = mapNpcBundleCount;
+      if (mapNpcBundleCount > 0) {
+         var1[var2++] = mapNpcFocusIndex;
+         if (mapNpcDir != null) {
+            for(int var11 = 0; var11 < mapNpcDir.length; ++var11) {
+               var1[var2++] = mapNpcDir[var11];
+            }
+         }
+
+         if (mapNpcIz != null) {
+            for(int var12 = 0; var12 < mapNpcIz.length; ++var12) {
+               var1[var2++] = mapNpcIz[var12];
+            }
+         }
+
+         if (mapNpcIy != null) {
+            for(int var13 = 0; var13 < mapNpcIy.length; ++var13) {
+               var1[var2++] = mapNpcIy[var13];
+            }
+         }
+
+         if (mapNpcIw != null) {
+            for(int var14 = 0; var14 < mapNpcIw.length; ++var14) {
+               var1[var2++] = mapNpcIw[var14];
+            }
+         }
+
+         if (mapNpcIx != null) {
+            for(int var15 = 0; var15 < mapNpcIx.length; ++var15) {
+               var1[var2++] = mapNpcIx[var15];
+            }
+         }
+
+         if (mapNpcTileX != null) {
+            for(int var16 = 0; var16 < mapNpcTileX.length; ++var16) {
+               var1[var2++] = mapNpcTileX[var16];
+            }
+         }
+
+         if (mapNpcTileY != null) {
+            for(int var17 = 0; var17 < mapNpcTileY.length; ++var17) {
+               var1[var2++] = mapNpcTileY[var17];
+            }
+         }
+      }
+
+      var1[var2++] = skillWallJumpL3Learned ? 1 : 0;
+      var1[var2++] = skillDashLearned ? 1 : 0;
+      var1[var2++] = skillAmbushLearned ? 1 : 0;
+      var1[var2++] = skillDashLevel;
       int[] var18 = var1;
       int var19;
       byte[] var156 = new byte[(var19 = var1.length) << 2];
@@ -1122,237 +1122,237 @@ public final class a extends Canvas implements Runnable, CommandListener {
       int[] var0 = a(Midlet.b("ninjasave"));
       int var2 = 0;
       ++var2;
-      gM = var0[0];
+      playTimeSeconds = var0[0];
       ++var2;
-      v = fixMapId(var0[1]);
+      mapId = fixMapId(var0[1]);
       ++var2;
-      w = var0[2];
+      mapSubIdLegacy = var0[2];
       ++var2;
-      eF = var0[3] == 1;
+      hasSaveGame = var0[3] == 1;
       ++var2;
-      de = var0[4];
+      gold = var0[4];
       ++var2;
-      dx = var0[5] == 1;
+      activationTrialFlag = var0[5] == 1;
       ++var2;
-      eG = var0[6] == 1;
+      unlockedMap97 = var0[6] == 1;
       ++var2;
-      eH = var0[7] == 1;
+      unlockedMap96 = var0[7] == 1;
       ++var2;
-      eI = var0[8] == 1;
+      unlockedMap95 = var0[8] == 1;
       ++var2;
-      gl = var0[9] == 1;
+      escortActive = var0[9] == 1;
       ++var2;
-      gm = var0[10];
+      escortReservedLegacy = var0[10];
       ++var2;
-      gn = var0[11];
+      escortMapId = var0[11];
       ++var2;
-      ik = var0[12];
+      mapObjectMountIndex = var0[12];
       ++var2;
-      x = var0[13];
+      equippedWeaponIndex = var0[13];
       ++var2;
-      eX = var0[14] == 1;
+      shurikenLevel2Learned = var0[14] == 1;
 
-      for(int var1 = 0; var1 < W.length; ++var1) {
-         W[var1] = var0[var2++] == 1;
+      for(int var1 = 0; var1 < mapUnlockFlags.length; ++var1) {
+         mapUnlockFlags[var1] = var0[var2++] == 1;
       }
 
-      for(int var7 = 0; var7 < V.length; ++var7) {
-         V[var7] = var0[var2++];
+      for(int var7 = 0; var7 < inventoryCounts.length; ++var7) {
+         inventoryCounts[var7] = var0[var2++];
       }
 
-      khinhCong = var0[var2++] == 1;
-      eK = var0[var2++] == 1;
-      eL = var0[var2++] == 1;
-      eM = var0[var2++] == 1;
-      eN = var0[var2++] == 1;
-      eO = var0[var2++] == 1;
-      eP = var0[var2++] == 1;
-      eQ = var0[var2++] == 1;
-      eR = var0[var2++] == 1;
-      eS = var0[var2++] == 1;
-      eT = var0[var2++] == 1;
-      eU = var0[var2++] == 1;
-      eV = var0[var2++] == 1;
-      khinhCongCap2 = var0[var2++] == 1;
-      eY = var0[var2++] == 1;
-      eZ = var0[var2++] == 1;
-      fa = var0[var2++] == 1;
-      fb = var0[var2++] == 1;
-      fc = var0[var2++] == 1;
-      fd = var0[var2++];
-      fe = var0[var2++];
-      ff = var0[var2++];
-      fg = var0[var2++];
+      skillWallJumpLearned = var0[var2++] == 1;
+      skillLegacyFlagEK = var0[var2++] == 1;
+      skillShurikenLearned = var0[var2++] == 1;
+      skillBurrowLearned = var0[var2++] == 1;
+      skillMotorcycleLearned = var0[var2++] == 1;
+      skillAttackDoubledQuest = var0[var2++] == 1;
+      skillSwimLearned = var0[var2++] == 1;
+      skillWaterRunLearned = var0[var2++] == 1;
+      skillTransformLearned = var0[var2++] == 1;
+      questBatReward5000Done = var0[var2++] == 1;
+      questTonikuBranchDone = var0[var2++] == 1;
+      questMeetGirlUnlocked = var0[var2++] == 1;
+      skillGateBeforeKC2 = var0[var2++] == 1;
+      skillWallJumpL2Learned = var0[var2++] == 1;
+      skillSpeedBoostLearned = var0[var2++] == 1;
+      skillStandOnWaterLearned = var0[var2++] == 1;
+      skillStealthLegacyFlag = var0[var2++] == 1;
+      questGeninFlagFB = var0[var2++] == 1;
+      questGeninGraduated = var0[var2++] == 1;
+      mountFacing = var0[var2++];
+      mountSubstate = var0[var2++];
+      playerX = var0[var2++];
+      playerY = var0[var2++];
       y = var0[var2++];
       z = var0[var2++];
-      A = var0[var2++];
+      playerState = var0[var2++];
       B = var0[var2++];
-      fh = var0[var2++];
-      fi = var0[var2++];
-      fj = var0[var2++];
-      fk = var0[var2++];
-      fl = var0[var2++];
-      fm = var0[var2++];
-      fn = var0[var2++];
-      C = var0[var2++];
-      D = var0[var2++];
-      fo = var0[var2++];
-      E = var0[var2++];
-      F = var0[var2++];
-      G = var0[var2++];
-      H = var0[var2++];
-      I = var0[var2++];
-      J = var0[var2++];
+      playerTimer0 = var0[var2++];
+      spriteHeight = var0[var2++];
+      halfWidth = var0[var2++];
+      halfHeight = var0[var2++];
+      playerTimer1 = var0[var2++];
+      playerTimer2 = var0[var2++];
+      playerFacing = var0[var2++];
+      airComboTier = var0[var2++];
+      burrowSubstate = var0[var2++];
+      moveCounter = var0[var2++];
+      atk = var0[var2++];
+      shurikenDmg = var0[var2++];
+      hp = var0[var2++];
+      hpMax = var0[var2++];
+      mp = var0[var2++];
+      mpMax = var0[var2++];
       K = var0[var2++];
       L = var0[var2++];
-      fp = var0[var2++];
-      fq = var0[var2++];
-      fr = var0[var2++];
-      ft = var0[var2++];
-      fu = var0[var2++];
-      characterLevel = var0[var2++];
-      N = var0[var2++];
-      fv = var0[var2++] == 1;
-      fw = var0[var2++] == 1;
-      fx = var0[var2++] == 1;
-      fy = var0[var2++] == 1;
-      currentQuestIndex = var0[var2++];
-      fz = var0[var2++];
-      fA = var0[var2++];
-      fB = var0[var2++] == 1;
-      fD = var0[var2++];
-      fE = var0[var2++];
-      fF = var0[var2++];
-      ih = var0[var2++];
-      ii = var0[var2++];
-      fG = var0[var2++];
-      fH = var0[var2++];
-      fI = var0[var2++];
-      fJ = var0[var2++];
-      fK = var0[var2++];
-      fL = var0[var2++];
-      fM = var0[var2++];
-      fN = var0[var2++];
-      fO = var0[var2++];
-      fP = var0[var2++];
-      fQ = var0[var2++];
-      fR = var0[var2++];
-      fS = var0[var2++];
-      ifFlag = var0[var2++] == 1;
-      ie = var0[var2++];
-      ig = var0[var2++];
-      gc = var0[var2++];
-      gd = var0[var2++];
-      ge = var0[var2++];
-      gf = var0[var2++];
-      gg = var0[var2++];
-      gh = var0[var2++];
-      gi = var0[var2++];
-      gj = var0[var2++];
-      gk = var0[var2++];
-      go = var0[var2++];
-      gp = var0[var2++];
-      gq = var0[var2++];
-      gr = var0[var2++];
-      gs = var0[var2++];
-      gt = var0[var2++];
-      gu = var0[var2++];
-      gv = var0[var2++];
-      gw = var0[var2++];
-      gx = var0[var2++];
-      gy = var0[var2++];
-      gz = var0[var2++];
-      gA = var0[var2++];
-      gB = var0[var2++];
-      gC = var0[var2++];
-      gD = var0[var2++];
-      gE = var0[var2++];
-      gF = var0[var2++];
-      gG = var0[var2++];
-      gH = var0[var2++];
-      gI = var0[var2++];
-      gJ = var0[var2++];
-      gK = var0[var2++];
-      if ((ha = var0[var2++]) <= 0) {
-         ha = hb;
+      cameraScrollX = var0[var2++];
+      cameraScrollY = var0[var2++];
+      cameraBound = var0[var2++];
+      timerFt = var0[var2++];
+      timerFu = var0[var2++];
+      level = var0[var2++];
+      expInLevel = var0[var2++];
+      gameModeFv = var0[var2++] == 1;
+      gameModeFw = var0[var2++] == 1;
+      gameModeFx = var0[var2++] == 1;
+      genderSpriteFlag = var0[var2++] == 1;
+      activeQuestId = var0[var2++];
+      questParam = var0[var2++];
+      questTarget = var0[var2++];
+      questBool = var0[var2++] == 1;
+      questProgress = var0[var2++];
+      interactTargetId = var0[var2++];
+      interactSubId = var0[var2++];
+      npcInteractIndex = var0[var2++];
+      npcInteractSub = var0[var2++];
+      cutsceneG = var0[var2++];
+      cutsceneH = var0[var2++];
+      cutsceneI = var0[var2++];
+      cutsceneJ = var0[var2++];
+      cutsceneK = var0[var2++];
+      cutsceneL = var0[var2++];
+      cutsceneM = var0[var2++];
+      cutsceneN = var0[var2++];
+      cutsceneO = var0[var2++];
+      cutsceneP = var0[var2++];
+      cutsceneQ = var0[var2++];
+      cutsceneR = var0[var2++];
+      cutsceneS = var0[var2++];
+      scriptRunnerActive = var0[var2++] == 1;
+      scriptTableId = var0[var2++];
+      scriptStep = var0[var2++];
+      scriptMapId = var0[var2++];
+      scriptExtraD = var0[var2++];
+      scriptExtraE = var0[var2++];
+      scriptExtraF = var0[var2++];
+      scriptExtraG = var0[var2++];
+      scriptExtraH = var0[var2++];
+      scriptExtraI = var0[var2++];
+      scriptExtraJ = var0[var2++];
+      scriptExtraK = var0[var2++];
+      companionX = var0[var2++];
+      companionY = var0[var2++];
+      companionVel = var0[var2++];
+      companionAccel = var0[var2++];
+      companionMode = var0[var2++];
+      companionT0 = var0[var2++];
+      companionT1 = var0[var2++];
+      companionT2 = var0[var2++];
+      companionT3 = var0[var2++];
+      companionT4 = var0[var2++];
+      companionT5 = var0[var2++];
+      companionT6 = var0[var2++];
+      companionFaceDir = var0[var2++];
+      companionB = var0[var2++];
+      companionC = var0[var2++];
+      companionD = var0[var2++];
+      companionE = var0[var2++];
+      companionF = var0[var2++];
+      companionG = var0[var2++];
+      companionH = var0[var2++];
+      companionI = var0[var2++];
+      companionJ = var0[var2++];
+      companionK = var0[var2++];
+      if ((hpCurrentAlt = var0[var2++]) <= 0) {
+         hpCurrentAlt = hpMaxBaseline;
       }
 
-      hh = var0[var2++];
-      hn = var0[var2++];
-      hN = var0[var2++];
-      hs = var0[var2++];
+      regenTimer = var0[var2++];
+      idleTimerLong = var0[var2++];
+      bossThreshold = var0[var2++];
+      scriptHsStep = var0[var2++];
       int var275 = var2++;
       int var10000 = var0[var275];
       var275 = var0[var275];
       if (var10000 > 0) {
          try {
-            for(int var8 = 0; var8 < ip.length; ++var8) {
+            for(int var8 = 0; var8 < mapObjType.length; ++var8) {
                ++var2;
             }
 
-            for(int var9 = 0; var9 < in.length; ++var9) {
+            for(int var9 = 0; var9 < mapObjFacing.length; ++var9) {
                ++var2;
             }
 
-            for(int var10 = 0; var10 < io.length; ++var10) {
+            for(int var10 = 0; var10 < mapObjAnim.length; ++var10) {
                ++var2;
             }
 
-            for(int var11 = 0; var11 < iq.length; ++var11) {
+            for(int var11 = 0; var11 < mapObjExtra.length; ++var11) {
                ++var2;
             }
 
-            for(int var12 = 0; var12 < il.length; ++var12) {
+            for(int var12 = 0; var12 < mapObjTileX.length; ++var12) {
                ++var2;
             }
 
-            for(int var13 = 0; var13 < im.length; ++var13) {
+            for(int var13 = 0; var13 < mapObjTileY.length; ++var13) {
                ++var2;
             }
          } catch (Exception var6) {
          }
       }
 
-      if ((ir = var0[var2++]) > 0) {
+      if ((mapNpcBundleCount = var0[var2++]) > 0) {
          ensureIrNpcArraysSized();
-         is = var0[var2++];
+         mapNpcFocusIndex = var0[var2++];
 
          try {
-            for(int var14 = 0; var14 < iv.length; ++var14) {
-               iv[var14] = var0[var2++];
+            for(int var14 = 0; var14 < mapNpcDir.length; ++var14) {
+               mapNpcDir[var14] = var0[var2++];
             }
 
-            for(int var15 = 0; var15 < iz.length; ++var15) {
-               iz[var15] = var0[var2++];
+            for(int var15 = 0; var15 < mapNpcIz.length; ++var15) {
+               mapNpcIz[var15] = var0[var2++];
             }
 
-            for(int var16 = 0; var16 < iy.length; ++var16) {
-               iy[var16] = var0[var2++];
+            for(int var16 = 0; var16 < mapNpcIy.length; ++var16) {
+               mapNpcIy[var16] = var0[var2++];
             }
 
-            for(int var17 = 0; var17 < iw.length; ++var17) {
-               iw[var17] = var0[var2++];
+            for(int var17 = 0; var17 < mapNpcIw.length; ++var17) {
+               mapNpcIw[var17] = var0[var2++];
             }
 
-            for(int var18 = 0; var18 < ix.length; ++var18) {
-               ix[var18] = var0[var2++];
+            for(int var18 = 0; var18 < mapNpcIx.length; ++var18) {
+               mapNpcIx[var18] = var0[var2++];
             }
 
-            for(int var19 = 0; var19 < it.length; ++var19) {
-               it[var19] = var0[var2++];
+            for(int var19 = 0; var19 < mapNpcTileX.length; ++var19) {
+               mapNpcTileX[var19] = var0[var2++];
             }
 
-            for(int var20 = 0; var20 < iu.length; ++var20) {
-               iu[var20] = var0[var2++];
+            for(int var20 = 0; var20 < mapNpcTileY.length; ++var20) {
+               mapNpcTileY[var20] = var0[var2++];
             }
          } catch (Exception var5) {
          }
       }
 
       if (var0.length > var2) {
-         khinhCongCap3 = var0[var2++] == 1;
+         skillWallJumpL3Learned = var0[var2++] == 1;
       } else {
-         khinhCongCap3 = false;
+         skillWallJumpL3Learned = false;
       }
 
       if (var0.length > var2) {
@@ -1368,15 +1368,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
       }
 
       if (var0.length > var2) {
-         dashLevel = var0[var2++];
+         skillDashLevel = var0[var2++];
          syncDashDurationToLevel();
       } else {
-         dashLevel = 1;
+         skillDashLevel = 1;
       }
 
       syncSkillsFromLegacyFlags();
 
-      if (fy) {
+      if (genderSpriteFlag) {
          if (eq == null) {
             eq = new Image[4];
 
@@ -1416,40 +1416,40 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    /** Vận tốc z khi bắt đầu nhảy: cấp 3 > đã học KC > thường. */
    private static int zForInitialJump() {
-      if (khinhCong) {
-         return khinhCongCap3 ? -12 : -10;
+      if (skillWallJumpLearned) {
+         return skillWallJumpL3Learned ? -12 : -10;
       } else {
          return -8;
       }
    }
 
-   /** Đẩy lên trên không theo bậc khinh công (C 0→1→2). */
+   /** Đẩy lên trên không theo bậc khinh công (airComboTier 0→1→2). */
    private static boolean tryAirKhinhCongBoost() {
-      if (C == 0 && eK) {
-         ++C;
+      if (airComboTier == 0 && skillLegacyFlagEK) {
+         ++airComboTier;
          z = -7;
-      } else if (C == 1 && khinhCongCap2) {
-         ++C;
+      } else if (airComboTier == 1 && skillWallJumpL2Learned) {
+         ++airComboTier;
          z = -7;
-      } else if (C == 2 && khinhCongCap3) {
-         ++C;
+      } else if (airComboTier == 2 && skillWallJumpL3Learned) {
+         ++airComboTier;
          z = -9;
       } else {
          return false;
       }
 
-      if ((I -= 3) < 0) {
-         I = 0;
+      if ((mp -= 3) < 0) {
+         mp = 0;
       }
 
       c = true;
-      e(-1, ff - -8, fg);
-      e(1, ff - 8, fg);
-      g(ff, fg);
+      e(-1, playerX - -8, playerY);
+      e(1, playerX - 8, playerY);
+      g(playerX, playerY);
       return true;
    }
 
-   /** MP tiêu hao mỗi lần dash (theo {@link #dashManaCost} hoặc {@link #dashLevel}). */
+   /** MP tiêu hao mỗi lần dash (theo {@link #dashManaCost} hoặc {@link #skillDashLevel}). */
    static int getDashManaCostPublic() {
       return getDashManaCost();
    }
@@ -1458,21 +1458,21 @@ public final class a extends Canvas implements Runnable, CommandListener {
       if (dashManaCost > 0) {
          return dashManaCost;
       }
-      int var0 = dashLevel < 1 ? 1 : dashLevel;
+      int var0 = skillDashLevel < 1 ? 1 : skillDashLevel;
       return 8 + var0 * 6;
    }
 
-   /** Trừ MP (I/J — thanh trắng); G/H là HP (thanh đỏ). Popup dùng fs1 (không dùng fs0 đỏ như trừ HP). */
+   /** Trừ MP (mp/mpMax — thanh trắng); hp/hpMax là HP (thanh đỏ). Popup dùng fs1 (không dùng fs0 đỏ như trừ HP). */
    private static boolean spendMp(int var0) {
-      if (I < var0) {
+      if (mp < var0) {
          return false;
       }
-      I -= var0;
-      if (I < 0) {
-         I = 0;
+      mp -= var0;
+      if (mp < 0) {
+         mp = 0;
       }
       c = true;
-      a("-" + var0, 0, ff, fg - fi, 0, -2);
+      a("-" + var0, 0, playerX, playerY - spriteHeight, 0, -2);
       return true;
    }
 
@@ -1483,32 +1483,32 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    static int skillBridgeGetPlayerState() {
-      return A;
+      return playerState;
    }
 
    static int skillBridgeGetPlayerX() {
-      return ff;
+      return playerX;
    }
 
    static int skillBridgeGetPlayerY() {
-      return fg;
+      return playerY;
    }
 
    static int skillBridgeGetPlayerMp() {
-      return I;
+      return mp;
    }
 
    static int skillBridgeGetPlayerFacing() {
-      return fn;
+      return playerFacing;
    }
 
    static void skillBridgeSetPlayerFacing(int var0) {
-      fn = var0;
+      playerFacing = var0;
    }
 
    static void skillBridgeSetPlayerPosition(int var0, int var1) {
-      ff = var0;
-      fg = var1;
+      playerX = var0;
+      playerY = var1;
    }
 
    static boolean skillBridgeSpendMp(int var0) {
@@ -1532,18 +1532,18 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    static void syncSkillsFromLegacyFlags() {
-      DashSkill.getInstance().setLearned(dashLearned);
-      AmbushSkill.getInstance().setLearned(amSatLearned);
+      DashSkill.getInstance().setLearned(skillDashLearned);
+      AmbushSkill.getInstance().setLearned(skillAmbushLearned);
       AmbushSkill.getInstance().setBaseManaCost(amSatManaCost > 0 ? amSatManaCost : 40);
    }
 
    static void skillSetDashLearned(boolean var0) {
-      dashLearned = var0;
+      skillDashLearned = var0;
       DashSkill.getInstance().setLearned(var0);
    }
 
    static void skillSetAmSatLearned(boolean var0) {
-      amSatLearned = var0;
+      skillAmbushLearned = var0;
       AmbushSkill.getInstance().setLearned(var0);
    }
 
@@ -1560,56 +1560,56 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    static void skillBridgeSetPlayerState(int var0) {
-      A = var0;
+      playerState = var0;
    }
 
    static void skillBridgeResetMoveVelocity() {
       y = 0;
       z = 0;
-      C = 0;
-      D = 0;
+      airComboTier = 0;
+      burrowSubstate = 0;
    }
 
    static void skillBridgeClearInteractHint() {
-      fE = -1;
-      fF = -1;
+      interactTargetId = -1;
+      interactSubId = -1;
       o = " ";
    }
 
    static int skillBridgeGetHalfWidth() {
-      return fj;
+      return halfWidth;
    }
 
    static int skillBridgeGetHalfHeight() {
-      return fk;
+      return halfHeight;
    }
 
    static int skillBridgeGetSpriteH() {
-      return fi;
+      return spriteHeight;
    }
 
    static boolean skillBridgeWallLeft(int var0, int var1) {
-      return g(var0 - fj - 1, var1 - fk, 8);
+      return g(var0 - halfWidth - 1, var1 - halfHeight, 8);
    }
 
    static boolean skillBridgeWallRight(int var0, int var1) {
-      return g(var0 + fj, var1 - fk, 4);
+      return g(var0 + halfWidth, var1 - halfHeight, 4);
    }
 
    static int skillBridgeSnapXFromWallLeft(int var0) {
-      return I(var0 - fj - 1) + jf + fj;
+      return I(var0 - halfWidth - 1) + jf + halfWidth;
    }
 
    static int skillBridgeSnapXFromWallRight(int var0) {
-      return I(var0 + fj) - fj;
+      return I(var0 + halfWidth) - halfWidth;
    }
 
    static boolean skillBridgeDashFeetOnGround() {
-      return ((i(ff, fg) | i(ff, fg + fk) | i(ff, fg + 8) | i(ff, fg + 14)) & 2) != 0;
+      return ((i(playerX, playerY) | i(playerX, playerY + halfHeight) | i(playerX, playerY + 8) | i(playerX, playerY + 14)) & 2) != 0;
    }
 
    static boolean skillBridgeTileOnGround(int var0, int var1) {
-      return ((i(var0, var1) | i(var0, var1 + fk) | i(var0, var1 + 8)) & 2) != 0;
+      return ((i(var0, var1) | i(var0, var1 + halfHeight) | i(var0, var1 + 8)) & 2) != 0;
    }
 
    static void skillBridgePlayAmbushFx(int var0, int var1, int var2) {
@@ -1620,13 +1620,13 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    static void skillBridgeDashRunFx(int var0, int var1) {
-      e(var0, var1 - (var0 << 3), fg);
+      e(var0, var1 - (var0 << 3), playerY);
    }
 
    static void skillBridgeDashAnimTick() {
-      B = (C >> 1) + 2;
-      if (++C >= 10) {
-         C = 0;
+      B = (airComboTier >> 1) + 2;
+      if (++airComboTier >= 10) {
+         airComboTier = 0;
       }
    }
 
@@ -1699,7 +1699,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    static void skillBridgeSetMoveD(int var0) {
-      D = var0;
+      burrowSubstate = var0;
    }
 
    static void skillBridgeDashAfterMove() {
@@ -1707,17 +1707,17 @@ public final class a extends Canvas implements Runnable, CommandListener {
       S();
    }
 
-   /** Cập nhật {@link #dashDurationMs} theo {@link #dashLevel} (cấp cao = dash nhanh hơn). */
+   /** Cập nhật {@link #dashDurationMs} theo {@link #skillDashLevel} (cấp cao = dash nhanh hơn). */
    public static void syncDashDurationToLevel() {
-      int var0 = dashLevel < 1 ? 1 : dashLevel;
+      int var0 = skillDashLevel < 1 ? 1 : skillDashLevel;
       dashDurationMs = var0 >= 10 ? 48 : 360 - var0 * 32;
    }
 
    /** Học kỹ năng dash (gọi từ NPC / nhiệm vụ). */
    public static void learnDashSkill() {
       skillSetDashLearned(true);
-      if (dashLevel < 1) {
-         dashLevel = 1;
+      if (skillDashLevel < 1) {
+         skillDashLevel = 1;
       }
       syncDashDurationToLevel();
       c("đã học kỹ năng lướt (dash)!");
@@ -1732,7 +1732,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    // --- Debug refactor bridge (no-op unless DebugRefactor.DEBUG_REFACTOR) ---
 
    static int debugBridgeGetMapId() {
-      return v;
+      return mapId;
    }
 
    static void debugBridgeTeleportMap(int var0) {
@@ -1753,29 +1753,29 @@ public final class a extends Canvas implements Runnable, CommandListener {
       if (!DebugRefactor.DEBUG_REFACTOR) {
          return;
       }
-      khinhCong = true;
-      eK = true;
-      eL = true;
-      eM = true;
-      eN = true;
-      eO = true;
-      eP = true;
-      eQ = true;
-      eR = true;
-      eS = true;
-      eT = true;
-      eU = true;
-      eV = true;
-      khinhCongCap2 = true;
-      khinhCongCap3 = true;
-      eY = true;
-      eZ = true;
-      fa = true;
+      skillWallJumpLearned = true;
+      skillLegacyFlagEK = true;
+      skillShurikenLearned = true;
+      skillBurrowLearned = true;
+      skillMotorcycleLearned = true;
+      skillAttackDoubledQuest = true;
+      skillSwimLearned = true;
+      skillWaterRunLearned = true;
+      skillTransformLearned = true;
+      questBatReward5000Done = true;
+      questTonikuBranchDone = true;
+      questMeetGirlUnlocked = true;
+      skillGateBeforeKC2 = true;
+      skillWallJumpL2Learned = true;
+      skillWallJumpL3Learned = true;
+      skillSpeedBoostLearned = true;
+      skillStandOnWaterLearned = true;
+      skillStealthLegacyFlag = true;
       skillSetAmSatLearned(true);
       skillSetDashLearned(true);
       syncDashDurationToLevel();
-      for (int var1 = 0; var1 < W.length; ++var1) {
-         W[var1] = true;
+      for (int var1 = 0; var1 < mapUnlockFlags.length; ++var1) {
+         mapUnlockFlags[var1] = true;
       }
       skillBridgeShowMessage("DBG unlock skills+maps");
    }
@@ -1803,13 +1803,13 @@ public final class a extends Canvas implements Runnable, CommandListener {
       }
       ki[var2] = 0;
       jK[var2] = var0;
-      jL[var2] = ff + (fn >= 0 ? 48 : -48);
-      jM[var2] = fg;
+      jL[var2] = playerX + (playerFacing >= 0 ? 48 : -48);
+      jM[var2] = playerY;
       ke[var2] = 25;
       kf[var2] = 10;
       jN[var2] = 27;
       jO[var2] = 15;
-      jZ[var2] = fn != 0 ? fn : -1;
+      jZ[var2] = playerFacing != 0 ? playerFacing : -1;
       jQ[var2] = 2;
       jV[var2] = var2 * 7;
       ka[var2] = kb[var2] = MonsterData.HP[jK[var2]];
@@ -1825,25 +1825,25 @@ public final class a extends Canvas implements Runnable, CommandListener {
       }
       String var0;
       try {
-         var0 = map.getMapName(v);
+         var0 = map.getMapName(mapId);
       } catch (Exception var1) {
          var0 = "?";
       }
-      return "map=" + v + "(" + var0 + ") xy=" + ff + "," + fg + " st=" + A
-         + " lv=" + characterLevel + " exp=" + N + "/" + ai[characterLevel - 1]
-         + " HP=" + G + "/" + H + " MP=" + I + "/" + J
-         + " dash=" + dashLearned + " L" + dashLevel + " amsat=" + amSatLearned
-         + " quest=" + currentQuestIndex;
+      return "map=" + mapId + "(" + var0 + ") xy=" + playerX + "," + playerY + " st=" + playerState
+         + " lv=" + level + " exp=" + expInLevel + "/" + ai[level - 1]
+         + " HP=" + hp + "/" + hpMax + " MP=" + mp + "/" + mpMax
+         + " dash=" + skillDashLearned + " L" + skillDashLevel + " amsat=" + skillAmbushLearned
+         + " quest=" + activeQuestId;
    }
 
    static String debugBridgeDumpSaveState() {
       if (!DebugRefactor.DEBUG_REFACTOR) {
          return "";
       }
-      return "save map=" + v + " money=" + de + " xy=" + ff + "," + fg
-         + " lv=" + characterLevel + " exp=" + N + " gl=" + (gl ? 1 : 0)
-         + " gn=" + gn + " dash=" + (dashLearned ? 1 : 0)
-         + " amsat=" + (amSatLearned ? 1 : 0) + " dashLv=" + dashLevel;
+      return "save map=" + mapId + " money=" + gold + " xy=" + playerX + "," + playerY
+         + " lv=" + level + " exp=" + expInLevel + " escortActive=" + (escortActive ? 1 : 0)
+         + " escortMapId=" + escortMapId + " dash=" + (skillDashLearned ? 1 : 0)
+         + " amsat=" + (skillAmbushLearned ? 1 : 0) + " dashLv=" + skillDashLevel;
    }
 
    private static void a(int var0, int var1, int var2, int var3, int var4) {
@@ -1891,49 +1891,49 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void u(int var0) {
-      if ((N += var0) > ai[characterLevel - 1]) {
-         N = 0;
-         if (Midlet.lowGfx && characterLevel == 6) {
+      if ((expInLevel += var0) > ai[level - 1]) {
+         expInLevel = 0;
+         if (Midlet.lowGfx && level == 6) {
             s(6);
             a("Xin đăng ký để có thể lên cấp 7!");
             d = 7;
             return;
          }
 
-         ++characterLevel;
-         E += ah[characterLevel - 2];
-         F += 2;
-         G = H += aj[characterLevel - 2];
-         I = J;
-         a("level-up", 2, ff, fg - fi, 0, -2);
+         ++level;
+         atk += ah[level - 2];
+         shurikenDmg += 2;
+         hp = hpMax += aj[level - 2];
+         mp = mpMax;
+         a("level-up", 2, playerX, playerY - spriteHeight, 0, -2);
          s(6);
-         a("Chúc mừng! Bạn đạt được cấp " + characterLevel + '\n' + "HP: " + H + '\n' + "Sức đánh: " + (E + (E >> 2) * (x + 1)));
+         a("Chúc mừng! Bạn đạt được cấp " + level + '\n' + "HP: " + hpMax + '\n' + "Sức đánh: " + (atk + (atk >> 2) * (equippedWeaponIndex + 1)));
          d = 7;
       } else {
-         a("+" + var0, 2, ff, fg - fi, 0, -2);
+         a("+" + var0, 2, playerX, playerY - spriteHeight, 0, -2);
       }
 
       c = true;
    }
 
    private static void u() {
-      if (currentQuestIndex == 11 && z != 0) {
-         ++fD;
-         if (currentQuestIndex >= 20) {
+      if (activeQuestId == 11 && z != 0) {
+         ++questProgress;
+         if (activeQuestId >= 20) {
             c("Thành công 20 hit!");
          } else {
-            c("Hit: " + fD);
+            c("Hit: " + questProgress);
          }
       }
 
       int var0;
-      var0 = (var0 = E + w % (E >> 1)) + (var0 >> 1) * x;
-      if (fy) {
+      var0 = (var0 = atk + mapSubIdLegacy % (atk >> 1)) + (var0 >> 1) * equippedWeaponIndex;
+      if (genderSpriteFlag) {
          var0 <<= 1;
       }
 
-      if (fe == 1) {
-         a(ff + (fn << 3), fg - 12, (fn << 3) + y, z << 1, false);
+      if (mountSubstate == 1) {
+         a(playerX + (playerFacing << 3), playerY - 12, (playerFacing << 3) + y, z << 1, false);
       } else {
          if (z > 0 && y == 0) {
             z = -2;
@@ -1943,8 +1943,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
          fs = false;
          if (var1 != -1) {
             fs = true;
-            k(var1, var0, -fn);
-            f(jL[var1], jM[var1] - (jN[var1] >> 1), fn);
+            k(var1, var0, -playerFacing);
+            f(jL[var1], jM[var1] - (jN[var1] >> 1), playerFacing);
             a("-" + var0, 0, jL[var1], jM[var1] - jN[var1], 0, -2);
             if (z > 0) {
                z = -6;
@@ -1953,19 +1953,19 @@ public final class a extends Canvas implements Runnable, CommandListener {
             Q();
          }
 
-         for(int var3 = 0; var3 < ir; ++var3) {
-            if (a(fg - fk - iu[var3]) < 20 && a(ff + (fn << 4) - it[var3]) < 24) {
-               iv[var3] = 2;
-               iw[var3] = fn << 3;
-               f(it[var3], iu[var3] - 12, fn);
+         for(int var3 = 0; var3 < mapNpcBundleCount; ++var3) {
+            if (a(playerY - halfHeight - mapNpcTileY[var3]) < 20 && a(playerX + (playerFacing << 4) - mapNpcTileX[var3]) < 24) {
+               mapNpcDir[var3] = 2;
+               mapNpcIw[var3] = playerFacing << 3;
+               f(mapNpcTileX[var3], mapNpcTileY[var3] - 12, playerFacing);
                Q();
                break;
             }
          }
 
-         if (gO && a(fg - gR) < 30 && a(ff + (fn << 4) - gQ) < 40) {
-            if (!c(var0, -fn)) {
-               f(ff + (gQ - ff >> 1), fg - 12, fn);
+         if (gO && a(playerY - gR) < 30 && a(playerX + (playerFacing << 4) - gQ) < 40) {
+            if (!c(var0, -playerFacing)) {
+               f(playerX + (gQ - playerX >> 1), playerY - 12, playerFacing);
                a("-" + var0, 0, gQ, gR - gX, 0, -2);
             }
 
@@ -1973,18 +1973,18 @@ public final class a extends Canvas implements Runnable, CommandListener {
          }
 
          for(int var4 = 0; var4 < cq; ++var4) {
-            if (a(fg - cw[var4]) <= 12 && a(ff + (fn << 4) - cv[var4]) < 24) {
-               a(var4, var0, -fn);
-               f(cv[var4], cw[var4] - 15, fn);
+            if (a(playerY - cw[var4]) <= 12 && a(playerX + (playerFacing << 4) - cv[var4]) < 24) {
+               a(var4, var0, -playerFacing);
+               f(cv[var4], cw[var4] - 15, playerFacing);
                a("-" + var0, 0, cv[var4], cw[var4] - 28, 0, -2);
                Q();
                break;
             }
          }
 
-         if (hK && a(fg - (hR - 40)) < 30 && a(ff + (fn << 4) - hQ) < 40) {
-            if ((hN -= var0) <= 0) {
-               hN = 0;
+         if (hK && a(playerY - (hR - 40)) < 30 && a(playerX + (playerFacing << 4) - hQ) < 40) {
+            if ((bossThreshold -= var0) <= 0) {
+               bossThreshold = 0;
                ic = 0;
                id = 0;
                hY = 1;
@@ -1999,26 +1999,26 @@ public final class a extends Canvas implements Runnable, CommandListener {
                boolean var5 = false;
             }
 
-            f(ff + (hQ - ff >> 1), fg - 12, fn);
+            f(playerX + (hQ - playerX >> 1), playerY - 12, playerFacing);
             a("-" + var0, 0, hQ, hR - hM, 0, -2);
             Q();
          }
 
          if (hd) {
-            if (a(fg - dB[0]) < 5 && a(ff + (fn << 4) - dA[0]) < 30) {
-               d(var0, fn);
+            if (a(playerY - dB[0]) < 5 && a(playerX + (playerFacing << 4) - dA[0]) < 30) {
+               d(var0, playerFacing);
             }
 
             Q();
          }
 
          if (hj) {
-            if (a(fg - (hr - 30)) < 30 && a(ff + (fn << 4) - hq) < 30) {
-               if ((hn -= var0) <= 0) {
-                  hn = 0;
+            if (a(playerY - (hr - 30)) < 30 && a(playerX + (playerFacing << 4) - hq) < 30) {
+               if ((idleTimerLong -= var0) <= 0) {
+                  idleTimerLong = 0;
                   hw = 0;
-                  hp = 0;
-                  hs = 6;
+                  scriptHitGauge = 0;
+                  scriptHsStep = 6;
                   a(hq, hr, 4, -10, 500);
                   a(hq, hr, -4, -17, 500);
                   a(hq, hr, -3, -18, 500);
@@ -2026,8 +2026,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   a(hq, hr, 0, -10, 500);
                   boolean var6 = false;
                } else {
-                  hp = 50;
-                  f(hq, hr - 47, fn);
+                  scriptHitGauge = 50;
+                  f(hq, hr - 47, playerFacing);
                   a("-" + var0, 0, hq, hr - 55, 0, -2);
                   boolean var7 = false;
                }
@@ -2040,19 +2040,19 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void v() {
-      for(int var0 = 0; var0 < ir; ++var0) {
-         if (iv[var0] != 4 && a(ff - it[var0]) < 20 && iu[var0] > fg && iu[var0] - 24 <= fg) {
+      for(int var0 = 0; var0 < mapNpcBundleCount; ++var0) {
+         if (mapNpcDir[var0] != 4 && a(playerX - mapNpcTileX[var0]) < 20 && mapNpcTileY[var0] > playerY && mapNpcTileY[var0] - 24 <= playerY) {
             y = 0;
             z = 0;
-            fg = iu[var0] - 24;
-            A = 1;
-            fd = -1;
-            is = var0;
-            if (iv[var0] == 11) {
-               g(it[var0], iu[var0] - 10);
-               int[] var10000 = iu;
+            playerY = mapNpcTileY[var0] - 24;
+            playerState = 1;
+            mountFacing = -1;
+            mapNpcFocusIndex = var0;
+            if (mapNpcDir[var0] == 11) {
+               g(mapNpcTileX[var0], mapNpcTileY[var0] - 10);
+               int[] var10000 = mapNpcTileY;
                var10000[var0] += 4;
-               var10000 = ix;
+               var10000 = mapNpcIx;
                var10000[var0] += 4;
                return;
             }
@@ -2063,18 +2063,18 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void w() {
-      for(int var0 = 0; var0 < ir; ++var0) {
-         if (a(ff - it[var0]) < 20 && a(iu[var0] - fg) < 4) {
+      for(int var0 = 0; var0 < mapNpcBundleCount; ++var0) {
+         if (a(playerX - mapNpcTileX[var0]) < 20 && a(mapNpcTileY[var0] - playerY) < 4) {
             y = 0;
-            if (ff < it[var0]) {
-               ff = it[var0] - 20;
+            if (playerX < mapNpcTileX[var0]) {
+               playerX = mapNpcTileX[var0] - 20;
             } else {
-               ff = it[var0] + 20;
+               playerX = mapNpcTileX[var0] + 20;
             }
 
-            if (iv[var0] != 4) {
-               iv[var0] = 2;
-               iw[var0] = -fn << 1;
+            if (mapNpcDir[var0] != 4) {
+               mapNpcDir[var0] = 2;
+               mapNpcIw[var0] = -playerFacing << 1;
                return;
             }
          }
@@ -2083,7 +2083,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void v(int var0) {
-      if (a(fg - cw[var0]) <= 24 && a(cv[var0] + (cI[var0] << 3) - ff) < 25 && (cE[var0] == 6 || cE[var0] == 2 || cE[var0] == 3)) {
+      if (a(playerY - cw[var0]) <= 24 && a(cv[var0] + (cI[var0] << 3) - playerX) < 25 && (cE[var0] == 6 || cE[var0] == 2 || cE[var0] == 3)) {
          cH[var0] = cG[var0] = 0;
          cF[var0] = 4;
       }
@@ -2091,22 +2091,22 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void w(int var0) {
-      if (!fx) {
-         if (a(cv[var0] - ff) < 100 && a(cw[var0] - fg) < 20) {
+      if (!gameModeFx) {
+         if (a(cv[var0] - playerX) < 100 && a(cw[var0] - playerY) < 20) {
             switch (cE[var0]) {
                case 0:
                case 1:
                case 4:
                case 5:
-                  cI[var0] = cv[var0] < ff ? 1 : -1;
+                  cI[var0] = cv[var0] < playerX ? 1 : -1;
                   cH[var0] = cG[var0] = 0;
                   cF[var0] = 4;
                   break;
                case 2:
                case 3:
                case 6:
-                  cH[var0] = ff;
-                  if (cv[var0] < ff) {
+                  cH[var0] = playerX;
+                  if (cv[var0] < playerX) {
                      int[] var10000 = cH;
                      var10000[var0] -= 10;
                   } else {
@@ -2114,7 +2114,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      var1[var0] += 10;
                   }
 
-                  cI[var0] = cH[var0] < ff ? 1 : -1;
+                  cI[var0] = cH[var0] < playerX ? 1 : -1;
                   cF[var0] = 7;
                   cz[var0] = cI[var0] << 3;
                   if (cH[var0] < cL[var0]) {
@@ -2132,18 +2132,18 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void x() {
-      for(int var0 = 0; var0 < ir; ++var0) {
-         if (a(ff - it[var0]) < 20 && iu[var0] == fg) {
+      for(int var0 = 0; var0 < mapNpcBundleCount; ++var0) {
+         if (a(playerX - mapNpcTileX[var0]) < 20 && mapNpcTileY[var0] == playerY) {
             y = 0;
-            if (ff < it[var0]) {
-               ff = it[var0] - 20;
+            if (playerX < mapNpcTileX[var0]) {
+               playerX = mapNpcTileX[var0] - 20;
             } else {
-               ff = it[var0] + 20;
+               playerX = mapNpcTileX[var0] + 20;
             }
 
-            if (iv[var0] != 4) {
-               iv[var0] = 2;
-               iw[var0] = fn << 2;
+            if (mapNpcDir[var0] != 4) {
+               mapNpcDir[var0] = 2;
+               mapNpcIw[var0] = playerFacing << 2;
                return;
             }
          }
@@ -2168,35 +2168,35 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static void y() {
       switch (iE) {
          case 3:
-            currentQuestIndex = 0;
-            fD = 0;
+            activeQuestId = 0;
+            questProgress = 0;
             c("NV: Giết 2 ốc sên");
             break;
          case 4:
-            khinhCong = true;
-            khinhCongCap2 = true;
-            khinhCongCap3 = true;
+            skillWallJumpLearned = true;
+            skillWallJumpL2Learned = true;
+            skillWallJumpL3Learned = true;
             skillSetAmSatLearned(true);
             skillSetDashLearned(true);
-            eK = true;
-            if (dashLevel < 1) {
-               dashLevel = 1;
+            skillLegacyFlagEK = true;
+            if (skillDashLevel < 1) {
+               skillDashLevel = 1;
             }
             syncDashDurationToLevel();
-            currentQuestIndex = -1;
-            fD = 0;
+            activeQuestId = -1;
+            questProgress = 0;
             c("đã học khinh công, dash và sức công nhân đôi!");
             break;
          case 5:
-            currentQuestIndex = 1;
-            fD = 0;
+            activeQuestId = 1;
+            questProgress = 0;
             c("NV: đánh ngã 2 bù nhìn");
             break;
          case 6:
-            eL = true;
-            khinhCongCap3 = true;
-            currentQuestIndex = -1;
-            fD = 0;
+            skillShurikenLearned = true;
+            skillWallJumpL3Learned = true;
+            activeQuestId = -1;
+            questProgress = 0;
             c("đã học ném phi tiêu");
          case 7:
          default:
@@ -2205,146 +2205,146 @@ public final class a extends Canvas implements Runnable, CommandListener {
             c((String)null);
             break;
          case 9:
-            currentQuestIndex = 2;
-            fz = 103;
-            fA = 2;
-            fB = false;
+            activeQuestId = 2;
+            questParam = 103;
+            questTarget = 2;
+            questBool = false;
             c("NV: Tìm bí kíp");
             break;
          case 10:
-            eM = true;
-            currentQuestIndex = -1;
-            fz = 0;
-            fA = 0;
-            fB = false;
+            skillBurrowLearned = true;
+            activeQuestId = -1;
+            questParam = 0;
+            questTarget = 0;
+            questBool = false;
             c("đã học thuật độn thổ");
             break;
          case 11:
-            currentQuestIndex = 3;
-            gn = 3;
-            go = 2808;
-            gp = 216;
-            gA = -1;
-            gs = 1;
-            gq = 5;
+            activeQuestId = 3;
+            escortMapId = 3;
+            companionX = 2808;
+            companionY = 216;
+            companionFaceDir = -1;
+            companionMode = 1;
+            companionVel = 5;
             break;
          // Trường hợp 12 trong một cấu trúc switch-case, thực hiện các hành động sau:
-         // 1. Đánh dấu đã học/nhận được một kỹ năng hoặc trạng thái nào đó bằng cách đặt eO = true.
-         // 2. Tăng gấp đôi sức mạnh tấn công (biến E) bằng cách dịch trái 1 bit (E <<= 1, tương đương nhân đôi E).
-         // 3. Gán biến currentQuestIndex = -1, có thể để kết thúc nhiệm vụ hiện tại hoặc reset trạng thái nhiệm vụ.
-         // 4. Đặt fz = 0 và fA = 0, có thể là reset các bộ đếm liên quan nhiệm vụ.
-         // 5. Đặt fB = false, có thể để đánh dấu trạng thái chưa hoàn thành hoặc reset lại cờ kiểm tra nào đó.
+         // 1. Đánh dấu đã học/nhận được một kỹ năng hoặc trạng thái nào đó bằng cách đặt skillAttackDoubledQuest = true.
+         // 2. Tăng gấp đôi sức mạnh tấn công (biến atk) bằng cách dịch trái 1 bit (atk <<= 1, tương đương nhân đôi atk).
+         // 3. Gán biến activeQuestId = -1, có thể để kết thúc nhiệm vụ hiện tại hoặc reset trạng thái nhiệm vụ.
+         // 4. Đặt questParam = 0 và questTarget = 0, có thể là reset các bộ đếm liên quan nhiệm vụ.
+         // 5. Đặt questBool = false, có thể để đánh dấu trạng thái chưa hoàn thành hoặc reset lại cờ kiểm tra nào đó.
          // 6. Gọi phương thức c("sức công nhân đôi!"), có thể là để thông báo cho người chơi về trạng thái mới: "sức công nhân đôi!".
          case 12:
-            eO = true;
-            E = E * 2;
-            currentQuestIndex = -1;
-            fz = 0;
-            fA = 0;
-            fB = false;
+            skillAttackDoubledQuest = true;
+            atk = atk * 2;
+            activeQuestId = -1;
+            questParam = 0;
+            questTarget = 0;
+            questBool = false;
             c("sức công nhân đôi!");
             break;
          case 13:
-            currentQuestIndex = 4;
-            fD = 0;
+            activeQuestId = 4;
+            questProgress = 0;
             c("NV: giết 20 con ong");
             break;
          case 14:
-            currentQuestIndex = 5;
-            fB = false;
-            fD = 0;
-            fA = 10;
+            activeQuestId = 5;
+            questBool = false;
+            questProgress = 0;
+            questTarget = 10;
             c("NV: giết heo rừng");
             break;
          case 15:
-            currentQuestIndex = -1;
-            eP = true;
-            eQ = true;
+            activeQuestId = -1;
+            skillSwimLearned = true;
+            skillWaterRunLearned = true;
             c("đã học chạy nước.");
             break;
          case 16:
-            currentQuestIndex = 6;
-            fB = false;
-            fA = 10;
+            activeQuestId = 6;
+            questBool = false;
+            questTarget = 10;
             c("NV: vượt sông");
             break;
          case 17:
-            currentQuestIndex = -1;
-            eR = true;
+            activeQuestId = -1;
+            skillTransformLearned = true;
             c("đã học biến hình.");
             break;
          case 18:
-            currentQuestIndex = 7;
-            fD = 0;
+            activeQuestId = 7;
+            questProgress = 0;
             c("NV: giết 15 dơi vàng");
             break;
          case 19:
-            eS = true;
-            de += 5000;
+            questBatReward5000Done = true;
+            gold += 5000;
             c = true;
-            currentQuestIndex = -1;
-            fz = 0;
-            fA = 0;
-            fB = false;
+            activeQuestId = -1;
+            questParam = 0;
+            questTarget = 0;
+            questBool = false;
             c("Nhận được tiền 5000$");
             break;
          case 20:
-            currentQuestIndex = 15;
-            fD = 0;
-            fB = false;
+            activeQuestId = 15;
+            questProgress = 0;
+            questBool = false;
             c("NV: tìm bí kíp");
             break;
          case 21:
-            fa = true;
-            currentQuestIndex = -1;
-            fD = 0;
-            fB = false;
+            skillStealthLegacyFlag = true;
+            activeQuestId = -1;
+            questProgress = 0;
+            questBool = false;
             c("đã có thể ẩn thân");
             break;
          case 22:
-            currentQuestIndex = 8;
+            activeQuestId = 8;
             c("NV: tìm đánh Toniku");
             break;
          case 23:
-            currentQuestIndex = -1;
-            eT = true;
+            activeQuestId = -1;
+            questTonikuBranchDone = true;
             c("Hoàn thành nhiệm vụ.");
             break;
          case 24:
-            currentQuestIndex = 9;
-            fD = 0;
+            activeQuestId = 9;
+            questProgress = 0;
             c("NV: giết 20 thổ dân");
             break;
          case 25:
-            eU = true;
-            currentQuestIndex = -1;
-            fz = 0;
-            fA = 0;
-            fB = false;
+            questMeetGirlUnlocked = true;
+            activeQuestId = -1;
+            questParam = 0;
+            questTarget = 0;
+            questBool = false;
             c("đến gặp cô bé!");
             break;
          case 26:
-            currentQuestIndex = 10;
-            fD = 0;
-            gl = true;
+            activeQuestId = 10;
+            questProgress = 0;
+            escortActive = true;
             c("NV: dẫn cô bé đi chơi");
             break;
          case 27:
-            currentQuestIndex = -1;
-            khinhCongCap2 = true;
-            fD = 0;
+            activeQuestId = -1;
+            skillWallJumpL2Learned = true;
+            questProgress = 0;
             c("Học khinh công cấp 2");
             break;
          case 28:
-            currentQuestIndex = 11;
-            fD = 0;
+            activeQuestId = 11;
+            questProgress = 0;
             c("NV: 20 hit trên không");
             break;
          case 29:
-            eX = true;
-            F <<= 2;
-            currentQuestIndex = -1;
-            fD = 0;
+            shurikenLevel2Learned = true;
+            shurikenDmg <<= 2;
+            activeQuestId = -1;
+            questProgress = 0;
             c("đã học phi tiêu cấp 2");
 
             for(int var0 = 0; var0 < 2; ++var0) {
@@ -2355,47 +2355,47 @@ public final class a extends Canvas implements Runnable, CommandListener {
             }
             break;
          case 30:
-            currentQuestIndex = 12;
-            fD = 0;
+            activeQuestId = 12;
+            questProgress = 0;
             c("NV: đánh 70 quỷ hoa đỏ");
             break;
          case 31:
-            eY = true;
-            currentQuestIndex = -1;
-            fD = 0;
+            skillSpeedBoostLearned = true;
+            activeQuestId = -1;
+            questProgress = 0;
             c("đã có thể chạy nhanh");
             break;
          case 32:
-            currentQuestIndex = 13;
-            fD = 0;
+            activeQuestId = 13;
+            questProgress = 0;
             c("NV: Giết 50 bò cạp");
             break;
          case 33:
-            eZ = true;
-            currentQuestIndex = -1;
-            fD = 0;
+            skillStandOnWaterLearned = true;
+            activeQuestId = -1;
+            questProgress = 0;
             c("đã có thể đứng nước");
             break;
          case 34:
-            currentQuestIndex = 14;
-            fD = 0;
+            activeQuestId = 14;
+            questProgress = 0;
             c("NV: Giết 30 cá đỏ");
             break;
          case 35:
-            currentQuestIndex = -1;
-            fD = 0;
-            fB = false;
+            activeQuestId = -1;
+            questProgress = 0;
+            questBool = false;
             break;
          case 36:
-            currentQuestIndex = 16;
-            fD = 0;
-            fB = false;
+            activeQuestId = 16;
+            questProgress = 0;
+            questBool = false;
             c("NV: cứu Sakura");
             break;
          case 37:
-            khinhCongCap3 = true;
-            currentQuestIndex = -1;
-            fD = 0;
+            skillWallJumpL3Learned = true;
+            activeQuestId = -1;
+            questProgress = 0;
             c("đã học khinh công cấp 3");
       }
 
@@ -2407,10 +2407,10 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static int z() {
-      int var0 = fn > 0 ? ff - 20 : ff - 40;
-      int var1 = fn > 0 ? ff + 40 : ff + 20;
-      int var2 = fg - fi - 15;
-      int var3 = fg + 5;
+      int var0 = playerFacing > 0 ? playerX - 20 : playerX - 40;
+      int var1 = playerFacing > 0 ? playerX + 40 : playerX + 20;
+      int var2 = playerY - spriteHeight - 15;
+      int var3 = playerY + 5;
 
       for(int var4 = 0; var4 < jI; ++var4) {
          if (jQ[var4] != 5 && jL[var4] >= var0 && jL[var4] <= var1 && jM[var4] >= var2 && jM[var4] <= var3) {
@@ -2446,135 +2446,135 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void C() {
-      if (gl) {
-         if (fg <= gp - 24 && g(go, gp - 1, 2)) {
-            gs = 3;
-            gq = 0;
-            gr = -7;
+      if (escortActive) {
+         if (playerY <= companionY - 24 && g(companionX, companionY - 1, 2)) {
+            companionMode = 3;
+            companionVel = 0;
+            companionAccel = -7;
             return;
          }
 
-         if (fg <= gp - 24 && g(go, gp - 25, 2)) {
-            gs = 3;
-            gq = 0;
-            gr = -10;
+         if (playerY <= companionY - 24 && g(companionX, companionY - 25, 2)) {
+            companionMode = 3;
+            companionVel = 0;
+            companionAccel = -10;
             return;
          }
 
-         if (go >= fP - 24 && go <= fP + q + 24) {
-            if (gp < fQ - 30 || gp > fQ + r + 30) {
-               gA = ff + (fn << 5) > go ? 1 : -1;
-               int var2 = ff;
-               int var6 = fg > gp ? fQ - 20 : fQ + r;
-               go = var2;
-               gp = var6;
-               gs = 3;
-               gq = gA << 2;
-               gr = -4;
+         if (companionX >= cutsceneP - 24 && companionX <= cutsceneP + q + 24) {
+            if (companionY < cutsceneQ - 30 || companionY > cutsceneQ + r + 30) {
+               companionFaceDir = playerX + (playerFacing << 5) > companionX ? 1 : -1;
+               int var2 = playerX;
+               int var6 = playerY > companionY ? cutsceneQ - 20 : cutsceneQ + r;
+               companionX = var2;
+               companionY = var6;
+               companionMode = 3;
+               companionVel = companionFaceDir << 2;
+               companionAccel = -4;
                return;
             }
 
-            if (a(ff + (fn << 5) - go) <= (A == 5 ? 10 : 60)) {
-               gs = 1;
-            } else if (fg >= gp) {
-               if (fg > gp) {
-                  if (g(go + gA * gu, gp, 2)) {
-                     gA = ff > go ? 1 : -1;
-                     gs = 2;
-                     gq = gA * P;
+            if (a(playerX + (playerFacing << 5) - companionX) <= (playerState == 5 ? 10 : 60)) {
+               companionMode = 1;
+            } else if (playerY >= companionY) {
+               if (playerY > companionY) {
+                  if (g(companionX + companionFaceDir * companionT1, companionY, 2)) {
+                     companionFaceDir = playerX > companionX ? 1 : -1;
+                     companionMode = 2;
+                     companionVel = companionFaceDir * P;
                      return;
                   }
 
-                  if (g(go + gA * 48, gp + 24, 2)) {
-                     gs = 3;
-                     gq = gA * 7;
-                     gr = -5;
+                  if (g(companionX + companionFaceDir * 48, companionY + 24, 2)) {
+                     companionMode = 3;
+                     companionVel = companionFaceDir * 7;
+                     companionAccel = -5;
                      return;
                   }
 
-                  for(int var5 = 1; var5 <= 5 && gp + var5 * 24 < iQ && !g(go + gA * 24, gp + var5 * 24, 64); ++var5) {
-                     if (g(go + gA * 24, gp + var5 * 24, 2)) {
-                        gs = 3;
-                        gq = gA << 2;
-                        gr = -4;
+                  for(int var5 = 1; var5 <= 5 && companionY + var5 * 24 < iQ && !g(companionX + companionFaceDir * 24, companionY + var5 * 24, 64); ++var5) {
+                     if (g(companionX + companionFaceDir * 24, companionY + var5 * 24, 2)) {
+                        companionMode = 3;
+                        companionVel = companionFaceDir << 2;
+                        companionAccel = -4;
                         return;
                      }
 
-                     if (g(go + gA * 48, gp + var5 * 24, 2)) {
-                        gs = 3;
-                        gq = gA * 6;
-                        gr = -4;
+                     if (g(companionX + companionFaceDir * 48, companionY + var5 * 24, 2)) {
+                        companionMode = 3;
+                        companionVel = companionFaceDir * 6;
+                        companionAccel = -4;
                         return;
                      }
                   }
 
-                  if (g(go + gA * 24, gp - 24, 2)) {
-                     gs = 3;
-                     gq = gA * 5;
-                     gr = -7;
+                  if (g(companionX + companionFaceDir * 24, companionY - 24, 2)) {
+                     companionMode = 3;
+                     companionVel = companionFaceDir * 5;
+                     companionAccel = -7;
                      return;
                   }
 
-                  if (g(go + gA * 48, gp - 24, 2)) {
-                     gs = 3;
-                     gq = gA * 6;
-                     gr = -8;
+                  if (g(companionX + companionFaceDir * 48, companionY - 24, 2)) {
+                     companionMode = 3;
+                     companionVel = companionFaceDir * 6;
+                     companionAccel = -8;
                      return;
                   }
 
-                  if (g(go + gA * 24, gp - 48, 2)) {
-                     gs = 3;
-                     gq = gA * 5;
-                     gr = -11;
+                  if (g(companionX + companionFaceDir * 24, companionY - 48, 2)) {
+                     companionMode = 3;
+                     companionVel = companionFaceDir * 5;
+                     companionAccel = -11;
                      return;
                   }
-               } else if (g(go + gA * gu, gp, 2)) {
-                  gA = ff + (fn << 5) > go ? 1 : -1;
-                  gs = 2;
-                  gq = gA * P;
+               } else if (g(companionX + companionFaceDir * companionT1, companionY, 2)) {
+                  companionFaceDir = playerX + (playerFacing << 5) > companionX ? 1 : -1;
+                  companionMode = 2;
+                  companionVel = companionFaceDir * P;
                   return;
                }
             } else {
-               if (g(go + gA * 48, gp - 24, 2)) {
-                  gs = 3;
-                  gq = gA * 5;
-                  gr = -8;
+               if (g(companionX + companionFaceDir * 48, companionY - 24, 2)) {
+                  companionMode = 3;
+                  companionVel = companionFaceDir * 5;
+                  companionAccel = -8;
                   return;
                }
 
                for(int var3 = 1; var3 <= 3; ++var3) {
-                  if (g(go + gA * 24, gp - var3 * 24, 2)) {
-                     gs = 3;
-                     gq = gA * 6;
-                     gr = -5 - var3 * 3;
+                  if (g(companionX + companionFaceDir * 24, companionY - var3 * 24, 2)) {
+                     companionMode = 3;
+                     companionVel = companionFaceDir * 6;
+                     companionAccel = -5 - var3 * 3;
                      return;
                   }
                }
 
-               if (!g(go + gA * 48, gp - 2, 64)) {
-                  if (gp + 24 >= iQ || g(go + gA * 48, gp + 24, 2)) {
-                     gs = 3;
-                     gq = gA * 7;
-                     gr = -4;
+               if (!g(companionX + companionFaceDir * 48, companionY - 2, 64)) {
+                  if (companionY + 24 >= iQ || g(companionX + companionFaceDir * 48, companionY + 24, 2)) {
+                     companionMode = 3;
+                     companionVel = companionFaceDir * 7;
+                     companionAccel = -4;
                      return;
                   }
 
                   for(int var4 = 1; var4 <= 5; ++var4) {
-                     if (gp + var4 * 24 >= iQ || g(go + gA * 24, gp + var4 * 24, 64)) {
+                     if (companionY + var4 * 24 >= iQ || g(companionX + companionFaceDir * 24, companionY + var4 * 24, 64)) {
                         return;
                      }
 
-                     if (g(go + gA * 48, gp + var4 * 24, 2)) {
-                        gs = 3;
-                        gq = gA * 6;
-                        gr = -4;
+                     if (g(companionX + companionFaceDir * 48, companionY + var4 * 24, 2)) {
+                        companionMode = 3;
+                        companionVel = companionFaceDir * 6;
+                        companionAccel = -4;
                         return;
                      }
 
-                     if (g(go + gA * 24, gp + var4 * 24, 2)) {
-                        gs = 3;
-                        gq = gA << 2;
-                        gr = -4;
+                     if (g(companionX + companionFaceDir * 24, companionY + var4 * 24, 2)) {
+                        companionMode = 3;
+                        companionVel = companionFaceDir << 2;
+                        companionAccel = -4;
                         return;
                      }
                   }
@@ -2583,22 +2583,22 @@ public final class a extends Canvas implements Runnable, CommandListener {
                }
             }
          } else {
-            gA = ff + (fn << 5) > go ? 1 : -1;
-            int var0 = ff > go ? fP - 24 : fP + q + 24;
-            int var1 = fg - 20;
+            companionFaceDir = playerX + (playerFacing << 5) > companionX ? 1 : -1;
+            int var0 = playerX > companionX ? cutsceneP - 24 : cutsceneP + q + 24;
+            int var1 = playerY - 20;
             if (!g(var0, var1, 8192)) {
-               go = var0;
-               gp = var1;
-               gs = 4;
-               gq = 4;
-               gr = 3;
+               companionX = var0;
+               companionY = var1;
+               companionMode = 4;
+               companionVel = 4;
+               companionAccel = 3;
                return;
             }
 
-            if (g(go + gA * gu, gp, 2)) {
-               gA = ff > go ? 1 : -1;
-               gs = 2;
-               gq = gA * 12;
+            if (g(companionX + companionFaceDir * companionT1, companionY, 2)) {
+               companionFaceDir = playerX > companionX ? 1 : -1;
+               companionMode = 2;
+               companionVel = companionFaceDir * 12;
                return;
             }
          }
@@ -2607,37 +2607,37 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void a(int var0, int var1) {
-      G -= var0;
-      fd = -1;
+      hp -= var0;
+      mountFacing = -1;
       c = true;
-      is = -1;
-      if (G <= 0) {
-         G = 0;
+      mapNpcFocusIndex = -1;
+      if (hp <= 0) {
+         hp = 0;
          z = -7;
          y = var1 << 2;
-         A = 6;
-         ik = -1;
-      } else if (ik == -1 && A != 23) {
+         playerState = 6;
+         mapObjectMountIndex = -1;
+      } else if (mapObjectMountIndex == -1 && playerState != 23) {
          y = var1 << 2;
          z = -2;
-         C = 0;
-         D = 0;
-         A = 7;
+         airComboTier = 0;
+         burrowSubstate = 0;
+         playerState = 7;
       }
 
-      f(ff, fg - 12, -fn);
-      a("-" + var0, 0, ff, fg - fi, 0, -2);
+      f(playerX, playerY - 12, -playerFacing);
+      a("-" + var0, 0, playerX, playerY - spriteHeight, 0, -2);
    }
 
    private static void b(int var0, int var1) {
-      ih = -1;
-      gq = var1 << 2;
-      gr = -2;
-      gB = 0;
-      gC = 0;
-      gs = 7;
-      f(go, gp - 12, -gA);
-      a("-" + var0, 0, go, gp - gv, 0, -2);
+      npcInteractIndex = -1;
+      companionVel = var1 << 2;
+      companionAccel = -2;
+      companionB = 0;
+      companionC = 0;
+      companionMode = 7;
+      f(companionX, companionY - 12, -companionFaceDir);
+      a("-" + var0, 0, companionX, companionY - companionT2, 0, -2);
    }
 
    private static boolean a(int var0, int var1, int var2) {
@@ -2655,9 +2655,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
             cr[var0] = 0;
             cF[var0] = 1;
             u(ac[cE[var0]]);
-            a(cv[var0], cw[var0], -(cI[var0] << 2), -4, aa[cE[var0]] + w % 10);
-            if (w % 20 > 5) {
-               a(cv[var0], cw[var0], -(cI[var0] << 3), -5, ab[cE[var0]] << 2, (w + 1) % 2);
+            a(cv[var0], cw[var0], -(cI[var0] << 2), -4, aa[cE[var0]] + mapSubIdLegacy % 10);
+            if (mapSubIdLegacy % 20 > 5) {
+               a(cv[var0], cw[var0], -(cI[var0] << 3), -5, ab[cE[var0]] << 2, (mapSubIdLegacy + 1) % 2);
             }
 
             return true;
@@ -2675,8 +2675,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    private static boolean c(int var0, int var1) {
       if (gT == 1 || gT == 2) {
-         if ((ha -= var0) <= 0) {
-            ha = 0;
+         if ((hpCurrentAlt -= var0) <= 0) {
+            hpCurrentAlt = 0;
             gY = -5;
             gS = -(var1 << 3);
             hc = 0;
@@ -2686,7 +2686,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
             a(gQ, gR, -4, -8, 50);
             a(gQ, gR, 5, -9, 50);
             a(gQ, gR, 0, -10, 50);
-            if (currentQuestIndex == 5) {
+            if (activeQuestId == 5) {
                e(gQ, gR);
             }
 
@@ -2698,10 +2698,10 @@ public final class a extends Canvas implements Runnable, CommandListener {
          gT = 7;
          hc = 10;
          gV = 0;
-         if (var0 <= F) {
+         if (var0 <= shurikenDmg) {
             gZ = 0;
          } else {
-            gZ = 2 + w % 5;
+            gZ = 2 + mapSubIdLegacy % 5;
          }
       }
 
@@ -2709,17 +2709,17 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void d(int var0, int var1) {
-      hh -= var0;
+      regenTimer -= var0;
       dJ[0] = -1;
-      if (hh <= 0) {
-         hh = 0;
+      if (regenTimer <= 0) {
+         regenTimer = 0;
       } else {
          dC[0] = var1 << 2;
          dD[0] = -2;
          dF[0] = 0;
          dG[0] = 0;
          dE[0] = 7;
-         f(dA[0], dB[0] - 12, fn);
+         f(dA[0], dB[0] - 12, playerFacing);
          a("-" + var0, 0, dA[0], dB[0] - 32, 0, -2);
       }
    }
@@ -2787,14 +2787,14 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    public static final void c(int var0) {
-      ij = 0;
-      int var1 = ik == -1 ? 0 : 1;
+      mapObjectBundleCount = 0;
+      int var1 = mapObjectMountIndex == -1 ? 0 : 1;
       if ((var0 == 0 || var0 == 1 || var0 == 7 || var0 == 5 || var0 == 18 || var0 >= 94) && var1 == 1) {
-         ij = 1;
+         mapObjectBundleCount = 1;
          D();
-         b(0, ff, fg);
-         ik = 0;
-         in[ik] = fn;
+         b(0, playerX, playerY);
+         mapObjectMountIndex = 0;
+         mapObjFacing[mapObjectMountIndex] = playerFacing;
       }
 
       if (var0 == 2) {
@@ -2867,19 +2867,19 @@ public final class a extends Canvas implements Runnable, CommandListener {
          }
       }
 
-      il = new int[ij];
-      im = new int[ij];
-      in = new int[ij];
-      io = new int[ij];
-      ip = new int[ij];
-      iq = new int[ij];
+      mapObjTileX = new int[mapObjectBundleCount];
+      mapObjTileY = new int[mapObjectBundleCount];
+      mapObjFacing = new int[mapObjectBundleCount];
+      mapObjAnim = new int[mapObjectBundleCount];
+      mapObjType = new int[mapObjectBundleCount];
+      mapObjExtra = new int[mapObjectBundleCount];
    }
 
    private static void b(int var0, int var1, int var2) {
-      il[var0] = var1 * jf + 12;
-      im[var0] = var2 * jf;
-      io[var0] = 0;
-      in[var0] = 1;
+      mapObjTileX[var0] = var1 * jf + 12;
+      mapObjTileY[var0] = var2 * jf;
+      mapObjAnim[var0] = 0;
+      mapObjFacing[var0] = 1;
    }
 
    public static void g() {
@@ -2890,30 +2890,30 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    public static final void d(int var0) {
-      ir = 0;
+      mapNpcBundleCount = 0;
       if (var0 == 1) {
-         ir = 2;
+         mapNpcBundleCount = 2;
          E();
          c(0, 21, 9);
          c(1, 13, 8);
       }
 
       if (var0 == 11) {
-         ir = 2;
+         mapNpcBundleCount = 2;
          E();
          c(0, 33, 7);
          c(1, 44, 10);
       }
 
       if (var0 == 5) {
-         ir = 2;
+         mapNpcBundleCount = 2;
          E();
          c(0, 5, 46);
          c(1, 15, 46);
       }
 
       if (var0 == 97) {
-         ir = 4;
+         mapNpcBundleCount = 4;
          E();
          c(0, 3, 6);
          c(1, 7, 4);
@@ -2931,32 +2931,32 @@ public final class a extends Canvas implements Runnable, CommandListener {
          }
       }
 
-      it = new int[ir];
-      iu = new int[ir];
-      iv = new int[ir];
-      iw = new int[ir];
-      ix = new int[ir];
-      iy = new int[ir];
-      iz = new int[ir];
+      mapNpcTileX = new int[mapNpcBundleCount];
+      mapNpcTileY = new int[mapNpcBundleCount];
+      mapNpcDir = new int[mapNpcBundleCount];
+      mapNpcIw = new int[mapNpcBundleCount];
+      mapNpcIx = new int[mapNpcBundleCount];
+      mapNpcIy = new int[mapNpcBundleCount];
+      mapNpcIz = new int[mapNpcBundleCount];
    }
 
-   /** Ensure NPC arrays sized for {@link #ir} (save-load can set ir without calling map init). */
+   /** Ensure NPC arrays sized for {@link #mapNpcBundleCount} (save-load can set mapNpcBundleCount without calling map init). */
    private static void ensureIrNpcArraysSized() {
-      if (ir <= 0) {
+      if (mapNpcBundleCount <= 0) {
          return;
       }
 
-      if (it == null || iu == null || iv == null || iw == null || ix == null || iy == null || iz == null
-         || it.length != ir || iu.length != ir || iv.length != ir || iw.length != ir || ix.length != ir
-         || iy.length != ir || iz.length != ir) {
+      if (mapNpcTileX == null || mapNpcTileY == null || mapNpcDir == null || mapNpcIw == null || mapNpcIx == null || mapNpcIy == null || mapNpcIz == null
+         || mapNpcTileX.length != mapNpcBundleCount || mapNpcTileY.length != mapNpcBundleCount || mapNpcDir.length != mapNpcBundleCount || mapNpcIw.length != mapNpcBundleCount || mapNpcIx.length != mapNpcBundleCount
+         || mapNpcIy.length != mapNpcBundleCount || mapNpcIz.length != mapNpcBundleCount) {
          E();
       }
    }
 
    private static void c(int var0, int var1, int var2) {
-      it[var0] = var1 * jf + 12;
-      iu[var0] = var2 * jf + 24;
-      iv[var0] = 1;
+      mapNpcTileX[var0] = var1 * jf + 12;
+      mapNpcTileY[var0] = var2 * jf + 24;
+      mapNpcDir[var0] = 1;
    }
 
    public static final void h() {
@@ -2994,31 +2994,31 @@ public final class a extends Canvas implements Runnable, CommandListener {
          ++bz;
       }
 
-      fR = (iN - 1) * jf - q;
-      fS = (iO - 1) * jf - r;
-      fP = fJ = ff - bD + bG * fn;
-      fQ = fK = fg - bF;
-      if (fP < 0) {
-         fP = 0;
+      cutsceneR = (iN - 1) * jf - q;
+      cutsceneS = (iO - 1) * jf - r;
+      cutsceneP = cutsceneJ = playerX - bD + bG * playerFacing;
+      cutsceneQ = cutsceneK = playerY - bF;
+      if (cutsceneP < 0) {
+         cutsceneP = 0;
       }
 
-      if (fP > fR) {
-         fP = fR;
+      if (cutsceneP > cutsceneR) {
+         cutsceneP = cutsceneR;
       }
 
-      if (fQ < 0) {
-         fQ = 0;
+      if (cutsceneQ < 0) {
+         cutsceneQ = 0;
       }
 
-      if (fQ > fS) {
-         fQ = fS;
+      if (cutsceneQ > cutsceneS) {
+         cutsceneQ = cutsceneS;
       }
 
-      if ((bx = fP / jf - 1) < 0) {
+      if ((bx = cutsceneP / jf - 1) < 0) {
          bx = 0;
       }
 
-      by = fQ / jf;
+      by = cutsceneQ / jf;
       bB = bx + bz;
       bC = by + bA;
       if (by < 0) {
@@ -3032,7 +3032,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    public static final void i() {
-      fd = -1;
+      mountFacing = -1;
       if (ee == null) {
          try {
             ee = new Image[20];
@@ -3057,13 +3057,13 @@ public final class a extends Canvas implements Runnable, CommandListener {
       }
 
       F();
-      fh = 22;
-      fi = 32;
-      fj = fh >> 1;
-      fk = fi >> 1;
-      fl = fh >> 2;
-      fm = fi >> 2;
-      fE = -1;
+      playerTimer0 = 22;
+      spriteHeight = 32;
+      halfWidth = playerTimer0 >> 1;
+      halfHeight = spriteHeight >> 1;
+      playerTimer1 = playerTimer0 >> 2;
+      playerTimer2 = spriteHeight >> 2;
+      interactTargetId = -1;
    }
 
    private static void F() {
@@ -3072,7 +3072,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
       for(int var0 = 0; var0 < 11; ++var0) {
          try {
-            eC[var0] = Image.createImage("/c/w" + var0 + "t" + x + ".png");
+            eC[var0] = Image.createImage("/c/w" + var0 + "t" + equippedWeaponIndex + ".png");
          } catch (Exception var3) {
             try {
                eC[var0] = Image.createImage("/c/w" + var0 + "t0.png");
@@ -3116,10 +3116,10 @@ public final class a extends Canvas implements Runnable, CommandListener {
          }
 
          (eD = new Image[2])[1] = Image.createImage("/u/wpt1.png");
-         if (x == 0) {
+         if (equippedWeaponIndex == 0) {
             eD[0] = Image.createImage("/u/wpt0.png");
          } else {
-            eD[0] = Image.createImage("/u/wpt" + (x + 1) + ".png");
+            eD[0] = Image.createImage("/u/wpt" + (equippedWeaponIndex + 1) + ".png");
          }
       } catch (Exception var0) {
       }
@@ -3199,7 +3199,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
          for(int var0 = 0; var0 < 2; ++var0) {
             try {
-               if (eX) {
+               if (shurikenLevel2Learned) {
                   el[var0] = Image.createImage("/c/pt" + (var0 + 2) + ".png");
                } else {
                   el[var0] = Image.createImage("/c/pt" + var0 + ".png");
@@ -3241,7 +3241,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    private static void x(int var0) {
       d = 2;
-      v = var0;
+      mapId = var0;
       Midlet.d = 1;
       DebugRefactor.onMapLoading(var0);
       aw();
@@ -3249,12 +3249,12 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    public static final void f(int var0) {
-      if (gl) {
-         gn = var0;
+      if (escortActive) {
+         escortMapId = var0;
       }
 
-      if (gn == var0) {
-         ih = -1;
+      if (escortMapId == var0) {
+         npcInteractIndex = -1;
          if (em == null) {
             try {
                em = new Image[8];
@@ -3278,17 +3278,17 @@ public final class a extends Canvas implements Runnable, CommandListener {
             }
          }
 
-         gu = 22;
-         gv = 32;
-         gw = gu >> 1;
-         gx = gv >> 1;
-         gy = gu >> 2;
-         gz = gv >> 2;
-         if (gl) {
-            go = ff - fn * 10;
-            gp = fg;
-            gA = fn;
-            gs = 4;
+         companionT1 = 22;
+         companionT2 = 32;
+         companionT3 = companionT1 >> 1;
+         companionT4 = companionT2 >> 1;
+         companionT5 = companionT1 >> 2;
+         companionT6 = companionT2 >> 2;
+         if (escortActive) {
+            companionX = playerX - playerFacing * 10;
+            companionY = playerY;
+            companionFaceDir = playerFacing;
+            companionMode = 4;
          }
 
       }
@@ -3316,7 +3316,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
          H();
          a(0, 0, 14, 17, 130, 11, 22, new String[]{"Chào, cậu là ai thế, mình chưa từng gặp bạn thì phải?", "Nói cậu nghe nhé, thầy cô trường này khó tính lắm đó.", "Cẩn thận với ông thầy Hiroyaki nhé. Đừng chọc giận ổng."});
          a(1, 1, 24, 17, 160, 15, 30, new String[]{"Mình là MinhXP, lớp trưởng lớp kiếm thuật.", "Kiếm là vũ khí lợi hại nhất của một ninja đấy bạn biết không?", "Khu vực luyện tập nằm ở bên trái. Hãy sang đấy tập luyện nhiều hơn nữa."});
-         if (eR) {
+         if (skillTransformLearned) {
             a(2, 6, 17, 12, 200, 7, 29, new String[]{"Thằng bên kia là sát thủ giả mạo.", "Ta đây mới là ninja sát thủ thứ thiệt đây!"});
          } else {
             a(2, 2, 17, 12, 200, 7, 29, new String[]{"Chào, tao tên là Tonic, mày là thằng nào?", "Nhìn lão hiệu trưởng kìa, lão có một hũ rượu trông hấp dẫn quá!", "Nếu muốn rủ tao đi nhậu thì ok, còn không thì biến đi.", "À, nếu mày có thấy con chó của tao thì báo tao 1 tiếng nhé."});
@@ -3333,8 +3333,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
          dv = 3;
          H();
          a(0, 5, 35, 9, 40, 33, 36, new String[]{"Bạn có thể nhảy lên cây cầu này nếu đã học xong khinh công từ cô Ayumi xinh đẹp."});
-         if (eR) {
-            a(1, 6, 25, 10, 40, 22, 28, new String[]{"Ta đây là một ninja sát thủ!", "Ha ha ha!"});
+         if (skillTransformLearned) {
+            a(1, 6, 25, 10, 40, 22, 28, new String[]{"Ta đây là một ninja sát thủ!", "Ha hpCurrentAlt hpCurrentAlt!"});
          } else {
             a(1, 2, 25, 10, 40, 22, 28, new String[]{"Mày đã học khinh công rồi hả?", "À, mày có thấy con chó của tao chạy đâu đâu không?"});
          }
@@ -3348,7 +3348,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
          H();
          a(0, 3, 16, 12, 60, 14, 21, new String[]{"Cậu nhìn thấy chiếc xe máy kia không?", "Phải có bằng lái từ thầy chủ nhiệm bạn mới có thể chạy được."});
          a(1, 4, 8, 12, 50, 2, 15, new String[]{"Thằng nhà quê kia, mày đi đâu đấy?"});
-         if (eR) {
+         if (skillTransformLearned) {
             a(2, 6, 29, 13, 200, 27, 40, new String[]{"Ninja sát thủ là ta - Thiên hạ vô địch!"});
          } else {
             a(2, 2, 29, 13, 200, 27, 40, new String[]{"Mày có thấy con chó của tao ở đâu không?"});
@@ -3449,7 +3449,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
       d = 2;
       aw();
       Midlet.d = 3;
-      v = 99;
+      mapId = 99;
 
       try {
          eB = Image.createImage("/u/tt.png");
@@ -3629,8 +3629,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    public static void i(int var0) {
-      hb = 1200;
-      ha = 1200;
+      hpMaxBaseline = 1200;
+      hpCurrentAlt = 1200;
       gP = 30;
       gO = false;
       if (var0 == 4) {
@@ -3702,7 +3702,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    public static void j(int var0) {
       hK = false;
-      if (var0 == 97 && !eG) {
+      if (var0 == 97 && !unlockedMap97) {
          hK = true;
          ey = new Image[4];
 
@@ -3720,7 +3720,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
          hY = 2;
          hZ = -1;
          hO = 8000;
-         hN = 8000;
+         bossThreshold = 8000;
       }
 
    }
@@ -3747,7 +3747,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    public static void k(int var0) {
       hj = false;
-      if (var0 == 95 && !eI) {
+      if (var0 == 95 && !unlockedMap95) {
          hj = true;
          eA = new Image[6];
 
@@ -3765,10 +3765,10 @@ public final class a extends Canvas implements Runnable, CommandListener {
          hr = 264;
          hu = 120;
          hv = 504;
-         hs = 0;
+         scriptHsStep = 0;
          ht = -1;
          ho = 90000;
-         hn = 90000;
+         idleTimerLong = 90000;
          hE = new int[6];
          hF = new int[6];
          hI = new int[6];
@@ -3787,14 +3787,14 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    public static void l(int var0) {
       hd = false;
-      if (var0 == 96 && !eH) {
+      if (var0 == 96 && !unlockedMap96) {
          hd = true;
          dv = 1;
          H();
          a(0, 2, 5, 11, 200, 4, 22, (String[])null);
          y(3);
          hi = 15000;
-         hh = 15000;
+         regenTimer = 15000;
          hg = 120;
          dv = 0;
          dE[0] = 0;
@@ -3805,246 +3805,246 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    // public static void m(int var0) {
    //    if (var0 == 94) {
-   //       dx = true;
-   //       ff = 24;
-   //       fg = 288;
-   //       gn = 94;
-   //       go = 12;
-   //       gp = 288;
-   //       gA = 1;
-   //       gl = false;
-   //       fn = 1;
+   //       activationTrialFlag = true;
+   //       playerX = 24;
+   //       playerY = 288;
+   //       escortMapId = 94;
+   //       companionX = 12;
+   //       companionY = 288;
+   //       companionFaceDir = 1;
+   //       escortActive = false;
+   //       playerFacing = 1;
    //    }
 
-   //    if (var0 == 0 && currentQuestIndex == 15 && fB) {
-   //       gn = -1;
-   //       gl = false;
+   //    if (var0 == 0 && activeQuestId == 15 && questBool) {
+   //       escortMapId = -1;
+   //       escortActive = false;
    //    }
 
-   //    if (var0 == 0 && currentQuestIndex == 16 && fc) {
-   //       fb = true;
-   //       gn = 0;
-   //       gl = true;
-   //       fv = true;
-   //       currentQuestIndex = -1;
-   //       ff = 984;
-   //       fg = 408;
+   //    if (var0 == 0 && activeQuestId == 16 && questGeninGraduated) {
+   //       questGeninFlagFB = true;
+   //       escortMapId = 0;
+   //       escortActive = true;
+   //       gameModeFv = true;
+   //       activeQuestId = -1;
+   //       playerX = 984;
+   //       playerY = 408;
    //    } else {
-   //       if (var0 == 95 && !eI) {
-   //          gl = false;
-   //          go = 599;
-   //          gp = 264;
-   //          gA = -1;
-   //          gn = 95;
+   //       if (var0 == 95 && !unlockedMap95) {
+   //          escortActive = false;
+   //          companionX = 599;
+   //          companionY = 264;
+   //          companionFaceDir = -1;
+   //          escortMapId = 95;
    //       }
 
    //    }
    // }
    
    public static void setCurrentQuestIndex(int value) {
-      currentQuestIndex = value;
+      activeQuestId = value;
    }
 
    public static int getCurrentQuestIndex() {
-      return currentQuestIndex;
+      return activeQuestId;
    }
    public static boolean isFv() {
-      return fv;
+      return gameModeFv;
    }
 
    public static void setFv(boolean value) {
-      fv = value;
+      gameModeFv = value;
    }
    public static boolean isEI() {
-      return eI;
+      return unlockedMap95;
    }
 
    public static void setEI(boolean value) {
-      eI = value;
+      unlockedMap95 = value;
    }
    public static boolean isFc() {
-      return fc;
+      return questGeninGraduated;
    }
 
    public static void setFc(boolean value) {
-      fc = value;
+      questGeninGraduated = value;
    }
 
    public static boolean isFb() {
-      return fb;
+      return questGeninFlagFB;
    }
 
    public static void setFb(boolean value) {
-      fb = value;
+      questGeninFlagFB = value;
    }
 
    public static boolean isDx() {
-      return dx;
+      return activationTrialFlag;
    }
 
    public static void setDx(boolean value) {
-      dx = value;
+      activationTrialFlag = value;
    }
    public static int getFf() {
-      return ff;
+      return playerX;
    }
 
    public static void setFf(int value) {
-      ff = value;
+      playerX = value;
    }
 
    public static int getFg() {
-      return fg;
+      return playerY;
    }
 
    public static void setFg(int value) {
-      fg = value;
+      playerY = value;
    }
 
    public static int getGn() {
-      return gn;
+      return escortMapId;
    }
 
    public static void setGn(int value) {
-      gn = value;
+      escortMapId = value;
    }
 
    public static int getGo() {
-      return go;
+      return companionX;
    }
 
    public static void setGo(int value) {
-      go = value;
+      companionX = value;
    }
 
    public static int getGp() {
-      return gp;
+      return companionY;
    }
 
    public static void setGp(int value) {
-      gp = value;
+      companionY = value;
    }
 
    public static int getGA() {
-      return gA;
+      return companionFaceDir;
    }
 
    public static void setGA(int value) {
-      gA = value;
+      companionFaceDir = value;
    }
 
    public static boolean isGl() {
-      return gl;
+      return escortActive;
    }
 
    public static void setGl(boolean value) {
-      gl = value;
+      escortActive = value;
    }
 
    public static int getFn() {
-      return fn;
+      return playerFacing;
    }
 
    public static void setFn(int value) {
-      fn = value;
+      playerFacing = value;
    }
 
    public static void n(int var0) {
-      ifFlag = false;
+      scriptRunnerActive = false;
       fT = false;
-      fI = 0;
-      if (var0 == 15 && currentQuestIndex == 15) {
+      cutsceneI = 0;
+      if (var0 == 15 && activeQuestId == 15) {
          e(216, 432);
       }
 
-      if (var0 == 8 && currentQuestIndex == 6) {
+      if (var0 == 8 && activeQuestId == 6) {
          e(72, 240);
       }
 
-      if (var0 == 4 && eF) {
+      if (var0 == 4 && hasSaveGame) {
          T = true;
-         khinhCong = true;
-         eR = true;
-         eQ = true;
+         skillWallJumpLearned = true;
+         skillTransformLearned = true;
+         skillWaterRunLearned = true;
          skillSetAmSatLearned(true);
          skillSetDashLearned(true);
          syncDashDurationToLevel();
-         H = 1000;
-         G = 1000;
-         J = 2000;
-         I = 2000;
-         E = 25;
-         A = 4;
-         hb = 500;
-         ha = 500;
+         hpMax = 1000;
+         hp = 1000;
+         mpMax = 2000;
+         mp = 2000;
+         atk = 25;
+         playerState = 4;
+         hpMaxBaseline = 500;
+         hpCurrentAlt = 500;
          D(0);
       } else if (var0 == 99) {
-         eF = true;
-         dx = true;
-         ff = 108;
-         fg = 312;
-         fn = -1;
+         hasSaveGame = true;
+         activationTrialFlag = true;
+         playerX = 108;
+         playerY = 312;
+         playerFacing = -1;
          D(1);
       } else if (var0 == 94) {
          D(10);
-      } else if (var0 == 0 && eF) {
+      } else if (var0 == 0 && hasSaveGame) {
          T = false;
-         khinhCong = false;
-         eQ = false;
-         eR = false;
+         skillWallJumpLearned = false;
+         skillWaterRunLearned = false;
+         skillTransformLearned = false;
          skillSetDashLearned(false);
          skillSetAmSatLearned(false);
-         dashLevel = 1;
+         skillDashLevel = 1;
          syncSkillsFromLegacyFlags();
-         fy = false;
-         G = 200;
-         H = 200;
-         I = 200;
-         J = 200;
-         hb = 1000;
-         ha = 1000;
-         N = 0;
-         characterLevel = 1;
-         E = 20;
-         ff = 864;
-         fg = 336;
+         genderSpriteFlag = false;
+         hp = 200;
+         hpMax = 200;
+         mp = 200;
+         mpMax = 200;
+         hpMaxBaseline = 1000;
+         hpCurrentAlt = 1000;
+         expInLevel = 0;
+         level = 1;
+         atk = 20;
+         playerX = 864;
+         playerY = 336;
 
          for(int var1 = 0; var1 < 19; ++var1) {
-            W[var1] = false;
+            mapUnlockFlags[var1] = false;
          }
 
-         W[0] = true;
-         fn = -1;
-         dx = false;
+         mapUnlockFlags[0] = true;
+         playerFacing = -1;
+         activationTrialFlag = false;
          dy = false;
          D(2);
-         eF = false;
-      } else if (var0 == 3 && currentQuestIndex == 3 && !gl) {
+         hasSaveGame = false;
+      } else if (var0 == 3 && activeQuestId == 3 && !escortActive) {
          D(3);
-      } else if (var0 == 0 && currentQuestIndex == 3 && gl) {
+      } else if (var0 == 0 && activeQuestId == 3 && escortActive) {
          D(4);
-      } else if (var0 == 97 && !eG) {
+      } else if (var0 == 97 && !unlockedMap97) {
          D(5);
-      } else if (var0 == 96 && !eH) {
+      } else if (var0 == 96 && !unlockedMap96) {
          D(6);
-      } else if (var0 == 95 && !eI) {
+      } else if (var0 == 95 && !unlockedMap95) {
          D(7);
       } else if (var0 == 101) {
          D(8);
-         fQ = fK = 336 - r;
-         fJ = 24;
-         fP = 24;
-      } else if (var0 == 9 && currentQuestIndex == 10) {
+         cutsceneQ = cutsceneK = 336 - r;
+         cutsceneJ = 24;
+         cutsceneP = 24;
+      } else if (var0 == 9 && activeQuestId == 10) {
          D(9);
       }
 
-      if (var0 == 97 && eG) {
+      if (var0 == 97 && unlockedMap97) {
          for(int var2 = 0; var2 <= 6; ++var2) {
             i(24, var2, 0);
          }
       }
 
-      if (var0 == 96 && eH) {
+      if (var0 == 96 && unlockedMap96) {
          for(int var3 = 0; var3 <= 11; ++var3) {
             i(24, var3, 0);
          }
@@ -4072,7 +4072,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void z(int var0) {
-      if (dB[0] == fg && a(dA[0] + (dK[0] << 5) - ff) < 25) {
+      if (dB[0] == playerY && a(dA[0] + (dK[0] << 5) - playerX) < 25) {
          a(hg, dK[0]);
       }
 
@@ -4082,7 +4082,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
       int var1;
       int var6;
       label29: {
-         var1 = E;
+         var1 = atk;
          var6 = dM[var0];
          int var4 = -dK[var0];
          int var2 = var6;
@@ -4149,15 +4149,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
          var0.setColor(i);
          var0.fillRect(0, 0, q, p);
 
-         for(int var2 = -((fP >> 1) % 24); var2 < q; var2 += 24) {
+         for(int var2 = -((cutsceneP >> 1) % 24); var2 < q; var2 += 24) {
             var0.drawImage(s[0], var2, j, 0);
          }
 
-         for(int var3 = -((fP >> 2) % 24); var3 < q; var3 += 24) {
+         for(int var3 = -((cutsceneP >> 2) % 24); var3 < q; var3 += 24) {
             var0.drawImage(s[1], var3, k, 0);
          }
 
-         for(int var4 = -((fP >> 4) % 64); var4 < q; var4 += 64) {
+         for(int var4 = -((cutsceneP >> 4) % 64); var4 < q; var4 += 64) {
             var0.drawImage(s[3], var4, m, 0);
          }
 
@@ -4167,7 +4167,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
             var0.drawImage(t, e[var5], f[var5], 3);
          }
 
-         for(int var6 = -((fP >> 3) % 192); var6 < q; var6 += 192) {
+         for(int var6 = -((cutsceneP >> 3) % 192); var6 < q; var6 += 192) {
             var0.drawImage(s[2], var6, l, 0);
          }
 
@@ -4186,28 +4186,28 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void b(Graphics var0) {
-      if (fx) {
-         if (w % 20 > 2) {
+      if (gameModeFx) {
+         if (mapSubIdLegacy % 20 > 2) {
             B = 25;
          } else {
             B = 26;
          }
       }
 
-      if (fn == 1) {
-         var0.drawImage(ep[aq[B][0][0]], ff + aq[B][0][1], fg - aq[B][0][2], 0);
-         var0.drawImage(er[aq[B][1][0]], ff + aq[B][1][1], fg - aq[B][1][2], 0);
-         var0.drawImage(ee[aq[B][2][0]], ff + aq[B][2][1], fg - aq[B][2][2], 0);
-         if (fd != -1) {
-            var0.drawImage(eC[fd], ff - ar[fd], fg - as[fd], 0);
+      if (playerFacing == 1) {
+         var0.drawImage(ep[aq[B][0][0]], playerX + aq[B][0][1], playerY - aq[B][0][2], 0);
+         var0.drawImage(er[aq[B][1][0]], playerX + aq[B][1][1], playerY - aq[B][1][2], 0);
+         var0.drawImage(ee[aq[B][2][0]], playerX + aq[B][2][1], playerY - aq[B][2][2], 0);
+         if (mountFacing != -1) {
+            var0.drawImage(eC[mountFacing], playerX - ar[mountFacing], playerY - as[mountFacing], 0);
             return;
          }
       } else {
-         var0.drawRegion(ep[aq[B][0][0]], 0, 0, ep[aq[B][0][0]].getWidth(), ep[aq[B][0][0]].getHeight(), 2, ff - aq[B][0][1], fg - aq[B][0][2], 24);
-         var0.drawRegion(er[aq[B][1][0]], 0, 0, er[aq[B][1][0]].getWidth(), er[aq[B][1][0]].getHeight(), 2, ff - aq[B][1][1], fg - aq[B][1][2], 24);
-         var0.drawRegion(ee[aq[B][2][0]], 0, 0, ee[aq[B][2][0]].getWidth(), ee[aq[B][2][0]].getHeight(), 2, ff - aq[B][2][1], fg - aq[B][2][2], 24);
-         if (fd != -1) {
-            var0.drawRegion(eC[fd], 0, 0, eC[fd].getWidth(), eC[fd].getHeight(), 2, ff + ar[fd], fg - as[fd], 24);
+         var0.drawRegion(ep[aq[B][0][0]], 0, 0, ep[aq[B][0][0]].getWidth(), ep[aq[B][0][0]].getHeight(), 2, playerX - aq[B][0][1], playerY - aq[B][0][2], 24);
+         var0.drawRegion(er[aq[B][1][0]], 0, 0, er[aq[B][1][0]].getWidth(), er[aq[B][1][0]].getHeight(), 2, playerX - aq[B][1][1], playerY - aq[B][1][2], 24);
+         var0.drawRegion(ee[aq[B][2][0]], 0, 0, ee[aq[B][2][0]].getWidth(), ee[aq[B][2][0]].getHeight(), 2, playerX - aq[B][2][1], playerY - aq[B][2][2], 24);
+         if (mountFacing != -1) {
+            var0.drawRegion(eC[mountFacing], 0, 0, eC[mountFacing].getWidth(), eC[mountFacing].getHeight(), 2, playerX + ar[mountFacing], playerY - as[mountFacing], 24);
          }
       }
 
@@ -4222,22 +4222,22 @@ public final class a extends Canvas implements Runnable, CommandListener {
          var0.drawRect(23, 8, bp + 1, 4);
          var0.drawRect(23, 14, bp + 1, 3);
          var0.setColor(16711680);
-         int var1 = G * bp / H;
+         int var1 = hp * bp / hpMax;
          var0.fillRect(24, 3, var1, 3);
          var0.setColor(5570560);
          var0.fillRect(var1 + 24, 3, bp - var1, 3);
          var0.setColor(255);
-         var1 = I * bp / J;
+         var1 = mp * bp / mpMax;
          var0.fillRect(24, 9, var1, 3);
          var0.setColor(5570560);
          var0.fillRect(var1 + 24, 9, bp - var1, 3);
          var0.setColor(7274435);
-         var1 = N * bp / ai[characterLevel - 1];
+         var1 = expInLevel * bp / ai[level - 1];
          var0.fillRect(24, 15, var1, 2);
          var0.setColor(19506);
          var0.fillRect(var1 + 24, 15, bp - var1, 2);
-         Midlet.a(var0, "lv:" + characterLevel, 2, br, 7, 0);
-         Midlet.a(var0, de + "$", 1, bs, 7, 0);
+         Midlet.a(var0, "lv:" + level, 2, br, 7, 0);
+         Midlet.a(var0, gold + "$", 1, bs, 7, 0);
       }
    }
 
@@ -4288,26 +4288,26 @@ public final class a extends Canvas implements Runnable, CommandListener {
          var0.fillRect(bk, bh + 13, bm, 1);
          var0.drawImage(eg[0], 0, bh, 0);
          var0.drawImage(eg[1], 0 + bi, bh, 24);
-         int var1 = G * bp / H;
+         int var1 = hp * bp / hpMax;
          var0.setColor(7798784);
          var0.fillRect(bn, bo, var1, 2);
          var0.setColor(13369344);
          var0.fillRect(bn, bo + 1, var1, 4);
-         var1 = I * bp / J;
+         var1 = mp * bp / mpMax;
          var0.setColor(119);
          var0.fillRect(bn, bo + 12, var1, 2);
          var0.setColor(204);
          var0.fillRect(bn, bo + 14, var1, bt - 2);
-         Midlet.a(var0, "" + de, 1, bi - 18, bh + 6, 2);
-         var1 = N * bq / ai[characterLevel - 1];
+         Midlet.a(var0, "" + gold, 1, bi - 18, bh + 6, 2);
+         var1 = expInLevel * bq / ai[level - 1];
          var0.setColor(94373);
          var0.fillRect(31, bh + 31, var1, 1);
          var0.setColor(65535);
          var0.fillRect(31, bh + 32, var1, 1);
-         Midlet.a(var0, "" + characterLevel, 2, 26, bh + 11, 2);
-         var0.drawImage(eD[fe], 43, bh + 16, 3);
-         Midlet.a(var0, "" + (V[0] + V[1] + V[2]), 2, bi - 29, bh + 19, 2);
-         Midlet.a(var0, "" + (V[3] + V[4] + V[5]), 2, bi - 9, bh + 19, 2);
+         Midlet.a(var0, "" + level, 2, 26, bh + 11, 2);
+         var0.drawImage(eD[mountSubstate], 43, bh + 16, 3);
+         Midlet.a(var0, "" + (inventoryCounts[0] + inventoryCounts[1] + inventoryCounts[2]), 2, bi - 29, bh + 19, 2);
+         Midlet.a(var0, "" + (inventoryCounts[3] + inventoryCounts[4] + inventoryCounts[5]), 2, bi - 9, bh + 19, 2);
       }
    }
 
@@ -4334,7 +4334,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
       var0.translate(-var0.getTranslateX(), -var0.getTranslateY());
       var0.setClip(-1, -1, aU + 2, aV + 2);
       iB = iF[iD].length;
-      int var1 = iH - fQ - (iB << 4);
+      int var1 = iH - cutsceneQ - (iB << 4);
       boolean var2 = true;
       if (var1 < 10) {
          var2 = false;
@@ -4365,11 +4365,11 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
       var0.setColor(0);
       var0.fillRect(0, bh + 33, bi, 15);
-      if (var2 && iG > fP + 10 && iG < fP + q - 10) {
-         var0.drawImage(ei, iG - fP, iH - fQ + 2, 17);
+      if (var2 && iG > cutsceneP + 10 && iG < cutsceneP + q - 10) {
+         var0.drawImage(ei, iG - cutsceneP, iH - cutsceneQ + 2, 17);
       }
 
-      if (w % 10 < 8) {
+      if (mapSubIdLegacy % 10 < 8) {
          Midlet.a(var0, "Tiếp tục", bD, aV - 13, 2);
       }
 
@@ -4377,7 +4377,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    private static void g(Graphics var0) {
       for(int var1 = 0; var1 < dv; ++var1) {
-         if (dA[var1] + fj >= fP && dA[var1] - fj <= fP + q && dB[var1] >= fQ && dB[var1] - fi <= fQ + r) {
+         if (dA[var1] + halfWidth >= cutsceneP && dA[var1] - halfWidth <= cutsceneP + q && dB[var1] >= cutsceneQ && dB[var1] - spriteHeight <= cutsceneQ + r) {
             if (dK[var1] == 1) {
                var0.drawImage(et[dI[var1]][aH[dH[var1]][0][0]], dA[var1] + aH[dH[var1]][0][1], dB[var1] - aH[dH[var1]][0][2], 0);
                var0.drawImage(er[aH[dH[var1]][1][0]], dA[var1] + aH[dH[var1]][1][1], dB[var1] - aH[dH[var1]][1][2], 0);
@@ -4401,7 +4401,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static void h(Graphics var0) {
       var0.setClip(-1, -1, aU + 2, aV + 1);
       a(var0);
-      var0.translate(-fP, -fQ);
+      var0.translate(-cutsceneP, -cutsceneQ);
       if (a) {
          j(var0);
       } else {
@@ -4421,12 +4421,12 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void L() {
-      if (!fx && A != 14 && a(fg - gR) < 30 && a(ff - gQ) < 200) {
+      if (!gameModeFx && playerState != 14 && a(playerY - gR) < 30 && a(playerX - gQ) < 200) {
          gT = 5;
-         gU = gQ < ff ? 1 : -1;
-         gZ = ff + (gU << 5);
+         gU = gQ < playerX ? 1 : -1;
+         gZ = playerX + (gU << 5);
          gS = gU * 6;
-         if (ha < hb >> 1) {
+         if (hpCurrentAlt < hpMaxBaseline >> 1) {
             gS = gU << 3;
          }
       }
@@ -4434,13 +4434,13 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void d(int var0, int var1, int var2) {
-      ij = var0 + 1;
+      mapObjectBundleCount = var0 + 1;
       D();
       b(0, var1, var2);
       if (var0 == 1) {
-         b(1, ff, fg);
-         ik = 1;
-         in[ik] = fn;
+         b(1, playerX, playerY);
+         mapObjectMountIndex = 1;
+         mapObjFacing[mapObjectMountIndex] = playerFacing;
       }
 
    }
@@ -4466,10 +4466,10 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void a(int var0, int var1, int var2, int var3) {
-      gc = var0;
-      gd = var1;
-      ge = var2;
-      gk = var3;
+      scriptMapId = var0;
+      scriptExtraD = var1;
+      scriptExtraE = var2;
+      scriptExtraK = var3;
    }
 
    private static void c(int var0, int var1, int var2, int var3, int var4) {
@@ -4493,9 +4493,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void e(int var0, int var1) {
-      fG = var0;
-      fH = var1;
-      fI = 1;
+      cutsceneG = var0;
+      cutsceneH = var1;
+      cutsceneI = 1;
    }
 
    private static void C(int var0) {
@@ -4523,7 +4523,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
          iF[var4] = Midlet.b(var0[var4], iK - 20);
       }
 
-      if ((iL = iG - (iK >> 1) - fP) < 2) {
+      if ((iL = iG - (iK >> 1) - cutsceneP) < 2) {
          iL = 2;
       }
 
@@ -4619,9 +4619,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void D(int var0) {
-      ig = 0;
-      ie = var0;
-      ifFlag = true;
+      scriptStep = 0;
+      scriptTableId = var0;
+      scriptRunnerActive = true;
    }
 
    private static boolean g(int var0, int var1) {
@@ -4645,16 +4645,16 @@ public final class a extends Canvas implements Runnable, CommandListener {
          if (bQ[var0] == 1) {
             int[] var10000 = bO;
             var10000[var0] += bR[var0];
-            if (bO[var0] >= fP && bO[var0] <= fP + q && bP[var0] >= fQ && bP[var0] <= fQ + r) {
-               if (a(ff - bO[var0]) < fj && a(fg - fk - bP[var0]) < fk) {
-                  if (A == 5 && fe == 0 && bT[var0] < 3) {
+            if (bO[var0] >= cutsceneP && bO[var0] <= cutsceneP + q && bP[var0] >= cutsceneQ && bP[var0] <= cutsceneQ + r) {
+               if (a(playerX - bO[var0]) < halfWidth && a(playerY - halfHeight - bP[var0]) < halfHeight) {
+                  if (playerState == 5 && mountSubstate == 0 && bT[var0] < 3) {
                      bR[var0] = -bR[var0];
                      var10000 = bO;
                      var10000[var0] += bR[var0];
                      return;
                   }
 
-                  a(bS[var0], bO[var0] < ff ? 1 : -1);
+                  a(bS[var0], bO[var0] < playerX ? 1 : -1);
                   bQ[var0] = -1;
                   return;
                }
@@ -4667,39 +4667,39 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void N() {
-      if (gc >= 0) {
-         if (gd > fP + 10 && gd < fP + q - 10 && ge > fQ + 10 && ge < fQ + r - 10) {
-            gf = 2;
-            gg = gd;
-            gh = ge + gj;
-         } else if (a(ff - gd) > a(fg - ge)) {
-            if (ff > gd) {
-               gf = 1;
-               gg = fP + 20 + gj;
+      if (scriptMapId >= 0) {
+         if (scriptExtraD > cutsceneP + 10 && scriptExtraD < cutsceneP + q - 10 && scriptExtraE > cutsceneQ + 10 && scriptExtraE < cutsceneQ + r - 10) {
+            scriptExtraF = 2;
+            scriptExtraG = scriptExtraD;
+            scriptExtraH = scriptExtraE + scriptExtraJ;
+         } else if (a(playerX - scriptExtraD) > a(playerY - scriptExtraE)) {
+            if (playerX > scriptExtraD) {
+               scriptExtraF = 1;
+               scriptExtraG = cutsceneP + 20 + scriptExtraJ;
             } else {
-               gf = 0;
-               gg = fP + q - 20 + gj;
+               scriptExtraF = 0;
+               scriptExtraG = cutsceneP + q - 20 + scriptExtraJ;
             }
 
-            if ((gh = ge + 24) < fQ + 10) {
-               gh = fQ + 10;
+            if ((scriptExtraH = scriptExtraE + 24) < cutsceneQ + 10) {
+               scriptExtraH = cutsceneQ + 10;
             }
 
-            if (gh > fQ + r - 10) {
-               gh = fQ + r - 10;
+            if (scriptExtraH > cutsceneQ + r - 10) {
+               scriptExtraH = cutsceneQ + r - 10;
             }
-         } else if (fg > ge) {
-            gf = 3;
-            gg = ff;
-            gh = fQ + 20 + gj;
+         } else if (playerY > scriptExtraE) {
+            scriptExtraF = 3;
+            scriptExtraG = playerX;
+            scriptExtraH = cutsceneQ + 20 + scriptExtraJ;
          } else {
-            gf = 2;
-            gg = ff;
-            gh = fQ + r - 20 + gj;
+            scriptExtraF = 2;
+            scriptExtraG = playerX;
+            scriptExtraH = cutsceneQ + r - 20 + scriptExtraJ;
          }
 
-         if ((gj += gi) == 5 || gj == -5) {
-            gi = -gi;
+         if ((scriptExtraJ += scriptExtraI) == 5 || scriptExtraJ == -5) {
+            scriptExtraI = -scriptExtraI;
          }
       }
 
@@ -4713,12 +4713,12 @@ public final class a extends Canvas implements Runnable, CommandListener {
             var10000 = bW;
             var10000[var0] += bZ[var0];
             int var10002 = bZ[var0]++;
-            if (bW[var0] > fQ + r) {
+            if (bW[var0] > cutsceneQ + r) {
                bX[var0] = 0;
             }
 
-            if (a(ff - bV[var0]) < fj && a(fg - fk - bW[var0]) < fk) {
-               a(ca[var0], bV[var0] < ff ? 1 : -1);
+            if (a(playerX - bV[var0]) < halfWidth && a(playerY - halfHeight - bW[var0]) < halfHeight) {
+               a(ca[var0], bV[var0] < playerX ? 1 : -1);
                bX[var0] = -1;
                return;
             }
@@ -4728,19 +4728,19 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void P() {
-      if (fI != 0) {
-         if (fI == 1) {
-            if (a(fg - (fi >> 1) - (fH - 7)) < 10 && a(ff - fG) < 10) {
-               fI = 2;
-               fB = true;
+      if (cutsceneI != 0) {
+         if (cutsceneI == 1) {
+            if (a(playerY - (spriteHeight >> 1) - (cutsceneH - 7)) < 10 && a(playerX - cutsceneG) < 10) {
+               cutsceneI = 2;
+               questBool = true;
                c("đã lấy được bí kíp");
                return;
             }
          } else {
-            ++fI;
-            fH -= 3;
-            if (fI > 40) {
-               fI = 0;
+            ++cutsceneI;
+            cutsceneH -= 3;
+            if (cutsceneI > 40) {
+               cutsceneI = 0;
             }
          }
 
@@ -4748,26 +4748,26 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void Q() {
-      if (fy) {
+      if (genderSpriteFlag) {
          aK = 0;
       }
 
    }
 
    private static void R() {
-      if (fv) {
-         fJ = ff - bD + bG * fn;
-         fK = fg - bF;
+      if (gameModeFv) {
+         cutsceneJ = playerX - bD + bG * playerFacing;
+         cutsceneK = playerY - bF;
       }
 
       label788:
-      switch (A) {
+      switch (playerState) {
          case 1:
-            if (++C > 30) {
-               C = 0;
+            if (++airComboTier > 30) {
+               airComboTier = 0;
             }
 
-            if (C % 15 < 5) {
+            if (airComboTier % 15 < 5) {
                B = 0;
             } else {
                B = 1;
@@ -4776,53 +4776,53 @@ public final class a extends Canvas implements Runnable, CommandListener {
             S();
 
             for(int var5 = 0; var5 < dv; ++var5) {
-               if (dE[var5] == 1 && fg == dB[var5] && a(ff - dA[var5]) < 30 && fF == -1) {
+               if (dE[var5] == 1 && playerY == dB[var5] && a(playerX - dA[var5]) < 30 && interactSubId == -1) {
                   o = "Trò chuyện";
                   c = true;
-                  fF = var5;
+                  interactSubId = var5;
                   break;
                }
             }
 
-            if (gn == v && gs == 1 && fg == gp && a(ff - go) < 30) {
+            if (escortMapId == mapId && companionMode == 1 && playerY == companionY && a(playerX - companionX) < 30) {
                o = "Nói chuyện";
                c = true;
                fC = true;
             }
 
             for(int var6 = 0; var6 < lv; ++var6) {
-               if (fg == lx[var6] && a(ff - lw[var6]) < 30 && fE == -1) {
+               if (playerY == lx[var6] && a(playerX - lw[var6]) < 30 && interactTargetId == -1) {
                   o = "Giao tiếp";
                   c = true;
-                  fE = var6;
+                  interactTargetId = var6;
                   break label788;
                }
             }
             break;
          case 2:
-            if (++C >= 10) {
-               C = 0;
-               fp = 0;
-               if (eY) {
-                  fp = fn << 1;
+            if (++airComboTier >= 10) {
+               airComboTier = 0;
+               cameraScrollX = 0;
+               if (skillSpeedBoostLearned) {
+                  cameraScrollX = playerFacing << 1;
                }
             }
 
-            B = (C >> 1) + 2;
-            if (fn == 1) {
-               if (g(ff + fj, fg - fk, 4)) {
+            B = (airComboTier >> 1) + 2;
+            if (playerFacing == 1) {
+               if (g(playerX + halfWidth, playerY - halfHeight, 4)) {
                   y = 0;
-                  ff = I(ff + fj) - fj;
+                  playerX = I(playerX + halfWidth) - halfWidth;
                }
-            } else if (g(ff - fj - 1, fg - fk, 8)) {
+            } else if (g(playerX - halfWidth - 1, playerY - halfHeight, 8)) {
                y = 0;
-               ff = I(ff - fj - 1) + jf + fj;
+               playerX = I(playerX - halfWidth - 1) + jf + halfWidth;
             }
 
-            if ((i(ff, fg - 1) & 64) == 64) {
-               ff += y >> 1;
+            if ((i(playerX, playerY - 1) & 64) == 64) {
+               playerX += y >> 1;
             } else {
-               ff += y;
+               playerX += y;
             }
 
             if (y > 0) {
@@ -4830,47 +4830,47 @@ public final class a extends Canvas implements Runnable, CommandListener {
             } else if (y < 0) {
                ++y;
             } else {
-               A = 1;
-               fp = 0;
+               playerState = 1;
+               cameraScrollX = 0;
             }
 
-            if (is != -1) {
-               if (a(ff - it[is]) >= 20) {
-                  is = -1;
-                  if (g(ff, fg, 2)) {
-                     A = 1;
+            if (mapNpcFocusIndex != -1) {
+               if (a(playerX - mapNpcTileX[mapNpcFocusIndex]) >= 20) {
+                  mapNpcFocusIndex = -1;
+                  if (g(playerX, playerY, 2)) {
+                     playerState = 1;
                   } else {
-                     A = 4;
+                     playerState = 4;
                      z = 2;
-                     y = 3 * fn;
-                     D = 0;
+                     y = 3 * playerFacing;
+                     burrowSubstate = 0;
                   }
                }
-            } else if ((i(ff, fg) & 2) != 2) {
-               A = 4;
-               y = 3 * fn;
-               D = 0;
+            } else if ((i(playerX, playerY) & 2) != 2) {
+               playerState = 4;
+               y = 3 * playerFacing;
+               burrowSubstate = 0;
             }
 
             x();
-            e(fn, ff - (fn << 3), fg);
+            e(playerFacing, playerX - (playerFacing << 3), playerY);
             S();
             break;
          case 3:
-            ff += y;
-            if ((fg += z) < 0) {
-               fg = 0;
+            playerX += y;
+            if ((playerY += z) < 0) {
+               playerY = 0;
                z = -1;
             }
 
-            if (C == 0) {
+            if (airComboTier == 0) {
                B = 7;
             } else {
                B = 23;
             }
 
             ++z;
-            if (khinhCong && !fy) {
+            if (skillWallJumpLearned && !genderSpriteFlag) {
                if (z == -3) {
                   B = 8;
                } else if (z == -2) {
@@ -4883,31 +4883,31 @@ public final class a extends Canvas implements Runnable, CommandListener {
             }
 
             if (z == 0) {
-               A = 4;
-               C = 0;
-               D = khinhCong ? 1 : 0;
+               playerState = 4;
+               airComboTier = 0;
+               burrowSubstate = skillWallJumpLearned ? 1 : 0;
                z = 1;
                c = true;
             }
 
-            if (fo < 0) {
-               ++fo;
+            if (moveCounter < 0) {
+               ++moveCounter;
             }
 
-            if (fn == 1) {
-               if ((i(ff + fj, fg) & 4) == 4) {
-                  ff = I(ff + fj) - fj;
+            if (playerFacing == 1) {
+               if ((i(playerX + halfWidth, playerY) & 4) == 4) {
+                  playerX = I(playerX + halfWidth) - halfWidth;
                   y = 0;
                }
-            } else if ((i(ff - fj, fg) & 8) == 8) {
-               ff = I(ff + 24 - fj) + fj;
+            } else if ((i(playerX - halfWidth, playerY) & 8) == 8) {
+               playerX = I(playerX + 24 - halfWidth) + halfWidth;
                y = 0;
             }
             break;
          case 4:
-            fd = -1;
-            ff += y;
-            fg += z;
+            mountFacing = -1;
+            playerX += y;
+            playerY += z;
             if (z < 18) {
                ++z;
             }
@@ -4917,60 +4917,60 @@ public final class a extends Canvas implements Runnable, CommandListener {
             }
 
             B = 7;
-            if (fg >= iQ) {
-               A = 6;
-               G = 0;
-            } else if (fg + 4 >= iQ) {
-               A = 6;
-               G = 0;
-            } else if (z > 4 && (i(ff, fg + 3) & 2) == 2) {
+            if (playerY >= iQ) {
+               playerState = 6;
+               hp = 0;
+            } else if (playerY + 4 >= iQ) {
+               playerState = 6;
+               hp = 0;
+            } else if (z > 4 && (i(playerX, playerY + 3) & 2) == 2) {
                if (z > 12) {
-                  A = 8;
+                  playerState = 8;
                } else {
-                  A = 1;
+                  playerState = 1;
                }
 
                z = 0;
                y = 0;
-               D = 0;
-               C = 0;
-               fg = I(fg + 3);
-               e(-1, ff - -8, fg);
-               e(1, ff - 8, fg);
-               if (eN) {
-                  for(int var4 = 0; var4 < ij; ++var4) {
-                     if (fg == im[var4] && a(ff - il[var4]) < 16) {
-                        ff = il[var4];
-                        A = 18;
-                        ik = var4;
-                        in[var4] = fn;
-                        io[var4] = 0;
+               burrowSubstate = 0;
+               airComboTier = 0;
+               playerY = I(playerY + 3);
+               e(-1, playerX - -8, playerY);
+               e(1, playerX - 8, playerY);
+               if (skillMotorcycleLearned) {
+                  for(int var4 = 0; var4 < mapObjectBundleCount; ++var4) {
+                     if (playerY == mapObjTileY[var4] && a(playerX - mapObjTileX[var4]) < 16) {
+                        playerX = mapObjTileX[var4];
+                        playerState = 18;
+                        mapObjectMountIndex = var4;
+                        mapObjFacing[var4] = playerFacing;
+                        mapObjAnim[var4] = 0;
                      }
                   }
                }
 
-               if (currentQuestIndex == 11 && fD < 20) {
-                  fD = 0;
-                  c("Hit: " + fD);
+               if (activeQuestId == 11 && questProgress < 20) {
+                  questProgress = 0;
+                  c("Hit: " + questProgress);
                }
             } else {
-               if (g(ff, fg, 64) && fg % jf > 8) {
-                  g(ff, H(fg) + 8);
-                  fg = H(fg) + 8;
-                  A = 11;
-                  y = fn << 1;
+               if (g(playerX, playerY, 64) && playerY % jf > 8) {
+                  g(playerX, H(playerY) + 8);
+                  playerY = H(playerY) + 8;
+                  playerState = 11;
+                  y = playerFacing << 1;
                   z >>= 2;
-                  fg = H(fg) + 12;
-                  if (I == 0 || !eQ) {
-                     A = 12;
+                  playerY = H(playerY) + 12;
+                  if (mp == 0 || !skillWaterRunLearned) {
+                     playerState = 12;
                   }
                }
 
-               if (g(ff, fg, 4096)) {
-                  A = 12;
+               if (g(playerX, playerY, 4096)) {
+                  playerState = 12;
                }
 
-               if (D == 1 && !fy) {
+               if (burrowSubstate == 1 && !genderSpriteFlag) {
                   if (z == 3) {
                      B = 11;
                   } else if (z == 2) {
@@ -4988,63 +4988,63 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   B = 12;
                }
 
-               if (fo < 0) {
-                  ++fo;
+               if (moveCounter < 0) {
+                  ++moveCounter;
                }
 
-               if (fn == 1) {
-                  if ((i(ff + fj, fg) & 4) == 4) {
-                     ff = I(ff + fj) - fj;
+               if (playerFacing == 1) {
+                  if ((i(playerX + halfWidth, playerY) & 4) == 4) {
+                     playerX = I(playerX + halfWidth) - halfWidth;
                      y = 0;
                   }
-               } else if ((i(ff - fj, fg) & 8) == 8) {
-                  ff = I(ff + 24 - fj) + fj;
+               } else if ((i(playerX - halfWidth, playerY) & 8) == 8) {
+                  playerX = I(playerX + 24 - halfWidth) + halfWidth;
                   y = 0;
                }
 
                v();
-               if (gO && z >= 4 && a(ff - gQ) < 30 && a(fg - (gR - 25)) < 5) {
+               if (gO && z >= 4 && a(playerX - gQ) < 30 && a(playerY - (gR - 25)) < 5) {
                   z = -(z >> 1);
-                  y = fn << 3;
-                  C = 0;
+                  y = playerFacing << 3;
+                  airComboTier = 0;
                }
             }
             break;
          case 5:
-            ++C;
-            if (fn == 1) {
-               if ((i(ff + fj, fg - fk) & 4) == 4) {
+            ++airComboTier;
+            if (playerFacing == 1) {
+               if ((i(playerX + halfWidth, playerY - halfHeight) & 4) == 4) {
                   y = 0;
                }
-            } else if ((i(ff - fj, fg - fk) & 8) == 8) {
+            } else if ((i(playerX - halfWidth, playerY - halfHeight) & 8) == 8) {
                y = 0;
             }
 
-            ff += y;
-            if ((fg += z) < 0) {
+            playerX += y;
+            if ((playerY += z) < 0) {
                z = 0;
-               fg = 0;
+               playerY = 0;
             }
 
             if (z == 0) {
-               if (is == -1 && (i(ff, fg) & 2) != 2) {
-                  A = 4;
-                  fd = -1;
-                  y = (P >> 1) * fn;
-                  D = 0;
-                  C = 0;
+               if (mapNpcFocusIndex == -1 && (i(playerX, playerY) & 2) != 2) {
+                  playerState = 4;
+                  mountFacing = -1;
+                  y = (P >> 1) * playerFacing;
+                  burrowSubstate = 0;
+                  airComboTier = 0;
                }
 
-               if (is != -1 && a(ff - it[is]) >= 20) {
-                  is = -1;
-                  if (g(ff, fg, 2)) {
-                     A = 1;
+               if (mapNpcFocusIndex != -1 && a(playerX - mapNpcTileX[mapNpcFocusIndex]) >= 20) {
+                  mapNpcFocusIndex = -1;
+                  if (g(playerX, playerY, 2)) {
+                     playerState = 1;
                   } else {
-                     A = 4;
+                     playerState = 4;
                      z = 2;
-                     y = 3 * fn;
-                     fd = -1;
-                     D = 0;
+                     y = 3 * playerFacing;
+                     mountFacing = -1;
+                     burrowSubstate = 0;
                   }
                }
             } else if (z < 0) {
@@ -5052,7 +5052,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   z = 1;
                }
             } else {
-               if (z < 20 && C % 5 == 0) {
+               if (z < 20 && airComboTier % 5 == 0) {
                   ++z;
                }
 
@@ -5060,32 +5060,32 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   z = 3;
                }
 
-               if (z > 2 && (i(ff, fg + 3) & 2) == 2) {
+               if (z > 2 && (i(playerX, playerY + 3) & 2) == 2) {
                   z = 0;
                   y = 0;
-                  fg = I(fg + 3);
-                  if (currentQuestIndex == 11 && fD < 20) {
-                     fD = 0;
-                     c("Hit: " + fD);
+                  playerY = I(playerY + 3);
+                  if (activeQuestId == 11 && questProgress < 20) {
+                     questProgress = 0;
+                     c("Hit: " + questProgress);
                   }
                }
 
-               if (g(ff, fg, 64) && fg % jf > 8) {
-                  g(ff, H(fg) + 8);
-                  A = 11;
-                  y = fn << 1;
+               if (g(playerX, playerY, 64) && playerY % jf > 8) {
+                  g(playerX, H(playerY) + 8);
+                  playerState = 11;
+                  y = playerFacing << 1;
                   z >>= 2;
-                  fg = H(fg) + 12;
-                  fd = -1;
-                  if (I == 0 || !eQ) {
-                     A = 12;
+                  playerY = H(playerY) + 12;
+                  mountFacing = -1;
+                  if (mp == 0 || !skillWaterRunLearned) {
+                     playerState = 12;
                   }
                   break;
                }
 
-               if (g(ff, fg, 4096)) {
-                  A = 12;
-                  fd = -1;
+               if (g(playerX, playerY, 4096)) {
+                  playerState = 12;
+                  mountFacing = -1;
                   break;
                }
 
@@ -5103,126 +5103,126 @@ public final class a extends Canvas implements Runnable, CommandListener {
             }
 
             label728:
-            switch (fu) {
+            switch (timerFu) {
                case 0:
-                  switch (C) {
+                  switch (airComboTier) {
                      case 1:
                      case 2:
                      case 3:
-                        fd = -1;
+                        mountFacing = -1;
                         B = 13;
                         break label728;
                      case 4:
-                        fd = 0;
+                        mountFacing = 0;
                         B = 14;
                         break label728;
                      case 5:
-                        fd = 1;
+                        mountFacing = 1;
                         B = 15;
                         break label728;
                      case 6:
-                        fd = 1;
+                        mountFacing = 1;
                         B = 15;
                         u();
                         break label728;
                      case 7:
-                        fd = 2;
+                        mountFacing = 2;
                         B = 16;
                         break label728;
                      case 8:
-                        fd = 2;
+                        mountFacing = 2;
                         B = 16;
-                        if (fw) {
-                           fw = false;
-                           fu = 2;
+                        if (gameModeFw) {
+                           gameModeFw = false;
+                           timerFu = 2;
                         } else {
-                           fu = 1;
+                           timerFu = 1;
                         }
 
-                        C = 1;
+                        airComboTier = 1;
                      default:
                         break label728;
                   }
                case 1:
-                  switch (C) {
+                  switch (airComboTier) {
                      case 1:
-                        fd = 1;
+                        mountFacing = 1;
                         B = 15;
                         break label728;
                      case 2:
-                        fd = 1;
+                        mountFacing = 1;
                         B = 15;
-                        fu = 10;
+                        timerFu = 10;
                      default:
                         break label728;
                   }
                case 2:
-                  switch (C) {
+                  switch (airComboTier) {
                      case 1:
                      case 2:
                      case 3:
-                        fd = 3;
+                        mountFacing = 3;
                         B = 17;
                         break label728;
                      case 4:
-                        fd = 4;
+                        mountFacing = 4;
                         B = 18;
                         break label728;
                      case 5:
-                        fd = 5;
+                        mountFacing = 5;
                         B = 19;
                         break label728;
                      case 6:
-                        fd = 6;
+                        mountFacing = 6;
                         B = 20;
                         u();
                         break label728;
                      case 7:
-                        fd = 6;
+                        mountFacing = 6;
                         B = 20;
-                        if (fw && ft < 2) {
+                        if (gameModeFw && timerFt < 2) {
                            if (z == 0 && fs) {
-                              C = 0;
-                              fw = false;
-                              fu = 9;
+                              airComboTier = 0;
+                              gameModeFw = false;
+                              timerFu = 9;
                            } else {
-                              fw = false;
-                              fu = 3;
-                              ++ft;
+                              gameModeFw = false;
+                              timerFu = 3;
+                              ++timerFt;
                            }
                         } else {
-                           fu = 10;
+                           timerFu = 10;
                         }
 
-                        C = 1;
+                        airComboTier = 1;
                      default:
                         break label728;
                   }
                case 3:
-                  switch (C) {
+                  switch (airComboTier) {
                      case 1:
-                        fd = 1;
+                        mountFacing = 1;
                         B = 15;
                         break;
                      case 2:
-                        fd = 1;
+                        mountFacing = 1;
                         B = 15;
                         break;
                      case 3:
-                        fd = 2;
+                        mountFacing = 2;
                         B = 16;
                         break;
                      case 4:
-                        fd = 2;
+                        mountFacing = 2;
                         B = 16;
-                        if (fw) {
-                           fw = false;
-                           fu = 2;
+                        if (gameModeFw) {
+                           gameModeFw = false;
+                           timerFu = 2;
                         } else {
-                           fu = 1;
+                           timerFu = 1;
                         }
 
-                        C = 1;
+                        airComboTier = 1;
                   }
                case 4:
                case 5:
@@ -5232,26 +5232,26 @@ public final class a extends Canvas implements Runnable, CommandListener {
                default:
                   break;
                case 9:
-                  switch (C) {
+                  switch (airComboTier) {
                      case 1:
                      case 2:
                      case 3:
-                        fd = -1;
+                        mountFacing = -1;
                         B = 13;
                         break label728;
                      case 4:
-                        fd = 0;
+                        mountFacing = 0;
                         B = 14;
                         break label728;
                      case 5:
                      case 6:
-                        fd = 9;
+                        mountFacing = 9;
                         B = 15;
                         int var3 = z();
                         fs = false;
                         if (var3 != -1) {
                            fs = true;
-                           f(jL[var3], jM[var3] - (jN[var3] >> 1), fn);
+                           f(jL[var3], jM[var3] - (jN[var3] >> 1), playerFacing);
                            jQ[var3] = 9;
                            jV[var3] = -8;
                            Q();
@@ -5259,58 +5259,58 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         break label728;
                      case 7:
                      case 8:
-                        fd = 10;
+                        mountFacing = 10;
                         B = 16;
                         break label728;
                      case 9:
-                        fd = -1;
+                        mountFacing = -1;
                         B = 16;
                         if (fs) {
-                           A = 3;
+                           playerState = 3;
                            y = 0;
                            z = -8;
                         } else {
-                           C = 0;
-                           D = 0;
-                           fu = 10;
+                           airComboTier = 0;
+                           burrowSubstate = 0;
+                           timerFu = 10;
                         }
                      default:
                         break label728;
                   }
                case 10:
-                  switch (C) {
+                  switch (airComboTier) {
                      case 1:
-                        fd = 2;
+                        mountFacing = 2;
                         B = 16;
                         break;
                      case 2:
-                        fd = 0;
+                        mountFacing = 0;
                         B = 14;
                         break;
                      case 3:
                      case 4:
                         B = 13;
-                        fd = -1;
+                        mountFacing = -1;
                         break;
                      case 5:
                         B = 13;
-                        fd = -1;
+                        mountFacing = -1;
                         if (z != 0) {
-                           A = 4;
+                           playerState = 4;
                         } else {
-                           A = 1;
+                           playerState = 1;
                         }
 
-                        ft = 0;
-                        D = 0;
+                        timerFt = 0;
+                        burrowSubstate = 0;
                   }
             }
 
-            if (fe == 1) {
-               fd = -1;
+            if (mountSubstate == 1) {
+               mountFacing = -1;
             }
 
-            if (A == 5) {
+            if (playerState == 5) {
                if (z != 0) {
                   B += 14;
                } else if (y != 0) {
@@ -5319,7 +5319,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
             }
             break;
          case 6:
-            ff += y;
+            playerX += y;
             if (y > 1) {
                --y;
             }
@@ -5329,26 +5329,26 @@ public final class a extends Canvas implements Runnable, CommandListener {
             }
 
             ++z;
-            fg += z;
+            playerY += z;
             B = 21;
-            if (fg >= iQ || fg > fQ + r + fi || g(ff, fg - fi, 4096)) {
-               ff = fq;
-               fg = fr;
-               A = 4;
-               G = H / 3;
-               I = J / 3;
+            if (playerY >= iQ || playerY > cutsceneQ + r + spriteHeight || g(playerX, playerY - spriteHeight, 4096)) {
+               playerX = cameraScrollY;
+               playerY = cameraBound;
+               playerState = 4;
+               hp = hpMax / 3;
+               mp = mpMax / 3;
                z = 0;
                y = 0;
-               D = 0;
-               C = 0;
-               N >>= 1;
+               burrowSubstate = 0;
+               airComboTier = 0;
+               expInLevel >>= 1;
                c = true;
                if (hd) {
-                  hh = hi;
+                  regenTimer = hi;
                }
 
                if (hj) {
-                  hn = ho;
+                  idleTimerLong = ho;
                }
 
                aI();
@@ -5357,16 +5357,16 @@ public final class a extends Canvas implements Runnable, CommandListener {
             }
             break;
          case 7:
-            if ((i(ff + fj, fg - fk) & 4) == 4) {
+            if ((i(playerX + halfWidth, playerY - halfHeight) & 4) == 4) {
                y = -y;
             }
 
-            if ((i(ff - fj, fg - fk) & 8) == 8) {
+            if ((i(playerX - halfWidth, playerY - halfHeight) & 8) == 8) {
                y = -y;
             }
 
-            ff += y;
-            fg += z;
+            playerX += y;
+            playerY += z;
             B = 21;
             if (y > 1) {
                --y;
@@ -5380,11 +5380,11 @@ public final class a extends Canvas implements Runnable, CommandListener {
                z = 0;
             }
 
-            if (++C >= 7) {
-               A = 4;
-               fo = -20;
-               D = 0;
-               C = 0;
+            if (++airComboTier >= 7) {
+               playerState = 4;
+               moveCounter = -20;
+               burrowSubstate = 0;
+               airComboTier = 0;
                z = 0;
             }
 
@@ -5392,14 +5392,14 @@ public final class a extends Canvas implements Runnable, CommandListener {
             break;
          case 8:
             B = 22;
-            if (C < 5) {
-               ++C;
+            if (airComboTier < 5) {
+               ++airComboTier;
             } else if (!aS[8]) {
-               A = 1;
+               playerState = 1;
             }
 
-            if (++D > 6 && g(ff + fj, fg + 2, 8192) && g(ff - fj, fg + 2, 8192) && eM & I > 0) {
-               A = 13;
+            if (++burrowSubstate > 6 && g(playerX + halfWidth, playerY + 2, 8192) && g(playerX - halfWidth, playerY + 2, 8192) && skillBurrowLearned & mp > 0) {
+               playerState = 13;
             }
          case 9:
          case 10:
@@ -5410,206 +5410,206 @@ public final class a extends Canvas implements Runnable, CommandListener {
             U();
             break;
          case 12:
-            fg += z;
-            if (z < 20 && w % 2 == 0) {
+            playerY += z;
+            if (z < 20 && mapSubIdLegacy % 2 == 0) {
                ++z;
             }
 
             B = 7;
-            if (fg >= iQ) {
-               G = 0;
-               A = 6;
-               fd = -1;
-            } else if (g(ff, fg, 2)) {
-               fg = H(fg);
-               if (g(ff, fg - 2, 64)) {
-                  A = 1;
+            if (playerY >= iQ) {
+               hp = 0;
+               playerState = 6;
+               mountFacing = -1;
+            } else if (g(playerX, playerY, 2)) {
+               playerY = H(playerY);
+               if (g(playerX, playerY - 2, 64)) {
+                  playerState = 1;
                   z = 0;
                   y = 0;
-                  D = 0;
-                  C = 0;
-               } else if (eP) {
-                  A = 17;
+                  burrowSubstate = 0;
+                  airComboTier = 0;
+               } else if (skillSwimLearned) {
+                  playerState = 17;
                   z = 0;
                   y = 0;
-                  D = 0;
-                  C = 0;
+                  burrowSubstate = 0;
+                  airComboTier = 0;
                } else {
-                  A = 6;
+                  playerState = 6;
                }
 
-               fg = I(fg);
-            } else if (g(ff, fg - fi - 5, 4096)) {
-               G = 0;
-               A = 6;
-               fd = -1;
+               playerY = I(playerY);
+            } else if (g(playerX, playerY - spriteHeight - 5, 4096)) {
+               hp = 0;
+               playerState = 6;
+               mountFacing = -1;
             }
             break;
          case 13:
             B = 24;
-            fg += 28;
-            A = 14;
+            playerY += 28;
+            playerState = 14;
             break;
          case 14:
-            if (w % 20 > 2) {
+            if (mapSubIdLegacy % 20 > 2) {
                B = 25;
             } else {
                B = 26;
             }
 
-            if (w % 8 == 0) {
-               if (--I <= 0) {
-                  I = 0;
-                  A = 15;
+            if (mapSubIdLegacy % 8 == 0) {
+               if (--mp <= 0) {
+                  mp = 0;
+                  playerState = 15;
                }
 
                c = true;
             }
             break;
          case 15:
-            fg -= 10;
+            playerY -= 10;
             z = -10;
-            A = 3;
+            playerState = 3;
             break;
          case 16:
-            if (++C >= 20) {
-               C = 0;
+            if (++airComboTier >= 20) {
+               airComboTier = 0;
             }
 
-            if ((B = (C >> 2) + 2) % 2 == 0) {
-               fd = 7;
+            if ((B = (airComboTier >> 2) + 2) % 2 == 0) {
+               mountFacing = 7;
             } else {
-               fd = 8;
+               mountFacing = 8;
             }
 
-            if (fn == 1) {
-               if (g(ff + fj, fg - fk, 4)) {
+            if (playerFacing == 1) {
+               if (g(playerX + halfWidth, playerY - halfHeight, 4)) {
                   y = 0;
-                  ff = I(ff + fj) - fj;
+                  playerX = I(playerX + halfWidth) - halfWidth;
                }
-            } else if (g(ff - fj - 1, fg - fk, 8)) {
+            } else if (g(playerX - halfWidth - 1, playerY - halfHeight, 8)) {
                y = 0;
-               ff = I(ff - fj - 1) + jf + fj;
+               playerX = I(playerX - halfWidth - 1) + jf + halfWidth;
             }
 
-            ff += y;
+            playerX += y;
             if (y > 0) {
                --y;
             } else if (y < 0) {
                ++y;
             } else {
-               A = 17;
+               playerState = 17;
             }
 
-            if ((i(ff, fg) & 2) != 2) {
-               A = 12;
-               y = fn << 2;
-               D = 0;
+            if ((i(playerX, playerY) & 2) != 2) {
+               playerState = 12;
+               y = playerFacing << 2;
+               burrowSubstate = 0;
             }
             break;
          case 17:
-            if (++C > 30) {
-               C = 0;
+            if (++airComboTier > 30) {
+               airComboTier = 0;
             }
 
-            if (C % 15 < 5) {
+            if (airComboTier % 15 < 5) {
                B = 0;
-               fd = 7;
+               mountFacing = 7;
             } else {
                B = 1;
-               fd = 8;
+               mountFacing = 8;
             }
             break;
          case 18:
-            if (w % 8 > 3) {
+            if (mapSubIdLegacy % 8 > 3) {
                B = 43;
             } else {
                B = 44;
-               e(fn, ff - (fn << 4), fg - 5);
+               e(playerFacing, playerX - (playerFacing << 4), playerY - 5);
             }
 
-            C = 0;
+            airComboTier = 0;
             break;
          case 19:
-            if (w % 8 > 3) {
+            if (mapSubIdLegacy % 8 > 3) {
                B = 43;
             } else {
                B = 44;
-               e(fn, ff - (fn << 4), fg - 5);
+               e(playerFacing, playerX - (playerFacing << 4), playerY - 5);
             }
 
-            if (C > 0) {
-               --C;
+            if (airComboTier > 0) {
+               --airComboTier;
                B = 45;
             }
 
-            if (fn == 1) {
-               if (g(ff + fj, fg - fk, 4)) {
+            if (playerFacing == 1) {
+               if (g(playerX + halfWidth, playerY - halfHeight, 4)) {
                   y = 0;
-                  ff = I(ff + fj) - fj;
+                  playerX = I(playerX + halfWidth) - halfWidth;
                }
-            } else if (g(ff - fj - 1, fg - fk, 8)) {
+            } else if (g(playerX - halfWidth - 1, playerY - halfHeight, 8)) {
                y = 0;
-               ff = I(ff - fj - 1) + jf + fj;
+               playerX = I(playerX - halfWidth - 1) + jf + halfWidth;
             }
 
-            if ((i(ff, fg - 1) & 64) == 64) {
-               ff += y >> 1;
+            if ((i(playerX, playerY - 1) & 64) == 64) {
+               playerX += y >> 1;
             } else {
-               ff += y;
+               playerX += y;
             }
 
-            il[ik] = ff;
-            im[ik] = fg;
+            mapObjTileX[mapObjectMountIndex] = playerX;
+            mapObjTileY[mapObjectMountIndex] = playerY;
             if (y > 0) {
                --y;
             } else if (y < 0) {
                ++y;
             } else {
-               A = 18;
-               fp = 0;
+               playerState = 18;
+               cameraScrollX = 0;
             }
 
-            if (is != -1) {
-               if (a(ff - it[is]) >= 20) {
-                  is = -1;
-                  if (g(ff, fg, 2)) {
-                     A = 18;
+            if (mapNpcFocusIndex != -1) {
+               if (a(playerX - mapNpcTileX[mapNpcFocusIndex]) >= 20) {
+                  mapNpcFocusIndex = -1;
+                  if (g(playerX, playerY, 2)) {
+                     playerState = 18;
                   } else {
-                     A = 20;
+                     playerState = 20;
                      z = 2;
-                     y = 3 * fn;
-                     D = 0;
+                     y = 3 * playerFacing;
+                     burrowSubstate = 0;
                   }
                }
-            } else if ((i(ff, fg) & 2) != 2) {
-               A = 20;
-               y = 3 * fn;
-               D = 0;
+            } else if ((i(playerX, playerY) & 2) != 2) {
+               playerState = 20;
+               y = 3 * playerFacing;
+               burrowSubstate = 0;
             }
 
-            e(fn, ff - (fn << 3), fg);
+            e(playerFacing, playerX - (playerFacing << 3), playerY);
             S();
             int var0;
             if ((var0 = z()) != -1 && (jQ[var0] == 2 || jQ[var0] == 3)) {
-               k(var0, 2, -fn);
-               f(jL[var0], jM[var0] - (jN[var0] >> 1), fn);
+               k(var0, 2, -playerFacing);
+               f(jL[var0], jM[var0] - (jN[var0] >> 1), playerFacing);
                a("-2", 0, jL[var0], jM[var0] - jN[var0], 0, -2);
             }
             break;
          case 20:
             try {
-               if (fn == 1) {
-                  if ((i(ff + fj, fg - fk) & 4) == 4) {
+               if (playerFacing == 1) {
+                  if ((i(playerX + halfWidth, playerY - halfHeight) & 4) == 4) {
                      y = 0;
                   }
-               } else if ((i(ff - fj, fg - fk) & 8) == 8) {
+               } else if ((i(playerX - halfWidth, playerY - halfHeight) & 8) == 8) {
                   y = 0;
                }
 
-               fd = -1;
-               ff += y;
-               fg += z;
+               mountFacing = -1;
+               playerX += y;
+               playerY += z;
                if (z < 20) {
                   ++z;
                }
@@ -5618,84 +5618,84 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   --y;
                }
 
-               if (w % 8 > 3) {
+               if (mapSubIdLegacy % 8 > 3) {
                   B = 43;
                } else {
                   B = 44;
-                  e(fn, ff - (fn << 4), fg - 5);
+                  e(playerFacing, playerX - (playerFacing << 4), playerY - 5);
                }
 
-               if (z > 4 && (i(ff, fg) & 2) == 2) {
+               if (z > 4 && (i(playerX, playerY) & 2) == 2) {
                   if (z < 8) {
-                     A = 18;
+                     playerState = 18;
                      z = 0;
                      y = 0;
-                     D = 0;
-                     C = 0;
-                     fg = I(fg);
+                     burrowSubstate = 0;
+                     airComboTier = 0;
+                     playerY = I(playerY);
                   } else {
-                     A = 21;
+                     playerState = 21;
                      z = -(z / 3);
-                     fg = I(fg);
+                     playerY = I(playerY);
                   }
                }
 
-               if (g(ff, fg, 64) && fg % jf > 8) {
-                  g(ff, H(fg) + 8);
+               if (g(playerX, playerY, 64) && playerY % jf > 8) {
+                  g(playerX, H(playerY) + 8);
                }
 
-               il[ik] = ff;
-               im[ik] = fg;
-               if (g(ff, fg, 4096)) {
-                  ip[ik] = 1;
-                  ik = -1;
-                  A = 12;
+               mapObjTileX[mapObjectMountIndex] = playerX;
+               mapObjTileY[mapObjectMountIndex] = playerY;
+               if (g(playerX, playerY, 4096)) {
+                  mapObjType[mapObjectMountIndex] = 1;
+                  mapObjectMountIndex = -1;
+                  playerState = 12;
                }
             } catch (Exception var2) {
             }
 
-            if (fo < 0) {
-               ++fo;
+            if (moveCounter < 0) {
+               ++moveCounter;
             }
             break;
          case 21:
-            if (fn == 1) {
-               if ((i(ff + fj, fg - fk) & 4) == 4) {
+            if (playerFacing == 1) {
+               if ((i(playerX + halfWidth, playerY - halfHeight) & 4) == 4) {
                   y = 0;
                }
-            } else if ((i(ff - fj, fg - fk) & 8) == 8) {
+            } else if ((i(playerX - halfWidth, playerY - halfHeight) & 8) == 8) {
                y = 0;
             }
 
-            ff += y;
-            fg += z;
-            il[ik] = ff;
-            im[ik] = fg;
+            playerX += y;
+            playerY += z;
+            mapObjTileX[mapObjectMountIndex] = playerX;
+            mapObjTileY[mapObjectMountIndex] = playerY;
             if (y > 0) {
                --y;
             }
 
             if (++z == 0) {
-               A = 20;
-               C = 0;
-               D = khinhCong ? 1 : 0;
+               playerState = 20;
+               airComboTier = 0;
+               burrowSubstate = skillWallJumpLearned ? 1 : 0;
                z = 1;
                c = true;
             }
 
-            if (fo < 0) {
-               ++fo;
+            if (moveCounter < 0) {
+               ++moveCounter;
             }
 
-            if (w % 8 > 3) {
+            if (mapSubIdLegacy % 8 > 3) {
                B = 43;
             } else {
                B = 44;
-               e(fn, ff - (fn << 4), fg - 5);
+               e(playerFacing, playerX - (playerFacing << 4), playerY - 5);
             }
 
-            if (C > 0) {
-               --C;
+            if (airComboTier > 0) {
+               --airComboTier;
                B = 45;
             }
             break;
@@ -5706,20 +5706,20 @@ public final class a extends Canvas implements Runnable, CommandListener {
             T();
       }
 
-      if (w % 3 == 0) {
-         if (fx) {
-            if (--I <= 0) {
-               I = 0;
-               fx = false;
+      if (mapSubIdLegacy % 3 == 0) {
+         if (gameModeFx) {
+            if (--mp <= 0) {
+               mp = 0;
+               gameModeFx = false;
             }
 
             c = true;
          }
 
-         if (fy) {
-            if (--I <= 0) {
-               I = 0;
-               fy = false;
+         if (genderSpriteFlag) {
+            if (--mp <= 0) {
+               mp = 0;
+               genderSpriteFlag = false;
 
                for(int var1 = 0; var1 < 4; ++var1) {
                   Image var7 = ep[var1];
@@ -5736,27 +5736,27 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    private static final void S() {
       if (!a) {
-         if (g(ff, fg + 1, 2048)) {
-            h(ff, fg + 1, 1024);
-            h(ff, fg - 2, 1024);
+         if (g(playerX, playerY + 1, 2048)) {
+            h(playerX, playerY + 1, 1024);
+            h(playerX, playerY - 2, 1024);
          }
 
-         if (g(ff - jf, fg + 1, 1024)) {
-            j(ff - jf, fg + 1, 1024);
-            j(ff - jf, fg - 2, 1024);
+         if (g(playerX - jf, playerY + 1, 1024)) {
+            j(playerX - jf, playerY + 1, 1024);
+            j(playerX - jf, playerY - 2, 1024);
          }
 
-         if (g(ff + jf, fg + 1, 1024)) {
-            j(ff + jf, fg + 1, 1024);
-            j(ff + jf, fg - 2, 1024);
+         if (g(playerX + jf, playerY + 1, 1024)) {
+            j(playerX + jf, playerY + 1, 1024);
+            j(playerX + jf, playerY - 2, 1024);
          }
 
       }
    }
 
    private static void T() {
-      if (++C == 1) {
-         f(ff, fg - 40);
+      if (++airComboTier == 1) {
+         f(playerX, playerY - 40);
          aK = 0;
          if (eq == null) {
             eq = new Image[4];
@@ -5770,10 +5770,10 @@ public final class a extends Canvas implements Runnable, CommandListener {
             eq[2] = eq[1];
             eq[3] = eq[0];
          }
-      } else if (C >= 30) {
-         A = 1;
-         C = 0;
-         if (I == 0) {
+      } else if (airComboTier >= 30) {
+         playerState = 1;
+         airComboTier = 0;
+         if (mp == 0) {
             return;
          }
 
@@ -5783,24 +5783,24 @@ public final class a extends Canvas implements Runnable, CommandListener {
             eq[var1] = var0;
          }
 
-         fy = !fy;
-      } else if (C <= 10) {
-         if (C % 5 == 0) {
+         genderSpriteFlag = !genderSpriteFlag;
+      } else if (airComboTier <= 10) {
+         if (airComboTier % 5 == 0) {
             for(int var6 = 0; var6 < 4; ++var6) {
                Image var3 = ep[var6];
                ep[var6] = eq[var6];
                eq[var6] = var3;
             }
          }
-      } else if (C < 20) {
-         if (C % 3 == 0) {
+      } else if (airComboTier < 20) {
+         if (airComboTier % 3 == 0) {
             for(int var7 = 0; var7 < 4; ++var7) {
                Image var4 = ep[var7];
                ep[var7] = eq[var7];
                eq[var7] = var4;
             }
          }
-      } else if (C < 30 && C % 2 == 0) {
+      } else if (airComboTier < 30 && airComboTier % 2 == 0) {
          for(int var8 = 0; var8 < 4; ++var8) {
             Image var5 = ep[var8];
             ep[var8] = eq[var8];
@@ -5808,7 +5808,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
          }
       }
 
-      if (C % 2 > 0) {
+      if (airComboTier % 2 > 0) {
          B = 0;
       } else {
          B = 1;
@@ -5816,63 +5816,63 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void U() {
-      if (++C >= 5) {
-         C = 0;
-         fp = 0;
+      if (++airComboTier >= 5) {
+         airComboTier = 0;
+         cameraScrollX = 0;
       }
 
-      B = C + 2;
-      if (fn == 1) {
-         if (g(ff + fj, fg - 1, 4)) {
+      B = airComboTier + 2;
+      if (playerFacing == 1) {
+         if (g(playerX + halfWidth, playerY - 1, 4)) {
             y = 0;
-            ff = I(ff + fj) - fj;
+            playerX = I(playerX + halfWidth) - halfWidth;
          }
-      } else if (g(ff - fj - 1, fg - 1, 8)) {
+      } else if (g(playerX - halfWidth - 1, playerY - 1, 8)) {
          y = 0;
-         ff = I(ff - fj - 1) + jf + fj;
+         playerX = I(playerX - halfWidth - 1) + jf + halfWidth;
       }
 
-      ff += y;
+      playerX += y;
       if (y > 0) {
          --y;
       } else if (y < 0) {
          ++y;
-      } else if (!eZ) {
-         A = 12;
-         fp = 0;
+      } else if (!skillStandOnWaterLearned) {
+         playerState = 12;
+         cameraScrollX = 0;
       } else {
-         A = 3;
+         playerState = 3;
          z = -8;
-         D = 0;
-         C = 0;
+         burrowSubstate = 0;
+         airComboTier = 0;
       }
 
-      if (w % 8 == 0) {
-         if ((I -= 3) <= 0) {
-            I = 0;
+      if (mapSubIdLegacy % 8 == 0) {
+         if ((mp -= 3) <= 0) {
+            mp = 0;
             y = 0;
-            A = 12;
+            playerState = 12;
          }
 
          c = true;
       }
 
-      for(int var0 = 0; var0 < ir; ++var0) {
-         if (a(ff - it[var0]) < 20 && iu[var0] > fg && iu[var0] - 24 < fg) {
+      for(int var0 = 0; var0 < mapNpcBundleCount; ++var0) {
+         if (a(playerX - mapNpcTileX[var0]) < 20 && mapNpcTileY[var0] > playerY && mapNpcTileY[var0] - 24 < playerY) {
             y = 0;
-            if (ff < it[var0]) {
-               ff = it[var0] - 20;
+            if (playerX < mapNpcTileX[var0]) {
+               playerX = mapNpcTileX[var0] - 20;
             } else {
-               ff = it[var0] + 20;
+               playerX = mapNpcTileX[var0] + 20;
             }
 
-            A = 12;
+            playerState = 12;
             break;
          }
       }
 
-      g(ff, fg);
-      e(fn, ff - (fn << 3), fg);
+      g(playerX, playerY);
+      e(playerFacing, playerX - (playerFacing << 3), playerY);
    }
 
    private static boolean V() {
@@ -5924,14 +5924,14 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      ++fV;
                      break;
                   case 4:
-                     if (A == 1) {
+                     if (playerState == 1) {
                         fW = false;
                         int var3 = 0;
                         int var1 = 0;
                         switch (aC[ay[fU][fV]]) {
                            case 0:
-                              var3 = ff;
-                              var1 = fg;
+                              var3 = playerX;
+                              var1 = playerY;
                               break;
                            case 1:
                               var3 = lw[aB[ay[fU][fV]]];
@@ -5943,8 +5943,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
                               break;
                            case 3:
                            case 4:
-                              var3 = go;
-                              var1 = gp;
+                              var3 = companionX;
+                              var1 = companionY;
                         }
 
                         var1 -= 40;
@@ -5954,97 +5954,97 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      }
                      break;
                   case 5:
-                     a(v, ay[fU][fV], fg - 50, -1);
+                     a(mapId, ay[fU][fV], playerY - 50, -1);
                      ++fV;
                      break;
                   case 6:
-                     gc = -1;
+                     scriptMapId = -1;
                      ++fV;
                      break;
                   case 7:
-                     fv = true;
+                     gameModeFv = true;
                      ++fV;
                      break;
                   case 8:
-                     fv = false;
+                     gameModeFv = false;
                      ++fV;
                      break;
                   case 9:
-                     fP = aA[ay[fU][fV]][0] - bD;
-                     fQ = aA[ay[fU][fV]][1] - bE;
-                     if (fP < 0) {
-                        fP = 0;
+                     cutsceneP = aA[ay[fU][fV]][0] - bD;
+                     cutsceneQ = aA[ay[fU][fV]][1] - bE;
+                     if (cutsceneP < 0) {
+                        cutsceneP = 0;
                      }
 
-                     if (fP > fR) {
-                        fP = fR;
+                     if (cutsceneP > cutsceneR) {
+                        cutsceneP = cutsceneR;
                      }
 
-                     if (fQ < 0) {
-                        fQ = 0;
+                     if (cutsceneQ < 0) {
+                        cutsceneQ = 0;
                      }
 
-                     if (fQ > fS) {
-                        fQ = fS;
+                     if (cutsceneQ > cutsceneS) {
+                        cutsceneQ = cutsceneS;
                      }
 
-                     fJ = fP;
-                     fK = fQ;
+                     cutsceneJ = cutsceneP;
+                     cutsceneK = cutsceneQ;
                      ++fV;
                      break;
                   case 10:
-                     fJ = aA[ay[fU][fV]][0] - bD;
-                     fK = aA[ay[fU][fV]][1] - bE;
-                     if (fJ < 0) {
-                        fJ = 0;
+                     cutsceneJ = aA[ay[fU][fV]][0] - bD;
+                     cutsceneK = aA[ay[fU][fV]][1] - bE;
+                     if (cutsceneJ < 0) {
+                        cutsceneJ = 0;
                      }
 
-                     if (fJ > fR) {
-                        fJ = fR;
+                     if (cutsceneJ > cutsceneR) {
+                        cutsceneJ = cutsceneR;
                      }
 
-                     if (fK < 0) {
-                        fK = 0;
+                     if (cutsceneK < 0) {
+                        cutsceneK = 0;
                      }
 
-                     if (fK > fS) {
-                        fK = fS;
+                     if (cutsceneK > cutsceneS) {
+                        cutsceneK = cutsceneS;
                      }
 
                      ++fV;
                      break;
                   case 11:
-                     fJ = gQ - bD;
-                     fK = gR - bE;
-                     if (fJ < 0) {
-                        fJ = 0;
+                     cutsceneJ = gQ - bD;
+                     cutsceneK = gR - bE;
+                     if (cutsceneJ < 0) {
+                        cutsceneJ = 0;
                      }
 
-                     if (fJ > fR) {
-                        fJ = fR;
+                     if (cutsceneJ > cutsceneR) {
+                        cutsceneJ = cutsceneR;
                      }
 
-                     if (fK < 0) {
-                        fK = 0;
+                     if (cutsceneK < 0) {
+                        cutsceneK = 0;
                      }
 
-                     if (fK > fS) {
-                        fK = fS;
+                     if (cutsceneK > cutsceneS) {
+                        cutsceneK = cutsceneS;
                      }
 
                      ++fV;
                      break;
                   case 12:
-                     fK = fQ += 2;
-                     if (fQ > aA[ay[fU][fV]][1] - bE) {
+                     cutsceneK = cutsceneQ += 2;
+                     if (cutsceneQ > aA[ay[fU][fV]][1] - bE) {
                         ++fV;
                      }
                   case 13:
                   default:
                      break;
                   case 14:
-                     fJ = fP -= 2;
-                     if (fP < aA[ay[fU][fV]][0] - bD) {
+                     cutsceneJ = cutsceneP -= 2;
+                     if (cutsceneP < aA[ay[fU][fV]][0] - bD) {
                         ++fV;
                      }
                      break;
@@ -6064,8 +6064,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      ++fV;
                      break;
                   case 17:
-                     fq = ff = jv;
-                     fr = fg = jw;
+                     cameraScrollY = playerX = jv;
+                     cameraBound = playerY = jw;
                      A();
                      Midlet.f = true;
                      x(ay[fU][fV]);
@@ -6075,19 +6075,19 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      ++fV;
                      break;
                   case 19:
-                     gl = true;
+                     escortActive = true;
                      ++fV;
                      break;
                   case 20:
-                     gl = false;
-                     gn = 0;
-                     go = 1080;
-                     gp = 408;
+                     escortActive = false;
+                     escortMapId = 0;
+                     companionX = 1080;
+                     companionY = 408;
                      ++fV;
                      break;
                   case 21:
-                     currentQuestIndex = -1;
-                     eN = true;
+                     activeQuestId = -1;
+                     skillMotorcycleLearned = true;
                      c("nhận bằng lái môtô");
                      a(0, lw[4], lx[4] - 40, 4);
                      ++fV;
@@ -6097,27 +6097,27 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         i(24, var2, 0);
                      }
 
-                     eG = true;
+                     unlockedMap97 = true;
                      ++fV;
                      break;
                   case 23:
-                     fv = false;
-                     fJ = dA[ay[fU][fV]] - bD;
-                     fK = dB[ay[fU][fV]] - bE;
-                     if (fJ < 0) {
-                        fJ = 0;
+                     gameModeFv = false;
+                     cutsceneJ = dA[ay[fU][fV]] - bD;
+                     cutsceneK = dB[ay[fU][fV]] - bE;
+                     if (cutsceneJ < 0) {
+                        cutsceneJ = 0;
                      }
 
-                     if (fJ > fR) {
-                        fJ = fR;
+                     if (cutsceneJ > cutsceneR) {
+                        cutsceneJ = cutsceneR;
                      }
 
-                     if (fK < 0) {
-                        fK = 0;
+                     if (cutsceneK < 0) {
+                        cutsceneK = 0;
                      }
 
-                     if (fK > fS) {
-                        fK = fS;
+                     if (cutsceneK > cutsceneS) {
+                        cutsceneK = cutsceneS;
                      }
 
                      ++fV;
@@ -6136,33 +6136,33 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         i(24, var0, 0);
                      }
 
-                     eH = true;
+                     unlockedMap96 = true;
                      ++fV;
                      break;
                   case 27:
-                     fv = false;
-                     fJ = hq - bD;
-                     fK = hr - bE;
-                     if (fJ < 0) {
-                        fJ = 0;
+                     gameModeFv = false;
+                     cutsceneJ = hq - bD;
+                     cutsceneK = hr - bE;
+                     if (cutsceneJ < 0) {
+                        cutsceneJ = 0;
                      }
 
-                     if (fJ > fR) {
-                        fJ = fR;
+                     if (cutsceneJ > cutsceneR) {
+                        cutsceneJ = cutsceneR;
                      }
 
-                     if (fK < 0) {
-                        fK = 0;
+                     if (cutsceneK < 0) {
+                        cutsceneK = 0;
                      }
 
-                     if (fK > fS) {
-                        fK = fS;
+                     if (cutsceneK > cutsceneS) {
+                        cutsceneK = cutsceneS;
                      }
 
                      ++fV;
                      break;
                   case 28:
-                     hs = 1;
+                     scriptHsStep = 1;
                      ++fV;
                      break;
                   case 29:
@@ -6206,50 +6206,50 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      I();
                      return true;
                   case 30:
-                     currentQuestIndex = -1;
-                     eU = false;
-                     eV = true;
-                     gn = 0;
-                     go = 648;
-                     gp = 288;
-                     gl = false;
+                     activeQuestId = -1;
+                     questMeetGirlUnlocked = false;
+                     skillGateBeforeKC2 = true;
+                     escortMapId = 0;
+                     companionX = 648;
+                     companionY = 288;
+                     escortActive = false;
                      c("gặp cô Ayumi");
                      a(0, 1032, 368, 4);
                      ++fV;
                      break;
                   case 31:
-                     fv = false;
-                     fJ = go - bD;
-                     fK = gp - bE;
-                     if (fJ < 0) {
-                        fJ = 0;
+                     gameModeFv = false;
+                     cutsceneJ = companionX - bD;
+                     cutsceneK = companionY - bE;
+                     if (cutsceneJ < 0) {
+                        cutsceneJ = 0;
                      }
 
-                     if (fJ > fR) {
-                        fJ = fR;
+                     if (cutsceneJ > cutsceneR) {
+                        cutsceneJ = cutsceneR;
                      }
 
-                     if (fK < 0) {
-                        fK = 0;
+                     if (cutsceneK < 0) {
+                        cutsceneK = 0;
                      }
 
-                     if (fK > fS) {
-                        fK = fS;
+                     if (cutsceneK > cutsceneS) {
+                        cutsceneK = cutsceneS;
                      }
 
                      ++fV;
                      break;
                   case 32:
-                     gl = true;
-                     gs = 2;
-                     gq = -5;
-                     gA = -1;
+                     escortActive = true;
+                     companionMode = 2;
+                     companionVel = -5;
+                     companionFaceDir = -1;
                      gL = 8;
                      ++fV;
                      break;
                   case 33:
-                     fc = true;
-                     gl = true;
+                     questGeninGraduated = true;
+                     escortActive = true;
                      ++fV;
                }
             }
@@ -6264,8 +6264,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static void W() {
       for(int var0 = 0; var0 < df; ++var0) {
          if (di[var0] != 0) {
-            if (a(fg - (fi >> 1) - (dh[var0] - 7)) < 10 && a(ff - dg[var0]) < 10) {
-               de += dm[var0];
+            if (a(playerY - (spriteHeight >> 1) - (dh[var0] - 7)) < 10 && a(playerX - dg[var0]) < 10) {
+               gold += dm[var0];
                c = true;
                di[var0] = 301;
                a("+" + dm[var0], 1, dg[var0], dh[var0] - 15, 0, -1);
@@ -6327,7 +6327,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void Y() {
-      if (w % 2 == 0 && ((dp += dr) > dt || dp < ds)) {
+      if (mapSubIdLegacy % 2 == 0 && ((dp += dr) > dt || dp < ds)) {
          dr = -dr;
          dp += dr;
       }
@@ -6350,7 +6350,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
             var10000[var0] += db[var0];
             var10000 = cY;
             var10000[var0] += dc[var0];
-            if (cX[var0] >= fP && cX[var0] <= fP + q && cY[var0] >= fQ && cY[var0] <= fQ + r) {
+            if (cX[var0] >= cutsceneP && cX[var0] <= cutsceneP + q && cY[var0] >= cutsceneQ && cY[var0] <= cutsceneQ + r) {
                if (db[var0] > 0 && (i(cX[var0], cY[var0]) & 4) == 4) {
                   cZ[var0] = 2;
                   cX[var0] = I(cX[var0]);
@@ -6370,7 +6370,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         int var2;
                         boolean var9;
                         label205: {
-                           var2 = dd[var0] ? F << 1 : F;
+                           var2 = dd[var0] ? shurikenDmg << 1 : shurikenDmg;
                            if (jQ[var1] == 2 || jQ[var1] == 3 || jQ[var1] == 4) {
                               if (jK[var1] == 9 && db[var0] * jZ[var1] < 0) {
                                  jQ[var1] = 4;
@@ -6420,9 +6420,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   for(int var6 = 0; var6 < cq; ++var6) {
                      if (cF[var6] != 5 && cF[var6] != 1 && a(cv[var6] - cX[var0]) < 20 && a(cw[var6] - 15 - cY[var0]) < 20) {
                         if (dd[var0]) {
-                           a(var6, F << 1, cI[var0]);
+                           a(var6, shurikenDmg << 1, cI[var0]);
                            f(cv[var6], cw[var6] - 15, cI[var6]);
-                           a("-" + (F << 1), 0, cv[var6], cw[var6] - 32, 0, -2);
+                           a("-" + (shurikenDmg << 1), 0, cv[var6], cw[var6] - 32, 0, -2);
                            cZ[var0] = -1;
                         } else {
                            cF[var6] = 4;
@@ -6435,22 +6435,22 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      }
                   }
 
-                  if (!dd[var0] && a(ff - cX[var0]) < fj && a(fg - fk - cY[var0]) < fk) {
-                     if (A == 5 && fe == 0) {
+                  if (!dd[var0] && a(playerX - cX[var0]) < halfWidth && a(playerY - halfHeight - cY[var0]) < halfHeight) {
+                     if (playerState == 5 && mountSubstate == 0) {
                         db[var0] = -db[var0];
                         dc[var0] = -3;
                         return;
                      }
 
-                     a(F, -fn);
+                     a(shurikenDmg, -playerFacing);
                      cZ[var0] = -1;
                      return;
                   }
 
                   if (gO && a(gQ - cX[var0]) < gW >> 1 && a(gR - (gX >> 1) - cY[var0]) < gX >> 1) {
-                     c(F, -gU);
+                     c(shurikenDmg, -gU);
                      f(cX[var0], cY[var0], gU);
-                     a("-" + F, 0, gQ, gR - gX, 0, -2);
+                     a("-" + shurikenDmg, 0, gQ, gR - gX, 0, -2);
                      cZ[var0] = -1;
                   }
 
@@ -6467,7 +6467,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         dF[0] = dG[0] = 0;
                         dE[0] = 5;
                      } else {
-                        d(F, -dK[0]);
+                        d(shurikenDmg, -dK[0]);
                         cZ[var0] = -1;
                      }
                   }
@@ -6494,76 +6494,76 @@ public final class a extends Canvas implements Runnable, CommandListener {
             } else {
                aT[13] = true;
             }
-         } else if (aP <= fg - fQ + 24 && aP >= fg - fQ - 80 && aO <= ff - fP + 48 && aO >= ff - fP - 48) {
-            fn = ff - fP < aO ? 1 : -1;
+         } else if (aP <= playerY - cutsceneQ + 24 && aP >= playerY - cutsceneQ - 80 && aO <= playerX - cutsceneP + 48 && aO >= playerX - cutsceneP - 48) {
+            playerFacing = playerX - cutsceneP < aO ? 1 : -1;
             aT[5] = true;
-         } else if (d == 1 && !fT && aP <= fg - fQ + 24 && aP >= fg - fQ - 80) {
-            if (aO < ff - fP - 20) {
+         } else if (d == 1 && !fT && aP <= playerY - cutsceneQ + 24 && aP >= playerY - cutsceneQ - 80) {
+            if (aO < playerX - cutsceneP - 20) {
                DashSkill.getInstance().onDirectionKey(4);
-            } else if (aO > ff - fP + 20) {
+            } else if (aO > playerX - cutsceneP + 20) {
                DashSkill.getInstance().onDirectionKey(6);
             }
          }
       }
 
       if (aQ && !fT && (aO <= aU - 40 || aP >= 40) && aP <= aV - 30) {
-         if (aP > fg - fQ + 24) {
+         if (aP > playerY - cutsceneQ + 24) {
             aS[8] = true;
-         } else if (aP < fg - fQ - 80) {
+         } else if (aP < playerY - cutsceneQ - 80) {
             aS[2] = true;
-         } else if (aO > ff - fP + 48) {
+         } else if (aO > playerX - cutsceneP + 48) {
             aS[6] = true;
-         } else if (aO < ff - fP - 48) {
+         } else if (aO < playerX - cutsceneP - 48) {
             aS[4] = true;
          }
       }
 
-      if (++w == 10000) {
-         w = 0;
+      if (++mapSubIdLegacy == 10000) {
+         mapSubIdLegacy = 0;
       }
 
-      if (ff < 0) {
+      if (playerX < 0) {
          if (jp != -1) {
             A();
-            fq = ff = jt - 1;
-            fr = fg = ju;
+            cameraScrollY = playerX = jt - 1;
+            cameraBound = playerY = ju;
             Midlet.f = true;
             x(jp);
             return;
          }
-      } else if (ff >= iP - 24) {
+      } else if (playerX >= iP - 24) {
          if (jq != -1) {
-            if (!fa && jq == 95) {
+            if (!skillStealthLegacyFlag && jq == 95) {
                s(6);
                a("Khu vực phía trước rất nguy hiểm! Chỉ những người có thể ẩn thân có thể vào!");
-               ff = iP - 60;
-               A = 4;
+               playerX = iP - 60;
+               playerState = 4;
                d = 7;
                return;
             }
 
             A();
-            if (jr != -1 && fg > jB) {
-               fq = ff = jx;
-               fr = fg = jy;
+            if (jr != -1 && playerY > jB) {
+               cameraScrollY = playerX = jx;
+               cameraBound = playerY = jy;
                Midlet.f = true;
                x(jr);
                return;
             }
 
-            fq = ff = jv;
-            fr = fg = jw;
+            cameraScrollY = playerX = jv;
+            cameraBound = playerY = jw;
             Midlet.f = true;
             x(jq);
             return;
          }
-      } else if (fg + z >= iQ && A != 6 && js != -1) {
+      } else if (playerY + z >= iQ && playerState != 6 && js != -1) {
          A();
-         fq = ff = jz;
-         fr = fg = jA;
+         cameraScrollY = playerX = jz;
+         cameraBound = playerY = jA;
          Midlet.f = true;
          x(js);
-         A = 4;
+         playerState = 4;
          return;
       }
 
@@ -6572,7 +6572,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
       if (!V()) {
          if (!a) {
             for(int var0 = 0; var0 < 2; ++var0) {
-               if (w % (var0 + 2 << 3) == 0) {
+               if (mapSubIdLegacy % (var0 + 2 << 3) == 0) {
                   int var10002 = e[var0]++;
                   if (e[var0] > q + (t.getWidth() >> 1)) {
                      e[var0] = -(t.getWidth() >> 1);
@@ -6600,21 +6600,21 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   c();
                   d();
                } else if (aT[0]) {
-                  if (fe == 0) {
-                     if (eL) {
-                        fe = 1;
+                  if (mountSubstate == 0) {
+                     if (skillShurikenLearned) {
+                        mountSubstate = 1;
                      }
                   } else {
-                     fe = 0;
+                     mountSubstate = 0;
                   }
 
                   c = true;
                   aT[0] = false;
                } else if (aT[6]) {
-                  fp = 2;
+                  cameraScrollX = 2;
                   aT[6] = false;
                } else if (aT[4]) {
-                  fp = -2;
+                  cameraScrollX = -2;
                   aT[4] = false;
                } else {
                   if (aT[9]) {
@@ -6622,28 +6622,28 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      if (AmbushSkill.getInstance().tryActivate(GameSkillContext.INSTANCE)) {
                         break label1126;
                      }
-                     if (fa) {
-                        fx = !fx;
+                     if (skillStealthLegacyFlag) {
+                        gameModeFx = !gameModeFx;
                      }
 
                      break label1126;
                   }
 
                   if (aT[7]) {
-                     if (A == 1 && eR) {
-                        A = 23;
-                        C = 0;
+                     if (playerState == 1 && skillTransformLearned) {
+                        playerState = 23;
+                        airComboTier = 0;
                      }
 
                      aT[7] = false;
                   } else if (aT[10]) {
                      aT[10] = false;
-                     if (G < H) {
+                     if (hp < hpMax) {
                         for(int var4 = 0; var4 < 3; ++var4) {
-                           if (V[var4] > 0) {
-                              int var26 = V[var4]--;
-                              if ((G += kH[var4]) > H) {
-                                 G = H;
+                           if (inventoryCounts[var4] > 0) {
+                              int var26 = inventoryCounts[var4]--;
+                              if ((hp += kH[var4]) > hpMax) {
+                                 hp = hpMax;
                               }
 
                               c = true;
@@ -6653,12 +6653,12 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      }
                   } else if (aT[11]) {
                      aT[11] = false;
-                     if (I < J) {
+                     if (mp < mpMax) {
                         for(int var5 = 3; var5 < 6; ++var5) {
-                           if (V[var5] > 0) {
-                              int var27 = V[var5]--;
-                              if ((I += kH[var5]) > J) {
-                                 I = J;
+                           if (inventoryCounts[var5] > 0) {
+                              int var27 = inventoryCounts[var5]--;
+                              if ((mp += kH[var5]) > mpMax) {
+                                 mp = mpMax;
                               }
 
                               c = true;
@@ -6669,27 +6669,27 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   }
                }
 
-               if (A == 1) {
+               if (playerState == 1) {
                   if (aT[13]) {
                      d();
                      if (o.equals("Giao tiếp")) {
-                        int var6 = fE;
+                        int var6 = interactTargetId;
                         switch (ly[var6]) {
                            case 0:
-                              if (fc) {
+                              if (questGeninGraduated) {
                                  a(NPCDialogue.lD[7], -1, lw[var6], lx[var6] - 40);
-                              } else if (!khinhCong) {
+                              } else if (!skillWallJumpLearned) {
                                  V(2);
                                  a(QuestText.lA[0], -1, lw[var6], lx[var6] - 40);
                               } else {
-                                 if (fa && !fb) {
-                                    if (currentQuestIndex == 16) {
-                                       if (eI) {
+                                 if (skillStealthLegacyFlag && !questGeninFlagFB) {
+                                    if (activeQuestId == 16) {
+                                       if (unlockedMap95) {
                                           a(QuestText.lB[14], 35, lw[var6], lx[var6] - 40);
                                        } else {
                                           a(QuestText.lC[14], -1, lw[var6], lx[var6] - 40);
                                        }
-                                    } else if (currentQuestIndex == -1) {
+                                    } else if (activeQuestId == -1) {
                                        a(QuestText.lA[22], 36, lw[var6], lx[var6] - 40);
                                     } else {
                                        a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
@@ -6701,11 +6701,11 @@ public final class a extends Canvas implements Runnable, CommandListener {
                               }
                               break;
                            case 1:
-                              if (fc) {
+                              if (questGeninGraduated) {
                                  a(NPCDialogue.lD[5], -1, lw[var6], lx[var6] - 40);
-                              } else if (!khinhCong) {
-                                 if (currentQuestIndex == 0) {
-                                    if (fD < questRequiredAmounts[0]) {
+                              } else if (!skillWallJumpLearned) {
+                                 if (activeQuestId == 0) {
+                                    if (questProgress < questRequiredAmounts[0]) {
                                        a(QuestText.lC[0], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        boolean var2 = true;
@@ -6718,53 +6718,53 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                        lK = 240;
                                        a(QuestText.lB[0], 4, lw[var6], lx[var6] - 40);
                                     }
-                                 } else if (currentQuestIndex == -1) {
+                                 } else if (activeQuestId == -1) {
                                     a(QuestText.lA[1], 3, lw[var6], lx[var6] - 40);
                                  } else {
                                     a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
-                              } else if (!eS && eR) {
-                                 if (characterLevel < 10) {
+                              } else if (!questBatReward5000Done && skillTransformLearned) {
+                                 if (level < 10) {
                                     a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 10"}, -1, lw[var6], lx[var6] - 40);
-                                 } else if (currentQuestIndex == 7) {
-                                    if (fD < questRequiredAmounts[7]) {
+                                 } else if (activeQuestId == 7) {
+                                    if (questProgress < questRequiredAmounts[7]) {
                                        a(QuestText.lC[6], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(2);
                                        a(QuestText.lB[6], 19, lw[var6], lx[var6] - 40);
                                     }
-                                 } else if (currentQuestIndex == -1) {
+                                 } else if (activeQuestId == -1) {
                                     a(QuestText.lA[14], 18, lw[var6], lx[var6] - 40);
                                  } else {
                                     a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
-                              } else if (eV && !khinhCongCap2) {
-                                 if (characterLevel < 12) {
+                              } else if (skillGateBeforeKC2 && !skillWallJumpL2Learned) {
+                                 if (level < 12) {
                                     a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 12"}, -1, lw[var6], lx[var6] - 40);
-                                 } else if (currentQuestIndex == 11) {
-                                    if (fD < 20) {
+                                 } else if (activeQuestId == 11) {
+                                    if (questProgress < 20) {
                                        a(QuestText.lC[9], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(4);
                                        a(QuestText.lB[9], 27, lw[var6], lx[var6] - 40);
                                     }
-                                 } else if (currentQuestIndex == -1) {
+                                 } else if (activeQuestId == -1) {
                                     a(QuestText.lA[17], 28, lw[var6], lx[var6] - 40);
                                  } else {
                                     a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else {
-                                 if (!eY && eX) {
-                                    if (characterLevel < 15) {
+                                 if (!skillSpeedBoostLearned && shurikenLevel2Learned) {
+                                    if (level < 15) {
                                        a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 15"}, -1, lw[var6], lx[var6] - 40);
-                                    } else if (currentQuestIndex == 13) {
-                                       if (fD < questRequiredAmounts[13]) {
+                                    } else if (activeQuestId == 13) {
+                                       if (questProgress < questRequiredAmounts[13]) {
                                           a(QuestText.lC[11], -1, lw[var6], lx[var6] - 40);
                                        } else {
                                           V(3);
                                           a(QuestText.lB[11], 31, lw[var6], lx[var6] - 40);
                                        }
-                                    } else if (currentQuestIndex == -1) {
+                                    } else if (activeQuestId == -1) {
                                        a(QuestText.lA[19], 32, lw[var6], lx[var6] - 40);
                                     } else {
                                        a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
@@ -6776,42 +6776,42 @@ public final class a extends Canvas implements Runnable, CommandListener {
                               }
                               break;
                            case 2:
-                              if (fc) {
+                              if (questGeninGraduated) {
                                  a(NPCDialogue.lD[9], -1, lw[var6], lx[var6] - 40);
-                              } else if (!khinhCong) {
+                              } else if (!skillWallJumpLearned) {
                                  V(1);
                                  a(QuestText.lA[2], -1, lw[var6], lx[var6] - 40);
-                              } else if (eM && !eN) {
-                                 if (currentQuestIndex == 3) {
+                              } else if (skillBurrowLearned && !skillMotorcycleLearned) {
+                                 if (activeQuestId == 3) {
                                     a(QuestText.lA[9], -1, lw[var6], lx[var6] - 40);
-                                 } else if (currentQuestIndex == -1) {
+                                 } else if (activeQuestId == -1) {
                                     a(QuestText.lA[10], 11, lw[var6], lx[var6] - 40);
                                  } else {
                                     a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
-                              } else if (eS && !eT) {
-                                 if (currentQuestIndex == 8) {
-                                    if (eH) {
+                              } else if (questBatReward5000Done && !questTonikuBranchDone) {
+                                 if (activeQuestId == 8) {
+                                    if (unlockedMap96) {
                                        V(2);
                                        a(QuestText.lB[7], 23, lw[var6], lx[var6] - 40);
                                     } else {
                                        a(QuestText.lC[7], -1, lw[var6], lx[var6] - 40);
                                     }
-                                 } else if (currentQuestIndex == -1) {
+                                 } else if (activeQuestId == -1) {
                                     a(QuestText.lA[15], 22, lw[var6], lx[var6] - 40);
                                  } else {
                                     a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else {
-                                 if (eT && !eU) {
-                                    if (currentQuestIndex == 9) {
-                                       if (fD < questRequiredAmounts[9]) {
+                                 if (questTonikuBranchDone && !questMeetGirlUnlocked) {
+                                    if (activeQuestId == 9) {
+                                       if (questProgress < questRequiredAmounts[9]) {
                                           a(QuestText.lC[8], -1, lw[var6], lx[var6] - 40);
                                        } else {
                                           V(3);
                                           a(QuestText.lB[8], 25, lw[var6], lx[var6] - 40);
                                        }
-                                    } else if (currentQuestIndex == -1) {
+                                    } else if (activeQuestId == -1) {
                                        a(QuestText.lA[16], 24, lw[var6], lx[var6] - 40);
                                     } else {
                                        a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
@@ -6823,19 +6823,19 @@ public final class a extends Canvas implements Runnable, CommandListener {
                               }
                               break;
                            case 3:
-                              if (fc) {
+                              if (questGeninGraduated) {
                                  a(NPCDialogue.lD[9], -1, lw[var6], lx[var6] - 40);
                               } else {
-                                 if (khinhCong && eL) {
-                                    if (!eM) {
-                                       if (currentQuestIndex == 2) {
-                                          if (!fB) {
+                                 if (skillWallJumpLearned && skillShurikenLearned) {
+                                    if (!skillBurrowLearned) {
+                                       if (activeQuestId == 2) {
+                                          if (!questBool) {
                                              a(QuestText.lC[2], -1, lw[var6], lx[var6] - 40);
                                           } else {
                                              V(2);
                                              a(QuestText.lB[2], 10, lw[var6], lx[var6] - 40);
                                           }
-                                       } else if (currentQuestIndex == -1) {
+                                       } else if (activeQuestId == -1) {
                                           a(QuestText.lA[8], 9, lw[var6], lx[var6] - 40);
                                        } else {
                                           a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
@@ -6843,15 +6843,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                        break;
                                     }
 
-                                    if (!eP && eO) {
-                                       if (currentQuestIndex == 5) {
-                                          if (!fB) {
+                                    if (!skillSwimLearned && skillAttackDoubledQuest) {
+                                       if (activeQuestId == 5) {
+                                          if (!questBool) {
                                              a(QuestText.lC[4], -1, lw[var6], lx[var6] - 40);
                                           } else {
                                              V(4);
                                              a(QuestText.lB[4], 15, lw[var6], lx[var6] - 40);
                                           }
-                                       } else if (currentQuestIndex == -1) {
+                                       } else if (activeQuestId == -1) {
                                           a(QuestText.lA[12], 14, lw[var6], lx[var6] - 40);
                                        } else {
                                           a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
@@ -6859,17 +6859,17 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                        break;
                                     }
 
-                                    if (!eZ && eY) {
-                                       if (characterLevel < 16) {
+                                    if (!skillStandOnWaterLearned && skillSpeedBoostLearned) {
+                                       if (level < 16) {
                                           a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 16"}, -1, lw[var6], lx[var6] - 40);
-                                       } else if (currentQuestIndex == 14) {
-                                          if (fD < questRequiredAmounts[14]) {
+                                       } else if (activeQuestId == 14) {
+                                          if (questProgress < questRequiredAmounts[14]) {
                                              a(QuestText.lC[12], -1, lw[var6], lx[var6] - 40);
                                           } else {
                                              V(3);
                                              a(QuestText.lB[12], 33, lw[var6], lx[var6] - 40);
                                           }
-                                       } else if (currentQuestIndex == -1) {
+                                       } else if (activeQuestId == -1) {
                                           a(QuestText.lA[20], 34, lw[var6], lx[var6] - 40);
                                        } else {
                                           a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
@@ -6877,15 +6877,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                        break;
                                     }
 
-                                    if (!fa && eZ) {
-                                       if (currentQuestIndex == 15) {
-                                          if (!fB) {
+                                    if (!skillStealthLegacyFlag && skillStandOnWaterLearned) {
+                                       if (activeQuestId == 15) {
+                                          if (!questBool) {
                                              a(QuestText.lC[13], -1, lw[var6], lx[var6] - 40);
                                           } else {
                                              V(0);
                                              a(QuestText.lB[13], 21, lw[var6], lx[var6] - 40);
                                           }
-                                       } else if (currentQuestIndex == -1) {
+                                       } else if (activeQuestId == -1) {
                                           a(QuestText.lA[21], 20, lw[var6], lx[var6] - 40);
                                        } else {
                                           a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
@@ -6901,63 +6901,63 @@ public final class a extends Canvas implements Runnable, CommandListener {
                               }
                               break;
                            case 4:
-                              if (fc) {
+                              if (questGeninGraduated) {
                                  a(NPCDialogue.lD[8], -1, lw[var6], lx[var6] - 40);
-                              } else if (v == 99) {
+                              } else if (mapId == 99) {
                                  a(QuestText.lA[7], -1, lw[var6], lx[var6] - 40);
-                              } else if (!khinhCong) {
+                              } else if (!skillWallJumpLearned) {
                                  a(QuestText.lA[4], -1, lw[var6], lx[var6] - 40);
-                              } else if (!eL) {
-                                 if (currentQuestIndex == 1) {
-                                    if (fD < questRequiredAmounts[1]) {
+                              } else if (!skillShurikenLearned) {
+                                 if (activeQuestId == 1) {
+                                    if (questProgress < questRequiredAmounts[1]) {
                                        a(QuestText.lC[3], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(3);
                                        a(QuestText.lB[1], 6, lw[var6], lx[var6] - 40);
                                     }
-                                 } else if (currentQuestIndex == -1) {
+                                 } else if (activeQuestId == -1) {
                                     a(QuestText.lA[6], 5, lw[var6], lx[var6] - 40);
                                  } else {
                                     a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
-                              } else if (eN && !eO) {
-                                 if (currentQuestIndex == 4) {
-                                    if (fD < questRequiredAmounts[4]) {
+                              } else if (skillMotorcycleLearned && !skillAttackDoubledQuest) {
+                                 if (activeQuestId == 4) {
+                                    if (questProgress < questRequiredAmounts[4]) {
                                        a(QuestText.lC[3], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(3);
                                        a(QuestText.lB[3], 12, lw[var6], lx[var6] - 40);
                                     }
-                                 } else if (currentQuestIndex == -1) {
+                                 } else if (activeQuestId == -1) {
                                     a(QuestText.lA[11], 13, lw[var6], lx[var6] - 40);
                                  } else {
                                     a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
-                              } else if (eP && !eR) {
-                                 if (characterLevel < 8) {
+                              } else if (skillSwimLearned && !skillTransformLearned) {
+                                 if (level < 8) {
                                     a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 8"}, -1, lw[var6], lx[var6] - 40);
-                                 } else if (currentQuestIndex == 6) {
-                                    if (!fB) {
+                                 } else if (activeQuestId == 6) {
+                                    if (!questBool) {
                                        a(QuestText.lC[5], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(1);
                                        a(QuestText.lB[5], 17, lw[var6], lx[var6] - 40);
                                     }
-                                 } else if (currentQuestIndex == -1) {
+                                 } else if (activeQuestId == -1) {
                                     a(QuestText.lA[13], 16, lw[var6], lx[var6] - 40);
                                  } else {
                                     a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else {
-                                 if (!eX && khinhCongCap2) {
-                                    if (currentQuestIndex == 12) {
-                                       if (fD < questRequiredAmounts[12]) {
+                                 if (!shurikenLevel2Learned && skillWallJumpL2Learned) {
+                                    if (activeQuestId == 12) {
+                                       if (questProgress < questRequiredAmounts[12]) {
                                           a(QuestText.lC[10], -1, lw[var6], lx[var6] - 40);
                                        } else {
                                           V(1);
                                           a(QuestText.lB[10], 29, lw[var6], lx[var6] - 40);
                                        }
-                                    } else if (currentQuestIndex == -1) {
+                                    } else if (activeQuestId == -1) {
                                        a(QuestText.lA[18], 30, lw[var6], lx[var6] - 40);
                                     } else {
                                        a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
@@ -6969,7 +6969,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                               }
                               break;
                            case 5:
-                              if (v == 0) {
+                              if (mapId == 0) {
                                  if (var6 == 5) {
                                     a(NPCDialogue.lz[0], -1, lw[var6], lx[var6] - 40);
                                  }
@@ -6981,442 +6981,442 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                  }
                               }
 
-                              if (v == 2 && var6 == 0) {
+                              if (mapId == 2 && var6 == 0) {
                                  aA();
                                  d = 9;
                                  kt = 1;
                               }
 
-                              if (v == 1 && var6 == 0) {
+                              if (mapId == 1 && var6 == 0) {
                                  a(NPCDialogue.lz[1], -1, lw[var6], lx[var6] - 40);
                               }
 
-                              if (v == 5 && var6 == 0) {
+                              if (mapId == 5 && var6 == 0) {
                                  a(NPCDialogue.lz[2], -1, lw[var6], lx[var6] - 40);
                               }
 
-                              if (v == 6 && var6 == 0) {
+                              if (mapId == 6 && var6 == 0) {
                                  a(NPCDialogue.lz[3], -1, lw[var6], lx[var6] - 40);
                               }
                         }
 
-                        if (v == gc && var6 == gk) {
-                           gc = -1;
+                        if (mapId == scriptMapId && var6 == scriptExtraK) {
+                           scriptMapId = -1;
                         }
                      } else if (o.equals("Trò chuyện")) {
                         d();
-                        dK[fF] = -fn;
-                        a(dw[fF], 0, dA[fF], dB[fF] - 44);
+                        dK[interactSubId] = -playerFacing;
+                        a(dw[interactSubId], 0, dA[interactSubId], dB[interactSubId] - 44);
                      } else if (o.equals("Nói chuyện") && fC) {
-                        if (gl) {
-                           a(StoryDialogue.aG[0], 0, go, gp - 44);
-                        } else if (eV) {
-                           a(StoryDialogue.aG[2], 0, go, gp - 44);
-                           gl = true;
-                        } else if (eU) {
-                           a(StoryDialogue.aG[3], 26, go, gp - 44);
-                           eU = false;
+                        if (escortActive) {
+                           a(StoryDialogue.aG[0], 0, companionX, companionY - 44);
+                        } else if (skillGateBeforeKC2) {
+                           a(StoryDialogue.aG[2], 0, companionX, companionY - 44);
+                           escortActive = true;
+                        } else if (questMeetGirlUnlocked) {
+                           a(StoryDialogue.aG[3], 26, companionX, companionY - 44);
+                           questMeetGirlUnlocked = false;
                         } else {
-                           a(StoryDialogue.aG[1], 0, go, gp - 44);
+                           a(StoryDialogue.aG[1], 0, companionX, companionY - 44);
                         }
                      }
                   } else {
                      label1097: {
                         if (aS[2]) {
-                           if (eN) {
-                              for(int var7 = 0; var7 < ij; ++var7) {
-                                 if (fg == im[var7] && a(ff - il[var7]) < 20) {
-                                    ff = il[var7];
-                                    A = 18;
+                           if (skillMotorcycleLearned) {
+                              for(int var7 = 0; var7 < mapObjectBundleCount; ++var7) {
+                                 if (playerY == mapObjTileY[var7] && a(playerX - mapObjTileX[var7]) < 20) {
+                                    playerX = mapObjTileX[var7];
+                                    playerState = 18;
                                     c();
-                                    ik = var7;
-                                    in[var7] = fn;
-                                    io[var7] = 0;
+                                    mapObjectMountIndex = var7;
+                                    mapObjFacing[var7] = playerFacing;
+                                    mapObjAnim[var7] = 0;
                                     break label1097;
                                  }
                               }
                            }
 
                            z = zForInitialJump();
-                           A = 3;
-                           is = -1;
-                           C = 0;
-                           fE = -1;
-                           fF = -1;
+                           playerState = 3;
+                           mapNpcFocusIndex = -1;
+                           airComboTier = 0;
+                           interactTargetId = -1;
+                           interactSubId = -1;
                            o = " ";
                            c = true;
                         } else if (aS[4]) {
-                           if (fn == 1) {
-                              fn = -1;
+                           if (playerFacing == 1) {
+                              playerFacing = -1;
                            } else {
-                              A = 2;
+                              playerState = 2;
                               y = -P;
                            }
 
-                           fE = -1;
-                           fF = -1;
+                           interactTargetId = -1;
+                           interactSubId = -1;
                            o = " ";
                            c = true;
                         } else if (aS[6]) {
-                           if (fn == -1) {
-                              fn = 1;
+                           if (playerFacing == -1) {
+                              playerFacing = 1;
                            } else {
-                              A = 2;
+                              playerState = 2;
                               y = P;
                            }
 
-                           fF = -1;
-                           fE = -1;
+                           interactSubId = -1;
+                           interactTargetId = -1;
                            o = " ";
                            c = true;
                         } else if (aS[8]) {
-                           C = 0;
-                           D = 0;
-                           A = 8;
+                           airComboTier = 0;
+                           burrowSubstate = 0;
+                           playerState = 8;
                         } else if (aS[1]) {
                            z = zForInitialJump();
-                           fn = -1;
+                           playerFacing = -1;
                            y = -4;
-                           A = 3;
-                           is = -1;
-                           C = 0;
-                           fE = -1;
-                           fF = -1;
+                           playerState = 3;
+                           mapNpcFocusIndex = -1;
+                           airComboTier = 0;
+                           interactTargetId = -1;
+                           interactSubId = -1;
                            o = " ";
                            c = true;
                         } else if (aS[3]) {
                            z = zForInitialJump();
 
-                           fn = 1;
+                           playerFacing = 1;
                            y = 4;
-                           A = 3;
-                           is = -1;
-                           C = 0;
-                           fE = -1;
-                           fF = -1;
+                           playerState = 3;
+                           mapNpcFocusIndex = -1;
+                           airComboTier = 0;
+                           interactTargetId = -1;
+                           interactSubId = -1;
                            o = " ";
                            c = true;
                         }
 
                         if (aT[5]) {
-                           A = 5;
-                           fu = 0;
-                           C = 0;
+                           playerState = 5;
+                           timerFu = 0;
+                           airComboTier = 0;
                            z = 0;
                            aT[5] = false;
-                           fE = -1;
-                           fF = -1;
+                           interactTargetId = -1;
+                           interactSubId = -1;
                            o = " ";
                            c = true;
                         }
                      }
                   }
-               } else if (A == 2) {
+               } else if (playerState == 2) {
                   if (aS[2]) {
-                     is = -1;
+                     mapNpcFocusIndex = -1;
                      z = zForInitialJump();
-                     A = 3;
-                     C = 0;
+                     playerState = 3;
+                     airComboTier = 0;
                   } else if (aS[4]) {
-                     if (fn == 1) {
-                        fn = -1;
+                     if (playerFacing == 1) {
+                        playerFacing = -1;
                      } else {
-                        y = -P + fp;
+                        y = -P + cameraScrollX;
                      }
                   } else if (aS[6]) {
-                     if (fn == -1) {
-                        fn = 1;
+                     if (playerFacing == -1) {
+                        playerFacing = 1;
                      } else {
-                        y = P + fp;
+                        y = P + cameraScrollX;
                      }
                   }
 
                   if (aT[5]) {
-                     A = 5;
-                     fu = 0;
-                     C = 0;
+                     playerState = 5;
+                     timerFu = 0;
+                     airComboTier = 0;
                      z = 0;
                      aT[5] = false;
                   }
-               } else if (A == 11) {
+               } else if (playerState == 11) {
                   if (aS[2]) {
                      z = zForInitialJump();
-                     A = 3;
-                     C = 0;
+                     playerState = 3;
+                     airComboTier = 0;
                   } else if (aS[4]) {
-                     if (fn == 1) {
-                        fn = -1;
+                     if (playerFacing == 1) {
+                        playerFacing = -1;
                      } else {
-                        y = -K + fp;
+                        y = -K + cameraScrollX;
                      }
                   } else if (aS[6]) {
-                     if (fn == -1) {
-                        fn = 1;
+                     if (playerFacing == -1) {
+                        playerFacing = 1;
                      } else {
-                        y = K + fp;
+                        y = K + cameraScrollX;
                      }
                   }
-               } else if (A == 3) {
+               } else if (playerState == 3) {
                   if (aS[4]) {
-                     if (fn == 1) {
-                        fn = -1;
+                     if (playerFacing == 1) {
+                        playerFacing = -1;
                      } else {
                         y = -P;
                      }
                   } else if (aS[6]) {
-                     if (fn == -1) {
-                        fn = 1;
+                     if (playerFacing == -1) {
+                        playerFacing = 1;
                      } else {
                         y = P;
                      }
                   }
 
                   if (aT[5]) {
-                     A = 5;
-                     fu = 0;
-                     C = 0;
+                     playerState = 5;
+                     timerFu = 0;
+                     airComboTier = 0;
                      aT[5] = false;
                   }
 
-                  if (aS[2] && I > 0 && z > -4) {
+                  if (aS[2] && mp > 0 && z > -4) {
                      tryAirKhinhCongBoost();
                   }
-               } else if (A == 4) {
+               } else if (playerState == 4) {
                   if (aS[4]) {
-                     if (fn == 1) {
-                        fn = -1;
+                     if (playerFacing == 1) {
+                        playerFacing = -1;
                      } else {
                         y = -P;
                      }
                   } else if (aS[6]) {
-                     if (fn == -1) {
-                        fn = 1;
+                     if (playerFacing == -1) {
+                        playerFacing = 1;
                      } else {
                         y = P;
                      }
                   }
 
                   if (aT[5] && z > 4) {
-                     A = 5;
-                     C = 0;
-                     fu = 0;
+                     playerState = 5;
+                     airComboTier = 0;
+                     timerFu = 0;
                      aT[5] = false;
                   }
-               } else if (A == 5) {
+               } else if (playerState == 5) {
                   if (aS[4]) {
-                     if (fn == 1) {
-                        fn = -1;
+                     if (playerFacing == 1) {
+                        playerFacing = -1;
                      } else {
                         y = -P + 2;
                      }
                   } else if (aS[6]) {
-                     if (fn == -1) {
-                        fn = 1;
+                     if (playerFacing == -1) {
+                        playerFacing = 1;
                      } else {
                         y = P - 2;
                      }
                   }
 
                   if (aT[5]) {
-                     fw = true;
+                     gameModeFw = true;
                      aT[5] = false;
                   }
-               } else if (A == 18) {
+               } else if (playerState == 18) {
                   if (aS[2]) {
                      z = -10;
-                     A = 21;
-                     C = 10;
-                     is = -1;
+                     playerState = 21;
+                     airComboTier = 10;
+                     mapNpcFocusIndex = -1;
                   } else if (aS[4]) {
-                     if (fn == 1) {
-                        fn = -1;
-                        in[ik] = -1;
+                     if (playerFacing == 1) {
+                        playerFacing = -1;
+                        mapObjFacing[mapObjectMountIndex] = -1;
                      } else {
-                        C = 1;
-                        A = 19;
-                        C = 10;
+                        airComboTier = 1;
+                        playerState = 19;
+                        airComboTier = 10;
                         y = -Q;
                      }
                   } else if (aS[6]) {
-                     if (fn == -1) {
-                        fn = 1;
-                        in[ik] = 1;
+                     if (playerFacing == -1) {
+                        playerFacing = 1;
+                        mapObjFacing[mapObjectMountIndex] = 1;
                      } else {
-                        A = 19;
-                        C = 10;
+                        playerState = 19;
+                        airComboTier = 10;
                         y = Q;
                      }
                   } else if (aS[8]) {
-                     A = 1;
-                     ik = -1;
+                     playerState = 1;
+                     mapObjectMountIndex = -1;
                   }
-               } else if (A == 19) {
+               } else if (playerState == 19) {
                   if (aS[2]) {
                      z = -10;
-                     A = 21;
-                     is = -1;
-                     C = 10;
+                     playerState = 21;
+                     mapNpcFocusIndex = -1;
+                     airComboTier = 10;
                   } else if (aS[4]) {
-                     if (fn == 1) {
-                        fn = -1;
-                        in[ik] = -1;
+                     if (playerFacing == 1) {
+                        playerFacing = -1;
+                        mapObjFacing[mapObjectMountIndex] = -1;
                      } else {
                         y = -Q;
                      }
                   } else if (aS[6]) {
-                     if (fn == -1) {
-                        fn = 1;
-                        in[ik] = 1;
+                     if (playerFacing == -1) {
+                        playerFacing = 1;
+                        mapObjFacing[mapObjectMountIndex] = 1;
                      } else {
                         y = Q;
                      }
                   }
-               } else if (A == 21) {
+               } else if (playerState == 21) {
                   if (aS[4]) {
-                     if (fn == 1) {
-                        fn = -1;
-                        in[ik] = -1;
+                     if (playerFacing == 1) {
+                        playerFacing = -1;
+                        mapObjFacing[mapObjectMountIndex] = -1;
                      } else {
                         y = -Q;
                      }
                   } else if (aS[6]) {
-                     if (fn == -1) {
-                        fn = 1;
-                        in[ik] = 1;
+                     if (playerFacing == -1) {
+                        playerFacing = 1;
+                        mapObjFacing[mapObjectMountIndex] = 1;
                      } else {
                         y = Q;
                      }
                   }
-               } else if (A == 20) {
+               } else if (playerState == 20) {
                   if (aS[4]) {
-                     if (fn == 1) {
-                        fn = -1;
-                        in[ik] = -1;
+                     if (playerFacing == 1) {
+                        playerFacing = -1;
+                        mapObjFacing[mapObjectMountIndex] = -1;
                      } else {
                         y = -Q;
                      }
                   } else if (aS[6]) {
-                     if (fn == -1) {
-                        fn = 1;
-                        in[ik] = 1;
+                     if (playerFacing == -1) {
+                        playerFacing = 1;
+                        mapObjFacing[mapObjectMountIndex] = 1;
                      } else {
                         y = Q;
                      }
                   }
-               } else if (A == 17) {
+               } else if (playerState == 17) {
                   if (aS[2]) {
                      z = zForInitialJump();
-                     A = 3;
-                     fd = -1;
-                     C = 0;
+                     playerState = 3;
+                     mountFacing = -1;
+                     airComboTier = 0;
                   } else if (aS[4]) {
-                     if (fn == 1) {
-                        fn = -1;
+                     if (playerFacing == 1) {
+                        playerFacing = -1;
                      } else {
-                        A = 16;
+                        playerState = 16;
                         y = -L;
                      }
                   } else if (aS[6]) {
-                     if (fn == -1) {
-                        fn = 1;
+                     if (playerFacing == -1) {
+                        playerFacing = 1;
                      } else {
-                        A = 16;
+                        playerState = 16;
                         y = L;
                      }
                   }
-               } else if (A == 16) {
+               } else if (playerState == 16) {
                   if (aS[2]) {
                      z = zForInitialJump();
-                     A = 3;
-                     fd = -1;
-                     C = 0;
+                     playerState = 3;
+                     mountFacing = -1;
+                     airComboTier = 0;
                   } else if (aS[4]) {
-                     if (fn == 1) {
-                        fn = -1;
+                     if (playerFacing == 1) {
+                        playerFacing = -1;
                      } else {
                         y = -L;
                      }
                   } else if (aS[6]) {
-                     if (fn == -1) {
-                        fn = 1;
+                     if (playerFacing == -1) {
+                        playerFacing = 1;
                      } else {
                         y = L;
                      }
                   }
-               } else if (A == 12) {
-                  if (aS[2] && eQ) {
+               } else if (playerState == 12) {
+                  if (aS[2] && skillWaterRunLearned) {
                      z = -10;
-                     A = 3;
-                     fd = -1;
-                     C = 0;
+                     playerState = 3;
+                     mountFacing = -1;
+                     airComboTier = 0;
                   }
-               } else if (A == 14) {
+               } else if (playerState == 14) {
                   if (aS[4]) {
-                     fn = -1;
+                     playerFacing = -1;
                   } else if (aS[6]) {
-                     fn = 1;
+                     playerFacing = 1;
                   } else if (aS[2]) {
-                     A = 15;
+                     playerState = 15;
                   }
                }
             }
          }
 
-         if (fP != fJ || fQ != fK) {
-            fL = fJ - fP << 2;
-            fM = fK - fQ << 2;
-            fN += fL;
-            fP += fN >> 4;
-            fN &= 15;
-            fO += fM;
-            fQ += fO >> 4;
-            fO &= 15;
-            if (fP < 0) {
-               fP = 0;
+         if (cutsceneP != cutsceneJ || cutsceneQ != cutsceneK) {
+            cutsceneL = cutsceneJ - cutsceneP << 2;
+            cutsceneM = cutsceneK - cutsceneQ << 2;
+            cutsceneN += cutsceneL;
+            cutsceneP += cutsceneN >> 4;
+            cutsceneN &= 15;
+            cutsceneO += cutsceneM;
+            cutsceneQ += cutsceneO >> 4;
+            cutsceneO &= 15;
+            if (cutsceneP < 0) {
+               cutsceneP = 0;
             }
 
-            if (fP > fR) {
-               fP = fR;
+            if (cutsceneP > cutsceneR) {
+               cutsceneP = cutsceneR;
             }
 
-            if (fQ < 0) {
-               fQ = 0;
+            if (cutsceneQ < 0) {
+               cutsceneQ = 0;
             }
 
-            if (fQ > fS) {
-               fQ = fS;
+            if (cutsceneQ > cutsceneS) {
+               cutsceneQ = cutsceneS;
             }
          }
 
          if (aK >= 0) {
-            fP += aI[aK];
-            fQ += aJ[aK];
+            cutsceneP += aI[aK];
+            cutsceneQ += aJ[aK];
             if (++aK == 4) {
                aK = -1;
             }
 
-            if (fP < 0) {
-               fP = 0;
+            if (cutsceneP < 0) {
+               cutsceneP = 0;
             }
 
-            if (fP > fR) {
-               fP = fR;
+            if (cutsceneP > cutsceneR) {
+               cutsceneP = cutsceneR;
             }
 
-            if (fQ < 0) {
-               fQ = 0;
+            if (cutsceneQ < 0) {
+               cutsceneQ = 0;
             }
 
-            if (fQ > fS) {
-               fQ = fS;
+            if (cutsceneQ > cutsceneS) {
+               cutsceneQ = cutsceneS;
             }
          }
 
-         if ((bx = fP / jf - 1) < 0) {
+         if ((bx = cutsceneP / jf - 1) < 0) {
             bx = 0;
          }
 
-         by = fQ / jf;
+         by = cutsceneQ / jf;
          bB = bx + bz;
          bC = by + bA;
          if (by < 0) {
@@ -7427,102 +7427,102 @@ public final class a extends Canvas implements Runnable, CommandListener {
             bC = iO - 1;
          }
 
-         if (iv == null && ir > 0) { ensureIrNpcArraysSized(); }
-         for(int var8 = 0; iv != null && var8 < ir; ++var8) {
-            switch (iv[var8]) {
+         if (mapNpcDir == null && mapNpcBundleCount > 0) { ensureIrNpcArraysSized(); }
+         for(int var8 = 0; mapNpcDir != null && var8 < mapNpcBundleCount; ++var8) {
+            switch (mapNpcDir[var8]) {
                case 2:
-                  int[] var20 = it;
-                  var20[var8] += iw[var8];
-                  if (iw[var8] > 0) {
-                     int var29 = iw[var8]--;
-                  } else if (iw[var8] < 0) {
-                     int var30 = iw[var8]++;
+                  int[] var20 = mapNpcTileX;
+                  var20[var8] += mapNpcIw[var8];
+                  if (mapNpcIw[var8] > 0) {
+                     int var29 = mapNpcIw[var8]--;
+                  } else if (mapNpcIw[var8] < 0) {
+                     int var30 = mapNpcIw[var8]++;
                   } else {
-                     iv[var8] = 1;
+                     mapNpcDir[var8] = 1;
                   }
 
-                  if (!g(it[var8] - 12, iu[var8] + 1, 2) && !g(it[var8] + 12, iu[var8] + 1, 2)) {
-                     iv[var8] = 4;
-                     ix[var8] = 2;
+                  if (!g(mapNpcTileX[var8] - 12, mapNpcTileY[var8] + 1, 2) && !g(mapNpcTileX[var8] + 12, mapNpcTileY[var8] + 1, 2)) {
+                     mapNpcDir[var8] = 4;
+                     mapNpcIx[var8] = 2;
                   }
 
-                  if (g(it[var8] + 12, iu[var8] - 2, 4) || g(it[var8] - 12, iu[var8] - 2, 8)) {
-                     it[var8] = I(it[var8]) + 12;
+                  if (g(mapNpcTileX[var8] + 12, mapNpcTileY[var8] - 2, 4) || g(mapNpcTileX[var8] - 12, mapNpcTileY[var8] - 2, 8)) {
+                     mapNpcTileX[var8] = I(mapNpcTileX[var8]) + 12;
                   }
                   break;
                case 4:
-                  int[] var19 = iu;
-                  var19[var8] += ix[var8];
-                  if (ix[var8] < 20) {
-                     int var28 = ix[var8]++;
+                  int[] var19 = mapNpcTileY;
+                  var19[var8] += mapNpcIx[var8];
+                  if (mapNpcIx[var8] < 20) {
+                     int var28 = mapNpcIx[var8]++;
                   }
 
-                  if (!g(it[var8] + 12, iu[var8], 2) && !g(it[var8] - 12, iu[var8], 2)) {
-                     if (g(it[var8], iu[var8] - jf, 64)) {
-                        iu[var8] = H(iu[var8]) + 1;
-                        g(it[var8], iu[var8] - 13);
-                        g(it[var8] + 1, iu[var8] - 10);
-                        ix[var8] = 1;
-                        iy[var8] = -1;
-                        iz[var8] = 1;
-                        iv[var8] = 11;
+                  if (!g(mapNpcTileX[var8] + 12, mapNpcTileY[var8], 2) && !g(mapNpcTileX[var8] - 12, mapNpcTileY[var8], 2)) {
+                     if (g(mapNpcTileX[var8], mapNpcTileY[var8] - jf, 64)) {
+                        mapNpcTileY[var8] = H(mapNpcTileY[var8]) + 1;
+                        g(mapNpcTileX[var8], mapNpcTileY[var8] - 13);
+                        g(mapNpcTileX[var8] + 1, mapNpcTileY[var8] - 10);
+                        mapNpcIx[var8] = 1;
+                        mapNpcIy[var8] = -1;
+                        mapNpcIz[var8] = 1;
+                        mapNpcDir[var8] = 11;
                      }
                   } else {
-                     iu[var8] = H(iu[var8]);
-                     ix[var8] = 0;
-                     iv[var8] = 1;
+                     mapNpcTileY[var8] = H(mapNpcTileY[var8]);
+                     mapNpcIx[var8] = 0;
+                     mapNpcDir[var8] = 1;
                   }
                   break;
                case 11:
-                  if (w % 2 == 0) {
-                     int[] var10000 = iu;
-                     var10000[var8] += iy[var8];
-                     var10000 = ix;
-                     var10000[var8] += iy[var8];
-                     if (ix[var8] >= 1) {
-                        iy[var8] = -1;
+                  if (mapSubIdLegacy % 2 == 0) {
+                     int[] var10000 = mapNpcTileY;
+                     var10000[var8] += mapNpcIy[var8];
+                     var10000 = mapNpcIx;
+                     var10000[var8] += mapNpcIy[var8];
+                     if (mapNpcIx[var8] >= 1) {
+                        mapNpcIy[var8] = -1;
                      }
 
-                     if (ix[var8] <= -1) {
-                        iy[var8] = 1;
+                     if (mapNpcIx[var8] <= -1) {
+                        mapNpcIy[var8] = 1;
                      }
 
-                     var10000 = it;
-                     var10000[var8] += iz[var8];
-                     if (var8 == is) {
-                        fg = iu[is] - 24;
-                        ff += iz[var8];
+                     var10000 = mapNpcTileX;
+                     var10000[var8] += mapNpcIz[var8];
+                     if (var8 == mapNpcFocusIndex) {
+                        playerY = mapNpcTileY[mapNpcFocusIndex] - 24;
+                        playerX += mapNpcIz[var8];
                      }
 
-                     if (g(it[var8] + 12, iu[var8], 4) || g(it[var8] - 12, iu[var8], 8)) {
-                        iz[var8] = -iz[var8];
+                     if (g(mapNpcTileX[var8] + 12, mapNpcTileY[var8], 4) || g(mapNpcTileX[var8] - 12, mapNpcTileY[var8], 8)) {
+                        mapNpcIz[var8] = -mapNpcIz[var8];
                      }
                   }
             }
          }
 
-         for(int var9 = 0; var9 < ij; ++var9) {
-            if (var9 == ik) {
-               if (C > 1) {
-                  io[var9] = 2;
-               } else if (w % 8 > 3) {
-                  io[var9] = 1;
+         for(int var9 = 0; var9 < mapObjectBundleCount; ++var9) {
+            if (var9 == mapObjectMountIndex) {
+               if (airComboTier > 1) {
+                  mapObjAnim[var9] = 2;
+               } else if (mapSubIdLegacy % 8 > 3) {
+                  mapObjAnim[var9] = 1;
                } else {
-                  io[var9] = 0;
+                  mapObjAnim[var9] = 0;
                }
             }
 
-            if (ip[var9] == 1) {
-               int[] var21 = im;
-               var21[var9] += iq[var9];
-               if (iq[var9] < 20) {
-                  int var31 = iq[var9]++;
+            if (mapObjType[var9] == 1) {
+               int[] var21 = mapObjTileY;
+               var21[var9] += mapObjExtra[var9];
+               if (mapObjExtra[var9] < 20) {
+                  int var31 = mapObjExtra[var9]++;
                }
 
-               if (im[var9] >= iQ || g(il[var9], im[var9], 2)) {
-                  iq[var9] = 0;
-                  ip[var9] = 0;
-                  im[var9] = H(im[var9]);
+               if (mapObjTileY[var9] >= iQ || g(mapObjTileX[var9], mapObjTileY[var9], 2)) {
+                  mapObjExtra[var9] = 0;
+                  mapObjType[var9] = 0;
+                  mapObjTileY[var9] = H(mapObjTileY[var9]);
                }
             }
          }
@@ -7546,7 +7546,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
             for(int var11 = 0; var11 < 2; ++var11) {
                if (ci[var11] != -1) {
                   int var32 = ch[var11]--;
-                  if (w % 2 == 0) {
+                  if (mapSubIdLegacy % 2 == 0) {
                      var32 = ci[var11]++;
                      if (ci[var11] > 2) {
                         ci[var11] = -1;
@@ -7600,9 +7600,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
          O();
          N();
          R();
-         if (gn == v) {
+         if (escortMapId == mapId) {
             try {
-               switch (gs) {
+               switch (companionMode) {
                   case 1:
                      ag();
                      break;
@@ -7624,11 +7624,11 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      ad();
                }
             } catch (Exception var3) {
-               go = ff;
-               gp = fg;
-               gq = 0;
-               gr = 0;
-               gs = 4;
+               companionX = playerX;
+               companionY = playerY;
+               companionVel = 0;
+               companionAccel = 0;
+               companionMode = 4;
             }
          }
 
@@ -7652,31 +7652,31 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    private static void ab() {
       label79:
-      switch (++gB) {
+      switch (++companionB) {
          case 1:
          case 2:
          case 3:
-            ih = -1;
-            gt = 9;
+            npcInteractIndex = -1;
+            companionT0 = 9;
             break;
          case 4:
          case 5:
-            ih = 0;
-            gt = 10;
+            npcInteractIndex = 0;
+            companionT0 = 10;
             break;
          case 6:
-            ih = 1;
-            gt = 11;
-            if (ii == 1) {
-               int var0 = gA << 3;
-               int var1 = fg - gp >> 3;
-               a(go + (gA << 3), gp - 12, var0, var1 + (var0 - 8), true);
+            npcInteractIndex = 1;
+            companionT0 = 11;
+            if (npcInteractSub == 1) {
+               int var0 = companionFaceDir << 3;
+               int var1 = playerY - companionY >> 3;
+               a(companionX + (companionFaceDir << 3), companionY - 12, var0, var1 + (var0 - 8), true);
             } else {
-               int var6 = E << 1;
-               int var7 = gA > 0 ? go - 20 : go - 40;
-               int var2 = gA > 0 ? go + 40 : go + 20;
-               int var3 = gp - gv - 15;
-               int var4 = gp + 5;
+               int var6 = atk << 1;
+               int var7 = companionFaceDir > 0 ? companionX - 20 : companionX - 40;
+               int var2 = companionFaceDir > 0 ? companionX + 40 : companionX + 20;
+               int var3 = companionY - companionT2 - 15;
+               int var4 = companionY + 5;
                int var5 = 0;
 
                int var10000;
@@ -7696,20 +7696,20 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
                var7 = var10000;
                if (var10000 != -1) {
-                  k(var7, var6, -gA);
-                  f(jL[var7], jM[var7] - (jN[var7] >> 1), gA);
+                  k(var7, var6, -companionFaceDir);
+                  f(jL[var7], jM[var7] - (jN[var7] >> 1), companionFaceDir);
                   a("-" + var6, 0, jL[var7], jM[var7] - jN[var7], 0, -2);
                }
 
-               if (gO && a(gp - gR) < 30 && a(go + (gA << 4) - gQ) < 40 && !c(var6, -gA)) {
-                  f(go + (gQ - go >> 1), gp - 12, gA);
+               if (gO && a(companionY - gR) < 30 && a(companionX + (companionFaceDir << 4) - gQ) < 40 && !c(var6, -companionFaceDir)) {
+                  f(companionX + (gQ - companionX >> 1), companionY - 12, companionFaceDir);
                   a("-" + var6, 0, gQ, gR - gX, 0, -2);
                }
 
                for(int var9 = 0; var9 < cq; ++var9) {
-                  if (gp == cw[var9] && a(go + (gA << 4) - cv[var9]) < 24) {
-                     a(var9, var6, -gA);
-                     f(cv[var9], cw[var9] - 15, gA);
+                  if (companionY == cw[var9] && a(companionX + (companionFaceDir << 4) - cv[var9]) < 24) {
+                     a(var9, var6, -companionFaceDir);
+                     f(cv[var9], cw[var9] - 15, companionFaceDir);
                      a("-" + var6, 0, cv[var9], cw[var9] - 28, 0, -2);
                      break label79;
                   }
@@ -7717,222 +7717,222 @@ public final class a extends Canvas implements Runnable, CommandListener {
             }
             break;
          case 7:
-            ih = 2;
-            gt = 11;
+            npcInteractIndex = 2;
+            companionT0 = 11;
             break;
          case 8:
-            ih = -1;
-            gt = 12;
+            npcInteractIndex = -1;
+            companionT0 = 12;
             break;
          case 9:
-            ih = -1;
-            gt = 9;
-            gs = 1;
-            gB = 0;
-            gC = 0;
+            npcInteractIndex = -1;
+            companionT0 = 9;
+            companionMode = 1;
+            companionB = 0;
+            companionC = 0;
       }
 
-      if (ii == 1) {
-         ih = -1;
+      if (npcInteractSub == 1) {
+         npcInteractIndex = -1;
       }
 
    }
 
    private static void ac() {
-      if (gA == 1) {
-         if ((i(go + gu, gp) & 4) == 4) {
-            gq = 0;
+      if (companionFaceDir == 1) {
+         if ((i(companionX + companionT1, companionY) & 4) == 4) {
+            companionVel = 0;
          }
-      } else if ((i(go - gu, gp) & 8) == 8) {
-         gq = 0;
+      } else if ((i(companionX - companionT1, companionY) & 8) == 8) {
+         companionVel = 0;
       }
 
-      ih = -1;
-      if ((go += gq) < 0) {
-         go = 0;
+      npcInteractIndex = -1;
+      if ((companionX += companionVel) < 0) {
+         companionX = 0;
       }
 
-      if (go >= iP) {
-         go = iP - 1;
+      if (companionX >= iP) {
+         companionX = iP - 1;
       }
 
-      gp += gr;
-      if (gr < 18) {
-         ++gr;
+      companionY += companionAccel;
+      if (companionAccel < 18) {
+         ++companionAccel;
       }
 
-      if (gr > 5) {
-         gq = 0;
+      if (companionAccel > 5) {
+         companionVel = 0;
       }
 
-      if (gq > 1) {
-         --gq;
+      if (companionVel > 1) {
+         --companionVel;
       }
 
-      gt = 8;
-      if (gp >= iQ) {
-         gp = iQ - 1;
-         gs = 3;
-         gr = -20;
+      companionT0 = 8;
+      if (companionY >= iQ) {
+         companionY = iQ - 1;
+         companionMode = 3;
+         companionAccel = -20;
       }
 
-      if (gr > 4 && (i(go, gp) & 2) == 2) {
-         gs = 1;
-         gr = 0;
-         gq = 0;
-         gC = 0;
-         gB = 0;
-         gp = I(gp);
-         e(-1, go - -8, gp);
-         e(1, go - 8, gp);
+      if (companionAccel > 4 && (i(companionX, companionY) & 2) == 2) {
+         companionMode = 1;
+         companionAccel = 0;
+         companionVel = 0;
+         companionC = 0;
+         companionB = 0;
+         companionY = I(companionY);
+         e(-1, companionX - -8, companionY);
+         e(1, companionX - 8, companionY);
       }
 
-      if (g(go, gp, 64) && g(go, gp + 24, 4096) && gp % jf > 8) {
-         g(go, H(gp) + 8);
-         gs = 3;
-         gq = (gA = ff > go ? 1 : -1) << 2;
-         gr = -11;
+      if (g(companionX, companionY, 64) && g(companionX, companionY + 24, 4096) && companionY % jf > 8) {
+         g(companionX, H(companionY) + 8);
+         companionMode = 3;
+         companionVel = (companionFaceDir = playerX > companionX ? 1 : -1) << 2;
+         companionAccel = -11;
       }
 
-      if (gr > 6) {
-         gt = 6;
+      if (companionAccel > 6) {
+         companionT0 = 6;
       }
 
-      if (gD < 0) {
-         ++gD;
+      if (companionD < 0) {
+         ++companionD;
       }
 
    }
 
    private static void ad() {
-      if ((i(go + gw, gp - gx) & 4) == 4) {
-         gq = -gq;
+      if ((i(companionX + companionT3, companionY - companionT4) & 4) == 4) {
+         companionVel = -companionVel;
       }
 
-      if ((i(go - gw, gp - gx) & 8) == 8) {
-         gq = -gq;
+      if ((i(companionX - companionT3, companionY - companionT4) & 8) == 8) {
+         companionVel = -companionVel;
       }
 
-      go += gq;
-      gp += gr;
-      gt = 7;
-      if (gq > 1) {
-         --gq;
+      companionX += companionVel;
+      companionY += companionAccel;
+      companionT0 = 7;
+      if (companionVel > 1) {
+         --companionVel;
       }
 
-      if (gq < -1) {
-         ++gq;
+      if (companionVel < -1) {
+         ++companionVel;
       }
 
-      if (++gr > 0) {
-         gr = 0;
+      if (++companionAccel > 0) {
+         companionAccel = 0;
       }
 
-      if (++gB >= 7) {
-         gs = 4;
-         gD = -20;
-         gC = 0;
-         gB = 0;
-         gr = 1;
+      if (++companionB >= 7) {
+         companionMode = 4;
+         companionD = -20;
+         companionC = 0;
+         companionB = 0;
+         companionAccel = 1;
       }
 
    }
 
    private static void ae() {
-      if (gq == 0) {
-         gq = gA << 2;
+      if (companionVel == 0) {
+         companionVel = companionFaceDir << 2;
       }
 
-      if (gA == 1) {
-         if ((i(go + gw, gp - gx) & 4) == 4) {
-            gq = 0;
+      if (companionFaceDir == 1) {
+         if ((i(companionX + companionT3, companionY - companionT4) & 4) == 4) {
+            companionVel = 0;
          }
-      } else if ((i(go - gw, gp - gx) & 8) == 8) {
-         gq = 0;
+      } else if ((i(companionX - companionT3, companionY - companionT4) & 8) == 8) {
+         companionVel = 0;
       }
 
-      if (fg < 0) {
-         fg = 0;
+      if (playerY < 0) {
+         playerY = 0;
          z = -1;
       }
 
-      if ((go += gq) < 0) {
-         go = 0;
+      if ((companionX += companionVel) < 0) {
+         companionX = 0;
       }
 
-      if (go >= iP) {
-         go = iP - 1;
+      if (companionX >= iP) {
+         companionX = iP - 1;
       }
 
-      gp += gr;
-      if (gB == 0) {
-         gt = 7;
+      companionY += companionAccel;
+      if (companionB == 0) {
+         companionT0 = 7;
       } else {
-         gt = 8;
+         companionT0 = 8;
       }
 
-      if (gq > 1) {
-         --gq;
+      if (companionVel > 1) {
+         --companionVel;
       }
 
-      if (++gr == 0) {
-         gs = 4;
-         gB = 0;
-         gC = 0;
-         gr = 1;
+      if (++companionAccel == 0) {
+         companionMode = 4;
+         companionB = 0;
+         companionC = 0;
+         companionAccel = 1;
       }
 
-      if (gD < 0) {
-         ++gD;
+      if (companionD < 0) {
+         ++companionD;
       }
 
    }
 
    private static void af() {
-      if (++gB >= 10) {
-         gB = 0;
+      if (++companionB >= 10) {
+         companionB = 0;
       }
 
-      gt = (gB >> 1) + 2;
-      if (gA == 1) {
-         if (g(go + gw, gp - gx, 4)) {
-            gq = 0;
-            go = I(go + gw) - gw;
+      companionT0 = (companionB >> 1) + 2;
+      if (companionFaceDir == 1) {
+         if (g(companionX + companionT3, companionY - companionT4, 4)) {
+            companionVel = 0;
+            companionX = I(companionX + companionT3) - companionT3;
          }
-      } else if (g(go - gw - 1, gp - gx, 8)) {
-         gq = 0;
-         go = I(go - gw - 1) + jf + gw;
+      } else if (g(companionX - companionT3 - 1, companionY - companionT4, 8)) {
+         companionVel = 0;
+         companionX = I(companionX - companionT3 - 1) + jf + companionT3;
       }
 
-      if ((go += gq) < 0) {
-         go = 0;
+      if ((companionX += companionVel) < 0) {
+         companionX = 0;
       }
 
-      if (go >= iP) {
-         go = iP - 1;
+      if (companionX >= iP) {
+         companionX = iP - 1;
       }
 
-      if (is != -1) {
-         if (a(go - it[is]) >= 20) {
-            is = -1;
-            if (g(go, gp, 2)) {
-               gs = 1;
+      if (mapNpcFocusIndex != -1) {
+         if (a(companionX - mapNpcTileX[mapNpcFocusIndex]) >= 20) {
+            mapNpcFocusIndex = -1;
+            if (g(companionX, companionY, 2)) {
+               companionMode = 1;
             } else {
-               gs = 4;
-               gr = 2;
-               gq = 3 * gA;
-               gC = 0;
+               companionMode = 4;
+               companionAccel = 2;
+               companionVel = 3 * companionFaceDir;
+               companionC = 0;
             }
          }
-      } else if ((i(go + gA * gu, gp) & 2) != 2) {
-         gs = 1;
-         gt = 0;
-         gq = 0;
-         gB = 0;
-         gC = 0;
+      } else if ((i(companionX + companionFaceDir * companionT1, companionY) & 2) != 2) {
+         companionMode = 1;
+         companionT0 = 0;
+         companionVel = 0;
+         companionB = 0;
+         companionC = 0;
       }
 
-      e(gA, go - (gA << 3), gp);
+      e(companionFaceDir, companionX - (companionFaceDir << 3), companionY);
       if (gL > 0) {
          --gL;
       } else {
@@ -7941,49 +7941,49 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void ag() {
-      if (++gB > 30) {
-         gB = 0;
+      if (++companionB > 30) {
+         companionB = 0;
       }
 
-      if (gB % 15 < 5) {
-         gt = 0;
+      if (companionB % 15 < 5) {
+         companionT0 = 0;
       } else {
-         gt = 1;
+         companionT0 = 1;
       }
 
-      if (gl && w % 6 == 0) {
+      if (escortActive && mapSubIdLegacy % 6 == 0) {
          int var0 = 0;
 
          label69:
          while(true) {
             if (var0 >= jI) {
                for(int var1 = 0; var1 < cq; ++var1) {
-                  if (cF[var1] != 5 && cw[var1] == gp && a(cv[var1] - go) < 40) {
-                     gA = cv[var1] > go ? 1 : -1;
-                     gs = 5;
-                     ii = 0;
-                     gB = 0;
-                     gC = 0;
+                  if (cF[var1] != 5 && cw[var1] == companionY && a(cv[var1] - companionX) < 40) {
+                     companionFaceDir = cv[var1] > companionX ? 1 : -1;
+                     companionMode = 5;
+                     npcInteractSub = 0;
+                     companionB = 0;
+                     companionC = 0;
                      break label69;
                   }
                }
 
-               if (a(ff - go) > 25 && fg != gp && A == 5) {
-                  gA = ff > go ? 1 : -1;
-                  gs = 5;
-                  ii = 1;
-                  gB = 0;
-                  gC = 0;
+               if (a(playerX - companionX) > 25 && playerY != companionY && playerState == 5) {
+                  companionFaceDir = playerX > companionX ? 1 : -1;
+                  companionMode = 5;
+                  npcInteractSub = 1;
+                  companionB = 0;
+                  companionC = 0;
                }
                break;
             }
 
-            if (jQ[var0] != 5 && a(jM[var0] - gp) < 20 && a(jL[var0] - go) < 40) {
-               gA = jL[var0] > go ? 1 : -1;
-               gs = 5;
-               ii = 0;
-               gB = 0;
-               gC = 0;
+            if (jQ[var0] != 5 && a(jM[var0] - companionY) < 20 && a(jL[var0] - companionX) < 40) {
+               companionFaceDir = jL[var0] > companionX ? 1 : -1;
+               companionMode = 5;
+               npcInteractSub = 0;
+               companionB = 0;
+               companionC = 0;
                break;
             }
 
@@ -7991,7 +7991,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
          }
       }
 
-      if (w % 15 == 0) {
+      if (mapSubIdLegacy % 15 == 0) {
          C();
       }
 
@@ -8018,16 +8018,16 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   dC[var0] = dK[var0] << 2;
                   dC[var0] = dK[var0] > 0 ? dC[var0] + var0 % 2 : dC[var0] - var0 % 2;
                   dE[var0] = 2;
-               } else if (!dx) {
+               } else if (!activationTrialFlag) {
                   var6 = dG[var0]++;
                   if (dG[var0] > (dL[var0] + dA[var0]) % 20 + (dL[var0] >> 1)) {
-                     if (iA && fF == var0) {
+                     if (iA && interactSubId == var0) {
                         break;
                      }
 
                      dG[var0] = 0;
                      int var2;
-                     if ((var2 = (w + dL[var0]) % 120 - 60) > 0) {
+                     if ((var2 = (mapSubIdLegacy + dL[var0]) % 120 - 60) > 0) {
                         var2 += dL[var0];
                      } else {
                         var2 -= dL[var0];
@@ -8037,14 +8037,14 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      dK[var0] = var2 > 0 ? 1 : -1;
                      dC[var0] = dK[var0] << 2;
                      dE[var0] = 2;
-                     if (fF == var0) {
-                        fF = -1;
+                     if (interactSubId == var0) {
+                        interactSubId = -1;
                         o = " ";
                         c = true;
                      }
                   }
 
-                  if (w % 10 == 1) {
+                  if (mapSubIdLegacy % 10 == 1) {
                      B(var0);
                   }
                }
@@ -8059,7 +8059,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                int[] var10000 = dA;
                var10000[var0] += dC[var0];
                if (dA[var0] <= dO[var0] && dA[var0] >= dN[var0] && a(dA[var0] - dG[var0]) >= 8) {
-                  if (w % 10 == 0) {
+                  if (mapSubIdLegacy % 10 == 0) {
                      B(var0);
                   }
                } else {
@@ -8213,8 +8213,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
          aT[5] = true;
       }
 
-      if (++w == 10000) {
-         w = 0;
+      if (++mapSubIdLegacy == 10000) {
+         mapSubIdLegacy = 0;
       }
 
       aq();
@@ -8261,7 +8261,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                }
 
                var14 = cC[var0]++;
-               if (cw[var0] <= fQ + r + 32 && cw[var0] < iQ) {
+               if (cw[var0] <= cutsceneQ + r + 32 && cw[var0] < iQ) {
                   continue;
                }
 
@@ -8270,10 +8270,10 @@ public final class a extends Canvas implements Runnable, CommandListener {
                cF[var0] = 5;
                break;
             case 2:
-               if (w % 12 > 7) {
+               if (mapSubIdLegacy % 12 > 7) {
                   cD[var0] = 1;
                   cJ[var0] = 1;
-                  if (w % 12 < 10) {
+                  if (mapSubIdLegacy % 12 < 10) {
                      if (a(cv[var0] - cH[var0]) < 4) {
                         cG[var0] = cH[var0] = 0;
                         cF[var0] = 3;
@@ -8291,7 +8291,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                }
                break;
             case 3:
-               if ((w + var0) % 10 > 5) {
+               if ((mapSubIdLegacy + var0) % 10 > 5) {
                   cD[var0] = 1;
                } else {
                   cD[var0] = 0;
@@ -8302,7 +8302,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                cK[var0] = 0;
                if (cG[var0] > 50) {
                   int var1;
-                  if ((var1 = (w - var0) % (var0 + 80) - 40) > 0) {
+                  if ((var1 = (mapSubIdLegacy - var0) % (var0 + 80) - 40) > 0) {
                      var1 += 20;
                   } else {
                      var1 -= 20;
@@ -8310,7 +8310,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
                   cH[var0] = cv[var0] + var1;
                   cI[var0] = var1 > 0 ? 1 : -1;
-                  if (w % 4 > 1) {
+                  if (mapSubIdLegacy % 4 > 1) {
                      cF[var0] = 2;
                      cz[var0] = cI[var0] << 1;
                   } else {
@@ -8327,7 +8327,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   }
                }
 
-               if (w % 30 == 28) {
+               if (mapSubIdLegacy % 30 == 28) {
                   w(var0);
                   v(var0);
                }
@@ -8360,7 +8360,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      case 2:
                      case 3:
                      case 6:
-                        if (a(fg - cw[var0]) < 5 && a(ff - cv[var0]) < 30) {
+                        if (a(playerY - cw[var0]) < 5 && a(playerX - cv[var0]) < 30) {
                            a(ab[cE[var0]], cI[var0]);
                         }
                   }
@@ -8377,7 +8377,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                }
                break;
             case 6:
-               if ((w + var0) % 10 > 5) {
+               if ((mapSubIdLegacy + var0) % 10 > 5) {
                   cD[var0] = 1;
                } else {
                   cD[var0] = 0;
@@ -8387,8 +8387,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
                cK[var0] = 0;
                int var10 = cG[var0]++;
                if (cG[var0] >= 5) {
-                  cH[var0] = ff;
-                  if (cv[var0] < ff) {
+                  cH[var0] = playerX;
+                  if (cv[var0] < playerX) {
                      int[] var3 = cH;
                      var3[var0] -= 80;
                   } else {
@@ -8397,7 +8397,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   }
 
                   cG[var0] = 0;
-                  cI[var0] = cH[var0] < ff ? -1 : 1;
+                  cI[var0] = cH[var0] < playerX ? -1 : 1;
                   cF[var0] = 7;
                   cz[var0] = cI[var0] << 3;
                   if (cH[var0] < cL[var0]) {
@@ -8417,7 +8417,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                } else {
                   int[] var10000 = cv;
                   var10000[var0] += cz[var0];
-                  if (w % 2 == 1) {
+                  if (mapSubIdLegacy % 2 == 1) {
                      cD[var0] = 1;
                      cJ[var0] = 3;
                   } else {
@@ -8452,7 +8452,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   --gY;
                } else {
                   int var0;
-                  if ((var0 = w % 80 - 40) > 0) {
+                  if ((var0 = mapSubIdLegacy % 80 - 40) > 0) {
                      var0 += 20;
                   } else {
                      var0 -= 20;
@@ -8460,24 +8460,24 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
                   gZ = gQ + var0;
                   gS = (gU = var0 > 0 ? 1 : -1) << 2;
-                  if (ha < hb >> 1) {
+                  if (hpCurrentAlt < hpMaxBaseline >> 1) {
                      gS = gU << 3;
                   }
 
                   gT = 2;
-                  if (w % 5 == 0) {
+                  if (mapSubIdLegacy % 5 == 0) {
                      L();
                   }
                }
 
                gV = 0;
-               if (w % 10 == 6) {
+               if (mapSubIdLegacy % 10 == 6) {
                   e(-gU, gQ + gU * 28, gR - 5);
                   return;
                }
                break;
             case 2:
-               if (w % 8 == 0) {
+               if (mapSubIdLegacy % 8 == 0) {
                   L();
                }
 
@@ -8492,7 +8492,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   gY = 20;
                }
 
-               if (w % 2 == 0) {
+               if (mapSubIdLegacy % 2 == 0) {
                   gQ += gS;
                   gV = 0;
                   return;
@@ -8516,17 +8516,17 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   gY = 35;
                }
 
-               if (a(fg - gR) < 18 && a(gQ + (gU << 4) - ff) < 10) {
+               if (a(playerY - gR) < 18 && a(gQ + (gU << 4) - playerX) < 10) {
                   a(gP, gU);
                   gT = 1;
                   gY = 45;
-                  if (ha < hb >> 1) {
+                  if (hpCurrentAlt < hpMaxBaseline >> 1) {
                      gY = 18;
                   }
                }
 
                gQ += gS;
-               gV = w % 3;
+               gV = mapSubIdLegacy % 3;
                return;
             case 6:
                gR += gY;
@@ -8540,7 +8540,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   ++gS;
                }
 
-               if (gR > fQ + r + gX || gR >= iQ + gX) {
+               if (gR > cutsceneQ + r + gX || gR >= iQ + gX) {
                   gY = 0;
                   gT = 22;
                   return;
@@ -8551,7 +8551,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                gV = 2;
                if (++gY == 4) {
                   gT = 1;
-                  if ((gY = gZ) > 0 && ha < hb >> 1) {
+                  if ((gY = gZ) > 0 && hpCurrentAlt < hpMaxBaseline >> 1) {
                      gY = 5;
                      return;
                   }
@@ -8564,16 +8564,16 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static void am() {
       for(int var0 = 0; var0 < cN; ++var0) {
          if (cR[var0] != 0) {
-            if (a(fg - (fi >> 1) - (cQ[var0] - 7)) < 10 && a(ff - cP[var0]) < 10) {
+            if (a(playerY - (spriteHeight >> 1) - (cQ[var0] - 7)) < 10 && a(playerX - cP[var0]) < 10) {
                if (cO[var0] == 0) {
-                  if ((G += cV[var0]) > H) {
-                     G = H;
+                  if ((hp += cV[var0]) > hpMax) {
+                     hp = hpMax;
                   }
 
                   a("+" + cV[var0], 0, cP[var0], cQ[var0] - 15, 0, -1);
                } else {
-                  if ((I += cV[var0]) > J) {
-                     I = J;
+                  if ((mp += cV[var0]) > mpMax) {
+                     mp = mpMax;
                   }
 
                   a("+" + cV[var0], 2, cP[var0], cQ[var0] - 15, 0, -1);
@@ -8624,7 +8624,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    private static void an() {
       if (hK) {
-         int var0 = w % 10;
+         int var0 = mapSubIdLegacy % 10;
          if (id > 0) {
             --id;
          }
@@ -8641,7 +8641,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                }
                break;
             case 2:
-               if (hN < hO >> 1) {
+               if (bossThreshold < hO >> 1) {
                   hQ += hZ << 2;
                } else {
                   hQ += hZ << 1;
@@ -8659,17 +8659,17 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   --ic;
                }
 
-               if (ic == 0 && a(ff - (hQ - 40)) < 30) {
+               if (ic == 0 && a(playerX - (hQ - 40)) < 30) {
                   ic = 0;
                   hY = 4;
-                  hZ = hQ < ff ? 1 : -1;
+                  hZ = hQ < playerX ? 1 : -1;
                }
 
-               if (w % 122 == 0) {
+               if (mapSubIdLegacy % 122 == 0) {
                   c(hQ, hR - 45, -1, -12, hL);
                   c(hQ, hR - 50, 0, -15, hL);
                   c(hQ, hR - 45, 1, -12, hL);
-               } else if (w % 200 == 0) {
+               } else if (mapSubIdLegacy % 200 == 0) {
                   hY = 7;
                   ic = 0;
                }
@@ -8688,7 +8688,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   ++hR;
                   if (var0 == 5) {
                      c(hQ, hR - 45, -2, -10, hL);
-                  } else if (var0 == 7 && hN < hO >> 1) {
+                  } else if (var0 == 7 && bossThreshold < hO >> 1) {
                      c(hQ, hR - 50, 0, -11, hL);
                   } else if (var0 == 9) {
                      c(hQ, hR - 45, 2, -10, hL);
@@ -8712,7 +8712,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   hY = 2;
                   ic = 1;
                } else if (ic == 30) {
-                  if ((hQ = ff + (fn << 6)) > ib) {
+                  if ((hQ = playerX + (playerFacing << 6)) > ib) {
                      hQ = ib - 30;
                   }
 
@@ -8720,7 +8720,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      hQ = ia + 30;
                   }
 
-                  hZ = hQ < ff ? 1 : -1;
+                  hZ = hQ < playerX ? 1 : -1;
                } else if (ic < 10) {
                   hR += 10;
                } else if (ic > 40) {
@@ -8762,10 +8762,10 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    private static void ao() {
       if (hj) {
-         int var0 = w % 10;
-         int var1 = a(ff - hq);
-         int var2 = a(fg - hr);
-         switch (hs) {
+         int var0 = mapSubIdLegacy % 10;
+         int var1 = a(playerX - hq);
+         int var2 = a(playerY - hr);
+         switch (scriptHsStep) {
             case 0:
                if (var0 < 7) {
                   hI = hy[0];
@@ -8785,31 +8785,31 @@ public final class a extends Canvas implements Runnable, CommandListener {
                }
 
                if (var1 > 90 && var1 < 100 && var0 < 2) {
-                  ht = hq < ff ? 1 : -1;
-                  hs = 23;
+                  ht = hq < playerX ? 1 : -1;
+                  scriptHsStep = 23;
                   hw = 0;
-               } else if ((var1 > 120 && var1 < 150 || fg < hr && var1 > 40) && var0 < 2) {
-                  ht = hq < ff ? 1 : -1;
+               } else if ((var1 > 120 && var1 < 150 || playerY < hr && var1 > 40) && var0 < 2) {
+                  ht = hq < playerX ? 1 : -1;
                   hw = 0;
-                  hs = 8;
+                  scriptHsStep = 8;
                } else if (var1 < 40 && var0 == 1) {
-                  ht = hq < ff ? 1 : -1;
+                  ht = hq < playerX ? 1 : -1;
                   hw = 0;
-                  hs = 5;
+                  scriptHsStep = 5;
                } else if (var1 > 40 && var1 < 100 && var0 < 3) {
-                  ht = hq < ff ? 1 : -1;
+                  ht = hq < playerX ? 1 : -1;
                   hw = 0;
-                  if ((hx = ff) > hv) {
+                  if ((hx = playerX) > hv) {
                      hx = hv;
                   } else if (hx < hu) {
                      hx = hu;
                   }
 
-                  hs = 24;
+                  scriptHsStep = 24;
                } else if (var1 > 80 && var0 == 2) {
                   hw = 0;
-                  hs = 2;
-                  if ((hx = ff) > hv) {
+                  scriptHsStep = 2;
+                  if ((hx = playerX) > hv) {
                      hx = hv;
                   } else if (hx < hu) {
                      hx = hu;
@@ -8825,12 +8825,12 @@ public final class a extends Canvas implements Runnable, CommandListener {
                hJ = hD[var2];
                if ((hq += ht << 2) > hx && ht > 0 || hq < hx && ht < 0 || hq > hv || hq < hu || hw > 100) {
                   hw = 0;
-                  hs = 1;
+                  scriptHsStep = 1;
                }
 
                if (var1 > 50 && var1 < 100 && var0 == 1) {
-                  ht = hq < ff ? 1 : -1;
-                  hs = 23;
+                  ht = hq < playerX ? 1 : -1;
+                  scriptHsStep = 23;
                   hw = 0;
                }
                break;
@@ -8849,7 +8849,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   hJ = hB[0];
                } else if (hw == 14) {
                   hw = 0;
-                  hs = 1;
+                  scriptHsStep = 1;
                }
 
                if (hw == 3 && var1 < 40 && var2 < 10) {
@@ -8867,7 +8867,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                }
 
                if (hw >= 50) {
-                  hs = 22;
+                  scriptHsStep = 22;
                }
                break;
             case 8:
@@ -8885,7 +8885,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   hJ = hB[0];
                } else if (hw == 14) {
                   hw = 0;
-                  hs = 1;
+                  scriptHsStep = 1;
                }
 
                if (hw % 5 == 0) {
@@ -8901,15 +8901,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
                }
 
                if (hw == 100) {
-                  ht = hq < ff ? 1 : -1;
+                  ht = hq < playerX ? 1 : -1;
                   hw = 0;
-                  if ((hx = ff) > hv) {
+                  if ((hx = playerX) > hv) {
                      hx = hv;
                   } else if (hx < hu) {
                      hx = hu;
                   }
 
-                  hs = 24;
+                  scriptHsStep = 24;
                }
                break;
             case 24:
@@ -8918,7 +8918,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                hJ = hD[var0];
                if ((hq += ht << 3) > hx && ht > 0 || hq < hx && ht < 0 || hq > hv || hq < hu || hw > 100) {
                   hw = 0;
-                  hs = 5;
+                  scriptHsStep = 5;
                }
          }
 
@@ -8937,8 +8937,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    private static void ap() {
       if (hd) {
-         int var0 = w % 50;
-         int var1 = a(dA[0] - ff);
+         int var0 = mapSubIdLegacy % 50;
+         int var1 = a(dA[0] - playerX);
          switch (dE[0]) {
             case 0:
                int var17 = dF[0]++;
@@ -8962,18 +8962,18 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   return;
                }
 
-               if (var1 >= 40 || A != 5) {
+               if (var1 >= 40 || playerState != 5) {
                   return;
                }
 
                he = true;
                dE[0] = 3;
-               dK[0] = -fn;
+               dK[0] = -playerFacing;
                if (var0 > 35) {
-                  dC[0] = fn * 5;
+                  dC[0] = playerFacing * 5;
                   dD[0] = -9;
                } else {
-                  dC[0] = -fn * 6;
+                  dC[0] = -playerFacing * 6;
                   dD[0] = -9;
                }
 
@@ -9002,14 +9002,14 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   dF[0] = dG[0] = 0;
                }
 
-               if (var1 < 40 && A == 5 && fn != dK[0]) {
+               if (var1 < 40 && playerState == 5 && playerFacing != dK[0]) {
                   dE[0] = 3;
-                  dK[0] = -fn;
+                  dK[0] = -playerFacing;
                   if (var0 > 35) {
-                     dC[0] = fn * 5;
+                     dC[0] = playerFacing * 5;
                      dD[0] = -9;
                   } else {
-                     dC[0] = -fn * 6;
+                     dC[0] = -playerFacing * 6;
                      dD[0] = -9;
                   }
 
@@ -9026,22 +9026,22 @@ public final class a extends Canvas implements Runnable, CommandListener {
                }
 
                if (var1 < 40 && var0 < 10) {
-                  dK[0] = ff > dA[0] ? 1 : -1;
+                  dK[0] = playerX > dA[0] ? 1 : -1;
                   dE[0] = 5;
                   dF[0] = dG[0] = dM[0] = 0;
                   return;
                }
 
                if (var1 < 100 && var1 > 40 && var0 < 1) {
-                  dK[0] = ff > dA[0] ? 1 : -1;
+                  dK[0] = playerX > dA[0] ? 1 : -1;
                   dE[0] = 24;
                   dF[0] = dG[0] = dM[0] = 0;
-                  dC[0] = (a(dA[0] - ff) >> 3) * dK[0];
+                  dC[0] = (a(dA[0] - playerX) >> 3) * dK[0];
                   return;
                }
 
                if (var1 > 100 && var1 < 160 && var0 < 30) {
-                  dK[0] = ff > dA[0] ? 1 : -1;
+                  dK[0] = playerX > dA[0] ? 1 : -1;
                   dE[0] = 8;
                   dF[0] = dG[0] = dM[0] = 0;
                   return;
@@ -9049,7 +9049,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
                if (var1 >= 20 && var0 != 42) {
                   if (var1 > 160) {
-                     dK[0] = ff > dA[0] ? 1 : -1;
+                     dK[0] = playerX > dA[0] ? 1 : -1;
                      dG[0] = dA[0] + (dK[0] << 7);
                      if (dG[0] < dN[0]) {
                         dG[0] = dN[0];
@@ -9066,7 +9066,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   return;
                }
 
-               dK[0] = -fn;
+               dK[0] = -playerFacing;
                dG[0] = dA[0] + (dK[0] << 6);
                if (dG[0] < dN[0] || dG[0] > dO[0]) {
                   dK[0] = -dK[0];
@@ -9090,7 +9090,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   return;
                }
 
-               dK[0] = ff > dA[0] ? 1 : -1;
+               dK[0] = playerX > dA[0] ? 1 : -1;
                dG[0] = dF[0] = 0;
                dE[0] = 1;
                return;
@@ -9157,14 +9157,14 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   dB[0] = I(dB[0]);
                   e(-1, dA[0] - -8, dB[0]);
                   e(1, dA[0] - 8, dB[0]);
-                  if (a(dA[0] - ff) < 40 && var0 < 25) {
-                     dK[0] = ff > dA[0] ? 1 : -1;
+                  if (a(dA[0] - playerX) < 40 && var0 < 25) {
+                     dK[0] = playerX > dA[0] ? 1 : -1;
                      dE[0] = 5;
                      dF[0] = dG[0] = dM[0] = 0;
                   }
 
                   if (var1 < 40) {
-                     dK[0] = fn;
+                     dK[0] = playerFacing;
                      dG[0] = dA[0] + dK[0] * 110;
                      if (dG[0] < dN[0] || dG[0] > dO[0]) {
                         dK[0] = -dK[0];
@@ -9352,15 +9352,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   dH[0] = (dF[0] >> 1) + 2;
                   int[] var10000 = dA;
                   var10000[0] += dC[0];
-                  if (a(dA[0] - ff) < 30) {
-                     if (A != 5 || fn == dK[0]) {
+                  if (a(dA[0] - playerX) < 30) {
+                     if (playerState != 5 || playerFacing == dK[0]) {
                         dG[0] = 6;
                         return;
                      }
 
                      dE[0] = 3;
-                     dK[0] = -fn;
-                     dC[0] = fn << 1;
+                     dK[0] = -playerFacing;
+                     dC[0] = playerFacing << 1;
                      if (dA[0] < dN[0] + 30) {
                         dC[0] = 6;
                         dK[0] = -1;
@@ -9429,66 +9429,66 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void aq() {
-      if (ifFlag) {
-         switch (at[ie][ig]) {
+      if (scriptRunnerActive) {
+         switch (at[scriptTableId][scriptStep]) {
             case 1:
-               if (ff > av[ie][ig]) {
-                  C(au[ie][ig]);
-                  ++ig;
+               if (playerX > av[scriptTableId][scriptStep]) {
+                  C(au[scriptTableId][scriptStep]);
+                  ++scriptStep;
                   return;
                }
                break;
             case 2:
-               C(au[ie][ig]);
-               ++ig;
+               C(au[scriptTableId][scriptStep]);
+               ++scriptStep;
                return;
             case 3:
             default:
                return;
             case 4:
-               if (ff > fP + q) {
-                  C(au[ie][ig]);
-                  ++ig;
+               if (playerX > cutsceneP + q) {
+                  C(au[scriptTableId][scriptStep]);
+                  ++scriptStep;
                   return;
                }
                break;
             case 6:
-               if (ff < av[ie][ig] && ff > av[ie][ig] - 96 && fg == aw[ie][ig]) {
-                  C(au[ie][ig]);
-                  ++ig;
+               if (playerX < av[scriptTableId][scriptStep] && playerX > av[scriptTableId][scriptStep] - 96 && playerY == aw[scriptTableId][scriptStep]) {
+                  C(au[scriptTableId][scriptStep]);
+                  ++scriptStep;
                }
             case 5:
                if (gT == 22) {
-                  C(au[ie][ig]);
-                  ++ig;
+                  C(au[scriptTableId][scriptStep]);
+                  ++scriptStep;
                   return;
                }
                break;
             case 7:
                if (hY == 5) {
-                  C(au[ie][ig]);
-                  ++ig;
+                  C(au[scriptTableId][scriptStep]);
+                  ++scriptStep;
                   return;
                }
                break;
             case 8:
-               if (hh < 10) {
-                  C(au[ie][ig]);
-                  ++ig;
+               if (regenTimer < 10) {
+                  C(au[scriptTableId][scriptStep]);
+                  ++scriptStep;
                   return;
                }
                break;
             case 9:
-               if (hs == 22) {
-                  C(au[ie][ig]);
-                  eI = true;
-                  ++ig;
+               if (scriptHsStep == 22) {
+                  C(au[scriptTableId][scriptStep]);
+                  unlockedMap95 = true;
+                  ++scriptStep;
                   return;
                }
          }
-      } else if (ie == 10) {
+      } else if (scriptTableId == 10) {
          Display.getDisplay(Midlet.c).setCurrent(Midlet.b);
-         ie = 0;
+         scriptTableId = 0;
       }
 
    }
@@ -9563,11 +9563,11 @@ public final class a extends Canvas implements Runnable, CommandListener {
       }
 
       byte[] var5;
-      String var12 = (var5 = f("im")) == null ? null : new String(var5);
+      String var12 = (var5 = f("mapObjTileY")) == null ? null : new String(var5);
       String var11 = var12;
       if (var12 == null) {
          String var6 = var7.lU;
-         a("im", var6.getBytes());
+         a("mapObjTileY", var6.getBytes());
       } else if (!var11.equals(var7.lU)) {
          lY = 2;
          W(2);
@@ -9676,34 +9676,34 @@ public final class a extends Canvas implements Runnable, CommandListener {
    protected final void keyPressed(int var1) {
       if (var1 == 35) {
          if (bw.equals("1984")) {
-            khinhCong = true;
-            eK = true;
-            fa = true;
-            eM = true;
-            eP = true;
-            eN = true;
-            eL = true;
-            eQ = true;
-            eR = true;
-            khinhCongCap2 = true;
-            khinhCongCap3 = true;
+            skillWallJumpLearned = true;
+            skillLegacyFlagEK = true;
+            skillStealthLegacyFlag = true;
+            skillBurrowLearned = true;
+            skillSwimLearned = true;
+            skillMotorcycleLearned = true;
+            skillShurikenLearned = true;
+            skillWaterRunLearned = true;
+            skillTransformLearned = true;
+            skillWallJumpL2Learned = true;
+            skillWallJumpL3Learned = true;
             skillSetAmSatLearned(true);
             skillSetDashLearned(true);
             syncDashDurationToLevel();
             c("Learned All Skill");
          } else if (bw.equals("30538")) {
-            J = 500000;
-            I = 500000;
-            H = 500000;
-            G = 500000;
+            mpMax = 500000;
+            mp = 500000;
+            hpMax = 500000;
+            hp = 500000;
             c("Unlimit HP MP");
          } else if (bw.equals("38305")) {
-            E = 10000;
+            atk = 10000;
             c("Unlimit Damage");
          } else if (bw.equals("1982")) {
             u(100000);
          } else if (bw.equals("1983")) {
-            de += 50000;
+            gold += 50000;
             c("Money+=50000");
          } else if (bw.equals("12456")) {
             TextBox var4;
@@ -9716,12 +9716,12 @@ public final class a extends Canvas implements Runnable, CommandListener {
             d = 13;
          } else if (!bw.equals("1981")) {
             if (bw.equals("8463")) {
-               int var3 = gM + (int)((System.currentTimeMillis() - gN) / 1000L);
+               int var3 = playTimeSeconds + (int)((System.currentTimeMillis() - playTimeSessionStartMs) / 1000L);
                c(var3 / 3600 + ":" + var3 % 3600 / 60 + ":" + var3 % 60);
             }
          } else {
             for(int var2 = 0; var2 < 19; ++var2) {
-               W[var2] = true;
+               mapUnlockFlags[var2] = true;
             }
 
             c("Unlock all map!");
@@ -9922,14 +9922,14 @@ public final class a extends Canvas implements Runnable, CommandListener {
             case 1:
                var1.setClip(-1, -1, q + 2, r + 2);
                a(var1);
-               var1.translate(-fP, -fQ);
+               var1.translate(-cutsceneP, -cutsceneQ);
                var1 = var1;
 
                for(int var2 = 0; var2 < iY; ++var2) {
-                  if (ja[var2] + jc[var2] >= fP && ja[var2] - jc[var2] <= fP + q && jb[var2] >= fQ && jb[var2] - jd[var2] <= fQ + r) {
-                     jh = (jg = ja[var2] - fP) - bD;
+                  if (ja[var2] + jc[var2] >= cutsceneP && ja[var2] - jc[var2] <= cutsceneP + q && jb[var2] >= cutsceneQ && jb[var2] - jd[var2] <= cutsceneQ + r) {
+                     jh = (jg = ja[var2] - cutsceneP) - bD;
                      ji = (jj = (jf - 2) * jh / jf) + bD;
-                     var1.drawImage(iX[iZ[var2]], fP + ji, jb[var2], 33);
+                     var1.drawImage(iX[iZ[var2]], cutsceneP + ji, jb[var2], 33);
                   }
                }
 
@@ -9957,7 +9957,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   if (id != 0) {
                      var1.setColor(3342353);
                      var1.drawRect(hQ - (hP >> 1) - 1, hR - hM - 7, hP + 2, 4);
-                     int var22 = hN * hP / hO;
+                     int var22 = bossThreshold * hP / hO;
                      var1.setColor(15597568);
                      var1.fillRect(hQ - (hP >> 1), hR - hM - 6, var22, 3);
                      var1.setColor(4456482);
@@ -9967,22 +9967,22 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
                var1 = var1;
 
-               if (ir > 0 && it != null && iu != null) {
-                  for(int var23 = 0; var23 < ir; ++var23) {
-                     if (fP <= it[var23] + 12 && fP + q >= it[var23] - 12 && fQ <= iu[var23] && fQ + r >= iu[var23] - 24) {
-                        var1.drawImage(ef, it[var23], iu[var23], 33);
+               if (mapNpcBundleCount > 0 && mapNpcTileX != null && mapNpcTileY != null) {
+                  for(int var23 = 0; var23 < mapNpcBundleCount; ++var23) {
+                     if (cutsceneP <= mapNpcTileX[var23] + 12 && cutsceneP + q >= mapNpcTileX[var23] - 12 && cutsceneQ <= mapNpcTileY[var23] && cutsceneQ + r >= mapNpcTileY[var23] - 24) {
+                        var1.drawImage(ef, mapNpcTileX[var23], mapNpcTileY[var23], 33);
                      }
                   }
                }
 
                var1 = var1;
 
-               for(int var24 = 0; var24 < ij; ++var24) {
-                  if (fP <= il[var24] + 12 && fP + q >= il[var24] - 12 && fQ <= im[var24] && fQ + r >= im[var24] - 24) {
-                     if (in[var24] == 1) {
-                        var1.drawImage(ec[io[var24]], il[var24], im[var24], 33);
+               for(int var24 = 0; var24 < mapObjectBundleCount; ++var24) {
+                  if (cutsceneP <= mapObjTileX[var24] + 12 && cutsceneP + q >= mapObjTileX[var24] - 12 && cutsceneQ <= mapObjTileY[var24] && cutsceneQ + r >= mapObjTileY[var24] - 24) {
+                     if (mapObjFacing[var24] == 1) {
+                        var1.drawImage(ec[mapObjAnim[var24]], mapObjTileX[var24], mapObjTileY[var24], 33);
                      } else {
-                        var1.drawRegion(ec[io[var24]], 0, 0, ec[io[var24]].getWidth(), ec[io[var24]].getHeight(), 2, il[var24], im[var24], 33);
+                        var1.drawRegion(ec[mapObjAnim[var24]], 0, 0, ec[mapObjAnim[var24]].getWidth(), ec[mapObjAnim[var24]].getHeight(), 2, mapObjTileX[var24], mapObjTileY[var24], 33);
                      }
                   }
                }
@@ -9990,7 +9990,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                var1 = var1;
 
                for(int var25 = 0; var25 < df; ++var25) {
-                  if (di[var25] != 0 && dg[var25] >= fP - 10 && dg[var25] <= fP + q + 10 && dh[var25] >= fQ && dh[var25] <= fQ + r + 20) {
+                  if (di[var25] != 0 && dg[var25] >= cutsceneP - 10 && dg[var25] <= cutsceneP + q + 10 && dh[var25] >= cutsceneQ && dh[var25] <= cutsceneQ + r + 20) {
                      var1.drawRegion(eh[dn[var25]], 0, dl[var25] * 15, 8, 15, 0, dg[var25], dh[var25], 33);
                   }
                }
@@ -9998,16 +9998,16 @@ public final class a extends Canvas implements Runnable, CommandListener {
                var1 = var1;
 
                for(int var26 = 0; var26 < cN; ++var26) {
-                  if (cR[var26] != 0 && cP[var26] >= fP - 10 && cP[var26] <= fP + q + 10 && cQ[var26] >= fQ && cQ[var26] <= fQ + r + 20) {
+                  if (cR[var26] != 0 && cP[var26] >= cutsceneP - 10 && cP[var26] <= cutsceneP + q + 10 && cQ[var26] >= cutsceneQ && cQ[var26] <= cutsceneQ + r + 20) {
                      var1.drawRegion(ex[cO[var26]], 0, cU[var26] * 15, 13, 15, 0, cP[var26], cQ[var26], 33);
                   }
                }
 
-               if (gO && gT != 22 && fP + q >= gQ - (gW >> 1) && fP <= gQ + (gW >> 1) && fQ <= gR && fQ + r >= gR - gX) {
+               if (gO && gT != 22 && cutsceneP + q >= gQ - (gW >> 1) && cutsceneP <= gQ + (gW >> 1) && cutsceneQ <= gR && cutsceneQ + r >= gR - gX) {
                   byte var27 = 0;
                   if (gV == 0) {
                      var27 = -2;
-                     if (gT == 1 && w % 10 > 5) {
+                     if (gT == 1 && mapSubIdLegacy % 10 > 5) {
                         var27 = -1;
                      }
 
@@ -10035,7 +10035,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   if (hc != 0) {
                      var1.setColor(3342353);
                      var1.drawRect(gQ - (gW >> 1) - 1, gR - gX - 7, gW + 2, 4);
-                     int var3 = ha * gW / hb;
+                     int var3 = hpCurrentAlt * gW / hpMaxBaseline;
                      var1.setColor(15597568);
                      var1.fillRect(gQ - (gW >> 1), gR - gX - 6, var3, 3);
                      var1.setColor(4456482);
@@ -10055,10 +10055,10 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      }
                   }
 
-                  if (hp != 0) {
+                  if (scriptHitGauge != 0) {
                      var1.setColor(3342353);
                      var1.drawRect(hq - (hl >> 1) - 1, hr - hm - 7, hl + 2, 4);
-                     int var30 = hn * hl / ho;
+                     int var30 = idleTimerLong * hl / ho;
                      var1.setColor(15597568);
                      var1.fillRect(hq - (hl >> 1), hr - hm - 6, var30, 3);
                      var1.setColor(4456482);
@@ -10069,7 +10069,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                var1 = var1;
 
                for(int var31 = 0; var31 < jI; ++var31) {
-                  if (jQ[var31] != 5 && jQ[var31] != 8 && jL[var31] >= fP - 10 && jL[var31] <= fP + q + 10 && jM[var31] >= fQ && jM[var31] <= fQ + r + 20) {
+                  if (jQ[var31] != 5 && jQ[var31] != 8 && jL[var31] >= cutsceneP - 10 && jL[var31] <= cutsceneP + q + 10 && jM[var31] >= cutsceneQ && jM[var31] <= cutsceneQ + r + 20) {
                      var1.drawImage(jH[ki[var31]][jZ[var31] >= 0 ? 0 : 1][jY[var31]], jL[var31], jM[var31], 33);
                      if (jP[var31] != 0) {
                         var1.setColor(13073);
@@ -10086,7 +10086,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                var1 = var1;
 
                for(int var32 = 0; var32 < cq; ++var32) {
-                  if (cF[var32] != 5 && cv[var32] + 15 >= fP && cv[var32] - 15 <= fP + q && cw[var32] >= fQ && cw[var32] - 30 <= fQ + r) {
+                  if (cF[var32] != 5 && cv[var32] + 15 >= cutsceneP && cv[var32] - 15 <= cutsceneP + q && cw[var32] >= cutsceneQ && cw[var32] - 30 <= cutsceneQ + r) {
                      if (cI[var32] == -1) {
                         var1.drawImage(ev[cJ[var32]], cv[var32] + ag[cE[var32]], cw[var32], 33);
                         var1.drawImage(eu[cE[var32]][cK[var32]], cx[var32] + ae[cE[var32]][cK[var32]], cy[var32], 33);
@@ -10108,8 +10108,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
                }
 
                g(var1);
-               if (doFlag && dp + 15 >= fP && dp - 15 <= fP + q && dq >= fQ && dq - 10 <= fQ + r) {
-                  int var33 = w % 8 > 3 ? 0 : 1;
+               if (doFlag && dp + 15 >= cutsceneP && dp - 15 <= cutsceneP + q && dq >= cutsceneQ && dq - 10 <= cutsceneQ + r) {
+                  int var33 = mapSubIdLegacy % 8 > 3 ? 0 : 1;
                   if (dr > 0) {
                      var1.drawImage(ej[var33], dp, dq, 33);
                   } else {
@@ -10120,21 +10120,21 @@ public final class a extends Canvas implements Runnable, CommandListener {
                if (hd) {
                   if (he) {
                      var1.setColor(16768477);
-                     int var34 = fP + 50;
-                     int var45 = fQ + 15;
+                     int var34 = cutsceneP + 50;
+                     int var45 = cutsceneQ + 15;
                      if (!bf) {
                         var45 += 20;
                      }
 
                      var1.drawRect(var34 - 35 - 1, var45 - 7, 72, 4);
-                     int var46 = hh * 70 / hi;
+                     int var46 = regenTimer * 70 / hi;
                      var1.setColor(15597568);
                      var1.fillRect(var34 - 35, var45 - 6, var46, 3);
                      var1.setColor(4456482);
                      var1.fillRect(var34 - 35 + var46, var45 - 6, 70 - var46 + 1, 3);
                   }
 
-                  if (dA[0] + fj >= fP && dA[0] - fj <= fP + q && dB[0] >= fQ && dB[0] - fi <= fQ + r) {
+                  if (dA[0] + halfWidth >= cutsceneP && dA[0] - halfWidth <= cutsceneP + q && dB[0] >= cutsceneQ && dB[0] - spriteHeight <= cutsceneQ + r) {
                      if (dK[0] == 1) {
                         var1.drawImage(et[dI[0]][aH[dH[0]][0][0]], dA[0] + aH[dH[0]][0][1], dB[0] - aH[dH[0]][0][2], 0);
                         var1.drawImage(er[aH[dH[0]][1][0]], dA[0] + aH[dH[0]][1][1], dB[0] - aH[dH[0]][1][2], 0);
@@ -10158,27 +10158,27 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   var1.drawImage(es[var35], dW, dX, 17);
                }
 
-               if (gn == v) {
-                  if (gA == 1) {
-                     var1.drawImage(en[ap[gt][0][0]], go + ap[gt][0][1], gp - ap[gt][0][2], 0);
-                     var1.drawImage(eo[ap[gt][1][0]], go + ap[gt][1][1], gp - ap[gt][1][2], 0);
-                     var1.drawImage(em[ap[gt][2][0]], go + ap[gt][2][1], gp - ap[gt][2][2], 0);
-                     if (ih != -1) {
-                        var1.drawImage(eC[ih], go - ar[ih], gp - as[ih], 0);
+               if (escortMapId == mapId) {
+                  if (companionFaceDir == 1) {
+                     var1.drawImage(en[ap[companionT0][0][0]], companionX + ap[companionT0][0][1], companionY - ap[companionT0][0][2], 0);
+                     var1.drawImage(eo[ap[companionT0][1][0]], companionX + ap[companionT0][1][1], companionY - ap[companionT0][1][2], 0);
+                     var1.drawImage(em[ap[companionT0][2][0]], companionX + ap[companionT0][2][1], companionY - ap[companionT0][2][2], 0);
+                     if (npcInteractIndex != -1) {
+                        var1.drawImage(eC[npcInteractIndex], companionX - ar[npcInteractIndex], companionY - as[npcInteractIndex], 0);
                      }
                   } else {
-                     var1.drawRegion(en[ap[gt][0][0]], 0, 0, en[ap[gt][0][0]].getWidth(), en[ap[gt][0][0]].getHeight(), 2, go - ap[gt][0][1], gp - ap[gt][0][2], 24);
-                     var1.drawRegion(eo[ap[gt][1][0]], 0, 0, eo[ap[gt][1][0]].getWidth(), eo[ap[gt][1][0]].getHeight(), 2, go - ap[gt][1][1], gp - ap[gt][1][2], 24);
-                     var1.drawRegion(em[ap[gt][2][0]], 0, 0, em[ap[gt][2][0]].getWidth(), em[ap[gt][2][0]].getHeight(), 2, go - ap[gt][2][1], gp - ap[gt][2][2], 24);
-                     if (ih != -1) {
-                        var1.drawRegion(eC[ih], 0, 0, eC[ih].getWidth(), eC[ih].getHeight(), 2, go + ar[ih], gp - as[ih], 24);
+                     var1.drawRegion(en[ap[companionT0][0][0]], 0, 0, en[ap[companionT0][0][0]].getWidth(), en[ap[companionT0][0][0]].getHeight(), 2, companionX - ap[companionT0][0][1], companionY - ap[companionT0][0][2], 24);
+                     var1.drawRegion(eo[ap[companionT0][1][0]], 0, 0, eo[ap[companionT0][1][0]].getWidth(), eo[ap[companionT0][1][0]].getHeight(), 2, companionX - ap[companionT0][1][1], companionY - ap[companionT0][1][2], 24);
+                     var1.drawRegion(em[ap[companionT0][2][0]], 0, 0, em[ap[companionT0][2][0]].getWidth(), em[ap[companionT0][2][0]].getHeight(), 2, companionX - ap[companionT0][2][1], companionY - ap[companionT0][2][2], 24);
+                     if (npcInteractIndex != -1) {
+                        var1.drawRegion(eC[npcInteractIndex], 0, 0, eC[npcInteractIndex].getWidth(), eC[npcInteractIndex].getHeight(), 2, companionX + ar[npcInteractIndex], companionY - as[npcInteractIndex], 24);
                      }
                   }
                }
 
                b(var1);
-               if (fI != 0) {
-                  var1.drawImage(ed, fG, fH, 33);
+               if (cutsceneI != 0) {
+                  var1.drawImage(ed, cutsceneG, cutsceneH, 33);
                }
 
                var1 = var1;
@@ -10244,8 +10244,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   }
                }
 
-               if (gc == v) {
-                  var1.drawImage(ea[gf], gg, gh, 3);
+               if (scriptMapId == mapId) {
+                  var1.drawImage(ea[scriptExtraF], scriptExtraG, scriptExtraH, 3);
                }
 
                c(var1);
@@ -10264,7 +10264,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   var1.fillRect(0, 0, aU, 21);
                   var1.setColor(10275899);
                   var1.fillRect(0, 19, aU, 1);
-                  if (w % 10 > 2) {
+                  if (mapSubIdLegacy % 10 > 2) {
                      Midlet.a(var1, cp, bD, 4, 2);
                   }
                }
@@ -10283,7 +10283,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
             case 3:
                var1.setClip(-1, -1, aU + 2, aV + 1);
                a(var1);
-               var1.translate(-fP, -fQ);
+               var1.translate(-cutsceneP, -cutsceneQ);
                if (a) {
                   j(var1);
                } else {
@@ -10300,8 +10300,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
                var1.fillRect(0, bb - 1, aU, 1);
                var1.fillRect(0, bc + 1, aU, 1);
                var1.drawImage(eB, aW, aZ + bc >> 1, 3);
-               Midlet.a(var1, "*", aW - 50 - w % 3, be, 0);
-               Midlet.a(var1, "/", aW + 50 + w % 3, be, 1);
+               Midlet.a(var1, "*", aW - 50 - mapSubIdLegacy % 3, be, 0);
+               Midlet.a(var1, "/", aW + 50 + mapSubIdLegacy % 3, be, 1);
                Midlet.a(var1, StoryDialogue.aD[aY], aW, be, 3);
                return;
             case 4:
@@ -10409,7 +10409,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         var1.drawString("Khong the gui SMS", aW, aX - (lT << 1), 17);
                         var1.drawString("Xin hay thu lai. Vao", aW, aX - lT, 17);
                         var1.drawString("www.giaitri321.pro", aW, aX, 17);
-                        var1.drawString("de biet them thong tin.", aW, aX + lT, 17);
+                        var1.drawString("gold biet them thong tin.", aW, aX + lT, 17);
                         var1.setColor(16777215);
                         var1.setFont(lS);
                         var1.drawString("OK", 2, aV - lT + 3, 20);
@@ -10442,7 +10442,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   var1.setFont(lS);
                   var1.drawString("Phien ban da het han", aW, aX - (lT << 1), 17);
                   var1.drawString("vao website http://wap.teamobi.com", aW, aX - (lT << 1) + 20, 17);
-                  var1.drawString(" de download mien phi tro choi", aW, aX - (lT << 1) + 40, 17);
+                  var1.drawString(" gold download mien phi tro choi", aW, aX - (lT << 1) + 40, 17);
                   var1.drawString("Thoát", aU - 2, aV - lT + 3, 24);
                }
             default:
@@ -10505,8 +10505,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   }
                }
 
-               if (++w == 10000) {
-                  w = 0;
+               if (++mapSubIdLegacy == 10000) {
+                  mapSubIdLegacy = 0;
                }
 
                if (aT[4]) {
@@ -10532,7 +10532,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         eB = null;
                         A();
                         Midlet.f = true;
-                        gN = System.currentTimeMillis();
+                        playTimeSessionStartMs = System.currentTimeMillis();
                         x(99);
                      } else if (aY == 1) {
                         if (!Midlet.b()) {
@@ -10542,31 +10542,31 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         eB = null;
                         A();
                         int[] var9;
-                        gM = (var9 = a(Midlet.b("ninjasave")))[0];
-                        v = fixMapId(var9[1]);
-                        w = var9[2];
-                        eF = var9[3] == 1;
-                        de = var9[4];
-                        dx = var9[5] == 1;
-                        eG = var9[6] == 1;
-                        eH = var9[7] == 1;
-                        eI = var9[8] == 1;
-                        gl = var9[9] == 1;
-                        gm = var9[10];
-                        gn = var9[11];
-                        ik = var9[12];
-                        x = var9[13];
-                        eX = var9[14] == 1;
+                        playTimeSeconds = (var9 = a(Midlet.b("ninjasave")))[0];
+                        mapId = fixMapId(var9[1]);
+                        mapSubIdLegacy = var9[2];
+                        hasSaveGame = var9[3] == 1;
+                        gold = var9[4];
+                        activationTrialFlag = var9[5] == 1;
+                        unlockedMap97 = var9[6] == 1;
+                        unlockedMap96 = var9[7] == 1;
+                        unlockedMap95 = var9[8] == 1;
+                        escortActive = var9[9] == 1;
+                        escortReservedLegacy = var9[10];
+                        escortMapId = var9[11];
+                        mapObjectMountIndex = var9[12];
+                        equippedWeaponIndex = var9[13];
+                        shurikenLevel2Learned = var9[14] == 1;
                         Midlet.e = true;
-                        gN = System.currentTimeMillis();
-                        x(v);
+                        playTimeSessionStartMs = System.currentTimeMillis();
+                        x(mapId);
                      } else if (aY == 2) {
                         eB = null;
                         A();
                         d = 2;
                         aw();
                         Midlet.d = 11;
-                        v = 101;
+                        mapId = 101;
                         (new Thread(Midlet.c)).start();
                      } else if (aY == 3) {
                         try {
@@ -10581,40 +10581,40 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   }
                }
 
-               if (fP == 0) {
-                  fP = 960;
-                  fQ = 48;
-                  fL = 1;
-                  fM = 1;
+               if (cutsceneP == 0) {
+                  cutsceneP = 960;
+                  cutsceneQ = 48;
+                  cutsceneL = 1;
+                  cutsceneM = 1;
                }
 
-               fP += fL;
-               fQ += fM;
-               if (fP > fR) {
-                  fP = fR;
-                  fL = -fL;
+               cutsceneP += cutsceneL;
+               cutsceneQ += cutsceneM;
+               if (cutsceneP > cutsceneR) {
+                  cutsceneP = cutsceneR;
+                  cutsceneL = -cutsceneL;
                }
 
-               if (fP < 24) {
-                  fP = 24;
-                  fL = -fL;
+               if (cutsceneP < 24) {
+                  cutsceneP = 24;
+                  cutsceneL = -cutsceneL;
                }
 
-               if (fQ < 0) {
-                  fQ = 0;
-                  fM = -fM;
+               if (cutsceneQ < 0) {
+                  cutsceneQ = 0;
+                  cutsceneM = -cutsceneM;
                }
 
-               if (fQ > fS) {
-                  fQ = fS;
-                  fM = -fM;
+               if (cutsceneQ > cutsceneS) {
+                  cutsceneQ = cutsceneS;
+                  cutsceneM = -cutsceneM;
                }
 
-               if ((bx = fP / jf - 1) < 0) {
+               if ((bx = cutsceneP / jf - 1) < 0) {
                   bx = 0;
                }
 
-               by = fQ / jf;
+               by = cutsceneQ / jf;
                bB = bx + bz;
                bC = by + bA;
                if (by < 0) {
@@ -10726,7 +10726,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                if (aT[5] || aT[12]) {
                   d();
                   if (kX != -1) {
-                     if (!W[kX]) {
+                     if (!mapUnlockFlags[kX]) {
                         s(1);
                         d = 7;
                      } else if (lj == kX) {
@@ -10812,16 +10812,16 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         d = 6;
                         break;
                      case 2:
-                        if (lp >= de) {
+                        if (lp >= gold) {
                            s(4);
                         } else {
-                           de -= lp;
+                           gold -= lp;
                            aF();
                            kI = null;
                            au();
                            A();
-                           fq = ff = kR[kX] * 24;
-                           fr = fg = kS[kX] * 24;
+                           cameraScrollY = playerX = kR[kX] * 24;
+                           cameraBound = playerY = kS[kX] * 24;
                            Midlet.f = true;
                            x(kX);
                         }
@@ -11066,7 +11066,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    private static void i(Graphics var0) {
       for(int var1 = 0; var1 < jo; ++var1) {
-         if (jl[var1] + jn[var1] >= fP && jl[var1] <= fP + q && jm[var1] >= fQ && jm[var1] - 14 <= fQ + r) {
+         if (jl[var1] + jn[var1] >= cutsceneP && jl[var1] <= cutsceneP + q && jm[var1] >= cutsceneQ && jm[var1] - 14 <= cutsceneQ + r) {
             Midlet.a(var0, jk[var1], jl[var1], jm[var1], 0);
          }
       }
@@ -11532,20 +11532,20 @@ public final class a extends Canvas implements Runnable, CommandListener {
             }
 
             if ((h(var1, var2) & 32) == 32) {
-               var0.drawRegion(iV, 0, 24 * (w % 4), 24, 24, 0, var1 * jf, var2 * jf, 0);
+               var0.drawRegion(iV, 0, 24 * (mapSubIdLegacy % 4), 24, 24, 0, var1 * jf, var2 * jf, 0);
             } else if ((h(var1, var2) & 64) == 64) {
                if ((h(var1, var2 - 1) & 32) == 32) {
-                  var0.drawRegion(iV, 0, 24 * (w % 4), 24, 24, 0, var1 * jf, var2 * jf, 0);
+                  var0.drawRegion(iV, 0, 24 * (mapSubIdLegacy % 4), 24, 24, 0, var1 * jf, var2 * jf, 0);
                } else if ((h(var1, var2 - 1) & 8192) == 8192) {
                   var0.drawRegion(iU, 0, 504, 24, 24, 0, var1 * jf, var2 * jf, 0);
                }
 
-               var0.drawRegion(iW, 0, (w % 8 >> 2) * 24, 24, 24, 0, var1 * jf, var2 * jf, 0);
+               var0.drawRegion(iW, 0, (mapSubIdLegacy % 8 >> 2) * 24, 24, 24, 0, var1 * jf, var2 * jf, 0);
             }
 
             if ((h(var1, var2) & 4096) == 4096) {
                if ((h(var1, var2 - 1) & 32) == 32) {
-                  var0.drawRegion(iV, 0, 24 * (w % 4), 24, 24, 0, var1 * jf, var2 * jf, 0);
+                  var0.drawRegion(iV, 0, 24 * (mapSubIdLegacy % 4), 24, 24, 0, var1 * jf, var2 * jf, 0);
                } else if ((h(var1, var2 - 1) & 8192) == 8192) {
                   var0.drawRegion(iU, 0, 504, 24, 24, 0, var1 * jf, var2 * jf, 0);
                }
@@ -11562,12 +11562,12 @@ public final class a extends Canvas implements Runnable, CommandListener {
          for(int var2 = by; var2 < bC; ++var2) {
             int var3 = iR[var2 * iN + var1] - 1;
             if ((h(var1, var2) & 16) == 16) {
-               jh = (jg = var1 * jf - fP) - bD;
+               jh = (jg = var1 * jf - cutsceneP) - bD;
                ji = (jj = (jf - 2) * jh / jf) + bD;
-               var0.drawRegion(iU, 0, var3 * jf, 24, 24, 0, ji + fP, var2 * jf, 0);
+               var0.drawRegion(iU, 0, var3 * jf, 24, 24, 0, ji + cutsceneP, var2 * jf, 0);
             } else if ((h(var1, var2) & 256) != 256 && (h(var1, var2) & 512) != 512) {
                if ((h(var1, var2) & 32) == 32) {
-                  var0.drawRegion(iV, 0, 24 * (w % 4), 24, 24, 0, var1 * jf, var2 * jf, 0);
+                  var0.drawRegion(iV, 0, 24 * (mapSubIdLegacy % 4), 24, 24, 0, var1 * jf, var2 * jf, 0);
                } else if ((h(var1, var2) & 64) != 64 && (h(var1, var2) & 4096) != 4096) {
                   if ((h(var1, var2) & 1024) == 1024) {
                      var0.drawRegion(iU, 0, var3 * jf, 24, 24, 0, var1 * jf, var2 * jf + 1, 0);
@@ -11575,7 +11575,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      var0.drawRegion(iU, 0, var3 * jf, 24, 24, 0, var1 * jf, var2 * jf, 0);
                   }
                } else if ((h(var1, var2 - 1) & 32) == 32) {
-                  var0.drawRegion(iV, 0, 24 * (w % 4), 24, 24, 0, var1 * jf, var2 * jf, 0);
+                  var0.drawRegion(iV, 0, 24 * (mapSubIdLegacy % 4), 24, 24, 0, var1 * jf, var2 * jf, 0);
                } else if ((h(var1, var2 - 1) & 8192) == 8192) {
                   var0.drawRegion(iU, 0, 504, 24, 24, 0, var1 * jf, var2 * jf, 0);
                }
@@ -11590,11 +11590,11 @@ public final class a extends Canvas implements Runnable, CommandListener {
          for(int var1 = bx; var1 < bB; ++var1) {
             for(int var2 = by; var2 < bC; ++var2) {
                if ((h(var1, var2) & 64) == 64) {
-                  var0.drawRegion(iW, 0, (w % 8 >> 2) * 24, 24, 24, 0, var1 * jf, var2 * jf, 0);
+                  var0.drawRegion(iW, 0, (mapSubIdLegacy % 8 >> 2) * 24, 24, 24, 0, var1 * jf, var2 * jf, 0);
                } else if ((h(var1, var2) & 256) == 256) {
-                  jh = (jg = var1 * jf - fP) - bD;
+                  jh = (jg = var1 * jf - cutsceneP) - bD;
                   ji = (jj = (jf - 1) * jh / jf) + bD;
-                  var0.drawImage(je, ji + fP - 2 + (var1 + var2) % 5, var2 * jf - 3 + var2 % 5, 0);
+                  var0.drawImage(je, ji + cutsceneP - 2 + (var1 + var2) % 5, var2 * jf - 3 + var2 % 5, 0);
                }
 
                if ((h(var1, var2) & 512) == 512) {
@@ -11667,7 +11667,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
          int var3 = jZ[var0] >= 0 ? jL[var0] + ke[var0] : jL[var0];
          int var4 = jM[var0] - kf[var0];
          int var1 = jM[var0] + kf[var0];
-         if (A == 6 ? false : (fx ? false : (A == 14 ? false : (ff < var2 ? false : (ff > var3 ? false : (fg < var4 ? false : fg <= var1)))))) {
+         if (playerState == 6 ? false : (gameModeFx ? false : (playerState == 14 ? false : (playerX < var2 ? false : (playerX > var3 ? false : (playerY < var4 ? false : playerY <= var1)))))) {
             kd[var0] = 0;
             jQ[var0] = 4;
             jV[var0] = 0;
@@ -11682,7 +11682,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
          int var3 = jZ[var0] >= 0 ? jL[var0] + ke[var0] : jL[var0];
          int var4 = jM[var0] - kf[var0];
          int var1 = jM[var0] + kf[var0];
-         if (gs == 14 ? false : (go < var2 ? false : (go > var3 ? false : (gp < var4 ? false : gp <= var1)))) {
+         if (companionMode == 14 ? false : (companionX < var2 ? false : (companionX > var3 ? false : (companionY < var4 ? false : companionY <= var1)))) {
             kd[var0] = 0;
             jQ[var0] = 4;
             jV[var0] = 0;
@@ -11725,22 +11725,22 @@ public final class a extends Canvas implements Runnable, CommandListener {
    private static void L(int var0) {
       u(MonsterData.getExpDrop(jK[var0]));
       int var1;
-      if ((var1 = w % 20) > 15) {
-         a(jL[var0], jM[var0], -(jZ[var0] << 3), -5, kc[var0] << 2, (w + 1) % 2);
+      if ((var1 = mapSubIdLegacy % 20) > 15) {
+         a(jL[var0], jM[var0], -(jZ[var0] << 3), -5, kc[var0] << 2, (mapSubIdLegacy + 1) % 2);
       } else if (var1 == 15) {
-         a(jL[var0], jM[var0], -(jZ[var0] << 2), -4, (kh[var0] << 3) + w % 10);
+         a(jL[var0], jM[var0], -(jZ[var0] << 2), -4, (kh[var0] << 3) + mapSubIdLegacy % 10);
       } else {
          var1 = ((jK[var0] << 2) / 10 + 1) * 10;
          a(jL[var0], jM[var0], -(jZ[var0] << 1), -6, var1);
          a(jL[var0], jM[var0], -(jZ[var0] << 4), -3, var1);
       }
 
-      if (currentQuestIndex != -1 && lF[currentQuestIndex] == jK[var0]) {
-         ++fD;
-         c(MonsterData.getName(lF[currentQuestIndex]) + ": " + fD + "#" + questRequiredAmounts[currentQuestIndex]);
+      if (activeQuestId != -1 && lF[activeQuestId] == jK[var0]) {
+         ++questProgress;
+         c(MonsterData.getName(lF[activeQuestId]) + ": " + questProgress + "#" + questRequiredAmounts[activeQuestId]);
       }
 
-      if (jK[var0] == fz - 100 && w % 10 < fA) {
+      if (jK[var0] == questParam - 100 && mapSubIdLegacy % 10 < questTarget) {
          e(jL[var0], jM[var0]);
          f(jL[var0], jM[var0] - 28);
       }
@@ -12141,7 +12141,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                int var121 = jV[var0]++;
                int[] var67 = jM;
                var67[var0] += jV[var0];
-               if (w % 2 == 0) {
+               if (mapSubIdLegacy % 2 == 0) {
                   if (jW[var0] > 1) {
                      var121 = jW[var0]--;
                   } else if (jW[var0] < -1) {
@@ -12174,7 +12174,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
             case 2:
                switch (jK[var0]) {
                   case 0:
-                     if (w % 4 == 0) {
+                     if (mapSubIdLegacy % 4 == 0) {
                         int var120 = jY[var0]++;
                         if (jY[var0] > 1) {
                            jY[var0] = 0;
@@ -12190,7 +12190,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      }
 
                      J(var0);
-                     if (w % 9 == 0) {
+                     if (mapSubIdLegacy % 9 == 0) {
                         K(var0);
                      }
                      continue;
@@ -12203,27 +12203,27 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      var62 = jM;
                      var62[var0] += jU[var0];
                      if (jL[var0] - jR[var0] > 40) {
-                        jT[var0] = -(w % 3 + 1);
+                        jT[var0] = -(mapSubIdLegacy % 3 + 1);
                      }
 
                      if (jL[var0] - jR[var0] < -40) {
-                        jT[var0] = w % 3 + 1;
+                        jT[var0] = mapSubIdLegacy % 3 + 1;
                      }
 
                      if (jM[var0] - jS[var0] > 40) {
-                        jU[var0] = -(w % 3 + 1);
+                        jU[var0] = -(mapSubIdLegacy % 3 + 1);
                      }
 
                      if (jM[var0] - jS[var0] < -40) {
-                        jU[var0] = w % 3 + 1;
+                        jU[var0] = mapSubIdLegacy % 3 + 1;
                      }
 
-                     if (w % 15 == 0) {
-                        jT[var0] = w % 4 - 1;
-                        jU[var0] = (w >> 1) % 4 - 1;
+                     if (mapSubIdLegacy % 15 == 0) {
+                        jT[var0] = mapSubIdLegacy % 4 - 1;
+                        jU[var0] = (mapSubIdLegacy >> 1) % 4 - 1;
                      }
 
-                     if (w % 2 == 0) {
+                     if (mapSubIdLegacy % 2 == 0) {
                         int var119 = jY[var0]++;
                         if (jY[var0] > 1) {
                            jY[var0] = 0;
@@ -12270,7 +12270,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      }
 
                      J(var0);
-                     if (w % 9 == 0) {
+                     if (mapSubIdLegacy % 9 == 0) {
                         K(var0);
                      }
                      continue;
@@ -12308,12 +12308,12 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      }
 
                      J(var0);
-                     if (w % 9 == 0) {
+                     if (mapSubIdLegacy % 9 == 0) {
                         K(var0);
                      }
                      continue;
                   case 5:
-                     if (w % 4 == 0) {
+                     if (mapSubIdLegacy % 4 == 0) {
                         int var112 = jY[var0]++;
                         if (jY[var0] > 1) {
                            jY[var0] = 0;
@@ -12343,7 +12343,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      }
 
                      int[] var56 = jL;
-                     var56[var0] += w % 5 * jZ[var0];
+                     var56[var0] += mapSubIdLegacy % 5 * jZ[var0];
                      if (jL[var0] > jS[var0]) {
                         jZ[var0] = -1;
                      } else if (jL[var0] < jR[var0]) {
@@ -12372,7 +12372,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      J(var0);
                      continue;
                   case 11:
-                     if (w % 4 == 0) {
+                     if (mapSubIdLegacy % 4 == 0) {
                         int var109 = jY[var0]++;
                         jV[var0] = 0;
                         if (jY[var0] > 1) {
@@ -12390,7 +12390,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      }
 
                      J(var0);
-                     if (w % 9 == 0) {
+                     if (mapSubIdLegacy % 9 == 0) {
                         K(var0);
                      }
                      continue;
@@ -12402,27 +12402,27 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      var48[var0] += jT[var0];
                      if (jL[var0] - jR[var0] > 100) {
                         jZ[var0] = -1;
-                        jT[var0] = jZ[var0] * (w % 4 + 1);
+                        jT[var0] = jZ[var0] * (mapSubIdLegacy % 4 + 1);
                         var48 = jL;
                         var48[var0] += jZ[var0] << 2;
                      } else if (jL[var0] - jR[var0] < -100) {
                         jZ[var0] = 1;
-                        jT[var0] = jZ[var0] * (w % 4 + 1);
+                        jT[var0] = jZ[var0] * (mapSubIdLegacy % 4 + 1);
                         var48 = jL;
                         var48[var0] += jZ[var0] << 2;
                      }
 
                      if (jM[var0] - jS[var0] > 20) {
-                        jU[var0] = -(w % 4 + 1);
+                        jU[var0] = -(mapSubIdLegacy % 4 + 1);
                      } else if (jM[var0] - jS[var0] < -20) {
-                        jU[var0] = w % 4 + 1;
+                        jU[var0] = mapSubIdLegacy % 4 + 1;
                      } else {
                         jU[var0] = 0;
                      }
 
                      var48 = jM;
                      var48[var0] += jU[var0];
-                     if (w % 2 == 0) {
+                     if (mapSubIdLegacy % 2 == 0) {
                         int var108 = jY[var0]++;
                         if (jY[var0] > 1) {
                            jY[var0] = 0;
@@ -12442,7 +12442,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         jY[var0] = 0;
                      }
 
-                     if (w % 2 == 0) {
+                     if (mapSubIdLegacy % 2 == 0) {
                         int[] var46 = jL;
                         var46[var0] += jZ[var0] << 2;
                      } else {
@@ -12457,7 +12457,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      }
 
                      J(var0);
-                     if (w % 5 == 0) {
+                     if (mapSubIdLegacy % 5 == 0) {
                         K(var0);
                      }
                      continue;
@@ -12491,7 +12491,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      }
 
                      J(var0);
-                     if (w % 9 == 0) {
+                     if (mapSubIdLegacy % 9 == 0) {
                         K(var0);
                      }
                      continue;
@@ -12503,21 +12503,21 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      continue;
                   case 18:
                   case 19:
-                     if (w % 4 == 0) {
+                     if (mapSubIdLegacy % 4 == 0) {
                         int var103 = jY[var0]++;
                         if (jY[var0] > 1) {
                            jY[var0] = 0;
                         }
                      }
 
-                     if (jL[var0] > ff) {
+                     if (jL[var0] > playerX) {
                         jZ[var0] = -1;
                      } else {
                         jZ[var0] = 1;
                      }
 
                      J(var0);
-                     if (w % 9 == 0) {
+                     if (mapSubIdLegacy % 9 == 0) {
                         K(var0);
                      }
                      continue;
@@ -12533,7 +12533,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                J(var0);
                break;
             case 4:
-               if (A == 14 || fx) {
+               if (playerState == 14 || gameModeFx) {
                   jY[var0] = 0;
                   jQ[var0] = 2;
                   jV[var0] = 0;
@@ -12568,43 +12568,43 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      }
                      continue;
                   case 1:
-                     a(kc[var0], -fn);
+                     a(kc[var0], -playerFacing);
                      jQ[var0] = 3;
                      jV[var0] = 0;
                      jY[var0] = 2;
                      continue;
                   case 2:
-                     if (jL[var0] < ff) {
-                        jT[var0] = 3 + w % 4;
-                     } else if (jL[var0] > ff) {
-                        jT[var0] = -(3 + w % 4);
+                     if (jL[var0] < playerX) {
+                        jT[var0] = 3 + mapSubIdLegacy % 4;
+                     } else if (jL[var0] > playerX) {
+                        jT[var0] = -(3 + mapSubIdLegacy % 4);
                      }
 
-                     if (jM[var0] < fg) {
-                        jU[var0] = w % 3;
-                     } else if (jM[var0] > fg) {
-                        jU[var0] = -w % 3;
+                     if (jM[var0] < playerY) {
+                        jU[var0] = mapSubIdLegacy % 3;
+                     } else if (jM[var0] > playerY) {
+                        jU[var0] = -mapSubIdLegacy % 3;
                      }
 
                      int[] var40 = jL;
                      var40[var0] += jT[var0];
                      var40 = jM;
                      var40[var0] += jU[var0];
-                     if (w % 2 == 0) {
+                     if (mapSubIdLegacy % 2 == 0) {
                         int var100 = jY[var0]++;
                         if (jY[var0] > 1) {
                            jY[var0] = 0;
                         }
                      }
 
-                     if (a(jL[var0] - ff) < 5 && a(jM[var0] - fg) < 5) {
+                     if (a(jL[var0] - playerX) < 5 && a(jM[var0] - playerY) < 5) {
                         kd[var0] = 0;
-                        a(kc[var0], -fn);
+                        a(kc[var0], -playerFacing);
                         jV[var0] = 0;
                         jQ[var0] = 2;
                      }
 
-                     if (a(jL[var0] - ff) > 160 || a(jM[var0] - fg) > 160) {
+                     if (a(jL[var0] - playerX) > 160 || a(jM[var0] - playerY) > 160) {
                         jQ[var0] = 2;
                         jV[var0] = 0;
                         jT[var0] = jU[var0] = 0;
@@ -12668,7 +12668,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      }
                      continue;
                   case 5:
-                     a(kc[var0], -fn);
+                     a(kc[var0], -playerFacing);
                      jQ[var0] = 2;
                      jV[var0] = 1;
                      continue;
@@ -12680,21 +12680,21 @@ public final class a extends Canvas implements Runnable, CommandListener {
                   case 8:
                      int var96 = jV[var0]++;
                      if (jV[var0] <= 10) {
-                        if (jM[var0] > fg) {
+                        if (jM[var0] > playerY) {
                            int[] var32 = jM;
                            var32[var0] -= 4;
                         }
 
-                        if (jL[var0] < ff) {
+                        if (jL[var0] < playerX) {
                            int[] var33 = jL;
                            var33[var0] += 2;
-                        } else if (jL[var0] > ff) {
+                        } else if (jL[var0] > playerX) {
                            int[] var34 = jL;
                            var34[var0] -= 2;
                         }
 
-                        if (a(jL[var0] - ff) < 16 && a(jM[var0] - (fg - 16)) < 20) {
-                           a(kc[var0], -fn);
+                        if (a(jL[var0] - playerX) < 16 && a(jM[var0] - (playerY - 16)) < 20) {
+                           a(kc[var0], -playerFacing);
                            jV[var0] = 10;
                         }
                      }
@@ -12723,7 +12723,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         int[] var30 = jL;
                         var30[var0] += jZ[var0] << 2;
                      } else if (jV[var0] == 6) {
-                        if (a(jL[var0] + (jZ[var0] << 3) - ff) < 13 + fj) {
+                        if (a(jL[var0] + (jZ[var0] << 3) - playerX) < 13 + halfWidth) {
                            a(kc[var0], jZ[var0]);
                         }
                      } else if (jV[var0] < 12) {
@@ -12747,14 +12747,14 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      if (jV[var0] <= 15) {
                         int[] var28 = jM;
                         var28[var0] -= 7;
-                        if (jL[var0] < ff) {
+                        if (jL[var0] < playerX) {
                            var91 = jL[var0]++;
-                        } else if (jL[var0] > ff) {
+                        } else if (jL[var0] > playerX) {
                            var91 = jL[var0]--;
                         }
 
-                        if (a(jL[var0] - ff) < 16 && a(jM[var0] - (fg - 16)) < 20) {
-                           a(kc[var0], -fn);
+                        if (a(jL[var0] - playerX) < 16 && a(jM[var0] - (playerY - 16)) < 20) {
+                           a(kc[var0], -playerFacing);
                            jV[var0] = 15;
                         }
                      }
@@ -12768,8 +12768,8 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         int[] var29 = jM;
                         var29[var0] += jW[var0];
                         var91 = jW[var0]++;
-                        if (a(jL[var0] - ff) < 16 && a(jM[var0] - (fg - 16)) < 20) {
-                           a(kc[var0], -fn);
+                        if (a(jL[var0] - playerX) < 16 && a(jM[var0] - (playerY - 16)) < 20) {
+                           a(kc[var0], -playerFacing);
                         }
 
                         if (jM[var0] > kl[ki[var0]][kg[var0]]) {
@@ -12782,7 +12782,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      continue;
                   case 11:
                      int var90 = jV[var0]++;
-                     if (jV[var0] == 4 && jM[var0] == fg) {
+                     if (jV[var0] == 4 && jM[var0] == playerY) {
                         a(kc[var0], jZ[var0]);
                      }
 
@@ -12806,44 +12806,44 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      R(var0);
                      continue;
                   case 13:
-                     if (jL[var0] < ff) {
-                        jT[var0] = 4 + w % 6;
-                     } else if (jL[var0] > ff) {
-                        jT[var0] = -(4 + w % 6);
+                     if (jL[var0] < playerX) {
+                        jT[var0] = 4 + mapSubIdLegacy % 6;
+                     } else if (jL[var0] > playerX) {
+                        jT[var0] = -(4 + mapSubIdLegacy % 6);
                      }
 
-                     if (jM[var0] < fg) {
-                        jU[var0] = 2 + w % 4;
-                     } else if (jM[var0] > fg) {
-                        jU[var0] = -(2 + w % 4);
+                     if (jM[var0] < playerY) {
+                        jU[var0] = 2 + mapSubIdLegacy % 4;
+                     } else if (jM[var0] > playerY) {
+                        jU[var0] = -(2 + mapSubIdLegacy % 4);
                      }
 
                      int[] var24 = jL;
                      var24[var0] += jT[var0];
                      var24 = jM;
                      var24[var0] += jU[var0];
-                     if (w % 2 == 0) {
+                     if (mapSubIdLegacy % 2 == 0) {
                         int var89 = jY[var0]++;
                         if (jY[var0] > 1) {
                            jY[var0] = 0;
                         }
                      }
 
-                     if (a(jL[var0] - ff) < 5 && a(jM[var0] - fg) < 5) {
-                        a(kc[var0], -fn);
+                     if (a(jL[var0] - playerX) < 5 && a(jM[var0] - playerY) < 5) {
+                        a(kc[var0], -playerFacing);
                         jQ[var0] = 2;
                         jV[var0] = 0;
                         jZ[var0] = jL[var0] > jR[var0] ? -1 : 1;
-                        jT[var0] = jZ[var0] * (w % 4 + 1);
+                        jT[var0] = jZ[var0] * (mapSubIdLegacy % 4 + 1);
                         kd[var0] = 10;
                      }
 
-                     if (a(jL[var0] - ff) > 130 || a(jM[var0] - fg) > 130) {
+                     if (a(jL[var0] - playerX) > 130 || a(jM[var0] - playerY) > 130) {
                         jQ[var0] = 2;
                         jV[var0] = 0;
                         jT[var0] = jU[var0] = 0;
                         jZ[var0] = jL[var0] > jR[var0] ? -1 : 1;
-                        jT[var0] = jZ[var0] * (w % 4 + 1);
+                        jT[var0] = jZ[var0] * (mapSubIdLegacy % 4 + 1);
                         kd[var0] = 0;
                      }
                      continue;
@@ -12920,7 +12920,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                int var84 = jV[var0]++;
                if (jV[var0] >= jJ) {
                   jV[var0] = 0;
-                  int var2 = w % kk[ki[var0]].length;
+                  int var2 = mapSubIdLegacy % kk[ki[var0]].length;
                   if (km[ki[var0]][var2]) {
                      jV[var0] = jJ;
                   } else {
@@ -13085,7 +13085,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                      break;
                   case 7:
                      int var77 = jV[var0]++;
-                     jZ[var0] = -fn;
+                     jZ[var0] = -playerFacing;
                      if (jV[var0] % 4 > 1) {
                         jY[var0] = 0;
                      } else {
@@ -13686,18 +13686,18 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void N(int var0) {
-      if (jL[var0] < ff) {
-         jT[var0] = w % 3 + 3;
+      if (jL[var0] < playerX) {
+         jT[var0] = mapSubIdLegacy % 3 + 3;
          jZ[var0] = 1;
-      } else if (jL[var0] > ff) {
-         jT[var0] = -w % 3 - 3;
+      } else if (jL[var0] > playerX) {
+         jT[var0] = -mapSubIdLegacy % 3 - 3;
          jZ[var0] = -1;
       }
 
-      if (jM[var0] < fg) {
-         jU[var0] = w % 3 + 3;
-      } else if (jM[var0] > fg) {
-         jU[var0] = -w % 3 - 3;
+      if (jM[var0] < playerY) {
+         jU[var0] = mapSubIdLegacy % 3 + 3;
+      } else if (jM[var0] > playerY) {
+         jU[var0] = -mapSubIdLegacy % 3 - 3;
       }
 
       int[] var10000 = jL;
@@ -13709,7 +13709,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
          jY[var0] = 0;
       }
 
-      if (a(jL[var0] - ff) < 10 && a(jM[var0] - fg) < 10) {
+      if (a(jL[var0] - playerX) < 10 && a(jM[var0] - playerY) < 10) {
          kd[var0] = 0;
          if (kj[var0]) {
             kj[var0] = false;
@@ -13722,7 +13722,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
          jQ[var0] = 2;
       }
 
-      if (a(jL[var0] - ff) > 160 || a(jM[var0] - fg) > 160) {
+      if (a(jL[var0] - playerX) > 160 || a(jM[var0] - playerY) > 160) {
          jQ[var0] = 2;
          jV[var0] = 0;
          jT[var0] = jU[var0] = 0;
@@ -13760,24 +13760,24 @@ public final class a extends Canvas implements Runnable, CommandListener {
       var10000 = jM;
       var10000[var0] += jU[var0];
       if (jL[var0] - jR[var0] > 40) {
-         jT[var0] = -(w % 2 + 1);
+         jT[var0] = -(mapSubIdLegacy % 2 + 1);
       }
 
       if (jL[var0] - jR[var0] < -40) {
-         jT[var0] = w % 2 + 1;
+         jT[var0] = mapSubIdLegacy % 2 + 1;
       }
 
       if (jM[var0] - jS[var0] > 40) {
-         jU[var0] = -(w % 2 + 1);
+         jU[var0] = -(mapSubIdLegacy % 2 + 1);
       }
 
       if (jM[var0] - jS[var0] < -40) {
-         jU[var0] = w % 2 + 1;
+         jU[var0] = mapSubIdLegacy % 2 + 1;
       }
 
-      if (w % 15 == 0) {
-         jT[var0] = w % 3 - 1;
-         jU[var0] = (w >> 1) % 3 - 1;
+      if (mapSubIdLegacy % 15 == 0) {
+         jT[var0] = mapSubIdLegacy % 3 - 1;
+         jU[var0] = (mapSubIdLegacy >> 1) % 3 - 1;
       }
 
       int var10002 = jY[var0]++;
@@ -13786,14 +13786,14 @@ public final class a extends Canvas implements Runnable, CommandListener {
       }
 
       J(var0);
-      if (w % 5 == 0) {
+      if (mapSubIdLegacy % 5 == 0) {
          K(var0);
       }
 
    }
 
    private static void Q(int var0) {
-      if (w % 4 == 1) {
+      if (mapSubIdLegacy % 4 == 1) {
          int var10002 = jY[var0]++;
          if (jY[var0] > 1) {
             jY[var0] = 0;
@@ -13812,7 +13812,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void R(int var0) {
-      a(kc[var0], -fn);
+      a(kc[var0], -playerFacing);
       jQ[var0] = 2;
       jV[var0] = 0;
       jY[var0] = 2;
@@ -13839,7 +13839,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void U(int var0) {
-      if (w % 4 == 0) {
+      if (mapSubIdLegacy % 4 == 0) {
          int var10002 = jY[var0]++;
          if (jY[var0] > 1) {
             jY[var0] = 0;
@@ -13856,7 +13856,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
       }
 
       J(var0);
-      if (w % 5 == 0) {
+      if (mapSubIdLegacy % 5 == 0) {
          K(var0);
       }
 
@@ -13906,7 +13906,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
       var0.setColor(6562304);
       var0.fillRect(bD - 61, U - 16, 123, 97);
       if (kt == 0) {
-         Midlet.a(var0, "Tiền: " + de + "$", bD, U - 8, 2);
+         Midlet.a(var0, "Tiền: " + gold + "$", bD, U - 8, 2);
       } else {
          Midlet.a(var0, kv[ks][kq], bD, U - 8, 2);
       }
@@ -13990,22 +13990,22 @@ public final class a extends Canvas implements Runnable, CommandListener {
          if (ks == 0) {
             if (kt == 0) {
                if (kq < 3) {
-                  if (V[0] + V[1] + V[2] > 99) {
+                  if (inventoryCounts[0] + inventoryCounts[1] + inventoryCounts[2] > 99) {
                      return;
                   }
-               } else if (V[3] + V[4] + V[5] > 99) {
+               } else if (inventoryCounts[3] + inventoryCounts[4] + inventoryCounts[5] > 99) {
                   return;
                }
 
-               if (de >= kx[ks][kq]) {
-                  int var10002 = V[kq]++;
-                  de -= kx[ks][kq];
+               if (gold >= kx[ks][kq]) {
+                  int var10002 = inventoryCounts[kq]++;
+                  gold -= kx[ks][kq];
                }
             } else {
                a("TEAM BUY 009007 " + kz[ks][kq], kA[ks][kq], kq + 1);
             }
          } else {
-            if (x >= kq) {
+            if (equippedWeaponIndex >= kq) {
                s(7);
                a("Không cần thiết phải mua vũ khí này vì vũ khí đang sử dụng mạnh hơn!");
                X = U;
@@ -14013,7 +14013,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
                return;
             }
 
-            if (characterLevel < ko[kq]) {
+            if (level < ko[kq]) {
                s(7);
                a("Bạn phải đạt cấp độ " + ko[kq] + " mới có thể mua vũ khí này!");
                X = U;
@@ -14022,15 +14022,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
             }
 
             if (kt == 0) {
-               if (de >= kx[ks][kq]) {
-                  de -= kx[ks][kq];
-                  x = kq;
+               if (gold >= kx[ks][kq]) {
+                  gold -= kx[ks][kq];
+                  equippedWeaponIndex = kq;
                   t();
                   return;
                }
 
                s(7);
-               a("Không có đủ tiền: " + kx[ks][kq] + "$. Bạn chỉ có: " + de + "$. Hãy đi tìm thêm.");
+               a("Không có đủ tiền: " + kx[ks][kq] + "$. Bạn chỉ có: " + gold + "$. Hãy đi tìm thêm.");
                X = U;
                d = 7;
                return;
@@ -14103,12 +14103,12 @@ public final class a extends Canvas implements Runnable, CommandListener {
     * @param var0 Graphics: đối tượng để vẽ lên màn hình.
     */
    private static int invQtyAt(int var0) {
-      return var0 < 6 ? V[var0] : kBagExt[var0 - 6];
+      return var0 < 6 ? inventoryCounts[var0] : kBagExt[var0 - 6];
    }
 
    private static void invUseAt(int var0) {
       if (var0 < 6) {
-         V[var0]--;
+         inventoryCounts[var0]--;
       } else {
          kBagExt[var0 - 6]--;
       }
@@ -14166,7 +14166,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
          Midlet.a(var0, kG[kD], bD, kB + 58, 2);
          Midlet.a(var0, "Số lượng: " + invQtyAt(kD), bD, kB + 73, 2);
-         Midlet.a(var0, "Tấn công: " + E, bD, kB + 88, 2);
+         Midlet.a(var0, "Tấn công: " + atk, bD, kB + 88, 2);
       }
 
       var0.drawImage(kI[0], bD - 64, kB - 19, 20);
@@ -14208,20 +14208,20 @@ public final class a extends Canvas implements Runnable, CommandListener {
             invUseAt(kD);
             kE = kF.length - 1;
             if (kD % 6 <= 2) {
-               if (G < H) {
-                  G += kH[kD % 6];
+               if (hp < hpMax) {
+                  hp += kH[kD % 6];
                }
 
-               if (G > H) {
-                  G = H;
+               if (hp > hpMax) {
+                  hp = hpMax;
                }
             } else {
-               if (I < J) {
-                  I += kH[kD % 6];
+               if (mp < mpMax) {
+                  mp += kH[kD % 6];
                }
 
-               if (I > J) {
-                  I = J;
+               if (mp > mpMax) {
+                  mp = mpMax;
                }
             }
          }
@@ -14367,20 +14367,20 @@ public final class a extends Canvas implements Runnable, CommandListener {
             } catch (Exception var3) {
             }
 
-            lj = v;
-            if (v == 99) {
+            lj = mapId;
+            if (mapId == 99) {
                lj = 0;
             }
 
-            if (v == 97) {
+            if (mapId == 97) {
                lj = 7;
             }
 
-            if (v == 96) {
+            if (mapId == 96) {
                lj = 11;
             }
 
-            if (v == 95) {
+            if (mapId == 95) {
                lj = 18;
             }
 
@@ -14409,7 +14409,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
          }
 
          if (kK == 2) {
-            if (A != 1) {
+            if (playerState != 1) {
                kI = null;
                au();
                aI();
@@ -14451,7 +14451,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
             var0.drawImage(ep[0], kP[var1] + 10, kQ[var1], 3);
          }
 
-         if (W[var1] && (var1 != kX || kY % 10 > 5)) {
+         if (mapUnlockFlags[var1] && (var1 != kX || kY % 10 > 5)) {
             var0.drawImage(kU, kP[var1], kQ[var1], 3);
          }
       }
@@ -14541,7 +14541,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
          int var5;
          lp = var5 = (var2 << 1) / 3;
-         a("Chuyển đến đây phải trả " + var5 + "$. Bạn có " + de + "$. Chuyển?");
+         a("Chuyển đến đây phải trả " + var5 + "$. Bạn có " + gold + "$. Chuyển?");
          lr = "Chuyển";
          ls = "Không";
       }
@@ -14586,7 +14586,7 @@ public final class a extends Canvas implements Runnable, CommandListener {
    }
 
    private static void V(int var0) {
-      lI = v;
+      lI = mapId;
       lL = var0;
       lJ = lw[var0];
       lK = lx[var0] - 44;
@@ -14730,9 +14730,9 @@ public final class a extends Canvas implements Runnable, CommandListener {
 
    private static void r(Graphics var0) {
       for(int var1 = 0; var1 < lv; ++var1) {
-         if (lw[var1] + 10 >= fP && lw[var1] - 10 <= fP + q && lx[var1] >= fQ && lx[var1] - 32 <= fQ + r) {
+         if (lw[var1] + 10 >= cutsceneP && lw[var1] - 10 <= cutsceneP + q && lx[var1] >= cutsceneQ && lx[var1] - 32 <= cutsceneQ + r) {
             var0.drawImage(lu[ly[var1]][1], lw[var1], lx[var1], 33);
-            var0.drawImage(lu[ly[var1]][0], lw[var1], lx[var1] - lH[ly[var1]] + (w % (15 + ly[var1]) > 4 ? 0 : 1), 33);
+            var0.drawImage(lu[ly[var1]][0], lw[var1], lx[var1] - lH[ly[var1]] + (mapSubIdLegacy % (15 + ly[var1]) > 4 ? 0 : 1), 33);
          }
       }
 

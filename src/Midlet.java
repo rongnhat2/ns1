@@ -400,38 +400,38 @@ public class Midlet extends MIDlet implements Runnable {
       try {
          Thread.sleep(200L);
          Thread.yield();
-         a.w = a.a((int)System.currentTimeMillis() % 1000);
+         a.mapSubIdLegacy = a.a((int)System.currentTimeMillis() % 1000);
          a.R = 30;
          Thread.yield();
-         map.m(a.v);
-         a.q(a.v);
-         a.p(a.v);
-         a.o(a.v);
+         map.m(a.mapId);
+         a.q(a.mapId);
+         a.p(a.mapId);
+         a.o(a.mapId);
          a.R = 50;
          Thread.yield();
-         a.t(a.v);
+         a.t(a.mapId);
          a.i();
-         a.f(a.v);
-         a.g(a.v);
-         a.e(a.v);
+         a.f(a.mapId);
+         a.g(a.mapId);
+         a.e(a.mapId);
          a.R = 65;
          Thread.yield();
-         a.r(a.v);
+         a.r(a.mapId);
          a.R = 70;
          Thread.yield();
-         a.h(a.v);
-         a.i(a.v);
-         a.j(a.v);
-         a.k(a.v);
-         a.l(a.v);
+         a.h(a.mapId);
+         a.i(a.mapId);
+         a.j(a.mapId);
+         a.k(a.mapId);
+         a.l(a.mapId);
          a.R = 75;
          a.k();
          a.g();
          a.p();
          a.R = 78;
          Thread.yield();
-         a.d(a.v);
-         a.c(a.v);
+         a.d(a.mapId);
+         a.c(a.mapId);
          a.R = 80;
          a.l();
          a.r();
@@ -441,7 +441,7 @@ public class Midlet extends MIDlet implements Runnable {
          a.n();
          a.m();
          a.R = 85;
-         a.b(a.v);
+         a.b(a.mapId);
          a.f();
          a.o();
          a.R = 87;
@@ -474,7 +474,7 @@ public class Midlet extends MIDlet implements Runnable {
          }
 
          a.b = false;
-         if (a.v != 0 && !a.a) {
+         if (a.mapId != 0 && !a.a) {
             a.b = true;
             a.p = a.r - (a.s[0].getHeight() + a.s[1].getHeight() + a.s[2].getHeight()) + 11;
             a.l = (a.k = (a.j = a.r - a.s[0].getHeight()) - a.s[1].getHeight()) - a.s[2].getHeight();
@@ -486,8 +486,8 @@ public class Midlet extends MIDlet implements Runnable {
             var6 = 0;
          }
 
-         if (a.v < 19) {
-            a.W[a.v] = true;
+         if (a.mapId < 19) {
+            a.mapUnlockFlags[a.mapId] = true;
          }
 
          a.p += var6;
@@ -507,29 +507,29 @@ public class Midlet extends MIDlet implements Runnable {
          a.n = "Menu";
          a.o = " ";
          a.T = false;
-         a.n(a.v);
+         a.n(a.mapId);
          a.R = 100;
          if (i) {
             i = false;
-            a.E = 20;
-            a.F = 10;
-            a.H = 200;
-            a.G = 200;
-            a.J = 150;
-            a.I = 150;
-            a.currentQuestIndex = -1;
+            a.atk = 20;
+            a.shurikenDmg = 10;
+            a.hpMax = 200;
+            a.hp = 200;
+            a.mpMax = 150;
+            a.mp = 150;
+            a.activeQuestId = -1;
             a.P = 5;
             a.K = 6;
             a.L = 2;
             a.Q = 8;
-            a.A = 4;
+            a.playerState = 4;
             a.y = 1;
             a.z = 1;
             a.B = 0;
-            a.D = 0;
-            a.C = 0;
-            a.characterLevel = 1;
-            a.N = 0;
+            a.burrowSubstate = 0;
+            a.airComboTier = 0;
+            a.level = 1;
+            a.expInLevel = 0;
          }
 
          a.d();
@@ -542,7 +542,7 @@ public class Midlet extends MIDlet implements Runnable {
             f = false;
          }
 
-         switch (a.v) {
+         switch (a.mapId) {
             case 0:
             case 1:
             case 2:

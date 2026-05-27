@@ -27,41 +27,41 @@ final class b implements Runnable {
                a.Y = 5;
                return;
             case 1:
-               int[] var9 = a.V;
+               int[] var9 = a.inventoryCounts;
                var9[0] += 50;
                return;
             case 2:
-               int[] var8 = a.V;
+               int[] var8 = a.inventoryCounts;
                var8[1] += 50;
                return;
             case 3:
-               int[] var7 = a.V;
+               int[] var7 = a.inventoryCounts;
                var7[2] += 30;
                return;
             case 4:
-               int[] var6 = a.V;
+               int[] var6 = a.inventoryCounts;
                var6[3] += 50;
                return;
             case 5:
-               int[] var5 = a.V;
+               int[] var5 = a.inventoryCounts;
                var5[4] += 30;
                return;
             case 6:
-               int[] var10000 = a.V;
+               int[] var10000 = a.inventoryCounts;
                var10000[5] += 50;
                return;
             case 7:
-               a.x = 1;
+               a.equippedWeaponIndex = 1;
                a.a();
                a.t();
                return;
             case 8:
-               a.x = 2;
+               a.equippedWeaponIndex = 2;
                a.a();
                a.t();
                return;
             case 9:
-               a.x = 3;
+               a.equippedWeaponIndex = 3;
                a.a();
                a.t();
                return;
