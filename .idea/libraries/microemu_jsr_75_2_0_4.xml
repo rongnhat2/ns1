@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="microemu-jsr-75-2.0.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/S40_5th_Edition_SDK_1_0/microemu-jsr-75-2.0.4.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/S40_5th_Edition_SDK_1_0/microemu-jsr-120-2.0.4.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/S40_5th_Edition_SDK_1_0/microemu-nokiaui-2.0.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,4 @@
+1. bật cmd
+2. cd C:\Users\Rhass\IdeaProjects\ninjaschool1
+3. "C:\Program Files (x86)\Java\jdk1.6.0_45\bin\javac" -encoding UTF-8 -source 1.4 -target 1.4 -classpath "C:\Users\Rhass\Desktop\S40_5th_Edition_SDK_1_0\midpapi20-2.0.4.jar;C:\Users\Rhass\Desktop\S40_5th_Edition_SDK_1_0\cldcapi11-2.0.4.jar;C:\Users\Rhass\Desktop\S40_5th_Edition_SDK_1_0\bluecove-2.1.0.jar;C:\Users\Rhass\Desktop\S40_5th_Edition_SDK_1_0\microemu-jsr-120-2.0.4.jar;C:\Users\Rhass\Desktop\S40_5th_Edition_SDK_1_0\microemu-nokiaui-2.0.4.jar;C:\Users\Rhass\Desktop\S40_5th_Edition_SDK_1_0\microemu-jsr-75-2.0.4.jar" -d out src\*.java
+3. copy các class sau khi build ở thư mục out vào game ninjaschool1
