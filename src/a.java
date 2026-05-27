@@ -804,12 +804,12 @@ public final class a extends Canvas implements Runnable, CommandListener {
       S = 0;
       kn = null;
       ko = new int[]{0, 10, 15, 20};
-      ku = new int[]{12281360, 13859359, 15439166, 16693877, 16765346, 16777215, 16765346, 16693877, 15439166, 13859359, 12281360};
-      kv = Item.getAllItemCanByName();
+      ku = ShopCatalog.ku;
+      kv = ShopCatalog.kv;
       kw = new String[][]{{"2000vnđ / 50 bình", "3000vnđ / 50 bình", "3000vnđ / 30 bình", "2000vnđ / 50 bình", "2000vnđ / 30 bình", "3000vnđ / 50 bình"}, {"2000vnđ", "3000vnđ", "3000vnđ", "5000vnđ"}};
-      kx = Item.getAllItemCanByPrice();
-      kz = new String[][]{{"BinhHP_Nho(50)", "BinhHP_Vua(50)", "BinhHP_To(30)", "BinhMP_Nho(50)", "BinhMP_Vua(30)", "BinhMP_To(50)"}, {"KiemTre", "ThuyLinhKiem", "HoaGiacKiem", "LongGiaoKiem"}};
-      kA = new String[][]{{"sms://8222", "sms://8322", "sms://8322", "sms://8222", "sms://8222", "sms://8222"}, {"sms://8122", "sms://8322", "sms://8422", "sms://8522"}};
+      kx = ShopCatalog.kx;
+      kz = ShopCatalog.kz;
+      kA = ShopCatalog.kA;
       kF = new int[]{12281360, 13859359, 15439166, 16693877, 16765346, 16777215, 16765346, 16693877, 15439166, 13859359, 12281360};
       kG = Item.getAllItemNames();
       V = new int[]{5, 2, 1, 5, 2, 1};
@@ -6677,36 +6677,36 @@ public final class a extends Canvas implements Runnable, CommandListener {
                         switch (ly[var6]) {
                            case 0:
                               if (fc) {
-                                 a(StoryDialogue.lD[7], -1, lw[var6], lx[var6] - 40);
+                                 a(NPCDialogue.lD[7], -1, lw[var6], lx[var6] - 40);
                               } else if (!khinhCong) {
                                  V(2);
-                                 a(StoryDialogue.lA[0], -1, lw[var6], lx[var6] - 40);
+                                 a(QuestText.lA[0], -1, lw[var6], lx[var6] - 40);
                               } else {
                                  if (fa && !fb) {
                                     if (currentQuestIndex == 16) {
                                        if (eI) {
-                                          a(StoryDialogue.lB[14], 35, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lB[14], 35, lw[var6], lx[var6] - 40);
                                        } else {
-                                          a(StoryDialogue.lC[14], -1, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lC[14], -1, lw[var6], lx[var6] - 40);
                                        }
                                     } else if (currentQuestIndex == -1) {
-                                       a(StoryDialogue.lA[22], 36, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lA[22], 36, lw[var6], lx[var6] - 40);
                                     } else {
-                                       a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                     }
                                     break;
                                  }
 
-                                 a(StoryDialogue.lD[1], -1, lw[var6], lx[var6] - 40);
+                                 a(NPCDialogue.lD[1], -1, lw[var6], lx[var6] - 40);
                               }
                               break;
                            case 1:
                               if (fc) {
-                                 a(StoryDialogue.lD[5], -1, lw[var6], lx[var6] - 40);
+                                 a(NPCDialogue.lD[5], -1, lw[var6], lx[var6] - 40);
                               } else if (!khinhCong) {
                                  if (currentQuestIndex == 0) {
                                     if (fD < questRequiredAmounts[0]) {
-                                       a(StoryDialogue.lC[0], -1, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lC[0], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        boolean var2 = true;
                                        var2 = true;
@@ -6716,42 +6716,42 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                        lL = 4;
                                        lJ = 1044;
                                        lK = 240;
-                                       a(StoryDialogue.lB[0], 4, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lB[0], 4, lw[var6], lx[var6] - 40);
                                     }
                                  } else if (currentQuestIndex == -1) {
-                                    a(StoryDialogue.lA[1], 3, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lA[1], 3, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else if (!eS && eR) {
                                  if (characterLevel < 10) {
                                     a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 10"}, -1, lw[var6], lx[var6] - 40);
                                  } else if (currentQuestIndex == 7) {
                                     if (fD < questRequiredAmounts[7]) {
-                                       a(StoryDialogue.lC[6], -1, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lC[6], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(2);
-                                       a(StoryDialogue.lB[6], 19, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lB[6], 19, lw[var6], lx[var6] - 40);
                                     }
                                  } else if (currentQuestIndex == -1) {
-                                    a(StoryDialogue.lA[14], 18, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lA[14], 18, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else if (eV && !khinhCongCap2) {
                                  if (characterLevel < 12) {
                                     a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 12"}, -1, lw[var6], lx[var6] - 40);
                                  } else if (currentQuestIndex == 11) {
                                     if (fD < 20) {
-                                       a(StoryDialogue.lC[9], -1, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lC[9], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(4);
-                                       a(StoryDialogue.lB[9], 27, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lB[9], 27, lw[var6], lx[var6] - 40);
                                     }
                                  } else if (currentQuestIndex == -1) {
-                                    a(StoryDialogue.lA[17], 28, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lA[17], 28, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else {
                                  if (!eY && eX) {
@@ -6759,86 +6759,86 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                        a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 15"}, -1, lw[var6], lx[var6] - 40);
                                     } else if (currentQuestIndex == 13) {
                                        if (fD < questRequiredAmounts[13]) {
-                                          a(StoryDialogue.lC[11], -1, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lC[11], -1, lw[var6], lx[var6] - 40);
                                        } else {
                                           V(3);
-                                          a(StoryDialogue.lB[11], 31, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lB[11], 31, lw[var6], lx[var6] - 40);
                                        }
                                     } else if (currentQuestIndex == -1) {
-                                       a(StoryDialogue.lA[19], 32, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lA[19], 32, lw[var6], lx[var6] - 40);
                                     } else {
-                                       a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                     }
                                     break;
                                  }
 
-                                 a(StoryDialogue.lD[0], -1, lw[var6], lx[var6] - 40);
+                                 a(NPCDialogue.lD[0], -1, lw[var6], lx[var6] - 40);
                               }
                               break;
                            case 2:
                               if (fc) {
-                                 a(StoryDialogue.lD[9], -1, lw[var6], lx[var6] - 40);
+                                 a(NPCDialogue.lD[9], -1, lw[var6], lx[var6] - 40);
                               } else if (!khinhCong) {
                                  V(1);
-                                 a(StoryDialogue.lA[2], -1, lw[var6], lx[var6] - 40);
+                                 a(QuestText.lA[2], -1, lw[var6], lx[var6] - 40);
                               } else if (eM && !eN) {
                                  if (currentQuestIndex == 3) {
-                                    a(StoryDialogue.lA[9], -1, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lA[9], -1, lw[var6], lx[var6] - 40);
                                  } else if (currentQuestIndex == -1) {
-                                    a(StoryDialogue.lA[10], 11, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lA[10], 11, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else if (eS && !eT) {
                                  if (currentQuestIndex == 8) {
                                     if (eH) {
                                        V(2);
-                                       a(StoryDialogue.lB[7], 23, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lB[7], 23, lw[var6], lx[var6] - 40);
                                     } else {
-                                       a(StoryDialogue.lC[7], -1, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lC[7], -1, lw[var6], lx[var6] - 40);
                                     }
                                  } else if (currentQuestIndex == -1) {
-                                    a(StoryDialogue.lA[15], 22, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lA[15], 22, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else {
                                  if (eT && !eU) {
                                     if (currentQuestIndex == 9) {
                                        if (fD < questRequiredAmounts[9]) {
-                                          a(StoryDialogue.lC[8], -1, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lC[8], -1, lw[var6], lx[var6] - 40);
                                        } else {
                                           V(3);
-                                          a(StoryDialogue.lB[8], 25, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lB[8], 25, lw[var6], lx[var6] - 40);
                                        }
                                     } else if (currentQuestIndex == -1) {
-                                       a(StoryDialogue.lA[16], 24, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lA[16], 24, lw[var6], lx[var6] - 40);
                                     } else {
-                                       a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                     }
                                     break;
                                  }
 
-                                 a(StoryDialogue.lD[3], -1, lw[var6], lx[var6] - 40);
+                                 a(NPCDialogue.lD[3], -1, lw[var6], lx[var6] - 40);
                               }
                               break;
                            case 3:
                               if (fc) {
-                                 a(StoryDialogue.lD[9], -1, lw[var6], lx[var6] - 40);
+                                 a(NPCDialogue.lD[9], -1, lw[var6], lx[var6] - 40);
                               } else {
                                  if (khinhCong && eL) {
                                     if (!eM) {
                                        if (currentQuestIndex == 2) {
                                           if (!fB) {
-                                             a(StoryDialogue.lC[2], -1, lw[var6], lx[var6] - 40);
+                                             a(QuestText.lC[2], -1, lw[var6], lx[var6] - 40);
                                           } else {
                                              V(2);
-                                             a(StoryDialogue.lB[2], 10, lw[var6], lx[var6] - 40);
+                                             a(QuestText.lB[2], 10, lw[var6], lx[var6] - 40);
                                           }
                                        } else if (currentQuestIndex == -1) {
-                                          a(StoryDialogue.lA[8], 9, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lA[8], 9, lw[var6], lx[var6] - 40);
                                        } else {
-                                          a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                        }
                                        break;
                                     }
@@ -6846,15 +6846,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                     if (!eP && eO) {
                                        if (currentQuestIndex == 5) {
                                           if (!fB) {
-                                             a(StoryDialogue.lC[4], -1, lw[var6], lx[var6] - 40);
+                                             a(QuestText.lC[4], -1, lw[var6], lx[var6] - 40);
                                           } else {
                                              V(4);
-                                             a(StoryDialogue.lB[4], 15, lw[var6], lx[var6] - 40);
+                                             a(QuestText.lB[4], 15, lw[var6], lx[var6] - 40);
                                           }
                                        } else if (currentQuestIndex == -1) {
-                                          a(StoryDialogue.lA[12], 14, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lA[12], 14, lw[var6], lx[var6] - 40);
                                        } else {
-                                          a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                        }
                                        break;
                                     }
@@ -6864,15 +6864,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                           a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 16"}, -1, lw[var6], lx[var6] - 40);
                                        } else if (currentQuestIndex == 14) {
                                           if (fD < questRequiredAmounts[14]) {
-                                             a(StoryDialogue.lC[12], -1, lw[var6], lx[var6] - 40);
+                                             a(QuestText.lC[12], -1, lw[var6], lx[var6] - 40);
                                           } else {
                                              V(3);
-                                             a(StoryDialogue.lB[12], 33, lw[var6], lx[var6] - 40);
+                                             a(QuestText.lB[12], 33, lw[var6], lx[var6] - 40);
                                           }
                                        } else if (currentQuestIndex == -1) {
-                                          a(StoryDialogue.lA[20], 34, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lA[20], 34, lw[var6], lx[var6] - 40);
                                        } else {
-                                          a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                        }
                                        break;
                                     }
@@ -6880,98 +6880,98 @@ public final class a extends Canvas implements Runnable, CommandListener {
                                     if (!fa && eZ) {
                                        if (currentQuestIndex == 15) {
                                           if (!fB) {
-                                             a(StoryDialogue.lC[13], -1, lw[var6], lx[var6] - 40);
+                                             a(QuestText.lC[13], -1, lw[var6], lx[var6] - 40);
                                           } else {
                                              V(0);
-                                             a(StoryDialogue.lB[13], 21, lw[var6], lx[var6] - 40);
+                                             a(QuestText.lB[13], 21, lw[var6], lx[var6] - 40);
                                           }
                                        } else if (currentQuestIndex == -1) {
-                                          a(StoryDialogue.lA[21], 20, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lA[21], 20, lw[var6], lx[var6] - 40);
                                        } else {
-                                          a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                        }
                                        break;
                                     }
 
-                                    a(StoryDialogue.lD[4], -1, lw[var6], lx[var6] - 40);
+                                    a(NPCDialogue.lD[4], -1, lw[var6], lx[var6] - 40);
                                     break;
                                  }
 
-                                 a(StoryDialogue.lA[5], -1, lw[var6], lx[var6] - 40);
+                                 a(QuestText.lA[5], -1, lw[var6], lx[var6] - 40);
                               }
                               break;
                            case 4:
                               if (fc) {
-                                 a(StoryDialogue.lD[8], -1, lw[var6], lx[var6] - 40);
+                                 a(NPCDialogue.lD[8], -1, lw[var6], lx[var6] - 40);
                               } else if (v == 99) {
-                                 a(StoryDialogue.lA[7], -1, lw[var6], lx[var6] - 40);
+                                 a(QuestText.lA[7], -1, lw[var6], lx[var6] - 40);
                               } else if (!khinhCong) {
-                                 a(StoryDialogue.lA[4], -1, lw[var6], lx[var6] - 40);
+                                 a(QuestText.lA[4], -1, lw[var6], lx[var6] - 40);
                               } else if (!eL) {
                                  if (currentQuestIndex == 1) {
                                     if (fD < questRequiredAmounts[1]) {
-                                       a(StoryDialogue.lC[3], -1, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lC[3], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(3);
-                                       a(StoryDialogue.lB[1], 6, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lB[1], 6, lw[var6], lx[var6] - 40);
                                     }
                                  } else if (currentQuestIndex == -1) {
-                                    a(StoryDialogue.lA[6], 5, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lA[6], 5, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else if (eN && !eO) {
                                  if (currentQuestIndex == 4) {
                                     if (fD < questRequiredAmounts[4]) {
-                                       a(StoryDialogue.lC[3], -1, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lC[3], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(3);
-                                       a(StoryDialogue.lB[3], 12, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lB[3], 12, lw[var6], lx[var6] - 40);
                                     }
                                  } else if (currentQuestIndex == -1) {
-                                    a(StoryDialogue.lA[11], 13, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lA[11], 13, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else if (eP && !eR) {
                                  if (characterLevel < 8) {
                                     a(new String[]{"Hãy quay lại gặp ta khi con đạt cấp độ 8"}, -1, lw[var6], lx[var6] - 40);
                                  } else if (currentQuestIndex == 6) {
                                     if (!fB) {
-                                       a(StoryDialogue.lC[5], -1, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lC[5], -1, lw[var6], lx[var6] - 40);
                                     } else {
                                        V(1);
-                                       a(StoryDialogue.lB[5], 17, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lB[5], 17, lw[var6], lx[var6] - 40);
                                     }
                                  } else if (currentQuestIndex == -1) {
-                                    a(StoryDialogue.lA[13], 16, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lA[13], 16, lw[var6], lx[var6] - 40);
                                  } else {
-                                    a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                    a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                  }
                               } else {
                                  if (!eX && khinhCongCap2) {
                                     if (currentQuestIndex == 12) {
                                        if (fD < questRequiredAmounts[12]) {
-                                          a(StoryDialogue.lC[10], -1, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lC[10], -1, lw[var6], lx[var6] - 40);
                                        } else {
                                           V(1);
-                                          a(StoryDialogue.lB[10], 29, lw[var6], lx[var6] - 40);
+                                          a(QuestText.lB[10], 29, lw[var6], lx[var6] - 40);
                                        }
                                     } else if (currentQuestIndex == -1) {
-                                       a(StoryDialogue.lA[18], 30, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lA[18], 30, lw[var6], lx[var6] - 40);
                                     } else {
-                                       a(StoryDialogue.lE, 1, lw[var6], lx[var6] - 40);
+                                       a(QuestText.lE, 1, lw[var6], lx[var6] - 40);
                                     }
                                     break;
                                  }
 
-                                 a(StoryDialogue.lD[2], -1, lw[var6], lx[var6] - 40);
+                                 a(NPCDialogue.lD[2], -1, lw[var6], lx[var6] - 40);
                               }
                               break;
                            case 5:
                               if (v == 0) {
                                  if (var6 == 5) {
-                                    a(StoryDialogue.lz[0], -1, lw[var6], lx[var6] - 40);
+                                    a(NPCDialogue.lz[0], -1, lw[var6], lx[var6] - 40);
                                  }
 
                                  if (var6 == 6) {
@@ -6988,15 +6988,15 @@ public final class a extends Canvas implements Runnable, CommandListener {
                               }
 
                               if (v == 1 && var6 == 0) {
-                                 a(StoryDialogue.lz[1], -1, lw[var6], lx[var6] - 40);
+                                 a(NPCDialogue.lz[1], -1, lw[var6], lx[var6] - 40);
                               }
 
                               if (v == 5 && var6 == 0) {
-                                 a(StoryDialogue.lz[2], -1, lw[var6], lx[var6] - 40);
+                                 a(NPCDialogue.lz[2], -1, lw[var6], lx[var6] - 40);
                               }
 
                               if (v == 6 && var6 == 0) {
-                                 a(StoryDialogue.lz[3], -1, lw[var6], lx[var6] - 40);
+                                 a(NPCDialogue.lz[3], -1, lw[var6], lx[var6] - 40);
                               }
                         }
 
